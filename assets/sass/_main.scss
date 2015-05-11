@@ -1,0 +1,40 @@
+html {
+	height: 100%;
+	font: normal 1px/1.33 $font_1;
+	font-weight: 300;
+}
+
+body {
+	font-size:10rem;
+	@extend %translate3d;
+	position: relative;
+	height: 100%;
+	color: $def_text_color;
+	background: $white;
+	-webkit-text-size-adjust: none;
+
+	&.no_animation * {
+//		transition: none !important;
+//		animation-play-state: paused !important;
+	}
+}
+
+.disable-hover,
+.disable-hover * {
+	pointer-events: none !important;
+}
+
+a {
+	text-decoration: none;
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+.hide {
+	display: none !important;
+}
+.test {
+	color:white;
+}

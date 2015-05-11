@@ -1,0 +1,65 @@
+include _global_vars
+
+mixin head(array)
+	meta(charset='UTF-8')
+	title!=array.title_inner
+	meta(name="viewport", content="width=device-width")
+	if jQuery
+		script(src='js/jquery-1.11.1.min.js')
+	if jQueryUI
+		script(src="//code.jquery.com/ui/1.11.4/jquery-ui.js")
+	if modernizr
+		script(src="js/modernizr.2.js")
+	script(type='text/javascript', src='js/main.js')
+	| <!--[if gt IE 9]><!--><link rel="stylesheet" media="all" href="styles/main_global.css"><!--<![endif]-->
+	| <!--[if lte IE 9]><link rel="stylesheet" media="all" href="styles/ie_9_global.css"><![endif]-->
+mixin header
+	header
+mixin footer
+	footer
+mixin banner
+	.banner
+mixin form_field(title, field_id, array, placeholder_text)
+	if field_id == false
+		- field_id = title.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
+	else
+		- field_id = field_id.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
+	if array.field_class == undefined
+		- array.field_class = ''
+	if array.field_type === undefined
+		- array.field_type = 'text'
+	dl.form_cell(class='#{array.block_class_mod}')
+		dt.form_c_hline(class='#{array.class_mod}')
+			label(for='#{field_id}') #{title}
+		dd.form_c_f_w(class='#{array.class_mod}')
+			if array.field_type === 'file'
+				input.f_c_field(type='file' id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
+				span.f_c_field_file_field
+					span.f_c_field_file_text #{title}
+					span.f_c_field_file_butt Choose File
+			else if array.field_type === 'textarea'
+				textarea.f_c_field(id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
+			else
+				input.f_c_field(type='#{array.field_type}' id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
+			if array.clear_butt !== undefined && array.clear_butt !== false
+				span.f_c_field_clear_butt(class='#{array.clear_butt}')
+
+mixin loop_while(counter)
+	- i=0;
+	while i < counter
+		-i++;
+		block
+mixin breadcrumbs(name,name2,name3,name4)
+	ul.breadcrumb_list
+		li.breadcrumb_item
+			a.breadcrumb_link(href='#') #{name}
+		if name2 != 'undefined'
+			li.breadcrumb_item
+				a.breadcrumb_link(href='#') #{name2}
+		if name3 != 'undefined'
+			li.breadcrumb_item
+				a.breadcrumb_link(href='#') #{name3}
+		if name4 != 'undefined'
+			li.breadcrumb_item
+				a.breadcrumb_link(href='#') #{name4}
+

@@ -1,0 +1,129 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video, button{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	box-sizing: border-box;
+
+	&:before,
+	&:after{
+		box-sizing: border-box;
+	}
+}
+a{
+	&:before,
+	&:after {
+		box-sizing: border-box;
+	}
+}
+
+table, caption, tbody, tfoot, thead, tr, th, td{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	background: transparent;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+.addthis_toolbox {
+	display: none !important;
+}
+
+body {
+	line-height: 1.2;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote {
+	&:before, &:after {
+		content: '';
+		content: none;
+	}
+}
+
+q {
+	&:before, &:after {
+		content: '';
+		content: none;
+	}
+}
+
+:focus {
+	outline: 0;
+}
+
+input,
+textarea{
+	font: normal 1.6rem/1.33 $font_1;
+	border-radius: 0 !important;
+	&::-webkit-input-placeholder {
+		color: $placeholder_color;
+	}
+
+	&::-moz-placeholder {
+		color: $placeholder_color;
+	}
+	&:-ms-input-placeholder {
+		color: $placeholder_color;
+	}
+
+	&:focus {
+		&::-webkit-input-placeholder {
+			color: transparent;
+		}
+
+		&::-moz-placeholder {
+			color: transparent;
+		}
+		&:-ms-input-placeholder {
+			color: transparent;
+		}
+	}
+}
+
+textarea {
+	resize: none;
+}
+
+ins {
+	text-decoration: none;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+//-------------------------------------------------reset*/

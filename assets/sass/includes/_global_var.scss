@@ -1,0 +1,1254 @@
+//-------------------------------------------------------global_vars
+
+$pi: 3.14159265359;
+$square_root_of_2: 1.41421356237;
+
+//-------------------------------------------------------global_vars
+//-------------------------------------------------------mixins
+
+@mixin style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
+	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
+		@content;
+	}
+}
+
+@mixin sub_style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
+	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
+		@content;
+	}
+}
+
+@mixin ie_9_check {
+	@if $ie9 == true {
+		@content;
+	}
+}
+
+@mixin pseudo($width,$height,$content:'') {
+	position: absolute;
+	content:'content';
+	width:$width*1rem;
+	height:$height*1rem;
+}
+
+@mixin font_face($font_name,$file_name,$path:$font_path,$weight:normal,$style:normal) {
+	@font-face {
+		font-family:quote($font_name);
+		src: url($path + $file-name + '.eot');
+		src: url($path + $file-name + '.eot?#iefix') format('embedded-opentype'),
+		url($path + $file-name + '.woff') format('woff'),
+		url($path + $file-name + '.ttf') format('truetype'),
+		url($path + $file-name + '.svg##{$font_name}') format('svg');
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+@mixin opacity($opacity: 1, $important: false) {
+	@if $important == true {
+		@if $ie8 == true {
+			$opacity: $opacity * 100;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity='#{$opacity}')" !important;
+		} @else if $ie7 == true {
+			$opacity: $opacity * 100;
+			filter: alpha(opacity='#{$opacity}') !important;
+		} @else {
+			opacity: $opacity !important;
+		}
+	} @else {
+		@if $ie8 == true {
+			$opacity: $opacity * 100;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity='#{$opacity}')";
+		} @else if $ie7 == true {
+			$opacity: $opacity * 100;
+			filter: alpha(opacity='#{$opacity}');
+		} @else {
+			opacity: $opacity;
+		}
+	}
+
+}
+
+@mixin holyday_separator($var: false) {
+	@if $var == $holydat_var {
+		@content;
+	}
+}
+
+@mixin doc_check {
+	@if $doc == true {
+		@content;
+	}
+}
+
+@mixin develop_check {
+	@if $develop == true {
+		@content;
+	}
+}
+
+@mixin production_check {
+	@if $production == true {
+		@content;
+	}
+}
+
+@mixin ie_7_check {
+	@if $ie7 == true {
+		@content;
+	}
+}
+
+@mixin no_ie_7_check {
+	@if $ie7 == false {
+		@content;
+	}
+}
+
+@mixin ie_8_check {
+	@if $ie8 == true {
+		@content;
+	}
+}
+
+@mixin ie_7_8_check {
+	@if $ie7 == true {
+		@content;
+	}
+	@if $ie8 == true {
+		@content;
+	}
+}
+
+
+
+@mixin ie_8_9_check {
+	@if $ie8 == true {
+		@content;
+	}
+	@if $ie9 == true {
+		@content;
+	}
+}
+
+@mixin all_check {
+	@if $all == true {
+		@content;
+	}
+}
+
+@mixin all_ie9_check {
+	@if $all == true {
+		@content;
+	}
+	@if $ie9 == true {
+		@content;
+	}
+}
+
+@mixin no-flexboxlegacy(){
+	.no-flexboxlegacy &{
+		@content;
+	}
+}
+
+@mixin prefixer ($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      @if $prefix-for-webkit {
+        -webkit-#{$property}: $value;
+      }
+    }
+    @else if $prefix == moz {
+      @if $prefix-for-mozilla {
+        -moz-#{$property}: $value;
+      }
+    }
+    @else if $prefix == ms {
+      @if $prefix-for-microsoft {
+        -ms-#{$property}: $value;
+      }
+    }
+    @else if $prefix == o {
+      @if $prefix-for-opera {
+        -o-#{$property}: $value;
+      }
+    }
+    @else if $prefix == spec {
+      @if $prefix-for-spec {
+        #{$property}: $value;
+      }
+    }
+    @else  {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+@mixin disable-prefix-for-all() {
+  $prefix-for-webkit:    false !global;
+  $prefix-for-mozilla:   false !global;
+  $prefix-for-microsoft: false !global;
+  $prefix-for-opera:     false !global;
+  $prefix-for-spec:      false !global;
+}
+
+//use example
+//@include respond-to(small_s) { width: 100% ;}
+//@include respond-to(medium_s) { width: 125px; }
+//@include respond-to(wide_s) { float: none; }
+
+@mixin respond-to($media) {
+	@if $media == small_s {
+		@media only screen and (max-width: $small) {
+			@content;
+		}
+	} @else if $media == medium_s {
+		@media only screen and (min-width: $small + 1) and (max-width: $large - 1) {
+			@content;
+		}
+	} @else if $media == wide_max_s {
+		@media only screen and (max-width: $large - 1) {
+			@content;
+		}
+	} @else if $media == wide_s {
+		@media only screen and (min-width: $large) {
+			@content;
+		}
+	}
+}
+
+@mixin respond-to-max($custom) {
+	@media only screen and (max-width: $custom - 1) {
+		@content;
+	}
+}
+
+@mixin respond-to-max-height($custom) {
+	@media only screen and (max-height: $custom - 1) {
+		@content;
+	}
+}
+
+@mixin respond-to-min($custom1) {
+	@media only screen and (min-width: $custom1) {
+		@content;
+	}
+}
+
+@mixin respond-min-max($custom2, $custom3) {
+	@media only screen and (min-width: $custom2) and (max-width: $custom3) {
+		@content;
+	}
+}
+
+@mixin respond-to-min-out-max($custom3, $custom2) {
+	@media only screen and (max-width: $custom3 - 1), only screen and (min-width: $custom2 + 1) {
+		@content;
+	}
+}
+
+@mixin mobile($device-width:965px) {
+	@media
+	only screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-device-width: $device-width ),
+	only screen and (min--moz-device-pixel-ratio: 1.5) and (max-device-width: $device-width ),
+	only screen and (min-device-pixel-ratio: 1.5) and (max-device-width: $device-width )
+	{
+		@content;
+	}
+}
+
+@mixin print_style() {
+	@media print {
+		@content;
+	}
+}
+
+//@mixin font-include($fonts){
+//	@each $font_name, $array in $fonts {
+//		$font-weight: nth($array, 1);
+//		$path: nth($array, 2);
+//		@font-face {
+//			font-family: "#{$font_name}";
+//			src: url('#{$path}#{$font_name}.eot');
+//			src: url('#{$path}#{$font_name}.eot') format('embedded-opentype'),
+//			url('#{$path}#{$font_name}.woff2') format('woff2'),
+//			url('#{$path}#{$font_name}.woff') format('woff'),
+//			url('#{$path}#{$font_name}.ttf') format('truetype'),
+//			url('#{$path}#{$font_name}.svg#Intro') format('svg');
+//			font-weight: $font-weight;
+//			font-style: normal;
+//		}
+//	}
+//}
+
+//@mixin font-include($fonts, $path, $font-weight: '../fonts/': normal) {
+//	@font-face {
+//		font-family: "#{$font_name}";
+//		src: url('#{$path}#{$font_name}.eot');
+//		src: url('#{$path}#{$font_name}.eot') format('embedded-opentype'),
+//		url('#{$path}#{$font_name}.woff2') format('woff2'),
+//		url('#{$path}#{$font_name}.woff') format('woff'),
+//		url('#{$path}#{$font_name}.ttf') format('truetype'),
+//		url('#{$path}#{$font_name}.svg#Intro') format('svg');
+//		font-weight: $font-weight;
+//		font-style: normal;
+//	}
+//}
+
+
+
+@mixin appearance($value: button) {
+	-moz-appearance: $value;
+	-webkit-appearance: $value;
+	appearance: $value;
+}
+
+@mixin flexbox() {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+@mixin inline_flexbox() {
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -ms-inline-flex;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+}
+
+@mixin flex($values) {
+	-webkit-box-flex: $values;
+	-moz-box-flex: $values;
+	-webkit-flex: $values;
+	-ms-flex: $values;
+	flex: $values;
+}
+
+@mixin flex_block($flex-direction : row, $flex-wrap: wrap, $content : space-between, $align-items : flex-start,$align-content : flex-start) {
+
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-direction: normal;
+	-moz-box-direction: normal;
+
+	@if $flex-direction == 'row' {
+		-webkit-box-orient: horizontal;
+		-moz-box-orient: horizontal;
+	} @else if $flex-direction == 'column' {
+		-webkit-box-orient: vertical;
+		-moz-box-orient: vertical;
+	}
+
+	-webkit-flex-direction: $flex-direction;
+	-ms-flex-direction: $flex-direction;
+	flex-direction: $flex-direction;
+	-webkit-flex-wrap: $flex-wrap;
+	-ms-flex-wrap: $flex-wrap;
+	flex-wrap: $flex-wrap;
+
+	@if $content == 'space-between' {
+		-webkit-box-pack: justify;
+		-moz-box-pack: justify;
+	} @else if $content == 'flex-start' {
+		-webkit-box-pack : start;
+		-moz-box-pack: start;
+	} @else if $content == 'flex-end' {
+		-webkit-box-pack : end;
+		-moz-box-pack: end;
+	} @else if $content == 'center' {
+		-webkit-box-pack : center;
+		-moz-box-pack: center;
+	}
+
+	-webkit-justify-content: $content;
+
+	@if $content == 'space-between' {
+		-ms-flex-pack: justify;
+	} @else if $content == 'flex-start' {
+		-ms-flex-pack: start;
+	} @else if $content == 'flex-end' {
+		-ms-flex-pack: end;
+	} @else if $content == 'center' {
+		-ms-flex-pack: center;
+	}
+
+	justify-content: $content;
+
+
+
+	-webkit-align-content: $align-content;
+	@if $align-content == 'stretch' {
+		-ms-flex-line-pack: stretch;
+	} @else if $align-content == 'space-around' {
+		-ms-flex-line-pack: distribute;
+	} @else if $align-content == 'space-between' {
+		-ms-flex-line-pack: justify;
+	} @else if $align-content == 'flex-start' {
+		-ms-flex-line-pack: start;
+	} @else if $align-content == 'flex-end' {
+		-ms-flex-line-pack: end;
+	} @else if $align-content == 'center' {
+		-ms-flex-line-pack: center;
+	}
+
+	align-content: $align-content;
+
+	@if $align-content == 'stretch' {
+		-webkit-box-align: stretch;
+	} @else if $align-content == 'flex-start' {
+		-webkit-box-align: start;
+	} @else if $align-content == 'flex-end' {
+		-webkit-box-align: end;
+	} @else if $align-content == 'center' {
+		-webkit-box-align: center;
+	}
+
+	-webkit-align-items: $align-items;
+	@if $align-content == 'stretch' {
+		-ms-flex-align: stretch;
+	} @else if $align-content == 'flex-start' {
+		-ms-flex-align: start;
+	} @else if $align-content == 'flex-end' {
+		-ms-flex-align: end;
+	} @else if $align-content == 'center' {
+		-ms-flex-align: center;
+	}
+	align-items: $align-items;
+}
+
+@mixin align-self($val: center){
+	-webkit-align-self:$val;
+	align-self:$val;
+}
+
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+
+@mixin transition_all($property...) {
+	@if $all == true {
+		-webkit-transition: $property;
+		-ms-transition: $property;
+		transition: $property;
+	}
+}
+@mixin transition_delay($property) {
+	@if $all == true {
+		-webkit-transition-delay: $property;
+		-ms-transition-delay: $property;
+		transition-delay: $property;
+	}
+}
+
+
+@mixin transition($property: all, $duration: .3s, $easing: ease-in-out, $delay: blank, $important: blank) {
+	@if $all == true {
+		@if $property == none {
+			-webkit-transition: $property !important;
+			transition: $property !important;
+		} @else {
+			@if $delay != blank {
+				//				@if $easing != blank{
+				//					@if $important != blank{
+				//						-webkit-transition: $property $duration $easing $delay !important;
+				//						-moz-transition: $property $duration $easing $delay !important;
+				//						-o-transition: $property $duration $easing $delay !important;
+				//						transition: $property $duration $easing $delay !important;
+				//					} @else {
+				//						-webkit-transition: $property $duration $easing $delay;
+				//						-moz-transition: $property $duration $easing $delay;
+				//						-o-transition: $property $duration $easing $delay;
+				//						transition: $property $duration $easing $delay;
+				//					}
+				//				} @else {
+				//					@if $important != blank{
+				//						-webkit-transition: $property $duration $delay !important;
+				//						-moz-transition: $property $duration $delay !important;
+				//						-o-transition: $property $duration $delay !important;
+				//						transition: $property $duration $delay !important;
+				//					} @else {
+				//						-webkit-transition: $property $duration $delay;
+				//						-moz-transition: $property $duration $delay;
+				//						-o-transition: $property $duration $delay;
+				//						transition: $property $duration $delay;
+				//					}
+				//
+				//				}
+				@if $easing != blank {
+					@if $property == transform {
+						@if $important != blank {
+							-webkit-transition: -webkit-#{$property} $duration $easing $delay !important;
+							transition: $property $duration $easing $delay !important;
+						} @else {
+							-webkit-transition: -webkit-#{$property} $duration $easing $delay;
+							transition: $property $duration $easing $delay;
+						}
+
+					} @else {
+						@if $important != blank {
+							-webkit-transition: $property $duration $easing $delay !important;
+							transition: $property $duration $easing $delay !important;
+						} @else {
+							-webkit-transition: $property $duration $easing $delay;
+							transition: $property $duration $easing $delay;
+						}
+
+					}
+
+				} @else {
+					@if $property == transform {
+						@if $important != blank {
+							-webkit-transition: -webkit-#{$property} $duration $delay !important;
+							transition: $property $duration $delay !important;
+						} @else {
+							-webkit-transition: -webkit-#{$property} $duration $delay;
+							transition: $property $duration $delay;
+						}
+
+					} @else {
+						@if $important != blank {
+							-webkit-transition: $property $duration $delay !important;
+							transition: $property $duration $delay !important;
+						} @else {
+							-webkit-transition: $property $duration $delay;
+							transition: $property $duration $delay;
+						}
+
+					}
+				}
+
+			} @else {
+				@if $easing != blank {
+					@if $property == transform {
+						@if $important != blank {
+							-webkit-transition: -webkit-#{$property} $duration $easing !important;
+							transition: $property $duration $easing !important;
+						} @else {
+							-webkit-transition: -webkit-#{$property} $duration $easing;
+							transition: $property $duration $easing;
+						}
+
+					} @else {
+						@if $important != blank {
+							-webkit-transition: $property $duration $easing !important;
+							transition: $property $duration $easing !important;
+						} @else {
+							-webkit-transition: $property $duration $easing;
+							transition: $property $duration $easing;
+						}
+
+					}
+
+				} @else {
+					@if $property == transform {
+						@if $important != blank {
+							-webkit-transition: -webkit-#{$property} $duration !important;
+							transition: $property $duration !important;
+						} @else {
+							-webkit-transition: -webkit-#{$property} $duration;
+							transition: $property $duration;
+						}
+
+					} @else {
+						@if $important != blank {
+							-webkit-transition: $property $duration !important;
+							transition: $property $duration !important;
+						} @else {
+							-webkit-transition: $property $duration;
+							transition: $property $duration;
+						}
+
+					}
+				}
+			}
+			-webkit-will-change:$property;
+			will-change:$property;
+		}
+	}
+}
+
+@mixin will-change($property:all) {
+	-webkit-will-change: $property;
+	will-change: $property;
+}
+
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+
+@mixin user-select-none {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@mixin inline_block_wrapper {
+	font-size: 0;
+	line-height: 0;
+	letter-spacing: -1px;
+}
+
+@mixin inline_block_element($font-size: 15px, $line-height: 1.4, $letter-spacing: normal) {
+	display: inline-block;
+	font-size: $font-size;
+	line-height: $line-height;
+	letter-spacing: $letter-spacing;
+	@if $ie7 == true {
+		display: inline;
+	}
+}
+
+@mixin border_box {
+	box-sizing: border-box;
+}
+
+@mixin content_box {
+	box-sizing: content-box;
+}
+
+@mixin inline_block {
+	@if $ie7 == true {
+		display: inline-block;
+		display: inline;
+	} @else {
+		display: inline-block;
+	}
+}
+
+@mixin radial_grad($color_one: #000, $color_two: #fff, $center: bottom, $color_bg: false) {
+	@if $all == true {
+		background-image: -webkit-radial-gradient($center, ellipse cover, $color_one 0%, $color_two 100%);
+		background-image: radial-gradient($center, ellipse cover, $color_one 0%, $color_two 100%);
+	} @else {
+		@if $color_bg == false {
+			background-color: $color_one;
+		} @else {
+			background-color: $color_bg;
+		}
+	}
+}
+
+@mixin radial_grad_custom($gradient...) {
+	background-image: -webkit-radial-gradient($gradient);
+	background-image: radial-gradient($gradient);
+}
+
+@mixin vert_grad($color_one: #000, $color_two: #fff, $color_bg: false) {
+	@if $all == true {
+		background-image: -webkit-linear-gradient(top, $color_one 0%, $color_two 100%);
+		background-image: linear-gradient(to bottom, $color_one 0%, $color_two 100%);
+	} @else {
+		@if $color_bg == false {
+			background-color: $color_one;
+		} @else {
+			background-color: $color_bg;
+		}
+	}
+}
+
+@mixin vert_grad_full($grad...) {
+//	background-image: -webkit-linear-gradient(bottom, $grad);
+	background-image: linear-gradient(to top, $grad);
+}
+
+@mixin vert_grad_full_top($grad...) {
+//	background-image: -webkit-linear-gradient(top, $grad);
+	background-image: linear-gradient(to bottom, $grad);
+}
+
+@mixin hor_grad_full($grad...) {
+//	background-image: -webkit-linear-gradient(right, $grad);
+	background-image: linear-gradient(to left, $grad);
+}
+
+@mixin hor_grad_full_left($grad...) {
+//	background-image: -webkit-linear-gradient(left, $grad);
+	background-image: linear-gradient(to right, $grad);
+}
+
+@mixin radial_grad_full($grad...) {
+	background-image: -webkit-radial-gradient($grad);
+	background-image: radial-gradient($grad);
+}
+
+@mixin vert_grad_no_check($color_one: #000, $color_two: #fff) {
+//	background-image: -webkit-linear-gradient(top, $color_one 0%, $color_two 100%);
+	background-image: linear-gradient(to bottom, $color_one 0%, $color_two 100%);
+}
+
+@mixin vert_grad_50_50($color_one: #000, $color_two: #fff, $color_three: #000, $color_four: #fff) {
+	@if $all == true {
+//		background-image: -webkit-linear-gradient(bottom, $color_one 0%, $color_two 49%, $color_three 50%, $color_four 100%);
+		background-image: linear-gradient(to top, $color_one 0%, $color_two 49%, $color_three 50%, $color_four 100%);
+	} @else {
+		background-color: $color_one;
+	}
+}
+
+@mixin diagonal_grad_full($color...) {
+	background-image: -webkit-linear-gradient(-45deg, $color);
+	background-image: linear-gradient(135deg, $color);
+}
+
+@mixin diagonal_grad($color_one: #000, $color_two: #fff) {
+	@if $all == true {
+		background-image: -webkit-linear-gradient(-45deg, $color_one 0%, $color_two 100%);
+		background-image: linear-gradient(135deg, $color_one 0%, $color_two 100%);
+	} @else {
+		background-color: $color_one;
+	}
+}
+
+@mixin text-shadow($shadows...) {
+	@include all_ie9_check {
+		text-shadow: $shadows;
+	}
+}
+
+@mixin box-shadow($shadows...) {
+	@include all_ie9_check {
+		box-shadow: $shadows;
+	}
+}
+
+@mixin box-shadow_no_check($shadows...) {
+	box-shadow: $shadows;
+}
+
+@mixin transform_all($transform_all...) {
+	@include all_ie9_check {
+		-webkit-transform: $transform_all;
+		-ms-transform: $transform_all;
+		transform: $transform_all;
+	}
+}
+
+@mixin transform_all_no_check($transform_all...) {
+	-webkit-transform: $transform_all;
+	-ms-transform: $transform_all;
+	transform: $transform_all;
+}
+
+@mixin transform-origin($transform_all...) {
+	-webkit-transform-origin: $transform_all;
+	-ms-transform-origin: $transform_all;
+	transform-origin: $transform_all;
+}
+
+@mixin transform-style($value: true) {
+	$inner_value: preserve-3d;
+	@if ($value == true) {
+		$inner_value: preserve-3d;
+	} @else {
+		$inner_value: flat;
+	}
+	-webkit-transform-style: $inner_value;
+	transform-style: $inner_value;
+}
+
+@mixin perspective($value) {
+	-webkit-perspective: $value;
+	perspective: $value;
+}
+
+
+@mixin perspective-origin($value...) {
+	-webkit-perspective-origin: $value;
+	perspective-origin: $value;
+}
+
+
+@mixin backface-visibility($value:hidden) {
+	-webkit-backface-visibility: $value;
+	backface-visibility: $value;
+}
+
+
+@mixin transform_skewX($deg: 0, $check: false) {
+	@if $check == false {
+		@include all_ie9_check {
+			-webkit-transform: skewX($deg+deg);
+			-ms-transform: skewX($deg+deg);
+			transform: skewX($deg+deg);
+		}
+	} @else {
+		-webkit-transform: skewX($deg+deg);
+		-ms-transform: skewX($deg+deg);
+		transform: skewX($deg+deg);
+	}
+}
+
+@mixin transform_skewY($deg: 0, $check: false) {
+	@if $check == false {
+		@include all_ie9_check {
+			-webkit-transform: skewY($deg+deg);
+			-ms-transform: skewY($deg+deg);
+			transform: skewY($deg+deg);
+		}
+	} @else {
+		-webkit-transform: skewY($deg+deg);
+		-ms-transform: skewY($deg+deg);
+		transform: skewY($deg+deg);
+	}
+}
+
+@mixin transform_skew($deg: 0, $deg2: 0, $check: false) {
+	@if $check == false {
+		@include all_ie9_check {
+			-webkit-transform: skew($deg+deg, $deg2+deg);
+			-ms-transform: skew($deg+deg, $deg2+deg);
+			transform: skew($deg+deg, $deg2+deg);
+		}
+	} @else {
+		-webkit-transform: skew($deg+deg, $deg2+deg);
+		-ms-transform: skew($deg+deg, $deg2+deg);
+		transform: skew($deg+deg, $deg2+deg);
+	}
+}
+
+@mixin transform($transform...) {
+	@include all_ie9_check {
+		-webkit-transform: $transform;
+		-ms-transform: $transform;
+		transform: $transform;
+	}
+}
+
+@mixin transform_scale($ratio: 0, $check: false) {
+	@if $check == false {
+		@include all_ie9_check {
+			-webkit-transform: scale($ratio);
+			-ms-transform: scale($ratio);
+			transform: scale($ratio);
+		}
+	} @else {
+		-webkit-transform: scale($ratio);
+		-ms-transform: scale($ratio);
+		transform: scale($ratio);
+	}
+}
+
+@mixin transform_rotate($deg: 0, $check: false) {
+	@if $check == false {
+		@include all_ie9_check {
+			-webkit-transform: rotate($deg+deg);
+			-ms-transform: rotate($deg+deg);
+			transform: rotate($deg+deg);
+		}
+	} @else {
+		-webkit-transform: rotate($deg+deg);
+		-ms-transform: rotate($deg+deg);
+		transform: rotate($deg+deg);
+	}
+}
+
+@mixin transform_rotate_no_check($deg: 0, $imp: false) {
+	@if $imp == true {
+		-webkit-transform: rotate($deg+deg) !important;
+		-ms-transform: rotate($deg+deg) !important;
+		transform: rotate($deg+deg) !important;
+	} @else {
+		-webkit-transform: rotate($deg+deg);
+		-ms-transform: rotate($deg+deg);
+		transform: rotate($deg+deg);
+	}
+}
+
+@mixin transform_translate_sub($x: 0, $y: 0, $imp: false, $d3: false) {
+	@if $imp == true {
+		@if $d3 == true {
+			-webkit-transform: translate3d($x, $y, 0) !important;
+			-ms-transform: translate3d($x, $y, 0) !important;
+			transform: translate3d($x, $y, 0) !important;
+		} @else {
+			-webkit-transform: translate($x, $y) !important;
+			-ms-transform: translate($x, $y) !important;
+			transform: translate($x, $y) !important;
+		}
+	} @else {
+		@if $d3 == true {
+			-webkit-transform: translate3d($x, $y, 0);
+			-ms-transform: translate3d($x, $y, 0);
+			transform: translate3d($x, $y, 0);
+		} @else {
+			-webkit-transform: translate($x, $y);
+			-ms-transform: translate($x, $y);
+			transform: translate($x, $y);
+		}
+
+	}
+}
+
+@mixin transform_translate($x: 0, $y: 0, $imp: false, $check: false, $d3: false) {
+	//-webkit-transform: translate3d($x,$y,0);
+	@if $check == false {
+		@if $ie8 == false {
+			@include transform_translate_sub($x, $y, $imp, $d3);
+		} @else {
+			@if $x != 0 {
+				left: $x;
+			}
+			@if $y != 0 {
+				top: $x;
+			}
+		}
+	} @else {
+		@include transform_translate_sub($x, $y, $imp, $d3);
+	}
+}
+
+@mixin translate3d($var1: 0, $var2: 0, $var3: 0, $check: false) {
+	@if $check == false {
+		@include all_ie9_check {
+			-webkit-transform: translate3d($var1, $var2, $var3);
+			transform: translate3d($var1, $var2, $var3);
+		}
+	} @else {
+		-webkit-transform: translate3d($var1, $var2, $var3);
+		transform: translate3d($var1, $var2, $var3);
+	}
+}
+
+@mixin keyframe($animation_name, $check: false) {
+	@if $check == false {
+		@if $all == true {
+			@include keyframe_sub($animation_name);
+		}
+	} @else {
+		@include keyframe_sub($animation_name);
+	}
+}
+
+@mixin keyframe_sub($animation_name) {
+	@-webkit-keyframes $animation_name {
+		@content;
+	}
+
+	@-moz-keyframes $animation_name {
+		@content;
+	}
+
+	@keyframes $animation_name {
+		@content;
+	}
+}
+
+@mixin animation($animation, $duration, $timing-function: linear, $delay: 0, $direction: normal, $iteration-count: infinite, $fill-mode: both, $check: false, $full: false) {
+	@if $check == false {
+		@if $all == true {
+			@if $full != true {
+				@include animation_sub($animation, $duration, $timing-function, $delay, $iteration-count, $direction, $fill-mode);
+			} @else {
+				@include animation_sub_full($animation, $duration, $timing-function, $delay, $iteration-count, $direction, $fill-mode);
+			}
+		}
+	} @else {
+		@if $full != true {
+			@include animation_sub($animation, $duration, $timing-function, $delay, $iteration-count, $direction, $fill-mode);
+		} @else {
+			@include animation_sub_full($animation, $duration, $timing-function, $delay, $iteration-count, $direction, $fill-mode);
+		}
+	}
+}
+
+@mixin animation_custom($animation...) {
+	-webkit-animation: $animation;
+	animation: $animation;
+}
+
+@mixin animation_sub_full($animation, $duration, $timing-function, $delay, $iteration-count, $direction, $fill-mode) {
+	-webkit-animation-name: $animation;
+	-webkit-animation-duration: $duration;
+	-webkit-animation-timing-function: $timing-function;
+	-webkit-animation-delay: $delay;
+	-webkit-animation-iteration-count: $iteration-count;
+	-webkit-animation-direction: $direction;
+	-webkit-animation-fill-mode: $fill-mode;
+	animation-name: $animation;
+	animation-duration: $duration;
+	animation-timing-function: $timing-function;
+	animation-delay: $delay;
+	animation-iteration-count: $iteration-count;
+	animation-direction: $direction;
+	animation-fill-mode: $fill-mode;
+}
+
+@mixin animation_sub($animation, $duration, $timing-function, $delay, $iteration-count, $direction, $fill-mode) {
+	-webkit-animation: $animation $duration $timing-function $delay $iteration-count $direction $fill-mode;
+	animation: $animation $duration $timing-function $delay $iteration-count $direction $fill-mode;
+}
+
+@mixin column($column-count: 0, $column-gap: 0) {
+	@include all_ie9_check {
+		-moz-column-count: $column-count;
+		-moz-column-gap: $column-gap;
+		-webkit-column-count: $column-count;
+		-webkit-column-gap: $column-gap;
+		column-count: $column-count;
+		column-gap: $column-gap;
+	}
+}
+
+@mixin hover_animation($duration: .3s, $easing: ease-in-out, $x: 200px, $y: 0) {
+	@include all_ie9_check {
+		display: block !important;
+		opacity: 0;
+		-webkit-transition: opacity $duration, visibility $duration, -webkit-transform $duration $easing;
+		transition: opacity $duration, visibility $duration, transform $duration $easing;
+		-webkit-transform: translate3d($x, $y, 0);
+		//-webkit-transform: translate($x,$y);
+		transform: translate($x, $y);
+		visibility: hidden;
+	}
+	@include ie_7_check {
+		display: none;
+	}
+	@include ie_8_check {
+		display: none;
+	}
+}
+
+@mixin hover_animation_hover_state($x: 0, $y: 0) {
+	@include all_ie9_check {
+		opacity: 1;
+		-webkit-transform: translate3d($x, $y, 0);
+		//-webkit-transform: translate($x,$y);
+		transform: translate($x, $y);
+		visibility: visible;
+
+		.safari & {
+			-webkit-transition: opacity 0.3s, -webkit-transform 0.3s ease-in-out;
+			transition: opacity 0.3s, transform 0.3s ease-in-out;
+		}
+	}
+	@include ie_7_check {
+		display: block;
+	}
+	@include ie_8_check {
+		display: block;
+	}
+}
+
+@mixin border_radius_shadow($x: 0, $y: 0) {
+	@include all_ie9_check {
+		border-top-right-radius: $x $y;
+		border-top-left-radius: $x $y;
+		border-bottom-left-radius: $x $y;
+		border-bottom-right-radius: $x $y;
+	}
+}
+
+@mixin top_grad_v1($height: 88px, $side_indent: 0) {
+	&:before {
+		z-index: -1;
+		position: absolute;
+		height: $height;
+		max-height: 100% !important;
+		top: 0;
+		left: $side_indent;
+		right: $side_indent;
+		content: "";
+		@if $ie8 == true {
+			border-top: 1px solid #e3e3e3;
+		} @else {
+			//@include box-shadow(0 -1px 0 rgba(0, 0, 0, 0.11), inset 0 1px 0 #fefefe);
+			box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.11), inset 0 1px 0 #fefefe;
+			@include vert_grad(#fafafa, #fff);
+		}
+	}
+}
+
+@function multiple-text-shadow ($n, $color) {
+	$d2: 1 - (1 - 1/$n);
+	$value: '1px 1px 0 #{transparentize($color, $d2)}';
+	@for $i from 2 through $n {
+		$d: 1 - (1 - $i/$n);
+		$value: '#{$value} , #{$i}px #{$i}px 0 ' +  transparentize($color, $d);
+	}
+
+	@return unquote($value);
+}
+
+@mixin columns($columncount: 2, $columngap: 20px) {
+	-moz-column-count: $columncount;
+	-moz-column-gap: $columngap;
+	-webkit-column-count: $columncount;
+	-webkit-column-gap: $columngap;
+	column-count: $columncount;
+	column-gap: $columngap;
+}
+
+@mixin border_corner_top($b_color: 0, $b_width: 4px) {
+	width: 0;
+	height: 0;
+	border-left: $b_width solid transparent;
+	border-right: $b_width solid transparent;
+	border-bottom: $b_width solid $b_color;
+}
+
+@mixin border_corner_top_new($b_color: 0, $b_width: 4px, $b_side_width: 4px) {
+	width: 0;
+	height: 0;
+	border-left: $b_side_width solid transparent;
+	border-right: $b_side_width solid transparent;
+	border-bottom: $b_width solid $b_color;
+}
+
+@mixin border_corner_bott($b_color: 0, $b_width: 4px, $b_side_width: 4px) {
+	width: 0;
+	height: 0;
+	border-left: $b_side_width solid transparent;
+	border-right: $b_side_width solid transparent;
+	border-top: $b_width solid $b_color;
+}
+
+@mixin border_corner_left($b_color: 0, $b_width: 4px, $b_side_width: 4px) {
+	width: 0;
+	height: 0;
+	border-top: $b_side_width solid transparent;
+	border-bottom: $b_side_width solid transparent;
+	border-right: $b_width solid $b_color;
+}
+
+@mixin border_corner_right($b_color: 0, $b_width: 4px, $b_side_width: 4px) {
+	width: 0;
+	height: 0;
+	border-top: $b_side_width solid transparent;
+	border-bottom: $b_side_width solid transparent;
+	border-left: $b_width solid $b_color;
+}
+
+@mixin img_peplace {
+	white-space: nowrap;
+	text-indent: 100%;
+	overflow: hidden;
+}
+
+@mixin dashed-border($dashlength, $spacelength, $borderwidth, $color) {
+	$per: percentage($dashlength / ($dashlength + $spacelength));
+	background-image:
+					linear-gradient(to right, $color 0%, $color $per, rgba(0, 0, 0, 0) $per),
+					linear-gradient(to bottom, $color 0%, $color $per, rgba(0, 0, 0, 0) $per),
+					linear-gradient(to right, $color 0%, $color $per, rgba(0, 0, 0, 0) $per),
+					linear-gradient(to bottom, $color 0%, $color $per, rgba(0, 0, 0, 0) $per);
+	background-position: (-$spacelength) 0, 0 (-$spacelength),  (-$spacelength) 100%, 100% (-$spacelength);
+	background-size: ($dashlength + $spacelength) $borderwidth, $borderwidth ($dashlength + $spacelength),($dashlength + $spacelength) $borderwidth, $borderwidth ($dashlength + $spacelength);
+	background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+}
+
+@mixin filter($filter-type,$filter-amount) {
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+
+@mixin keyframes-bourbon($name) {
+  $original-prefix-for-webkit:    $prefix-for-webkit;
+  $original-prefix-for-mozilla:   $prefix-for-mozilla;
+  $original-prefix-for-microsoft: $prefix-for-microsoft;
+  $original-prefix-for-opera:     $prefix-for-opera;
+  $original-prefix-for-spec:      $prefix-for-spec;
+
+  @if $original-prefix-for-webkit {
+    @include disable-prefix-for-all();
+    $prefix-for-webkit: true !global;
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+  }
+  @if $original-prefix-for-mozilla {
+    @include disable-prefix-for-all();
+    $prefix-for-mozilla: true !global;
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  $prefix-for-webkit:    $original-prefix-for-webkit    !global;
+  $prefix-for-mozilla:   $original-prefix-for-mozilla   !global;
+  $prefix-for-microsoft: $original-prefix-for-microsoft !global;
+  $prefix-for-opera:     $original-prefix-for-opera     !global;
+  $prefix-for-spec:      $original-prefix-for-spec      !global;
+
+  @if $original-prefix-for-spec {
+    @keyframes #{$name} {
+      @content;
+    }
+  }
+}
+
+@mixin animation-bourbon ($animations...) {
+  @include prefixer(animation, $animations, webkit moz spec);
+}
+
+// Individual Animation Properties
+@mixin animation-name-bourbon ($names...) {
+  @include prefixer(animation-name, $names, webkit moz spec);
+}
+
+
+@mixin animation-duration-bourbon ($times...) {
+  @include prefixer(animation-duration, $times, webkit moz spec);
+}
+
+
+@mixin animation-timing-function-bourbon ($motions...) {
+// ease | linear | ease-in | ease-out | ease-in-out
+  @include prefixer(animation-timing-function, $motions, webkit moz spec);
+}
+
+
+@mixin animation-iteration-count-bourbon ($values...) {
+// infinite | <number>
+  @include prefixer(animation-iteration-count, $values, webkit moz spec);
+}
+
+
+@mixin animation-direction-bourbon ($directions...) {
+// normal | alternate
+  @include prefixer(animation-direction, $directions, webkit moz spec);
+}
+
+
+@mixin animation-play-state-bourbon ($states...) {
+// running | paused
+  @include prefixer(animation-play-state, $states, webkit moz spec);
+}
+
+
+@mixin animation-delay-bourbon($times...) {
+  @include prefixer(animation-delay, $times, webkit moz spec);
+}
+
+
+@mixin animation-fill-mode-bourbon ($modes...) {
+// none | forwards | backwards | both
+  @include prefixer(animation-fill-mode, $modes, webkit moz spec);
+}
+
+
+@import "_project_vars";
+@import "_extends";
+@import "_project_extends";
+@import "_buttons_extends";
