@@ -39,7 +39,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('image', function () {
-	return gulp.src(assetsDir+'i/**/*')
+	return gulp.src([assetsDir+'i/**/*','!'+assetsDir+'i/icons/*.svg'])
 		.pipe(imagemin({
 			progressive: true,
 			svgoPlugins: [{removeViewBox: false}],
@@ -60,6 +60,7 @@ gulp.task('watch', function () {
 	gulp.watch(assetsDir+'sass/*.scss', ['sass']);
 	gulp.watch(assetsDir+'js/*.js', ['js']);
 	gulp.watch(assetsDir+'i/*',['image']);
+	gulp.watch(assetsDir+'fonts/*',['fonts']);
 });
 
 gulp.task('connect', function() {
@@ -79,18 +80,22 @@ gulp.task('url', function(){
 		.pipe(open('', options));
 });
 
-gulp.task('iconfont', function(){
-	gulp.src(['assets/i/icons/*.svg'])
-		.pipe(iconfontCss({
-			path: 'assets/sass/_icons_template.scss',
-			fontName: fontName,
-			targetPath: '../../sass/_icons.scss',
-			fontPath: '../fonts/icons/'
-		}))
-		.pipe(iconfont({
-			fontName: fontName
-		}))
-		.pipe(gulp.dest('assets/fonts/icons'));
-});
+//--------------------------------------------If you need iconfont
+//var iconfont = require('gulp-iconfont'),
+//	iconfontCss = require('gulp-iconfont-css'),
+//	fontName = 'iconsmoon';
+//gulp.task('iconfont', function(){
+//	gulp.src(['assets/i/icons/*.svg'])
+//		.pipe(iconfontCss({
+//			path: 'assets/sass/_icons_template.scss',
+//			fontName: fontName,
+//			targetPath: '../../sass/_icons.scss',
+//			fontPath: '../fonts/icons/'
+//		}))
+//		.pipe(iconfont({
+//			fontName: fontName
+//		}))
+//		.pipe(gulp.dest('assets/fonts/icons'));
+//});
 
-gulp.task('default',['fonts','jade','sass','js','watch','connect','url']);
+gulp.task('default',['jade','sass','js','watch','connect','url','fonts']);

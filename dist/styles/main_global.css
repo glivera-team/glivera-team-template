@@ -176,6 +176,9 @@ a {
 .hide {
   display: none !important; }
 
+.test {
+  color: white; }
+
 .f_c_field.default_mod:not(.select_rediz_coosen) {
   display: block;
   width: 100%;
