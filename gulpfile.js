@@ -79,4 +79,18 @@ gulp.task('url', function(){
 		.pipe(open('', options));
 });
 
+gulp.task('iconfont', function(){
+	gulp.src(['assets/i/icons/*.svg'])
+		.pipe(iconfontCss({
+			path: 'assets/sass/_icons_template.scss',
+			fontName: fontName,
+			targetPath: '../../sass/_icons.scss',
+			fontPath: '../fonts/icons/'
+		}))
+		.pipe(iconfont({
+			fontName: fontName
+		}))
+		.pipe(gulp.dest('assets/fonts/icons'));
+});
+
 gulp.task('default',['fonts','jade','sass','js','watch','connect','url']);
