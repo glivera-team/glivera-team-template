@@ -126,38 +126,7 @@
 		@include flex(1 100%);
 	}
 
-	%border_box {
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
 
-	%transition_all {
-		@include transition;
-	}
-
-	%transition_opacity {
-		@include transition(opacity);
-	}
-
-	%transition_color {
-		@include transition(color);
-	}
-
-	%transition_background {
-		@include transition(background);
-	}
-
-	%transition_padding {
-		@include transition(padding);
-	}
-
-	%transition_border {
-		@include transition(border);
-	}
-
-	%transition_transform {
-		@include transition(transform);
-	}
 
 	%clearfix {
 		&:after {
@@ -222,203 +191,37 @@
 		user-select: none;
 	}
 
-	%butt_halo_v1 {
-		&:after {
-			$w: 7px;
-			z-index: -1;
-			position: absolute;
-			top: -$w;
-			left: -$w;
-			right: -$w;
-			bottom: -$w;
-			content: "";
-			border-radius: 30px;
-			@include vert_grad(#dbdbd1, #fffffe);
-		}
-	}
-
-	//	%content_b {
-	//		width: 80%;
-	//		max-width: $content_block_max_width;
-	//		min-width: $content_block_width;
-	//		margin: 0 auto;
-	//
-	//		@include respond-to-max($wide_page_step_1) {
-	//			width: 85%;
-	//		}
-	//
-	//		@include respond-to-max($wide_page_step_2) {
-	//			width: 90%;
-	//		}
-	//
-	//		.wide_page & {
-	//			max-width: $content_block_max_width + 200px;
-	//			width: 95%;
-	//
-	//			@include respond-to-max($wide_page_step_1) {
-	//				width: 95%;
-	//			}
-	//
-	//			@include respond-to-max($wide_page_step_2) {
-	//				width: 95%;
-	//			}
-	//		}
-	//
-	//	}
-
-	%help_ico {
-		&:before {
-			z-index: 100;
-			position: absolute;
-			width: 18px;
-			height: 18px;
-			line-height: 18px;
-			text-align: center;
-			font-size: 13px;
-			color: #fff;
-			font-style: normal;
-			border: 1px solid #3d8ead;
-			content: "?";
-			border-radius: 50%;
-			//@include box-shadow(0 1px 3px rgba(0, 0, 0, .33), inset 0 0 0 1px rgba(255, 255, 255, .2));
-			box-shadow: 0 1px 3px rgba(0, 0, 0, .33), inset 0 0 0 1px rgba(255, 255, 255, .2);
-			@include vert_grad(#91c5e7, #69a5c7);
-		}
-	}
-
-	%help_new_ico {
-		&:before {
-			box-sizing: border-box;
-			z-index: 5;
-			position: absolute;
-			width: 18px;
-			height: 18px;
-			line-height: 18px;
-			text-align: center;
-			font-size: 13px;
-			font-weight: 700;
-			color: #fff;
-			font-style: normal;
-			content: "?";
-			border-radius: 50%;
-			background: #7bb3d5;
-		}
-	}
-
-	%help_box_hover {
-		&:hover,
-		&:focus {
-			z-index: 10;
-
-			.help_box {
-				$w: 5px;
-				z-index: 100;
-				opacity: 1;
-				visibility: visible;
-
-				&.pointer_events_on {
-					pointer-events: auto;
-				}
-				&.right_mod {
-					@include transform_translate($w, -50%);
-				}
-
-				&.left_mod {
-					@include transform_translate(-$w, -50%);
-				}
-
-				&.bottom_mod {
-					@include transform_translate(-50%, 5px);
-				}
-				&.top_mod {
-					@include transform_translate(-50%, -5px);
-				}
-
-				&.no_visibility {
-					display: block;
-				}
-			}
-		}
-	}
-
-	%right_rotate_anim {
-		@include animation(infinite_right_rotate, 3s);
-	}
-
-	%left_rotate_anim {
-		@include animation(infinite_left_rotate, 3s);
-	}
 
 	%vert_centr {
 		top: 50%;
-		@include transform_translate(0, -50%);
+		transform:translate(0, -50%);
 	}
 
 	%hor_centr {
 		left: 50%;
-		@include transform_translate(-50%, 0);
+		transform:translate(-50%, 0);
 	}
 
 	%hor_vert_centr {
 		top: 50%;
 		left: 50%;
-		@include transform_translate(-50%, -50%);
+		transform: translate(-50%, -50%);
 	}
 
 	%hover_show {
-		@include opacity(0);
-		@include transition(opacity, .3s);
+		opacity:0;
+		transition:opacity .3s ease;
 	}
 
 	%hover_show_parent {
 		&:hover,
 		&:focus {
 			%hover_show {
-				@include opacity(1);
+				opacity:1;
 			}
 		}
 	}
 
-	%butt_shadow_v1 {
-		//@include box-shadow(inset 0 0 2px rgba(255, 255, 255, .2), 0 1px 3px rgba(0, 0, 0, .33));
-		box-shadow: inset 0 0 2px rgba(255, 255, 255, .2), 0 1px 3px rgba(0, 0, 0, .33);
-
-		&:active {
-			//@include box-shadow(inset 0 2px 5px rgba(114, 114, 114, .94) !important);
-			box-shadow: inset 0 2px 5px rgba(114, 114, 114, .94) !important;
-		}
-	}
-
-	%new_search_pipec {
-		.new_search_panel_hide &,
-		.new_search_panel_hide_start & {
-			@include transition(all, .3s, linear);
-
-			&.transition_mod {
-				@include transition(all, .3s, linear);
-			}
-		}
-
-	}
-
-	%object_picture_w_temp {
-		z-index: 5;
-		padding: 4px;
-		border: 1px solid #c3d1d9;
-		background-color: #fff;
-
-		&:before,
-		&:after {
-			z-index: 2;
-			position: absolute;
-			display: none;
-			width: 68px;
-			height: 68px;
-			top: -2px;
-			left: -2px;
-			content: "";
-		}
-	}
 
 	%e_f_field_v1 {
 		display: block;
@@ -488,21 +291,12 @@
 		width: 100%;
 		height: $e_f_field_v1_h;
 		border-radius: $br_global;
-		@include dashed-border(4px, 1px, 1px, #bfbfbf);
 	}
 	//  border: 0.21px dashed #bfbfbf;
 	%e_f_field_v1_hover {
 	}
 
 	%e_f_field_v1_active {
-	}
-
-	%transform-style {
-		@include transform-style;
-	}
-
-	%backface-visibility {
-		@include backface-visibility;
 	}
 
 	%scroll_rediz_1 {

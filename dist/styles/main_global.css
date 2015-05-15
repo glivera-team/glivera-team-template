@@ -42,8 +42,8 @@ body {
 .form_c_f_w.form_v1_mod.header_mod:before {
   top: 50%;
   -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  transform: translate(0, -50%); }
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%); }
 
 .f_c_field.default_mod:not(.select_rediz_coosen) {
   display: block;

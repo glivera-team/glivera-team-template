@@ -11,6 +11,11 @@ $main_color:#02918c;
 $def_text_color:#7e8287;
 $placeholder_color:#000;
 $wrapper_bg:#fff;
+$color-stack:
+(group: orange, id: normal, color: #e67835),
+(group: orange, id: pale, color: #f8a878),
+(group: orange, id: dark, color: #ad490c),
+(group: blue, id: normal, color: #426682);
 //---------------------------------------------------------------------colors
 //----------------------------------------------------------------other stuff
 $gl_indent:10rem;
