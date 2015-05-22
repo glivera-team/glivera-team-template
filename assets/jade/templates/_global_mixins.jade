@@ -63,17 +63,12 @@ mixin loop_while(counter)
 	while i < counter
 		-i++;
 		block
-mixin breadcrumbs(name,name2,name3,name4)
-	ul.breadcrumb_list
-		li.breadcrumb_item
-			a.breadcrumb_link(href='#') #{name}
-		if name2 != 'undefined'
-			li.breadcrumb_item
-				a.breadcrumb_link(href='#') #{name2}
-		if name3 != 'undefined'
-			li.breadcrumb_item
-				a.breadcrumb_link(href='#') #{name3}
-		if name4 != 'undefined'
-			li.breadcrumb_item
-				a.breadcrumb_link(href='#') #{name4}
+mixin breadcrumbs(array)
+	ul.breadcrumbs_list
+		each crumb, index in array
+			li.breadcrumbs_l_item
+				- if (index == array.length - 1)
+				span.breadcrumbs_link=crumb.text
+				- else
+				a.breadcrumbs_link(href=crumb.link, data-ind=index, data=array.length)=crumb.text
 
