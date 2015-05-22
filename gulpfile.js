@@ -9,7 +9,8 @@ var gulp = require('gulp'),
 	pngquant = require('imagemin-pngquant'),
 	livereload = require('gulp-livereload'),
 	connect = require('gulp-connect'),
-	open = require('gulp-open');
+	open = require('gulp-open'),
+	csslint = require('gulp-csslint');
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
@@ -97,5 +98,17 @@ gulp.task('url', function(){
 //		}))
 //		.pipe(gulp.dest('assets/fonts/icons'));
 //});
-
+gulp.task('csslinting', function() {
+	gulp.src('dist/styles/main_global.css')
+		.pipe(csslint({
+			'adjoining-classes':false,
+			'compatible-vendor-prefixes':false,
+			'box-sizing':false,
+			'box-model':false,
+			'universal-selector':false,
+			'important':false,
+			'outline-none':false
+		}))
+		.pipe(csslint.reporter());
+});
 gulp.task('default',['jade','sass','js','watch','connect','url','fonts']);

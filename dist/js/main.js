@@ -1,6 +1,46 @@
 $(function() {
 	pageWidget(['index']);
+	getAllClasses('.base','.elements_list');
 });
+function getAllClasses(context,output) {
+	var allElements = $(context).find($('*')),//get all elements of our page
+		mainArray = [];//create empty array
+	//If element has class push this class to mainArray
+	for(var i = 0;i<allElements.length;i++) {
+		var someElement = allElements[i],
+			elementClass = someElement.className;
+		if (elementClass.length>0) {//if element have not empty class
+			//If element have multiple classes - separate them
+			var elementClassArray = elementClass.split(' '),
+				classesAmount = elementClassArray.length;
+			// I know that it is very bad, but if I use cycles it kill by browser, I have no idea why
+			if (classesAmount === 1) {
+				mainArray.push(elementClassArray[0]);
+			} else {
+				for(var j = 0;j<classesAmount;j++) {
+					mainArray.push(elementClassArray[j]);
+				}
+			}
+		}
+	}
+
+	//creating finalArray, that don't have repeating elements
+	var finalArray = unique(mainArray);
+	for (var i = 0;i<finalArray.length;i++) {
+		$('<div>.'+finalArray[i]+' { }</div>').appendTo(output);
+	}
+	//function that delete repeating elements from arrays, for more information visit http://mathhelpplanet.com/static.php?p=javascript-algoritmy-obrabotki-massivov
+	function unique(A) {
+		var n = A.length, k = 0, B = [];
+		for (var i = 0; i < n; i++)
+		{ var j = 0;
+			while (j < k && B[j] !== A[i]) j++;
+			if (j == k) B[k++] = A[i];
+		}
+		return B;
+	}
+}
+
 function pageWidget(pages) {
 	var widgetWrap = $('<div class="widget_wrap"><ul class="widget_list"></ul></div>');
 	widgetWrap.prependTo("body");

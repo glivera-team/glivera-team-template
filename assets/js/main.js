@@ -1,6 +1,6 @@
 $(function() {
 	pageWidget(['index']);
-	getAllClasses('.base','.all_classes_list');
+	getAllClasses('.base','.elements_list');
 });
 function getAllClasses(context,output) {
 	var allElements = $(context).find($('*')),//get all elements of our page
