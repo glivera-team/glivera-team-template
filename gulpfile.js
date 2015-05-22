@@ -10,7 +10,8 @@ var gulp = require('gulp'),
 	livereload = require('gulp-livereload'),
 	connect = require('gulp-connect'),
 	open = require('gulp-open'),
-	csslint = require('gulp-csslint');
+	csslint = require('gulp-csslint'),
+	html5Lint = require('gulp-html5-lint');
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
@@ -110,5 +111,9 @@ gulp.task('csslinting', function() {
 			'outline-none':false
 		}))
 		.pipe(csslint.reporter());
+});
+gulp.task('html5lint', function() {
+	return gulp.src('dist/index.html')
+		.pipe(html5Lint());
 });
 gulp.task('default',['jade','sass','js','watch','connect','url','fonts']);
