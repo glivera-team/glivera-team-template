@@ -1,5 +1,6 @@
 $(function() {
-	pageWidget(['index']);
+	//pageWidget(['index']);
+	getAllClasses('html','.elements_list');
 });
 function getAllClasses(context,output) {
 	var allElements = $(context).find($('*')),//get all elements of our page
@@ -14,11 +15,13 @@ function getAllClasses(context,output) {
 				classesAmount = elementClassArray.length;
 			// I know that it is very bad, but if I use cycles it kill by browser, I have no idea why
 			if (classesAmount === 1) {
-				mainArray.push(elementClassArray[0]);
+				mainArray.push('.' + elementClassArray[0] + ' { }');
 			} else {
-				for(var j = 0;j<classesAmount;j++) {
-					mainArray.push(elementClassArray[j]);
+				var cascad = '.'+ elementClassArray[0] + ' {';
+				for(var j=1;j<elementClassArray.length;j++) {
+					cascad+= ' &.' + elementClassArray[j] + ' { } }';
 				}
+				mainArray.push(cascad);
 			}
 		}
 	}
@@ -26,7 +29,7 @@ function getAllClasses(context,output) {
 	//creating finalArray, that don't have repeating elements
 	var finalArray = unique(mainArray);
 	for (var i = 0;i<finalArray.length;i++) {
-		$('<div>.'+finalArray[i]+' { }</div>').appendTo(output);
+		$('<div>'+finalArray[i]+'</div>').appendTo(output);
 	}
 	//function that delete repeating elements from arrays, for more information visit http://mathhelpplanet.com/static.php?p=javascript-algoritmy-obrabotki-massivov
 	function unique(A) {

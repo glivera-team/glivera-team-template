@@ -179,6 +179,10 @@ a {
 .test {
   color: white; }
 
+.elements_list {
+  padding: 30px;
+  color: black; }
+
 .f_c_field.default_mod:not(.select_rediz_coosen) {
   display: block;
   width: 100%;
