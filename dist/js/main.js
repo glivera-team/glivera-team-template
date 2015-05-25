@@ -3,8 +3,9 @@ $(function() {
 	getAllClasses('html','.elements_list');
 });
 function getAllClasses(context,output) {
-	var allElements = $(context).find($('*')),//get all elements of our page
-		mainArray = [];//create empty array
+	var finalArray = [],
+		mainArray = [],
+		allElements = $(context).find($('*'));//get all elements of our page
 	//If element has class push this class to mainArray
 	for(var i = 0;i<allElements.length;i++) {
 		var someElement = allElements[i],
@@ -13,24 +14,45 @@ function getAllClasses(context,output) {
 			//If element have multiple classes - separate them
 			var elementClassArray = elementClass.split(' '),
 				classesAmount = elementClassArray.length;
-			// I know that it is very bad, but if I use cycles it kill by browser, I have no idea why
 			if (classesAmount === 1) {
-				mainArray.push('.' + elementClassArray[0] + ' { }');
+				mainArray.push('.' + elementClassArray[0] + ' {');
 			} else {
 				var cascad = '.'+ elementClassArray[0] + ' {';
 				for(var j=1;j<elementClassArray.length;j++) {
-					cascad+= ' &.' + elementClassArray[j] + ' { } ';
+					cascad+= ' &.' + elementClassArray[j] + ' { ';
 				}
-				mainArray.push(cascad + '}');
+				mainArray.push(cascad + ' }');
 			}
 		}
 	}
 
 	//creating finalArray, that don't have repeating elements
-	var finalArray = unique(mainArray);
+	var noRepeatingArray = unique(mainArray);
+	noRepeatingArray.forEach(function (item) {
+		var has = false;
+		var preWords = item.split('&');
+		for (var i = 0; i < finalArray.length; ++i) {
+			var newWords = finalArray[i].split('&');
+			if (newWords[0] == preWords[0]) {
+				has = true;
+				for (var j = 0; j < preWords.length; ++j) {
+					if (newWords.indexOf(preWords[j]) < 0) {
+						newWords.push(preWords[j]);
+					}
+				}
+				finalArray[i] = newWords.join('&');
+			}
+		}
+		if (!has) {
+			finalArray.push(item);
+		}
+	});
 	for (var i = 0;i<finalArray.length;i++) {
-		$('<div>'+finalArray[i]+'</div>').appendTo(output);
+		$('<div>'+finalArray[i]+' }</div>').appendTo(output);
 	}
+
+
+
 	//function that delete repeating elements from arrays, for more information visit http://mathhelpplanet.com/static.php?p=javascript-algoritmy-obrabotki-massivov
 	function unique(A) {
 		var n = A.length, k = 0, B = [];
@@ -42,6 +64,20 @@ function getAllClasses(context,output) {
 		return B;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function pageWidget(pages) {
 	var widgetWrap = $('<div class="widget_wrap"><ul class="widget_list"></ul></div>');
