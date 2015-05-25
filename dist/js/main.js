@@ -19,9 +19,9 @@ function getAllClasses(context,output) {
 			} else {
 				var cascad = '.'+ elementClassArray[0] + ' {';
 				for(var j=1;j<elementClassArray.length;j++) {
-					cascad+= ' &.' + elementClassArray[j] + ' { } }';
+					cascad+= ' &.' + elementClassArray[j] + ' { } ';
 				}
-				mainArray.push(cascad);
+				mainArray.push(cascad + '}');
 			}
 		}
 	}
