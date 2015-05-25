@@ -72,3 +72,9 @@ mixin breadcrumbs(array)
 				- else
 				a.breadcrumbs_link(href=crumb.link, data-ind=index, data=array.length)=crumb.text
 
+mixin social(items)
+	ul.social_list
+		each item in items
+			li.social_item
+				a(href="#" class="#{item}_mod").social_link #{item}
+
