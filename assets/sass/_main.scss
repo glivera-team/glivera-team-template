@@ -18,7 +18,10 @@ body {
 //		animation-play-state: paused !important;
 	}
 }
-
+.wrapper {
+	overflow:hidden;
+	position: relative;
+}
 .disable-hover,
 .disable-hover * {
 	pointer-events: none !important;
