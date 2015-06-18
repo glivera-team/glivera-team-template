@@ -33,6 +33,19 @@ mixin footer
 	footer
 mixin banner
 	.banner
+	
+mixin lb_rb_check_radio(type,title,name, block_class_mod, class_mod, checked_mod, input_class_mod )
+	if checked_mod == undefined
+		- var checked_mod = false
+	if input_class_mod == undefined
+		- var input_class_mod = block_class_mod
+	label.lbl_rb_ch_block(class='#{block_class_mod}')
+		if checked_mod
+			input.lbl_inp_rb_ch(name='#{name}', type='#{type}', class='#{input_class_mod}', checked='checked')
+		else
+			input.lbl_inp_rb_ch(name='#{name}', type='#{type}', class='#{input_class_mod}')
+		span.lbl_rb_ch_text(class='#{class_mod}') #{title}
+		
 mixin form_field(title, field_id, array, placeholder_text)
 	if field_id == false
 		- field_id = title.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
