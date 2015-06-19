@@ -59,6 +59,8 @@ mixin form_field(title, field_id, array, placeholder_text)
 		dt.form_c_hline(class='#{array.class_mod}')
 			label(for='#{field_id}') #{title}
 		dd.form_c_f_w(class='#{array.class_mod}')
+			if array.icon_class
+				a(href="#" class="#{array.icon_class}")
 			if array.field_type === 'file'
 				input.f_c_field(type='file' id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
 				span.f_c_field_file_field
@@ -68,8 +70,6 @@ mixin form_field(title, field_id, array, placeholder_text)
 				textarea.f_c_field(id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
 			else
 				input.f_c_field(type='#{array.field_type}' id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
-			if array.clear_butt !== undefined && array.clear_butt !== false
-				span.f_c_field_clear_butt(class='#{array.clear_butt}')
 
 mixin loop_while(counter)
 	- i=0;
