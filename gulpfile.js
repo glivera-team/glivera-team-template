@@ -59,7 +59,7 @@ gulp.task('watch', function () {
 	gulp.watch(assetsDir+'jade/*.jade', ['jade']);
 	gulp.watch(assetsDir+'jade/templates/*.jade', ['jade']);
 	gulp.watch(assetsDir+'sass/includes/*.scss', ['sass']);
-	gulp.watch(assetsDir+'sass/*.scss', ['sass']);
+	gulp.watch(assetsDir+'sass/**/*.scss', ['sass']);
 	gulp.watch(assetsDir+'js/*.js', ['js']);
 	gulp.watch(assetsDir+'i/*',['image']);
 	gulp.watch(assetsDir+'fonts/*',['fonts']);
