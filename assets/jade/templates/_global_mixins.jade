@@ -70,7 +70,19 @@ mixin form_field(title, field_id, array, placeholder_text)
 				textarea.f_c_field(id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
 			else
 				input.f_c_field(type='#{array.field_type}' id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
-
+mixin form_field_select(title, select_text, placeholder, field_id, block_class_mod, class_mod, select_class)
+	dl.form_cell(class='#{block_class_mod}')
+		dt.form_c_hline(class='#{class_mod}')
+			label(for='#{field_id}') #{title}
+		dd.form_c_f_w(class='#{class_mod}')
+			if placeholder != 'false'
+				select.f_c_field(id='#{field_id}' class='#{select_class}', data-placeholder="#{placeholder}")
+					each val in select_text.name
+						option(value='#{val}')= val
+			else
+				select.f_c_field(id='#{field_id}' class='#{select_class}')
+					each val in select_text.name
+						option(value='#{val}')= val
 mixin loop_while(counter)
 	- i=0;
 	while i < counter
