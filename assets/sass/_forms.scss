@@ -4,7 +4,6 @@
 	width: 100%;
 	padding:18px 26px;
 	border: none;
-	box-sizing: border-box;
 	font-size: 17px;
 	font-family: $font_1;
 	color: $black;
@@ -13,23 +12,11 @@
 %e_f_field_v2 {
 	display: block;
 	width: 100%;
-	//height: $e_f_field_v2_h;
-	padding: $gl_indent*1.5 $gl_indent*1.3;
+	padding:18px 26px;
 	border: none;
-	box-sizing: border-box;
-	//background: $grey_1;
-	//border-radius: $br_global;
-
-	&::-webkit-input-placeholder {
-		color: #a5a5a5;
-	}
-
-	&::-moz-placeholder {
-		color: #a5a5a5;
-	}
-	&:-ms-input-placeholder {
-		color: #a5a5a5;
-	}
+	font-size: 17px;
+	font-family: $font_1;
+	color: $black;
 }
 
 %e_f_field_v1_hover {
@@ -39,14 +26,7 @@
 }
 
 .form_block {
-	position: relative;
-	&.default_mod{
-	}
-	&.hor_mod {
-		&.third_mod {
-			margin: 0 -1% 0 (-$gl_indent*1.4);
-		}
-	}
+
 }
 
 .form_sub_cell {
@@ -77,24 +57,10 @@
 	}
 
 	&.form_cell_v1_mod {
-		border-bottom:1px solid $black;
-		border-top:1px solid $black;
+
 	}
 	&.form_cell_v2_mod {
-		box-shadow:0 1px 0 2px $black;
-		position:relative;
-		&:before {
-			content:"";
-			position: absolute;
-			top: 50%;
-			transform: translate(50%, -50%) skewX(-44deg);
-			right: 100%;
-			width: 10px;
-			height: 10px;
-			border-left:1px solid $black;
-			border-bottom: 1px solid $black;
-			background: $white;
-		}
+
 	}
 }
 
@@ -117,20 +83,7 @@
 	position: relative;
 
 	&.form_v1_mod {
-		&.header_mod {
-			//@extend %icon-loup;
 
-			padding: 0;
-
-			&:before {
-				@extend %vert_centr;
-
-				position: absolute;
-				font-size: 18rem;
-				left: $gl_indent;
-				color: #9a9a9a;
-			}
-		}
 	}
 }
 

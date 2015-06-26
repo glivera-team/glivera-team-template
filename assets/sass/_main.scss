@@ -1,3 +1,4 @@
+//------------------------------------------------------------base styles
 html {
 	height: 100%;
 	font: normal 1px/1.33 $font_1;
@@ -5,22 +6,18 @@ html {
 }
 
 body {
-	font-size:13rem;
+	font-size:$base_font_size;
 	@extend %translate3d;
 	position: relative;
-	height: 100%;
+	min-height: 100%;
 	color: $def_text_color;
-	background: $white;
+	background: $wrapper_bg;
 	-webkit-text-size-adjust: none;
-
-	&.no_animation * {
-//		transition: none !important;
-//		animation-play-state: paused !important;
-	}
 }
 .wrapper {
 	overflow:hidden;
 	position: relative;
+	min-width: $page_width;
 }
 .disable-hover,
 .disable-hover * {
@@ -38,11 +35,13 @@ a {
 .hide {
 	display: none !important;
 }
-.test {
-	color:white;
+.base {
+	position:relative;
+	padding: $header_height 0 $footer_height;
 }
 .elements_list {
 	padding:30px;
 	color:black;
 }
+//------------------------------------------------------------base styles###
 

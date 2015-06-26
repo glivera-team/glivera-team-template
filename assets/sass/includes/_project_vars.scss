@@ -8,17 +8,20 @@ $font_1:'Arial';
 $white:#fff;
 $black:#000;
 $main_color:#02918c;
+
+
 $def_text_color:#7e8287;
 $placeholder_color:#000;
 $wrapper_bg:#fff;
-$color-stack:
-(group: orange, id: normal, color: #e67835),
-(group: orange, id: pale, color: #f8a878),
-(group: orange, id: dark, color: #ad490c),
-(group: blue, id: normal, color: #426682);
 //---------------------------------------------------------------------colors
+//------------------------------------------------------------layout
+$footer_height:100rem;
+$header_height:100rem;
+$page_width:960rem;
+//------------------------------------------------------------layout###
 //----------------------------------------------------------------other stuff
 $gl_indent:10rem;
+$base_font_size:13rem;
 $e_f_field_v1_h:20rem;
 $e_f_field_v2_h:20rem;
 $e_f_field_v3_h:20rem;

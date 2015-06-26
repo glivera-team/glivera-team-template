@@ -39,41 +39,6 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden; }
 
-.form_c_f_w.form_v1_mod.header_mod:before {
-  top: 50%;
-  -webkit-transform: translate(0, -50%);
-      -ms-transform: translate(0, -50%);
-          transform: translate(0, -50%); }
-
-.f_c_field.default_mod:not(.select_rediz_coosen) {
-  display: block;
-  width: 100%;
-  height: 20rem;
-  padding: 15rem 13rem;
-  border: none;
-  font-size: 1.4rem;
-  box-sizing: border-box;
-  background: #fff;
-  border-radius: 10rem; }
-
-.f_c_field.second_mod:not(.select_rediz_coosen) {
-  display: block;
-  width: 100%;
-  height: 20rem;
-  padding: 10rem 13rem;
-  border: none;
-  font-size: 1.4rem;
-  box-sizing: border-box;
-  background: #fff;
-  border-radius: 10rem; }
-  .f_c_field.second_mod:not(.select_rediz_coosen)::-webkit-input-placeholder {
-    color: #aaa; }
-  .f_c_field.second_mod:not(.select_rediz_coosen)::-moz-placeholder {
-    color: #aaa;
-    opacity: 1; }
-  .f_c_field.second_mod:-ms-input-placeholder:not(.select_rediz_coosen) {
-    color: #aaa; }
-
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -209,8 +174,8 @@ q:before, q:after {
 
 input,
 textarea {
-  font: normal 1.6rem/1.33 "Arial";
-  border-radius: 0 !important; }
+  border-radius: 0 !important;
+  box-sizing: border-box; }
   input::-webkit-input-placeholder,
   textarea::-webkit-input-placeholder {
     color: #000; }
@@ -243,6 +208,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+* {
+  box-sizing: border-box; }
+
 html {
   height: 100%;
   font: normal 1px/1.33 "Arial";
@@ -251,14 +219,15 @@ html {
 body {
   font-size: 13rem;
   position: relative;
-  height: 100%;
+  min-height: 100%;
   color: #7e8287;
   background: #fff;
   -webkit-text-size-adjust: none; }
 
 .wrapper {
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  min-width: 960rem; }
 
 .disable-hover,
 .disable-hover * {
@@ -273,19 +242,33 @@ a {
 .hide {
   display: none !important; }
 
-.test {
-  color: white; }
+.base {
+  position: relative;
+  padding: 100rem 0 100rem; }
 
 .elements_list {
   padding: 30px;
   color: black; }
+
+.header {
+  height: 100rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; }
+
+.footer {
+  height: 100rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; }
 
 .f_c_field.default_mod:not(.select_rediz_coosen) {
   display: block;
   width: 100%;
   padding: 18px 26px;
   border: none;
-  box-sizing: border-box;
   font-size: 17px;
   font-family: "Arial";
   color: #000; }
@@ -293,20 +276,11 @@ a {
 .f_c_field.second_mod:not(.select_rediz_coosen) {
   display: block;
   width: 100%;
-  padding: 15rem 13rem;
+  padding: 18px 26px;
   border: none;
-  box-sizing: border-box; }
-  .f_c_field.second_mod:not(.select_rediz_coosen)::-webkit-input-placeholder {
-    color: #a5a5a5; }
-  .f_c_field.second_mod:not(.select_rediz_coosen)::-moz-placeholder {
-    color: #a5a5a5; }
-  .f_c_field.second_mod:-ms-input-placeholder:not(.select_rediz_coosen) {
-    color: #a5a5a5; }
-
-.form_block {
-  position: relative; }
-  .form_block.hor_mod.third_mod {
-    margin: 0 -1% 0 -14rem; }
+  font-size: 17px;
+  font-family: "Arial";
+  color: #000; }
 
 .form_hline {
   position: relative;
@@ -323,27 +297,6 @@ a {
 .form_cell.hidden_field {
   display: none; }
 
-.form_cell.form_cell_v1_mod {
-  border-bottom: 1px solid #000;
-  border-top: 1px solid #000; }
-
-.form_cell.form_cell_v2_mod {
-  box-shadow: 0 1px 0 2px #000;
-  position: relative; }
-  .form_cell.form_cell_v2_mod:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translate(50%, -50%) skewX(-44deg);
-        -ms-transform: translate(50%, -50%) skewX(-44deg);
-            transform: translate(50%, -50%) skewX(-44deg);
-    right: 100%;
-    width: 10px;
-    height: 10px;
-    border-left: 1px solid #000;
-    border-bottom: 1px solid #000;
-    background: #fff; }
-
 .form_c_hline.hline_hide_mod {
   display: none; }
 
@@ -355,13 +308,6 @@ a {
 
 .form_c_f_w {
   position: relative; }
-  .form_c_f_w.form_v1_mod.header_mod {
-    padding: 0; }
-    .form_c_f_w.form_v1_mod.header_mod:before {
-      position: absolute;
-      font-size: 18rem;
-      left: 10rem;
-      color: #9a9a9a; }
 
 .f_c_field:not(.select_rediz_coosen).default_mod.comment_mod {
   padding-left: 57rem; }

@@ -8,9 +8,10 @@ doctype
 html(lang="ru")
 	head
 		+head(array)
-	body.no_animation.develop_mod(class='#{array.body_class}')
-		+header(array)
+	body(class='#{array.body_class}')
+		+header
 		.wrapper(class='#{array.layuot_mod}')
 			.base(class='#{array.layuot_mod}')
 				block content_block
+		+footer
 		block local_popup

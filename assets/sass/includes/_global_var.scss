@@ -5,25 +5,6 @@ $square_root_of_2: 1.41421356237;
 
 //-------------------------------------------------------global_vars
 //-------------------------------------------------------mixins
-
-@mixin style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
-	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
-		@content;
-	}
-}
-
-@mixin sub_style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
-	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
-		@content;
-	}
-}
-
-@mixin ie_9_check {
-	@if $ie9 == true {
-		@content;
-	}
-}
-
 @mixin pseudo($width,$height,$content:'') {
 	position: absolute;
 	content:'content';
@@ -45,39 +26,56 @@ $square_root_of_2: 1.41421356237;
 }
 
 @mixin triangle($side,$color,$size) {
-  position:relative;
-  &:before {
-    content:" ";
-    position:absolute;
-    @if $side == left {
-      top:50%;
-      transform:translate(0,-50%);
-      right:100%;
-      border:$size+px solid transparent;
-      border-right:$size+px solid $color;
-    }
-    @if $side == right {
-      top:50%;
-      transform:translate(0,-50%);
-      left:100%;
-      border:$size+px solid transparent;
-      border-left:$size+px solid $color;
-    }
-    @if $side == top {
-      bottom:100%;
-      transform:translate(-50%,0);
-      left:50%;
-      border:$size+px solid transparent;
-      border-bottom:$size+px solid $color;
-    }
-    @if $side == bottom {
-      top:100%;
-      transform:translate(-50%,0);
-      left:50%;
-      border:$size+px solid transparent;
-      border-top:$size+px solid $color;
-    }
-  }
+	position:relative;
+	&:before {
+		content:" ";
+		position:absolute;
+		@if $side == left {
+			top:50%;
+			transform:translate(0,-50%);
+			right:100%;
+			border:$size+px solid transparent;
+			border-right:$size+px solid $color;
+		}
+		@if $side == right {
+			top:50%;
+			transform:translate(0,-50%);
+			left:100%;
+			border:$size+px solid transparent;
+			border-left:$size+px solid $color;
+		}
+		@if $side == top {
+			bottom:100%;
+			transform:translate(-50%,0);
+			left:50%;
+			border:$size+px solid transparent;
+			border-bottom:$size+px solid $color;
+		}
+		@if $side == bottom {
+			top:100%;
+			transform:translate(-50%,0);
+			left:50%;
+			border:$size+px solid transparent;
+			border-top:$size+px solid $color;
+		}
+	}
+}
+@mixin style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
+	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
+		@content;
+	}
+}
+
+@mixin sub_style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
+	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
+		@content;
+	}
+}
+
+@mixin ie_9_check {
+	@if $ie9 == true {
+		@content;
+	}
 }
 
 @mixin holyday_separator($var: false) {
@@ -329,16 +327,6 @@ $square_root_of_2: 1.41421356237;
 	letter-spacing: $letter-spacing;
 	@if $ie7 == true {
 		display: inline;
-	}
-}
-// Color  Function
-@function color($group, $shade:normal, $transparency:1){
-	@each $color in $color-stack{
-		$c-group: map-get($color, group);
-		$c-shade: map-get($color, id);
-		@if($group == map-get($color, group) and $shade == map-get($color, id)){
-			@return rgba(map-get($color, color), $transparency);
-		}
 	}
 }
 @import "_project_vars";
