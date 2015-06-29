@@ -10,8 +10,8 @@ var gulp = require('gulp'),
 	livereload = require('gulp-livereload'),
 	connect = require('gulp-connect'),
 	open = require('gulp-open'),
-	csslint = require('gulp-csslint'),
-	html5Lint = require('gulp-html5-lint');
+	uncss = require('gulp-uncss'),
+	csso = require('gulp-csso');
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
@@ -30,6 +30,10 @@ gulp.task('sass', function() {
 		.pipe(sass())
 		.pipe(inlineimage())
 		.pipe(prefix('last 3 versions'))
+		.pipe(uncss({
+			html: [outputDir + '**/*.html']
+		}))
+		.pipe(csso())
 		.pipe(gulp.dest('./dist/styles'))
 		.pipe(connect.reload());
 });
@@ -99,21 +103,5 @@ gulp.task('url', function(){
 //		}))
 //		.pipe(gulp.dest('assets/fonts/icons'));
 //});
-gulp.task('csslinting', function() {
-	gulp.src('dist/styles/main_global.css')
-		.pipe(csslint({
-			'adjoining-classes':false,
-			'compatible-vendor-prefixes':false,
-			'box-sizing':false,
-			'box-model':false,
-			'universal-selector':false,
-			'important':false,
-			'outline-none':false
-		}))
-		.pipe(csslint.reporter());
-});
-gulp.task('html5lint', function() {
-	return gulp.src('dist/index.html')
-		.pipe(html5Lint());
-});
+
 gulp.task('default',['jade','sass','js','watch','connect','url','fonts']);

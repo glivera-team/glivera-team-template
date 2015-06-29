@@ -33,7 +33,6 @@ mixin footer
 	footer
 mixin banner
 	.banner
-	
 mixin lb_rb_check_radio(type,title,name, block_class_mod, class_mod, checked_mod, input_class_mod )
 	if checked_mod == undefined
 		- var checked_mod = false
@@ -96,7 +95,15 @@ mixin breadcrumbs(array)
 				span.breadcrumbs_link=crumb.text
 				- else
 				a.breadcrumbs_link(href=crumb.link, data-ind=index, data=array.length)=crumb.text
-
+mixin main_menu(items)
+	ul.main_menu_list
+		each item in items
+			if item.active
+				li.main_menu_item.active_mod
+					a(href="#").main_menu_link #{item.title}
+			else
+				li.main_menu_item
+					a(href="#").main_menu_link #{item.title}
 mixin social(items)
 	ul.social_list
 		each item in items
