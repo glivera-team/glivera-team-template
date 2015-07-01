@@ -19,7 +19,7 @@ var outputDir = 'dist/';
 gulp.task('jade', function() {
 	gulp.src([assetsDir+'jade/*.jade', '!'+assetsDir+'jade/_*.jade'])
 		.pipe(plumber())
-		.pipe(jade())
+		.pipe(jade({pretty:true}))
 		.pipe(gulp.dest('./dist/'))
 		.pipe(connect.reload());
 });
@@ -30,9 +30,6 @@ gulp.task('sass', function() {
 		.pipe(sass())
 		.pipe(inlineimage())
 		.pipe(prefix('last 3 versions'))
-		.pipe(uncss({
-			html: [outputDir + '**/*.html']
-		}))
 		.pipe(csso())
 		.pipe(gulp.dest('./dist/styles'))
 		.pipe(connect.reload());
