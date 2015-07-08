@@ -12,7 +12,8 @@ var gulp = require('gulp'),
 	open = require('gulp-open'),
 	uncss = require('gulp-uncss'),
 	csso = require('gulp-csso'),
-	dirSync = require( 'gulp-directory-sync' );
+	dirSync = require( 'gulp-directory-sync'),
+	concat = require('gulp-concat');
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
@@ -62,29 +63,7 @@ gulp.task('jsSync', function () {
 //-------------------------------------------------Synchronization###
 
 
-gulp.task('js', function () {
-	return gulp.src(assetsDir+'js/*.js')
-		.pipe(gulp.dest(outputDir + 'js'))
-		.pipe(connect.reload());
-});
-
-//gulp.task('image', function () {
-//	return gulp.src([assetsDir+'i/**/*','!'+assetsDir+'i/icons/*.svg'])
-//		.pipe(imagemin({
-//			progressive: true,
-//			svgoPlugins: [{removeViewBox: false}],
-//			use: [pngquant()]
-//		}))
-//		.pipe(gulp.dest(outputDir + '/i'));
-//});
-
-
-
-gulp.task('fonts', function() {
-	return gulp.src(assetsDir+'fonts/**/*')
-		.pipe(gulp.dest(outputDir + '/fonts'));
-});
-
+//watching files and run tasks
 gulp.task('watch', function () {
 	gulp.watch(assetsDir+'jade/**/*.jade', ['jade']);
 	gulp.watch(assetsDir+'sass/**/*.scss', ['sass']);
@@ -92,6 +71,8 @@ gulp.task('watch', function () {
 	gulp.watch(assetsDir+'i/**/*',['imageSync']);
 	gulp.watch(assetsDir+'fonts/**/*',['fontsSync']);
 });
+
+//livereload and open html in browser
 
 gulp.task('connect', function() {
 	connect.server({
@@ -109,6 +90,50 @@ gulp.task('url', function(){
 	gulp.src(outputDir+'index.html')
 		.pipe(open('', options));
 });
+
+//building final project folder
+//clean build folder
+gulp.task('cleanBuild',function() {
+	return gulp.src(buildDir)
+		.pipe(clean());
+});
+
+//minify images
+gulp.task('imgBuild',function() {
+	return gulp.src(outputDir+'i/**/*')
+	.pipe(imagemin({
+		progressive: true,
+		svgoPlugins: [{removeViewBox: false}],
+		use: [pngquant()]
+	}))
+	.pipe(gulp.dest(buildDir + 'i/'))
+});
+
+//copy fonts
+gulp.task('fontsBuild',function() {
+	return gulp.src(outputDir+'fonts/**/*')
+		.pipe(gulp.dest(buildDir + 'fonts/'))
+});
+
+//copy html
+gulp.task('htmlBuild',function() {
+	return gulp.src(outputDir+'**/*.html')
+		.pipe(gulp.dest(buildDir))
+});
+
+//copy js
+gulp.task('jsBuild', function() {
+	return gulp.src(outputDir+'js/**/*')
+		.pipe(gulp.dest(buildDir + 'js/'))
+});
+
+//copy and minify css
+gulp.task('cssBuild', function() {
+	return gulp.src(outputDir+'styles/**/*')
+		.pipe(csso())
+		.pipe(gulp.dest(buildDir + 'styles/'))
+});
+
 
 //--------------------------------------------If you need iconfont
 //var iconfont = require('gulp-iconfont'),
@@ -128,4 +153,5 @@ gulp.task('url', function(){
 //		.pipe(gulp.dest('assets/fonts/icons'));
 //});
 
-gulp.task('default',['jade','sass','watch','connect','url']);
+gulp.task('default',['jade','sass','imageSync','fontsSync','jsSync','watch','connect','url']);
+gulp.task('build',['imgBuild','fontsBuild','htmlBuild','jsBuild','cssBuild']);
