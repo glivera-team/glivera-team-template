@@ -1,6 +1,6 @@
 $(function() {
 	//pageWidget(['index']);
-	getAllClasses('html','.elements_list');
+	//getAllClasses('html','.elements_list');
 });
 function getAllClasses(context,output) {
 	var finalArray = [],

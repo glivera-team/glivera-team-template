@@ -1,1 +1,0 @@
-file to hold image folder for git

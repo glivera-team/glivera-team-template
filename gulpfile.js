@@ -11,45 +11,74 @@ var gulp = require('gulp'),
 	connect = require('gulp-connect'),
 	open = require('gulp-open'),
 	uncss = require('gulp-uncss'),
-	csso = require('gulp-csso');
+	csso = require('gulp-csso'),
+	dirSync = require( 'gulp-directory-sync' );
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
+var buildDir = 'build/';
 
+//----------------------------------------------------Compiling
 gulp.task('jade', function() {
 	gulp.src([assetsDir+'jade/*.jade', '!'+assetsDir+'jade/_*.jade'])
 		.pipe(plumber())
 		.pipe(jade({pretty:true}))
-		.pipe(gulp.dest('./dist/'))
+		.pipe(gulp.dest(outputDir))
 		.pipe(connect.reload());
 });
 
 gulp.task('sass', function() {
-	gulp.src([assetsDir+'sass/**/*.scss', '!'+assetsDir+'sass/_*.scss'])
+	gulp.src([assetsDir+'sass/**/*.scss', '!'+assetsDir+'sass/**/_*.scss'])
 		.pipe(plumber())
 		.pipe(sass())
 		.pipe(inlineimage())
 		.pipe(prefix('last 3 versions'))
-		.pipe(csso())
-		.pipe(gulp.dest('./dist/styles'))
+		.pipe(gulp.dest(outputDir + 'styles/'))
 		.pipe(connect.reload());
 });
+//----------------------------------------------------Compiling###
+
+//-------------------------------------------------Synchronization
+gulp.task('imageSync', function () {
+	return gulp.src( '' )
+		.pipe(plumber())
+		.pipe(dirSync(assetsDir+'i/', outputDir+'i/', { printSummary: true } ))
+	.pipe(connect.reload());
+});
+
+gulp.task('fontsSync', function () {
+	return gulp.src('')
+		.pipe(plumber())
+		.pipe(dirSync(assetsDir+'fonts/', outputDir+'fonts/', { printSummary: true } ))
+	.pipe(connect.reload());
+});
+
+gulp.task('jsSync', function () {
+	return gulp.src('')
+		.pipe(plumber())
+		.pipe(dirSync(assetsDir+'js/', outputDir+'js/', { printSummary: true } ))
+	.pipe(connect.reload());
+});
+//-------------------------------------------------Synchronization###
+
 
 gulp.task('js', function () {
 	return gulp.src(assetsDir+'js/*.js')
-		.pipe(gulp.dest(outputDir + '/js'))
+		.pipe(gulp.dest(outputDir + 'js'))
 		.pipe(connect.reload());
 });
 
-gulp.task('image', function () {
-	return gulp.src([assetsDir+'i/**/*','!'+assetsDir+'i/icons/*.svg'])
-		.pipe(imagemin({
-			progressive: true,
-			svgoPlugins: [{removeViewBox: false}],
-			use: [pngquant()]
-		}))
-		.pipe(gulp.dest(outputDir + '/i'));
-});
+//gulp.task('image', function () {
+//	return gulp.src([assetsDir+'i/**/*','!'+assetsDir+'i/icons/*.svg'])
+//		.pipe(imagemin({
+//			progressive: true,
+//			svgoPlugins: [{removeViewBox: false}],
+//			use: [pngquant()]
+//		}))
+//		.pipe(gulp.dest(outputDir + '/i'));
+//});
+
+
 
 gulp.task('fonts', function() {
 	return gulp.src(assetsDir+'fonts/**/*')
@@ -57,13 +86,11 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('watch', function () {
-	gulp.watch(assetsDir+'jade/*.jade', ['jade']);
-	gulp.watch(assetsDir+'jade/templates/*.jade', ['jade']);
-	gulp.watch(assetsDir+'sass/includes/*.scss', ['sass']);
+	gulp.watch(assetsDir+'jade/**/*.jade', ['jade']);
 	gulp.watch(assetsDir+'sass/**/*.scss', ['sass']);
-	gulp.watch(assetsDir+'js/*.js', ['js']);
-	gulp.watch(assetsDir+'i/*',['image']);
-	gulp.watch(assetsDir+'fonts/*',['fonts']);
+	gulp.watch(assetsDir+'js/*.js', ['jsSync']);
+	gulp.watch(assetsDir+'i/**/*',['imageSync']);
+	gulp.watch(assetsDir+'fonts/**/*',['fontsSync']);
 });
 
 gulp.task('connect', function() {
@@ -101,4 +128,4 @@ gulp.task('url', function(){
 //		.pipe(gulp.dest('assets/fonts/icons'));
 //});
 
-gulp.task('default',['jade','sass','js','watch','connect','url','fonts']);
+gulp.task('default',['jade','sass','watch','connect','url']);
