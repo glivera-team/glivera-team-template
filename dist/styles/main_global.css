@@ -31,14 +31,6 @@
   content: "";
   visibility: hidden; }
 
-body {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; }
-
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -217,9 +209,9 @@ html {
   font-weight: 300; }
 
 body {
-  font-size: 13rem;
   position: relative;
   min-height: 100%;
+  font-size: 13rem;
   color: #7e8287;
   background: #fff;
   -webkit-text-size-adjust: none; }

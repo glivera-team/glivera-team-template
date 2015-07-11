@@ -7,13 +7,10 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
 	imagemin = require('gulp-imagemin'),
 	pngquant = require('imagemin-pngquant'),
-	livereload = require('gulp-livereload'),
-	connect = require('gulp-connect'),
-	open = require('gulp-open'),
 	uncss = require('gulp-uncss'),
 	csso = require('gulp-csso'),
 	dirSync = require( 'gulp-directory-sync'),
-	concat = require('gulp-concat');
+	browserSync = require('browser-sync').create();
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
@@ -25,7 +22,7 @@ gulp.task('jade', function() {
 		.pipe(plumber())
 		.pipe(jade({pretty:true}))
 		.pipe(gulp.dest(outputDir))
-		.pipe(connect.reload());
+		.pipe(browserSync.stream());
 });
 
 gulp.task('sass', function() {
@@ -35,7 +32,7 @@ gulp.task('sass', function() {
 		.pipe(inlineimage())
 		.pipe(prefix('last 3 versions'))
 		.pipe(gulp.dest(outputDir + 'styles/'))
-		.pipe(connect.reload());
+		.pipe(browserSync.stream());
 });
 //----------------------------------------------------Compiling###
 
@@ -44,21 +41,21 @@ gulp.task('imageSync', function () {
 	return gulp.src( '' )
 		.pipe(plumber())
 		.pipe(dirSync(assetsDir+'i/', outputDir+'i/', { printSummary: true } ))
-	.pipe(connect.reload());
+		.pipe(browserSync.stream());
 });
 
 gulp.task('fontsSync', function () {
 	return gulp.src('')
 		.pipe(plumber())
 		.pipe(dirSync(assetsDir+'fonts/', outputDir+'fonts/', { printSummary: true } ))
-	.pipe(connect.reload());
+		.pipe(browserSync.stream());
 });
 
 gulp.task('jsSync', function () {
 	return gulp.src('')
 		.pipe(plumber())
 		.pipe(dirSync(assetsDir+'js/', outputDir+'js/', { printSummary: true } ))
-	.pipe(connect.reload());
+		.pipe(browserSync.stream());
 });
 //-------------------------------------------------Synchronization###
 
@@ -73,23 +70,15 @@ gulp.task('watch', function () {
 });
 
 //livereload and open html in browser
-
-gulp.task('connect', function() {
-	connect.server({
+gulp.task('browser-sync', function() {
+	browserSync.init({
 		port:1337,
-		root: 'dist',
-		livereload: true
+		server: {
+			baseDir: outputDir
+		}
 	});
 });
 
-gulp.task('url', function(){
-	var options = {
-		url: 'http://localhost:1337',
-		app: 'chrome'
-	};
-	gulp.src(outputDir+'index.html')
-		.pipe(open('', options));
-});
 
 //building final project folder
 //clean build folder
@@ -153,5 +142,5 @@ gulp.task('cssBuild', function() {
 //		.pipe(gulp.dest('assets/fonts/icons'));
 //});
 
-gulp.task('default',['jade','sass','imageSync','fontsSync','jsSync','watch','connect','url']);
+gulp.task('default',['jade','sass','imageSync','fontsSync','jsSync','watch','browser-sync']);
 gulp.task('build',['imgBuild','fontsBuild','htmlBuild','jsBuild','cssBuild']);
