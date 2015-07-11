@@ -6,10 +6,9 @@ html {
 }
 
 body {
-	font-size:$base_font_size;
-	@extend %translate3d;
 	position: relative;
 	min-height: 100%;
+	font-size:$base_font_size;
 	color: $def_text_color;
 	background: $wrapper_bg;
 	-webkit-text-size-adjust: none;
