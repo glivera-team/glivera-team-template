@@ -10,13 +10,13 @@ body {
 	min-height: 100%;
 	font-size:$base_font_size;
 	color: $def_text_color;
-	background: $wrapper_bg;
 	-webkit-text-size-adjust: none;
 }
 .wrapper {
 	overflow:hidden;
 	position: relative;
 	min-width: $page_width;
+	background: $wrapper_bg;
 }
 .disable-hover,
 .disable-hover * {

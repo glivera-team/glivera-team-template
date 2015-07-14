@@ -88,9 +88,9 @@ mixin breadcrumbs(array)
 		each crumb, index in array
 			li.breadcrumbs_l_item
 				- if (index == array.length - 1)
-				span.breadcrumbs_link=crumb.text
+					span.breadcrumbs_link=crumb.text
 				- else
-				a.breadcrumbs_link(href=crumb.link, data-ind=index, data=array.length)=crumb.text
+					a.breadcrumbs_link(href=crumb.link, data-ind=index, data=array.length)=crumb.text
 
 mixin main_menu(menuArray)
 	ul.main_menu_list(class="#{menuArray.mod}")

@@ -60,6 +60,18 @@ $square_root_of_2: 1.41421356237;
 		}
 	}
 }
+
+@mixin dashed-border($dashlength, $spacelength, $borderwidth, $color) {
+	$per: percentage($dashlength / ($dashlength + $spacelength));
+	background-image: linear-gradient(to right, $color 0%, $color $per, rgba(0, 0, 0, 0) $per),
+	linear-gradient(to bottom, $color 0%, $color $per, rgba(0, 0, 0, 0) $per),
+	linear-gradient(to right, $color 0%, $color $per, rgba(0, 0, 0, 0) $per),
+	linear-gradient(to bottom, $color 0%, $color $per, rgba(0, 0, 0, 0) $per);
+	background-position: (-$spacelength) 0, 0 (-$spacelength), (-$spacelength) 100%, 100% (-$spacelength);
+	background-size: ($dashlength + $spacelength) $borderwidth, $borderwidth ($dashlength + $spacelength), ($dashlength + $spacelength) $borderwidth, $borderwidth ($dashlength + $spacelength);
+	background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+}
+
 @mixin style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
 	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
 		@content;
@@ -199,96 +211,11 @@ $square_root_of_2: 1.41421356237;
 
 @mixin flex_block($flex-direction : row, $flex-wrap: wrap, $content : space-between, $align-items : flex-start,$align-content : flex-start) {
 
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-direction: normal;
-	-moz-box-direction: normal;
-
-	@if $flex-direction == 'row' {
-		-webkit-box-orient: horizontal;
-		-moz-box-orient: horizontal;
-	} @else if $flex-direction == 'column' {
-		-webkit-box-orient: vertical;
-		-moz-box-orient: vertical;
-	}
-
-	-webkit-flex-direction: $flex-direction;
-	-ms-flex-direction: $flex-direction;
 	flex-direction: $flex-direction;
-	-webkit-flex-wrap: $flex-wrap;
-	-ms-flex-wrap: $flex-wrap;
 	flex-wrap: $flex-wrap;
-
-	@if $content == 'space-between' {
-		-webkit-box-pack: justify;
-		-moz-box-pack: justify;
-	} @else if $content == 'flex-start' {
-		-webkit-box-pack : start;
-		-moz-box-pack: start;
-	} @else if $content == 'flex-end' {
-		-webkit-box-pack : end;
-		-moz-box-pack: end;
-	} @else if $content == 'center' {
-		-webkit-box-pack : center;
-		-moz-box-pack: center;
-	}
-
-	-webkit-justify-content: $content;
-
-	@if $content == 'space-between' {
-		-ms-flex-pack: justify;
-	} @else if $content == 'flex-start' {
-		-ms-flex-pack: start;
-	} @else if $content == 'flex-end' {
-		-ms-flex-pack: end;
-	} @else if $content == 'center' {
-		-ms-flex-pack: center;
-	}
-
 	justify-content: $content;
-
-
-
-	-webkit-align-content: $align-content;
-	@if $align-content == 'stretch' {
-		-ms-flex-line-pack: stretch;
-	} @else if $align-content == 'space-around' {
-		-ms-flex-line-pack: distribute;
-	} @else if $align-content == 'space-between' {
-		-ms-flex-line-pack: justify;
-	} @else if $align-content == 'flex-start' {
-		-ms-flex-line-pack: start;
-	} @else if $align-content == 'flex-end' {
-		-ms-flex-line-pack: end;
-	} @else if $align-content == 'center' {
-		-ms-flex-line-pack: center;
-	}
-
 	align-content: $align-content;
-
-	@if $align-content == 'stretch' {
-		-webkit-box-align: stretch;
-	} @else if $align-content == 'flex-start' {
-		-webkit-box-align: start;
-	} @else if $align-content == 'flex-end' {
-		-webkit-box-align: end;
-	} @else if $align-content == 'center' {
-		-webkit-box-align: center;
-	}
-
-	-webkit-align-items: $align-items;
-	@if $align-content == 'stretch' {
-		-ms-flex-align: stretch;
-	} @else if $align-content == 'flex-start' {
-		-ms-flex-align: start;
-	} @else if $align-content == 'flex-end' {
-		-ms-flex-align: end;
-	} @else if $align-content == 'center' {
-		-ms-flex-align: center;
-	}
 	align-items: $align-items;
 }
 
