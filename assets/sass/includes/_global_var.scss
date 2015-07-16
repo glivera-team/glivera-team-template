@@ -94,6 +94,28 @@ $square_root_of_2: 1.41421356237;
 	background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
 }
 
+@mixin center($width: null, $height: null) {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	@if not $width and not $height {
+		transform: translate(-50%, -50%);
+	} @else if $width and $height {
+		width: $width;
+		height: $height;
+		margin: -($height / 2) #{0 0} -($width / 2);
+	} @else if not $height {
+		width: $width;
+		margin-left: -($width / 2);
+		transform: translateY(-50%);
+	} @else {
+		height: $height;
+		margin-top: -($height / 2);
+		transform: translateX(-50%);
+	}
+}
+
 @mixin style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
 	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
 		@content;

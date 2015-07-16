@@ -125,22 +125,23 @@ gulp.task('cssBuild', function() {
 
 
 //--------------------------------------------If you need iconfont
-//var iconfont = require('gulp-iconfont'),
-//	iconfontCss = require('gulp-iconfont-css'),
-//	fontName = 'iconsmoon';
-//gulp.task('iconfont', function(){
-//	gulp.src(['assets/i/icons/*.svg'])
-//		.pipe(iconfontCss({
-//			path: 'assets/sass/_icons_template.scss',
-//			fontName: fontName,
-//			targetPath: '../../sass/_icons.scss',
-//			fontPath: '../fonts/icons/'
-//		}))
-//		.pipe(iconfont({
-//			fontName: fontName
-//		}))
-//		.pipe(gulp.dest('assets/fonts/icons'));
-//});
+var iconfont = require('gulp-iconfont'),
+	iconfontCss = require('gulp-iconfont-css'),
+	fontName = 'iconfont';
+gulp.task('iconfont', function(){
+	gulp.src(['assets/i/icons/*.svg'])
+		.pipe(iconfontCss({
+			path: 'assets/sass/_icons_template.scss',
+			fontName: fontName,
+			targetPath: '../../sass/_icons.scss',
+			fontPath: '../fonts/icons/',
+			svg:true
+		}))
+		.pipe(iconfont({
+			fontName: fontName
+		}))
+		.pipe(gulp.dest('assets/fonts/icons'));
+});
 
 gulp.task('default',['jade','sass','imageSync','fontsSync','jsSync','watch','browser-sync']);
 gulp.task('build',['imgBuild','fontsBuild','htmlBuild','jsBuild','cssBuild']);

@@ -1,27 +1,27 @@
 .form_butt_list.connect_mod {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  -webkit-box-direction: normal;
   -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-align-content: flex-start;
-  -ms-flex-line-pack: start;
-  align-content: flex-start;
+      -ms-flex-line-pack: start;
+          align-content: flex-start;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
-  -ms-flex-align: start;
-  align-items: flex-start; }
+      -ms-flex-align: start;
+          align-items: flex-start; }
 
 .form_sub_cell_wrap.hor_mod:after {
   position: static;
@@ -213,13 +213,13 @@ body {
   min-height: 100%;
   font-size: 13rem;
   color: #7e8287;
-  background: #fff;
   -webkit-text-size-adjust: none; }
 
 .wrapper {
   overflow: hidden;
   position: relative;
-  min-width: 960rem; }
+  min-width: 960rem;
+  background: #fff; }
 
 .disable-hover,
 .disable-hover * {
