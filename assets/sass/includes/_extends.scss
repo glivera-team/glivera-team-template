@@ -208,6 +208,14 @@
 		transform: translate(-50%, -50%);
 	}
 
+	%stretch {
+		position: absolute;
+		top:0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+
 	%hover_show {
 		opacity:0;
 		transition:opacity .3s ease;
