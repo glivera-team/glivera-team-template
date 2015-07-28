@@ -25,6 +25,15 @@ $square_root_of_2: 1.41421356237;
 	}
 }
 
+@mixin bp($width,$direction:max) {
+	@if $direction == min {
+		@media screen and (min-width: $width) { @content; }
+	}
+	@else {
+		@media screen and (max-width: $width) { @content; }
+	}
+}
+
 @mixin triangle($side,$color,$size) {
 	position:relative;
 	&:before {
