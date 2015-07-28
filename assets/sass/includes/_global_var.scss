@@ -12,7 +12,7 @@ $square_root_of_2: 1.41421356237;
 	height:$height*1rem;
 }
 
-@mixin font_face($font_name,$file_name,$path:$font_path,$weight:normal,$style:normal) {
+@mixin font_face($file_name,$font_name:$file_name,$path:$font_path,$weight:normal,$style:normal) {
 	@font-face {
 		font-family:quote($font_name);
 		src: url($path + $file-name + '.eot');
