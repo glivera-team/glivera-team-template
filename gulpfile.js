@@ -10,7 +10,8 @@ var gulp = require('gulp'),
 	uncss = require('gulp-uncss'),
 	csso = require('gulp-csso'),
 	dirSync = require( 'gulp-directory-sync'),
-	browserSync = require('browser-sync').create();
+	browserSync = require('browser-sync').create(),
+	purify = require('gulp-purifycss');
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
@@ -119,7 +120,8 @@ gulp.task('jsBuild', function() {
 //copy and minify css
 gulp.task('cssBuild', function() {
 	return gulp.src(outputDir+'styles/**/*')
-		.pipe(csso())
+		.pipe(purify([outputDir+'js/**/*', outputDir+'**/*.html']))
+		// .pipe(csso())
 		.pipe(gulp.dest(buildDir + 'styles/'))
 });
 

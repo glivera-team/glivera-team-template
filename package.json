@@ -25,6 +25,7 @@
     "gulp-livereload": "^3.8.0",
     "gulp-open": "^0.3.2",
     "gulp-plumber": "^1.0.1",
+    "gulp-purifycss": "^0.2.0",
     "gulp-sass": "^2.0.1",
     "gulp-uncss": "^1.0.1",
     "imagemin-pngquant": "^4.1.0"

@@ -1,0 +1,33 @@
+@mixin container($layout:start) {
+	display: flex;
+	flex-wrap: wrap;
+	@if ($layout == start) {
+		justify-content: flex-start;
+	} @else if ($layout == end) {
+		justify-content: flex-end;
+	} @else if ($layout == center) {
+		justify-content: center;
+	} @else if ($layout == space_between) {
+		justify-content: space-between;
+	} @else if ($layout == space_around) {
+		justify-content: space-around;
+	}
+	//fallback for old browsers
+	&:after {
+		position: static;
+		display: block;
+		height: 0;
+		clear: both;
+		content: "";
+		visibility: hidden;
+	}
+}
+
+@mixin grid_item($num) {
+	$item_width:percentage($num);
+	//fallback for old browsers
+	float: left;
+	//style for modern browsers
+	flex:0 0 auto;
+	width:$item_width;
+}
