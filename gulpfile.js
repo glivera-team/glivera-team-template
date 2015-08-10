@@ -81,9 +81,9 @@ gulp.task('browser-sync', function() {
 });
 
 
-//building final project folder
+//---------------------------------building final project folder
 //clean build folder
-gulp.task('cleanBuild',function() {
+gulp.task('cleanBuildDir',function() {
 	return gulp.src(buildDir)
 		.pipe(clean());
 });
@@ -146,4 +146,7 @@ gulp.task('iconfont', function(){
 });
 
 gulp.task('default',['jade','sass','imageSync','fontsSync','jsSync','watch','browser-sync']);
-gulp.task('build',['imgBuild','fontsBuild','htmlBuild','jsBuild','cssBuild']);
+
+gulp.task('build',['cleanBuildDir'],function() {
+	gulp.start('imgBuild','fontsBuild','htmlBuild','jsBuild','cssBuild');
+});
