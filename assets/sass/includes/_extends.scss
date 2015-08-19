@@ -258,4 +258,26 @@
 			}
 	}
 
+	%transition_all {
+		transition:all .3s ease;
+	}
+
+	%transition_opacity {
+		transition:opacity .3s ease;
+	}
+
+	%transition_background {
+		transition:background .3s ease;
+	}
+
+	%transition_color {
+		transition:color .3s ease;
+	}
+
+	%transition_color_background {
+		transition:color .3s ease,background .3s ease;
+	}
+	%transition_transform {
+		transition:transform .3s ease;
+	}
 }

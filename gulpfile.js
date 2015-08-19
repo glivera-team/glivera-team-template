@@ -142,7 +142,7 @@ gulp.task('iconfont', function(){
 		.pipe(iconfont({
 			fontName: fontName,
 			svg:true,
-			formats: ['ttf', 'eot', 'woff','svg']
+			formats: ['svg']
 		}))
 		.pipe(gulp.dest('assets/fonts/icons'));
 });

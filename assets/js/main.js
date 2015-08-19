@@ -1,5 +1,4 @@
-var rem = 1,
-	$body,
+var $body,
 	window_height,
 	window_width,
 	$user_menu_butt,
@@ -8,10 +7,38 @@ var rem = 1,
 	media_point_3 = 480,
 	media_point_4 = 320;
 
-$(function() {
+$(document).ready(function ($) {
+	$body = $('body');
+	$user_menu_butt = $('#user_menu_butt');
+	window_width = $(window).width();
+	window_height = $(window).height();
+
 	//pageWidget(['index']);
 	//getAllClasses('html','.elements_list');
 });
+
+$(window).on('resize', function () {
+	resize_f();
+});
+
+$(window).on('scroll', function () {
+	scroll_f();
+});
+
+$(window).on('load',function() {
+	load_f();
+});
+
+function resize_f() {
+
+}
+function load_f() {
+
+}
+
+function scroll_f() {
+
+}
 
 function move_to_block(block, control) {
 	var $block = $(block),
@@ -32,8 +59,9 @@ function docScrollTo(pos, speed, callback) {
 	if (typeof(callback) == 'function') {
 		callback();
 	}
-
 }
+
+
 
 //Functions for development
 function getAllClasses(context,output) {
@@ -98,20 +126,6 @@ function getAllClasses(context,output) {
 		return B;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function pageWidget(pages) {
 	var widgetWrap = $('<div class="widget_wrap"><ul class="widget_list"></ul></div>');
