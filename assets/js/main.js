@@ -1,7 +1,41 @@
+var rem = 1,
+	$body,
+	window_height,
+	window_width,
+	$user_menu_butt,
+	media_point_1 = 1024,
+	media_point_2 = 768,
+	media_point_3 = 480,
+	media_point_4 = 320;
+
 $(function() {
 	//pageWidget(['index']);
 	//getAllClasses('html','.elements_list');
 });
+
+function move_to_block(block, control) {
+	var $block = $(block),
+		$control = $(control);
+	$control.on('click', function () {
+		var $block_pos = $block.offset();
+		$('body,html').animate({
+			scrollTop: $block_pos.top
+		}, 500);
+		return false;
+	})
+}
+
+function docScrollTo(pos, speed, callback) {
+
+	$('html,body').animate({'scrollTop': pos}, speed);
+
+	if (typeof(callback) == 'function') {
+		callback();
+	}
+
+}
+
+//Functions for development
 function getAllClasses(context,output) {
 	var finalArray = [],
 		mainArray = [],
