@@ -28,7 +28,8 @@ If you use PHPStorm or WEBStorm editor - copy encodings.xml, codeStyleSettings.x
 ## How to do iconfont
 
 1. Copy your svg images to [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons) folder
-2. Run
+2. In gulpfile near the iconfont task change 'fontName' variable if you want your own iconfont name.
+3. Run
         gulp iconfont
-3. Grab your font in [fonts/icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/fonts/icons) folder and font extends(%placeholders) in [icons.scss](https://github.com/gatilin222/supervisor_template/blob/master/assets/sass/_icons.scss)
-4. Edit it on [iconmoon](https://icomoon.io)
+4. Grab your font in [fonts/icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/fonts/icons) folder and font extends(%placeholders) in [icons.scss](https://github.com/gatilin222/supervisor_template/blob/master/assets/sass/_icons.scss)
+5. Edit it on [iconmoon](https://icomoon.io)
