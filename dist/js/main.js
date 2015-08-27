@@ -1,7 +1,69 @@
-$(function() {
+var $body,
+	window_height,
+	window_width,
+	$user_menu_butt,
+	media_point_1 = 1024,
+	media_point_2 = 768,
+	media_point_3 = 480,
+	media_point_4 = 320;
+
+$(document).ready(function ($) {
+	$body = $('body');
+	$user_menu_butt = $('#user_menu_butt');
+	window_width = $(window).width();
+	window_height = $(window).height();
+
 	//pageWidget(['index']);
 	//getAllClasses('html','.elements_list');
 });
+
+$(window).on('resize', function () {
+	resize_f();
+});
+
+$(window).on('scroll', function () {
+	scroll_f();
+});
+
+$(window).on('load',function() {
+	load_f();
+});
+
+function resize_f() {
+
+}
+function load_f() {
+
+}
+
+function scroll_f() {
+
+}
+
+function move_to_block(block, control) {
+	var $block = $(block),
+		$control = $(control);
+	$control.on('click', function () {
+		var $block_pos = $block.offset();
+		$('body,html').animate({
+			scrollTop: $block_pos.top
+		}, 500);
+		return false;
+	})
+}
+
+function docScrollTo(pos, speed, callback) {
+
+	$('html,body').animate({'scrollTop': pos}, speed);
+
+	if (typeof(callback) == 'function') {
+		callback();
+	}
+}
+
+
+
+//Functions for development
 function getAllClasses(context,output) {
 	var finalArray = [],
 		mainArray = [],
@@ -64,20 +126,6 @@ function getAllClasses(context,output) {
 		return B;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function pageWidget(pages) {
 	var widgetWrap = $('<div class="widget_wrap"><ul class="widget_list"></ul></div>');

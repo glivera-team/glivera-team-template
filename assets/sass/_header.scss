@@ -1,7 +1,99 @@
+//------------------------------------------------------------layout
 .header {
-	height: $header_height;
-	position:absolute;
+	position: fixed;
+	width: 100%;
+	height: 100%;
 	top: 0;
-	left: 0;
-	right: 0;
+	right: 100%;
+	z-index: 200;
 }
+//------------------------------------------------------------layout###
+
+//------------------------------------------------------------logo
+
+//------------------------------------------------------------logo###
+
+//------------------------------------------------------------trigger
+//.head_menu_trigger {
+//	position: absolute;
+//	top: 0;
+//	left: 100%;
+//	height: $header_height;
+//	padding: 0 $gl_indent*3;
+//	width: 100%;
+//}
+//
+//@mixin user_menu_butt_line {
+//	position: absolute;
+//	width: 100%;
+//	left: 0;
+//	background: $white;
+//	height: 4rem;
+//	top: $gl_indent*1.1;
+//
+//	.fixed_mod & {
+//		background: $blue;
+//	}
+//}
+//
+//.user_menu_butt {
+//	z-index: 210;
+//	position: absolute;
+//	top: 50%;
+//	right: 50rem;
+//	display: none; //hidden on desctop
+//	height: 32rem;
+//	width: 38rem;
+//	margin-top: -16rem;
+//	text-transform: uppercase;
+//	color: transparent;
+//	cursor: pointer;
+//
+//	@include bp($point_2) {
+//		display: block;
+//	}
+//
+//	&:before {
+//		content: '';
+//		transform: translate(0, -13rem);
+//		transition: all .3s ease;
+//
+//		@include user_menu_butt_line;
+//		@include bp($point_1) {
+//			transform: translate(0, -10rem);
+//		}
+//	}
+//	&:after {
+//		content: '';
+//		transform: translate(0, 13rem);
+//		transition: all .3s ease;
+//		@include user_menu_butt_line;
+//		@include bp($point_1) {
+//			transform: translate(0, 10rem);
+//		}
+//	}
+//	&.active_mod {
+//		&:before {
+//			transform: (rotate(45deg) translate(0, 0));
+//		}
+//
+//		&:after {
+//			transform: (rotate(-45deg) translate(0, 0));
+//		}
+//	}
+//}
+//
+//.user_menu_butt_decor {
+//	transition: all .3s ease;
+//	.active_mod & {
+//		opacity: 0;
+//		transform: translate(100%, 0);
+//	}
+//
+//	@include user_menu_butt_line;
+//}
+//------------------------------------------------------------trigger###
+
+//------------------------------------------------------------menu
+
+//------------------------------------------------------------menu###

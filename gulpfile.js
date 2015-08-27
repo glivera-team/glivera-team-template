@@ -9,6 +9,7 @@ var gulp = require('gulp'),
 	pngquant = require('imagemin-pngquant'),
 	uncss = require('gulp-uncss'),
 	csso = require('gulp-csso'),
+	nano = require('gulp-cssnano'),
 	dirSync = require( 'gulp-directory-sync'),
 	browserSync = require('browser-sync').create(),
 	purify = require('gulp-purifycss');
@@ -121,7 +122,8 @@ gulp.task('jsBuild', function() {
 gulp.task('cssBuild', function() {
 	return gulp.src(outputDir+'styles/**/*')
 		.pipe(purify([outputDir+'js/**/*', outputDir+'**/*.html']))
-		// .pipe(csso())
+		.pipe(csso())
+		.pipe(nano())
 		.pipe(gulp.dest(buildDir + 'styles/'))
 });
 
