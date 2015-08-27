@@ -12,7 +12,9 @@ var gulp = require('gulp'),
 	nano = require('gulp-cssnano'),
 	dirSync = require( 'gulp-directory-sync'),
 	browserSync = require('browser-sync').create(),
-	purify = require('gulp-purifycss');
+	purify = require('gulp-purifycss'),
+	uglify = require('gulp-uglify'),
+	concat = require('gulp-concat');
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
@@ -36,6 +38,14 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest(outputDir + 'styles/'))
 		.pipe(browserSync.stream());
 });
+
+gulp.task('jsConcat', function () {
+	return gulp.src(assetsDir + 'js/all/**/*.js')
+		.pipe(concat('all.js', {newLine: ';'}))
+		.pipe(gulp.dest(outputDir + 'js/'))
+		.pipe(browserSync.stream());
+});
+
 //----------------------------------------------------Compiling###
 
 //-------------------------------------------------Synchronization
@@ -54,9 +64,9 @@ gulp.task('fontsSync', function () {
 });
 
 gulp.task('jsSync', function () {
-	return gulp.src('')
+	return gulp.src(assetsDir + 'js/*.js')
 		.pipe(plumber())
-		.pipe(dirSync(assetsDir+'js/', outputDir+'js/', { printSummary: true } ))
+		.pipe(gulp.dest(outputDir + 'js/'))
 		.pipe(browserSync.stream());
 });
 //-------------------------------------------------Synchronization###
@@ -66,12 +76,13 @@ gulp.task('jsSync', function () {
 gulp.task('watch', function () {
 	gulp.watch(assetsDir+'jade/**/*.jade', ['jade']);
 	gulp.watch(assetsDir+'sass/**/*.scss', ['sass']);
-	gulp.watch(assetsDir+'js/*.js', ['jsSync']);
+	gulp.watch(assetsDir+'js/**/*.js', ['jsSync']);
+	gulp.watch(assetsDir+'js/all/**/*.js',['jsConcat']);
 	gulp.watch(assetsDir+'i/**/*',['imageSync']);
 	gulp.watch(assetsDir+'fonts/**/*',['fontsSync']);
 });
 
-//livereload and open html in browser
+//livereload and open project in browser
 gulp.task('browser-sync', function() {
 	browserSync.init({
 		port:1337,
@@ -112,9 +123,10 @@ gulp.task('htmlBuild',function() {
 		.pipe(gulp.dest(buildDir))
 });
 
-//copy js
+//copy and minify js
 gulp.task('jsBuild', function() {
 	return gulp.src(outputDir+'js/**/*')
+		.pipe(uglify())
 		.pipe(gulp.dest(buildDir + 'js/'))
 });
 
@@ -149,7 +161,8 @@ gulp.task('iconfont', function(){
 		.pipe(gulp.dest('assets/fonts/icons'));
 });
 
-gulp.task('default',['jade','sass','imageSync','fontsSync','jsSync','watch','browser-sync']);
+
+gulp.task('default',['jade','sass','imageSync','fontsSync','jsConcat','jsSync','watch','browser-sync']);
 
 gulp.task('build',['cleanBuildDir'],function() {
 	gulp.start('imgBuild','fontsBuild','htmlBuild','jsBuild','cssBuild');

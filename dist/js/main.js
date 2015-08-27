@@ -1,3 +1,5 @@
+console.log('text');
+
 var $body,
 	window_height,
 	window_width,

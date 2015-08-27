@@ -18,12 +18,9 @@ mixin head(array)
 		link(rel="apple-touch-icon", sizes="120x120", href="apple-touch-icon-120x120.png")
 		link(rel="apple-touch-icon", sizes="144x144", href="apple-touch-icon-144x144.png")
 		link(rel="apple-touch-icon", sizes="152x152", href="apple-touch-icon-152x152.png")
-	if jQuery
-		script(src='js/jquery-1.11.1.min.js')
+	script(src="js/all.js")
 	if jQueryUI
 		script(src="//code.jquery.com/ui/1.11.4/jquery-ui.js")
-	if modernizr
-		script(src="js/modernizr.2.js")
 	script(src='js/main.js')
 	link(rel="stylesheet" media="all" href="styles/main_global.css")
 mixin banner
