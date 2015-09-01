@@ -14,7 +14,8 @@ var gulp = require('gulp'),
 	browserSync = require('browser-sync').create(),
 	purify = require('gulp-purifycss'),
 	uglify = require('gulp-uglify'),
-	concat = require('gulp-concat');
+	concat = require('gulp-concat'),
+	cmq = require('gulp-combine-media-queries');
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
@@ -130,12 +131,15 @@ gulp.task('jsBuild', function() {
 		.pipe(gulp.dest(buildDir + 'js/'))
 });
 
-//copy and minify css
+//copy, minify css
 gulp.task('cssBuild', function() {
 	return gulp.src(outputDir+'styles/**/*')
-		.pipe(purify([outputDir+'js/**/*', outputDir+'**/*.html']))
-		.pipe(csso())
-		.pipe(nano())
+		.pipe(purify([outputDir+'js/**/*', outputDir+'**/*.html']))//delete unused styles
+		.pipe(cmq({//combine media queries
+			log: true
+		}))
+		.pipe(csso())//minify
+		.pipe(nano())//minify
 		.pipe(gulp.dest(buildDir + 'styles/'))
 });
 
