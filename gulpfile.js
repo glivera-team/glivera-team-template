@@ -9,7 +9,6 @@ var gulp = require('gulp'),
 	pngquant = require('imagemin-pngquant'),
 	uncss = require('gulp-uncss'),
 	csso = require('gulp-csso'),
-	nano = require('gulp-cssnano'),
 	dirSync = require( 'gulp-directory-sync'),
 	browserSync = require('browser-sync').create(),
 	purify = require('gulp-purifycss'),
@@ -139,7 +138,6 @@ gulp.task('cssBuild', function() {
 			log: true
 		}))
 		.pipe(csso())//minify
-		.pipe(nano())//minify
 		.pipe(gulp.dest(buildDir + 'styles/'))
 });
 
