@@ -35,14 +35,14 @@ If you use PHPStorm or WEBStorm editor - copy encodings.xml, codeStyleSettings.x
 
 ## How to do iconfont
 
-1. Install gulp-packages for it and link it
+1. Install gulp-packages for it and link it.
 
         npm install gulp-iconfont gulp-iconfont-css -g
         npm link gulp-iconfont gulp-iconfont-css
 
 2. Copy your svg images to [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons) folder
 3. In gulpfile near the iconfont task change 'fontName' variable if you want your own iconfont name.
-4. Run
+4. Uncomment gulp task for iconfont and run it.
 
         gulp iconfont
 

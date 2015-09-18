@@ -110,24 +110,6 @@
 		@include flex_block(column, nowrap, space-between, stretch);
 	}
 
-	%global_flex_1_e {
-		@include flex(1);
-	}
-
-	%global_flex_1_auto_e {
-		@include flex(1 auto);
-	}
-
-	%global_flex_0_auto_e {
-		@include flex(0 auto);
-	}
-
-	%global_flex_100_e {
-		@include flex(1 100%);
-	}
-
-
-
 	%clearfix {
 		&:after {
 			position: static;
