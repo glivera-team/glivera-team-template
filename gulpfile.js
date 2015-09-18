@@ -1,3 +1,4 @@
+// plugins for development
 var gulp = require('gulp'),
 	rimraf = require('rimraf'),
 	jade = require('gulp-jade'),
@@ -5,31 +6,33 @@ var gulp = require('gulp'),
 	inlineimage = require('gulp-inline-image'),
 	prefix = require('gulp-autoprefixer'),
 	plumber = require('gulp-plumber'),
+	dirSync = require('gulp-directory-sync'),
+	browserSync = require('browser-sync').create(),
+	concat = require('gulp-concat');
+
+// plugins for build
+var purify = require('gulp-purifycss'),
+	uglify = require('gulp-uglify'),
 	imagemin = require('gulp-imagemin'),
 	pngquant = require('imagemin-pngquant'),
 	csso = require('gulp-csso'),
-	dirSync = require( 'gulp-directory-sync'),
-	browserSync = require('browser-sync').create(),
-	purify = require('gulp-purifycss'),
-	uglify = require('gulp-uglify'),
-	concat = require('gulp-concat'),
-	cmq = require('gulp-combine-media-queries');
+	combineMq = require('gulp-combine-mq');
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
 var buildDir = 'build/';
 
 //----------------------------------------------------Compiling
-gulp.task('jade', function() {
-	gulp.src([assetsDir+'jade/*.jade', '!'+assetsDir+'jade/_*.jade'])
+gulp.task('jade', function () {
+	gulp.src([assetsDir + 'jade/*.jade', '!' + assetsDir + 'jade/_*.jade'])
 		.pipe(plumber())
-		.pipe(jade({pretty:true}))
+		.pipe(jade({pretty: true}))
 		.pipe(gulp.dest(outputDir))
 		.pipe(browserSync.stream());
 });
 
-gulp.task('sass', function() {
-	gulp.src([assetsDir+'sass/**/*.scss', '!'+assetsDir+'sass/**/_*.scss'])
+gulp.task('sass', function () {
+	gulp.src([assetsDir + 'sass/**/*.scss', '!' + assetsDir + 'sass/**/_*.scss'])
 		.pipe(plumber())
 		.pipe(sass())
 		.pipe(inlineimage())
@@ -49,16 +52,16 @@ gulp.task('jsConcat', function () {
 
 //-------------------------------------------------Synchronization
 gulp.task('imageSync', function () {
-	return gulp.src( '' )
+	return gulp.src('')
 		.pipe(plumber())
-		.pipe(dirSync(assetsDir+'i/', outputDir+'i/', { printSummary: true } ))
+		.pipe(dirSync(assetsDir + 'i/', outputDir + 'i/', {printSummary: true}))
 		.pipe(browserSync.stream());
 });
 
 gulp.task('fontsSync', function () {
 	return gulp.src('')
 		.pipe(plumber())
-		.pipe(dirSync(assetsDir+'fonts/', outputDir+'fonts/', { printSummary: true } ))
+		.pipe(dirSync(assetsDir + 'fonts/', outputDir + 'fonts/', {printSummary: true}))
 		.pipe(browserSync.stream());
 });
 
@@ -73,18 +76,18 @@ gulp.task('jsSync', function () {
 
 //watching files and run tasks
 gulp.task('watch', function () {
-	gulp.watch(assetsDir+'jade/**/*.jade', ['jade']);
-	gulp.watch(assetsDir+'sass/**/*.scss', ['sass']);
-	gulp.watch(assetsDir+'js/**/*.js', ['jsSync']);
-	gulp.watch(assetsDir+'js/all/**/*.js',['jsConcat']);
-	gulp.watch(assetsDir+'i/**/*',['imageSync']);
-	gulp.watch(assetsDir+'fonts/**/*',['fontsSync']);
+	gulp.watch(assetsDir + 'jade/**/*.jade', ['jade']);
+	gulp.watch(assetsDir + 'sass/**/*.scss', ['sass']);
+	gulp.watch(assetsDir + 'js/**/*.js', ['jsSync']);
+	gulp.watch(assetsDir + 'js/all/**/*.js', ['jsConcat']);
+	gulp.watch(assetsDir + 'i/**/*', ['imageSync']);
+	gulp.watch(assetsDir + 'fonts/**/*', ['fontsSync']);
 });
 
 //livereload and open project in browser
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', function () {
 	browserSync.init({
-		port:1337,
+		port: 1337,
 		server: {
 			baseDir: outputDir
 		}
@@ -94,77 +97,77 @@ gulp.task('browser-sync', function() {
 
 //---------------------------------building final project folder
 //clean build folder
-gulp.task('cleanBuildDir',function(cb) {
+gulp.task('cleanBuildDir', function (cb) {
 	rimraf(buildDir, cb);
 });
 
 
 //minify images
-gulp.task('imgBuild',function() {
-	return gulp.src(outputDir+'i/**/*')
-	.pipe(imagemin({
-		progressive: true,
-		svgoPlugins: [{removeViewBox: false}],
-		use: [pngquant()]
-	}))
-	.pipe(gulp.dest(buildDir + 'i/'))
+gulp.task('imgBuild', function () {
+	return gulp.src(outputDir + 'i/**/*')
+		.pipe(imagemin({
+			progressive: true,
+			svgoPlugins: [{removeViewBox: false}],
+			use: [pngquant()]
+		}))
+		.pipe(gulp.dest(buildDir + 'i/'))
 });
 
 //copy fonts
-gulp.task('fontsBuild',function() {
-	return gulp.src(outputDir+'fonts/**/*')
+gulp.task('fontsBuild', function () {
+	return gulp.src(outputDir + 'fonts/**/*')
 		.pipe(gulp.dest(buildDir + 'fonts/'))
 });
 
 //copy html
-gulp.task('htmlBuild',function() {
-	return gulp.src(outputDir+'**/*.html')
+gulp.task('htmlBuild', function () {
+	return gulp.src(outputDir + '**/*.html')
 		.pipe(gulp.dest(buildDir))
 });
 
 //copy and minify js
-gulp.task('jsBuild', function() {
-	return gulp.src(outputDir+'js/**/*')
+gulp.task('jsBuild', function () {
+	return gulp.src(outputDir + 'js/**/*')
 		.pipe(uglify())
 		.pipe(gulp.dest(buildDir + 'js/'))
 });
 
 //copy, minify css
-gulp.task('cssBuild', function() {
-	return gulp.src(outputDir+'styles/**/*')
-		.pipe(purify([outputDir+'js/**/*', outputDir+'**/*.html']))//delete unused styles
-		.pipe(cmq({//combine media queries
-			log: true
+gulp.task('cssBuild', function () {
+	return gulp.src(outputDir + 'styles/**/*')
+		.pipe(purify([outputDir + 'js/**/*', outputDir + '**/*.html']))
+		.pipe(combineMq({
+			beautify: false
 		}))
-		.pipe(csso())//minify
+		.pipe(csso())
 		.pipe(gulp.dest(buildDir + 'styles/'))
 });
 
 
 //--------------------------------------------If you need iconfont
-var iconfont = require('gulp-iconfont'),
-	iconfontCss = require('gulp-iconfont-css'),
-	fontName = 'iconfont';
-gulp.task('iconfont', function() {
-	gulp.src([assetsDir + 'i/icons/*.svg'])
-		.pipe(iconfontCss({
-			path: 'assets/sass/_icons_template.scss',
-			fontName: fontName,
-			targetPath: '../../sass/_icons.scss',
-			fontPath: '../fonts/icons/',
-			svg:true
-		}))
-		.pipe(iconfont({
-			fontName: fontName,
-			svg:true,
-			formats: ['svg']
-		}))
-		.pipe(gulp.dest('assets/fonts/icons'));
-});
+//var iconfont = require('gulp-iconfont'),
+//	iconfontCss = require('gulp-iconfont-css'),
+//	fontName = 'iconfont';
+//gulp.task('iconfont', function () {
+//	gulp.src([assetsDir + 'i/icons/*.svg'])
+//		.pipe(iconfontCss({
+//			path: 'assets/sass/_icons_template.scss',
+//			fontName: fontName,
+//			targetPath: '../../sass/_icons.scss',
+//			fontPath: '../fonts/icons/',
+//			svg: true
+//		}))
+//		.pipe(iconfont({
+//			fontName: fontName,
+//			svg: true,
+//			formats: ['svg']
+//		}))
+//		.pipe(gulp.dest('assets/fonts/icons'));
+//});
 
 
-gulp.task('default',['jade','sass','imageSync','fontsSync','jsConcat','jsSync','watch','browser-sync']);
+gulp.task('default', ['jade', 'sass', 'imageSync', 'fontsSync', 'jsConcat', 'jsSync', 'watch', 'browser-sync']);
 
-gulp.task('build',['cleanBuildDir'],function() {
-	gulp.start('imgBuild','fontsBuild','htmlBuild','jsBuild','cssBuild');
+gulp.task('build', ['cleanBuildDir'], function () {
+	gulp.start('imgBuild', 'fontsBuild', 'htmlBuild', 'jsBuild', 'cssBuild');
 });

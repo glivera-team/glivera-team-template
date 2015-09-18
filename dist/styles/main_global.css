@@ -209,6 +209,11 @@ table {
 * {
   box-sizing: border-box; }
 
+@font-face {
+  font-family: "iconfont";
+  src: url("../fonts/icons/iconfont.eot");
+  src: url("../fonts/icons/iconfont.eot?#iefix") format("eot"), url("../fonts/icons/iconfont.woff") format("woff"), url("../fonts/icons/iconfont.ttf") format("truetype"), url("../fonts/icons/iconfont.svg#iconfont") format("svg"); }
+
 html {
   height: 100%;
   font: normal 1px/1.33 "Arial";
@@ -247,6 +252,13 @@ a {
 .elements_list {
   padding: 30px;
   color: black; }
+  @media screen and (max-width: 1024px) {
+    .elements_list {
+      width: 200rem; } }
+
+@media screen and (max-width: 1024px) {
+  .some {
+    width: 200rem; } }
 
 .header {
   position: fixed;

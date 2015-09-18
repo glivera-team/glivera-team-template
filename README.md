@@ -1,19 +1,27 @@
 # Welcome to supervisor template repository.
 
 ## Get started
-1. If you don't have installed [node.js](https://nodejs.org/) - install it.Also you should install [python(2 version)](https://www.python.org/downloads/release/python-2710/) and node-gyp
+1. If you don't have installed [node.js](https://nodejs.org/) - install it(latest version).Also you should install [python(2 version)](https://www.python.org/downloads/release/python-2710/) and gulp globally
 
-        npm install -g node-gyp
+        npm install gulp -g
 
-2. Install required npm packages globally
+2. Install packages for development.If you have problem with installing browser-sync on Windows look [here](http://www.browsersync.io/docs/#windows-users)
 
-        npm install rimraf gulp-combine-media-queries gulp browser-sync gulp-autoprefixer gulp-concat gulp-uglify gulp-connect gulp-csso gulp-directory-sync gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-inline-image gulp-jade gulp-livereload gulp-open gulp-plumber gulp-purifycss gulp-sass imagemin-pngquant -g
+        npm install gulp rimraf gulp-jade gulp-sas gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat -g
 
-3. Link packages
+link it
 
-        npm link rimraf gulp gulp-combine-media-queries browser-sync gulp-autoprefixer gulp-concat gulp-uglify gulp-connect gulp-csso gulp-directory-sync gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-inline-image gulp-jade gulp-livereload gulp-open gulp-plumber gulp-purifycss gulp-sass imagemin-pngquant
+        npm link gulp rimraf gulp-jade gulp-sas gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat
 
-4. Open your console and write
+3. If you want to use my build-project-system install packages for building and link it:
+
+        npm install gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-combine-mq -g
+
+link it
+
+        npm link gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-combine-mq
+
+4. Start coding!
 
         gulp
 
@@ -33,10 +41,16 @@ If you use PHPStorm or WEBStorm editor - copy encodings.xml, codeStyleSettings.x
 
 ## How to do iconfont
 
-1. Copy your svg images to [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons) folder
-2. In gulpfile near the iconfont task change 'fontName' variable if you want your own iconfont name.
-3. Run
+1. Install gulp-packages for it and link it
+
+        npm install gulp-iconfont gulp-iconfont-css -g
+        npm link gulp-iconfont gulp-iconfont-css
+
+2. Copy your svg images to [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons) folder
+3. In gulpfile near the iconfont task change 'fontName' variable if you want your own iconfont name.
+4. Run
 
         gulp iconfont
+
 4. Grab your font in [fonts/icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/fonts/icons) folder and font extends(%placeholders) in [icons.scss](https://github.com/gatilin222/supervisor_template/blob/master/assets/sass/_icons.scss)
 5. Edit it on [iconmoon](https://icomoon.io)
