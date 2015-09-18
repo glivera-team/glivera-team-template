@@ -7,11 +7,11 @@
 
 2. Install required npm packages globally
 
-        npm install rimraf gulp-combine-media-queries gulp browser-sync gulp-autoprefixer gulp-clean gulp-concat gulp-uglify gulp-connect gulp-csso gulp-directory-sync gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-inline-image gulp-jade gulp-livereload gulp-open gulp-plumber gulp-purifycss gulp-sass imagemin-pngquant -g
+        npm install rimraf gulp-combine-media-queries gulp browser-sync gulp-autoprefixer gulp-concat gulp-uglify gulp-connect gulp-csso gulp-directory-sync gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-inline-image gulp-jade gulp-livereload gulp-open gulp-plumber gulp-purifycss gulp-sass imagemin-pngquant -g
 
 3. Link packages
 
-        npm link rimraf gulp gulp-combine-media-queries browser-sync gulp-autoprefixer gulp-clean gulp-concat gulp-uglify gulp-connect gulp-csso gulp-directory-sync gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-inline-image gulp-jade gulp-livereload gulp-open gulp-plumber gulp-purifycss gulp-sass imagemin-pngquant
+        npm link rimraf gulp gulp-combine-media-queries browser-sync gulp-autoprefixer gulp-concat gulp-uglify gulp-connect gulp-csso gulp-directory-sync gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-inline-image gulp-jade gulp-livereload gulp-open gulp-plumber gulp-purifycss gulp-sass imagemin-pngquant
 
 4. Open your console and write
 
