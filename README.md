@@ -21,9 +21,7 @@
 
         gulp
 
-5. Rock! ![rock](http://www.mrwallpaper.com/wallpapers/Rock-N-Roll.jpg)
-
-6. Edit files in assets folder and watch result in dist folder.If you want to build folder to customer(with minified images and styles)
+5. Edit files in assets folder and watch result in dist folder.If you want to build folder to customer(with minified images and styles)
 
         gulp build
 
