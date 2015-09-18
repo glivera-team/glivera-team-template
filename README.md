@@ -1,14 +1,17 @@
 # Welcome to supervisor template repository.
 
 ## Get started
-1. If you don't have installed [node.js](https://nodejs.org/) - install it.
+1. If you don't have installed [node.js](https://nodejs.org/) - install it.Also you should install [python(2 version)](https://www.python.org/downloads/release/python-2710/) and node-gyp
+
+        npm install -g node-gyp
+
 2. Install required npm packages globally
 
-        npm install gulp-combine-media-queries gulp browser-sync gulp-autoprefixer gulp-clean gulp-concat gulp-uglify gulp-connect gulp-csso gulp-directory-sync gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-inline-image gulp-jade gulp-livereload gulp-open gulp-plumber gulp-purifycss gulp-sass gulp-uncss imagemin-pngquant -g
+        npm install rimraf gulp-combine-media-queries gulp browser-sync gulp-autoprefixer gulp-clean gulp-concat gulp-uglify gulp-connect gulp-csso gulp-directory-sync gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-inline-image gulp-jade gulp-livereload gulp-open gulp-plumber gulp-purifycss gulp-sass imagemin-pngquant -g
 
 3. Link packages
 
-        npm link gulp gulp-combine-media-queries browser-sync gulp-autoprefixer gulp-clean gulp-concat gulp-uglify gulp-connect gulp-csso gulp-directory-sync gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-inline-image gulp-jade gulp-livereload gulp-open gulp-plumber gulp-purifycss gulp-sass gulp-uncss imagemin-pngquant
+        npm link rimraf gulp gulp-combine-media-queries browser-sync gulp-autoprefixer gulp-clean gulp-concat gulp-uglify gulp-connect gulp-csso gulp-directory-sync gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-inline-image gulp-jade gulp-livereload gulp-open gulp-plumber gulp-purifycss gulp-sass imagemin-pngquant
 
 4. Open your console and write
 

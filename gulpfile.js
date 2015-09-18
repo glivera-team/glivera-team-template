@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-	clean = require('gulp-clean'),
+	rimraf = require('rimraf'),
 	jade = require('gulp-jade'),
 	sass = require('gulp-sass'),
 	inlineimage = require('gulp-inline-image'),
@@ -7,7 +7,6 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
 	imagemin = require('gulp-imagemin'),
 	pngquant = require('imagemin-pngquant'),
-	uncss = require('gulp-uncss'),
 	csso = require('gulp-csso'),
 	dirSync = require( 'gulp-directory-sync'),
 	browserSync = require('browser-sync').create(),
@@ -95,10 +94,10 @@ gulp.task('browser-sync', function() {
 
 //---------------------------------building final project folder
 //clean build folder
-gulp.task('cleanBuildDir',function() {
-	return gulp.src(buildDir)
-		.pipe(clean());
+gulp.task('cleanBuildDir',function(cb) {
+	rimraf(buildDir, cb);
 });
+
 
 //minify images
 gulp.task('imgBuild',function() {
@@ -146,8 +145,8 @@ gulp.task('cssBuild', function() {
 var iconfont = require('gulp-iconfont'),
 	iconfontCss = require('gulp-iconfont-css'),
 	fontName = 'iconfont';
-gulp.task('iconfont', function(){
-	gulp.src(['assets/i/icons/*.svg'])
+gulp.task('iconfont', function() {
+	gulp.src([assetsDir + 'i/icons/*.svg'])
 		.pipe(iconfontCss({
 			path: 'assets/sass/_icons_template.scss',
 			fontName: fontName,
