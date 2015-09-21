@@ -169,7 +169,7 @@ gulp.task('iconfont', function () {
 });
 
 //testing your build files
-gulp.task('testing',function() {
+gulp.task('validation', function () {
 	return gulp.src(buildDir + '**/*.html')
 		.pipe(html5Lint());
 });
@@ -179,3 +179,4 @@ gulp.task('default', ['jade', 'sass', 'imageSync', 'fontsSync', 'jsConcat', 'jsS
 gulp.task('build', ['cleanBuildDir'], function () {
 	gulp.start('imgBuild', 'fontsBuild', 'htmlBuild', 'jsBuild', 'cssBuild');
 });
+

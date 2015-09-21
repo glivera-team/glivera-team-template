@@ -25,9 +25,9 @@
 
         gulp build
 
-6. If you want to test your html-files run
+6. If you want to do validation of your html-files run
 
-        gulp testing
+        gulp validation
 
 ## How to work with some text here js
 
