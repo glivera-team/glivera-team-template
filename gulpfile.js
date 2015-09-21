@@ -18,6 +18,9 @@ var purify = require('gulp-purifycss'),
 	csso = require('gulp-csso'),
 	combineMq = require('gulp-combine-mq');
 
+//plugins for testing
+var html5Lint = require('gulp-html5-lint');
+
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
 var buildDir = 'build/';
@@ -145,26 +148,31 @@ gulp.task('cssBuild', function () {
 
 
 //--------------------------------------------If you need iconfont
-//var iconfont = require('gulp-iconfont'),
-//	iconfontCss = require('gulp-iconfont-css'),
-//	fontName = 'iconfont';
-//gulp.task('iconfont', function () {
-//	gulp.src([assetsDir + 'i/icons/*.svg'])
-//		.pipe(iconfontCss({
-//			path: 'assets/sass/_icons_template.scss',
-//			fontName: fontName,
-//			targetPath: '../../sass/_icons.scss',
-//			fontPath: '../fonts/icons/',
-//			svg: true
-//		}))
-//		.pipe(iconfont({
-//			fontName: fontName,
-//			svg: true,
-//			formats: ['svg']
-//		}))
-//		.pipe(gulp.dest('assets/fonts/icons'));
-//});
+var iconfont = require('gulp-iconfont'),
+	iconfontCss = require('gulp-iconfont-css'),
+	fontName = 'iconfont';
+gulp.task('iconfont', function () {
+	gulp.src([assetsDir + 'i/icons/*.svg'])
+		.pipe(iconfontCss({
+			path: 'assets/sass/_icons_template.scss',
+			fontName: fontName,
+			targetPath: '../../sass/_icons.scss',
+			fontPath: '../fonts/icons/',
+			svg: true
+		}))
+		.pipe(iconfont({
+			fontName: fontName,
+			svg: true,
+			formats: ['svg']
+		}))
+		.pipe(gulp.dest('assets/fonts/icons'));
+});
 
+//testing your build files
+gulp.task('testing',function() {
+	return gulp.src(buildDir + '**/*.html')
+		.pipe(html5Lint());
+});
 
 gulp.task('default', ['jade', 'sass', 'imageSync', 'fontsSync', 'jsConcat', 'jsSync', 'watch', 'browser-sync']);
 

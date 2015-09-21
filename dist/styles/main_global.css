@@ -250,15 +250,7 @@ a {
   padding: 100rem 0 100rem; }
 
 .elements_list {
-  padding: 30px;
-  color: black; }
-  @media screen and (max-width: 1024px) {
-    .elements_list {
-      width: 200rem; } }
-
-@media screen and (max-width: 1024px) {
-  .some {
-    width: 200rem; } }
+  padding: 30px; }
 
 .header {
   position: fixed;

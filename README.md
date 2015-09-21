@@ -11,11 +11,11 @@
 
         npm link gulp rimraf gulp-jade gulp-sas gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat
 
-3. If you want to use my build-project-system install packages for building and link it:
+3. If you want to use my build-project-system and testing install packages for building and link it:
 
-        npm install gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-combine-mq -g
+        npm install gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-combine-mq -g
 
-        npm link gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-combine-mq
+        npm link gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-combine-mq
 
 4. Start coding!
 
@@ -25,7 +25,11 @@
 
         gulp build
 
-## How to work with js
+6. If you want to test your html-files run
+
+        gulp testing
+
+## How to work with some text here js
 
 All your main scripts should be placed in assets/js folder.All you additional scripts(jquery,plugins, etc) should be placed in assets/js/all folder.When you start gulp your additional scripts will concat into all.js
 
@@ -37,8 +41,8 @@ If you use PHPStorm or WEBStorm editor - copy encodings.xml, codeStyleSettings.x
 
 1. Install gulp-packages for it and link it.
 
-        npm install gulp-iconfont gulp-iconfont-css -g
-        npm link gulp-iconfont gulp-iconfont-css
+        npm install gulp-iconfont@4.0.0 gulp-iconfont-css -g
+        npm link gulp-iconfont gulp-iconfont-cssnp
 
 2. Copy your svg images to [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons) folder
 3. In gulpfile near the iconfont task change 'fontName' variable if you want your own iconfont name.
