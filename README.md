@@ -29,7 +29,7 @@
 
         gulp validation
 
-## How to work with some text here js
+## How to work with js
 
 All your main scripts should be placed in assets/js folder.All you additional scripts(jquery,plugins, etc) should be placed in assets/js/all folder.When you start gulp your additional scripts will concat into all.js
 
