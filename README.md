@@ -7,9 +7,9 @@
 
 2. Install packages for development globally and link it.If you have problem with installing browser-sync on Windows look [here](http://www.browsersync.io/docs/#windows-users)
 
-        npm install gulp rimraf gulp-jade gulp-sas gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat -g
+        npm install gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat -g
 
-        npm link gulp rimraf gulp-jade gulp-sas gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat
+        npm link gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat
 
 3. If you want to use my build-project-system and testing install packages for building and link it:
 
