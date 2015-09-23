@@ -1,27 +1,20 @@
-
-<!--mixin breadcrumbs(array)-->
-<!--	ul.breadcrumbs_list-->
-<!--		each crumb, index in array-->
-<!--			li.breadcrumbs_l_item-->
-<!--				- if (index == array.length - 1)-->
-<!--					span.breadcrumbs_link=crumb.text-->
-<!--				- else-->
-<!--					a.breadcrumbs_link(href=crumb.link, data-ind=index, data=array.length)=crumb.text--><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8"/>
     <title>Title of the page</title>
     <meta name="viewport" content="width=device-width"/>
-    <script src="js/all.js"></script>
-    <script src="js/main.js"></script>
     <link rel="stylesheet" media="all" href="styles/main_global.css"/>
   </head>
   <body>
     <header class="header"></header>
     <div class="wrapper">
       <div class="base">
+        <div class="some_selector"></div>
       </div>
     </div>
     <footer class="footer"></footer>
+    <script src="js/all.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
