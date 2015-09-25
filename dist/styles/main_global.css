@@ -207,7 +207,8 @@ table {
   border-spacing: 0; }
 
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  word-wrap: break-word; }
 
 @font-face {
   font-family: "iconfont";
