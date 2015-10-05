@@ -2,9 +2,9 @@
 %e_f_field_v1 {
 	display: block;
 	width: 100%;
-	padding:18px 26px;
+	padding:1rem;
 	border: none;
-	font-size: 17px;
+	font-size: 1.4rem;
 	font-family: $font_1;
 	color: $black;
 }
@@ -12,9 +12,9 @@
 %e_f_field_v2 {
 	display: block;
 	width: 100%;
-	padding:18px 26px;
+	padding:1rem;
 	border: none;
-	font-size: 17px;
+	font-size: 1.4rem;
 	font-family: $font_1;
 	color: $black;
 }
@@ -26,29 +26,12 @@
 }
 
 .form_block {
-
 }
-
 .form_sub_cell {
-
 }
-
 .form_hline {
-	position: relative;
-	display: block;
-	font-weight: 600;
-	line-height: 22rem;
-	padding: 0 0 $gl_indent;
 }
-
 .form_sub_cell_wrap {
-	position: relative;
-	&.hor_mod {
-		@extend %clearfix;
-		&.third_mod {
-			margin: 0 -1% 0 (-$gl_indent*1.4);
-		}
-	}
 }
 
 .form_cell {
@@ -70,11 +53,6 @@
 		display: none;
 	}
 	&.form_v1_mod {
-		//color: $def_text_color;
-		padding: 0 0 $gl_indent;
-		font-size: 14px;
-		font-weight: 600;
-		line-height: 25rem;
 	}
 
 }
@@ -100,80 +78,30 @@
 			@extend %e_f_field_v1_hover !optional;
 		}
 
-		&.comment_mod {
-			padding-left: 57rem;
-		}
-
-		&.file_mod {
-			z-index: 10;
-			position: relative;
-			opacity: 0;
-			cursor: pointer;
-		}
-
 		&.textarea_mod_1 {
-			height: 105rem;
-		}
-
-		&.textarea_mod_2 {
 			height: 10rem;
 		}
-
 	}
 	&.second_mod {
-		@extend %e_f_field_v2 !optional;
-
-		&.header_mod {
-			padding-left: 39rem;
-			//background: $grey_1;
-
-			.profile_page &{
-				//background: $color_white_g;
-			}
-		}
 	}
 }
 
 //-------------------------------------------------------f_c_field_file
 .f_c_field_file_field {
-	//@extend %e_f_field_v1_file !optional;
-
-	z-index: 1;
-	position: absolute;
-	top: 0;
-	left: 0;
 }
 
 .f_c_field_file_text {
-	padding: 0 $gl_indent*1.3;
 }
 
 .f_c_field_file_butt {
-
-	position: absolute;
-	padding: 0 24rem;
-
 }
 
 //-------------------------------------------------------f_c_field_file
 
 .form_butt_list{
-	&.connect_mod{
-		@extend %global_flex_block_row_wrap_flex-start;
-		padding: 0 0 $gl_indent*1.4;
-	}
 }
-
 .form_butt_list_item{
-	&.connect_mod {
-		padding: 0 0 0 $gl_indent*.6;
-
-		&:first-of-type{
-			padding: 0;
-		}
-	}
 }
-
 //-------------------------------------------------------forms
 //---------------------------------------------------------------------trigger_block
 .trigger_block {

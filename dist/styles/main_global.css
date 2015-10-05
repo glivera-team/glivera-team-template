@@ -1,31 +1,3 @@
-.form_butt_list.connect_mod {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-align-content: flex-start;
-      -ms-flex-line-pack: start;
-          align-content: flex-start;
-  -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-          align-items: flex-start; }
-
-.form_sub_cell_wrap.hor_mod:after {
-  position: static;
-  display: block;
-  height: 0;
-  clear: both;
-  content: "";
-  visibility: hidden; }
-
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -217,21 +189,21 @@ table {
 
 html {
   height: 100%;
-  font: normal 1px/1.33 "Arial";
+  font: normal 10px/1.33 "Arial";
   font-weight: 300; }
 
 body {
   position: relative;
   min-height: 100%;
-  font-size: 13rem;
+  font-size: 1.3rem;
   color: #7e8287;
-  -webkit-text-size-adjust: none; }
+  -webkit-text-size-adjust: none;
+  background: #fff; }
 
 .wrapper {
-  overflow: hidden;
   position: relative;
-  min-width: 960rem;
-  background: #fff; }
+  min-width: 96rem;
+  overflow: hidden; }
 
 .disable-hover,
 .disable-hover * {
@@ -248,10 +220,10 @@ a {
 
 .base {
   position: relative;
-  padding: 100rem 0 100rem; }
+  padding: 10rem 0 10rem; }
 
 .elements_list {
-  padding: 30px; }
+  padding: 3rem; }
 
 .header {
   position: fixed;
@@ -262,7 +234,7 @@ a {
   z-index: 200; }
 
 .footer {
-  height: 100rem;
+  height: 10rem;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -271,32 +243,11 @@ a {
 .f_c_field.default_mod:not(.select_rediz_coosen) {
   display: block;
   width: 100%;
-  padding: 18px 26px;
+  padding: 1rem;
   border: none;
-  font-size: 17px;
+  font-size: 1.4rem;
   font-family: "Arial";
   color: #000; }
-
-.f_c_field.second_mod:not(.select_rediz_coosen) {
-  display: block;
-  width: 100%;
-  padding: 18px 26px;
-  border: none;
-  font-size: 17px;
-  font-family: "Arial";
-  color: #000; }
-
-.form_hline {
-  position: relative;
-  display: block;
-  font-weight: 600;
-  line-height: 22rem;
-  padding: 0 0 10rem; }
-
-.form_sub_cell_wrap {
-  position: relative; }
-  .form_sub_cell_wrap.hor_mod.third_mod {
-    margin: 0 -1% 0 -14rem; }
 
 .form_cell.hidden_field {
   display: none; }
@@ -304,50 +255,8 @@ a {
 .form_c_hline.hline_hide_mod {
   display: none; }
 
-.form_c_hline.form_v1_mod {
-  padding: 0 0 10rem;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 25rem; }
-
 .form_c_f_w {
   position: relative; }
 
-.f_c_field:not(.select_rediz_coosen).default_mod.comment_mod {
-  padding-left: 57rem; }
-
-.f_c_field:not(.select_rediz_coosen).default_mod.file_mod {
-  z-index: 10;
-  position: relative;
-  opacity: 0;
-  cursor: pointer; }
-
 .f_c_field:not(.select_rediz_coosen).default_mod.textarea_mod_1 {
-  height: 105rem; }
-
-.f_c_field:not(.select_rediz_coosen).default_mod.textarea_mod_2 {
   height: 10rem; }
-
-.f_c_field:not(.select_rediz_coosen).second_mod.header_mod {
-  padding-left: 39rem; }
-
-.f_c_field_file_field {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0; }
-
-.f_c_field_file_text {
-  padding: 0 13rem; }
-
-.f_c_field_file_butt {
-  position: absolute;
-  padding: 0 24rem; }
-
-.form_butt_list.connect_mod {
-  padding: 0 0 14rem; }
-
-.form_butt_list_item.connect_mod {
-  padding: 0 0 0 6rem; }
-  .form_butt_list_item.connect_mod:first-of-type {
-    padding: 0; }

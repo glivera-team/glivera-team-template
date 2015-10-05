@@ -1,7 +1,7 @@
 //------------------------------------------------------------base styles
 html {
 	height: 100%;
-	font: normal 1px/1.33 $font_1;
+	font: normal 10px/1.33 $font_1;
 	font-weight: 300;
 }
 
@@ -11,12 +11,12 @@ body {
 	font-size:$base_font_size;
 	color: $def_text_color;
 	-webkit-text-size-adjust: none;
+	background: $body_bg;
 }
 .wrapper {
-	overflow:hidden;
 	position: relative;
 	min-width: $page_width;
-	background: $wrapper_bg;
+	overflow:hidden;
 }
 .disable-hover,
 .disable-hover * {
@@ -40,7 +40,7 @@ a {
 	padding: $header_height 0 $footer_height;
 }
 .elements_list {
-	padding:30px;
+	padding:3rem;
 }
 //------------------------------------------------------------base styles###
 

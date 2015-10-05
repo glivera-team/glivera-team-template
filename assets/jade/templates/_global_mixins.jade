@@ -105,10 +105,10 @@ mixin main_menu(menuArray)
 		each item in menuArray.items
 			if item.active
 				li.main_menu_item.active_mod(class="#{menuArray.mod}")
-					a(href="#" class="#{menuArray.mod}").main_menu_link #{item.title}
+					a.main_menu_link(href="#" class="#{menuArray.mod}") #{item.title}
 			else
 				li.main_menu_item(class="#{menuArray.mod}")
-					a(href="#" class="#{menuArray.mod}").main_menu_link #{item.title}
+					a.main_menu_link(href="#" class="#{menuArray.mod}") #{item.title}
 
 mixin social(items)
 	ul.social_list

@@ -53,7 +53,7 @@ $square_root_of_2: 1.41421356237;
 		}
 }
 
-@mixin arrow($direction,$color:#000,$width:10rem,$arrow_width:1rem) {
+@mixin arrow($direction,$color:#000,$width:1rem,$arrow_width:.1rem) {
 	width:$width;
 	height:$width;
 	transform:rotate(45deg);

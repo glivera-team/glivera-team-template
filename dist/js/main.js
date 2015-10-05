@@ -14,8 +14,6 @@
 		window_width = $(window).width();
 		window_height = $(window).height();
 
-		$('.some_selector').text('some text');
-
 		//pageWidget(['index']);
 		//getAllClasses('html','.elements_list');
 	});
