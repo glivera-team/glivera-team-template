@@ -93,7 +93,9 @@ q {
 :focus {
 	outline: 0;
 }
-
+input[type="text"], textarea {
+	-webkit-appearance: none;
+}
 input,
 textarea{
 	border-radius: 0 !important;
