@@ -1,16 +1,7 @@
 //-------------------------------------------------------global_vars
 
-$pi: 3.14159265359;
-$square_root_of_2: 1.41421356237;
-
 //-------------------------------------------------------global_vars
 //-------------------------------------------------------mixins
-@mixin pseudo($width,$height,$content:'') {
-	position: absolute;
-	content:'content';
-	width:$width*1rem;
-	height:$height*1rem;
-}
 
 @mixin font_face($file_name,$font_name:$file_name,$path:$font_path,$weight:normal,$style:normal) {
 	@font-face {
