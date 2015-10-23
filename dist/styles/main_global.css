@@ -142,6 +142,9 @@ q:before, q:after {
 :focus {
   outline: 0; }
 
+input[type="text"], textarea {
+  -webkit-appearance: none; }
+
 input,
 textarea {
   border-radius: 0 !important;
@@ -231,7 +234,7 @@ a {
   height: 100%;
   top: 0;
   right: 100%;
-  z-index: 200; }
+  z-index: 100; }
 
 .footer {
   height: 10rem;
@@ -248,6 +251,12 @@ a {
   font-size: 1.4rem;
   font-family: "Arial";
   color: #000; }
+  .f_c_field.default_mod:not(.select_rediz_coosen)::-webkit-input-placeholder {
+    color: #000; }
+  .f_c_field.default_mod:not(.select_rediz_coosen)::-moz-placeholder {
+    color: #000; }
+  .f_c_field.default_mod:-ms-input-placeholder:not(.select_rediz_coosen) {
+    color: #000; }
 
 .form_cell.hidden_field {
   display: none; }

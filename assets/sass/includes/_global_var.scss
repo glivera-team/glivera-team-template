@@ -1,7 +1,15 @@
 //-------------------------------------------------------global_vars
 
 //-------------------------------------------------------global_vars
+//---------------------------------------------functions
+@function z-index($key) {
+	@return map-get($z-index, $key);
+}
+//---------------------------------------------functions###
 //-------------------------------------------------------mixins
+@mixin z-index($key) {
+	z-index: z-index($key);
+}
 
 @mixin font_face($file_name,$font_name:$file_name,$path:$font_path,$weight:normal,$style:normal) {
 	@font-face {
