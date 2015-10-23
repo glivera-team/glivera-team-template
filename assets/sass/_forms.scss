@@ -7,6 +7,17 @@
 	font-size: 1.4rem;
 	font-family: $font_1;
 	color: $black;
+
+	&::-webkit-input-placeholder {
+		color: $placeholder_color;
+	}
+
+	&::-moz-placeholder {
+		color: $placeholder_color;
+	}
+	&:-ms-input-placeholder {
+		color: $placeholder_color;
+	}
 }
 
 %e_f_field_v2 {
@@ -97,35 +108,4 @@
 }
 
 //-------------------------------------------------------f_c_field_file
-
-.form_butt_list{
-}
-.form_butt_list_item{
-}
 //-------------------------------------------------------forms
-//---------------------------------------------------------------------trigger_block
-.trigger_block {
-
-	&:hover,
-	&:focus {
-		.trigger_text {
-		}
-	}
-
-	&.trigger_b_grey_mod {
-
-		.trigger_text {
-		}
-
-		&:hover,
-		&:focus {
-			.trigger_text {
-			}
-		}
-	}
-}
-
-.trigger_text {
-}
-
-//---------------------------------------------------------------------trigger_block
