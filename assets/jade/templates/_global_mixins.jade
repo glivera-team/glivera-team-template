@@ -44,7 +44,7 @@ mixin lb_rb_check_radio(type,title,name, block_class_mod, class_mod, checked_mod
 			input.lbl_inp_rb_ch(name='#{name}', type='#{type}', class='#{input_class_mod}')
 		span.lbl_rb_ch_text(class='#{class_mod}') #{title}
 		
-mixin form_field(title, field_id, array, placeholder_text)
+mixin form_field(title, field_id, array, placeholder_text,icon_class)
 	if field_id == false
 		- field_id = title.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
 	else
@@ -57,8 +57,10 @@ mixin form_field(title, field_id, array, placeholder_text)
 		dt.form_c_hline(class='#{array.class_mod}')
 			label(for='#{field_id}') #{title}
 		dd.form_c_f_w(class='#{array.class_mod}')
-			if array.icon_class
-				a(href="#" class="#{array.icon_class}")
+			if icon_class
+				span.input_icon(class="#{icon_class}")
+			if array.link_class
+				a(href="#" class="#{array.link_class}") #{array.link_text}
 			if array.field_type === 'file'
 				input.f_c_field(type='file' id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
 				span.f_c_field_file_field
@@ -110,9 +112,9 @@ mixin main_menu(menuArray)
 				li.main_menu_item(class="#{menuArray.mod}")
 					a.main_menu_link(href="#" class="#{menuArray.mod}") #{item.title}
 
-mixin social(items)
-	ul.social_list
+mixin social(items,mod)
+	ul.social_list(class="#{mod}")
 		each item in items
-			li.social_item
-				a.social_link(href="#" class="#{item}_mod") #{item}
+			li.social_item(class="#{mod}")
+				a.social_link(href="#" class="#{item}_mod #{mod}") #{item}
 

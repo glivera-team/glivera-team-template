@@ -35,20 +35,20 @@
 
 @mixin triangle($side,$color,$size) {
 		@if $side == left {
-			border:$size+px solid transparent;
-			border-right:$size+px solid $color;
+			border:$size solid transparent;
+			border-right:$size solid $color;
 		}
 		@if $side == right {
-			border:$size+px solid transparent;
-			border-left:$size+px solid $color;
+			border:$size solid transparent;
+			border-left:$size solid $color;
 		}
 		@if $side == top {
-			border:$size+px solid transparent;
-			border-bottom:$size+px solid $color;
+			border:$size solid transparent;
+			border-bottom:$size solid $color;
 		}
 		@if $side == bottom {
-			border:$size+px solid transparent;
-			border-top:$size+px solid $color;
+			border:$size solid transparent;
+			border-top:$size solid $color;
 		}
 }
 
