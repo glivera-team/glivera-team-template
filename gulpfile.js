@@ -15,8 +15,7 @@ var purify = require('gulp-purifycss'),
 	uglify = require('gulp-uglify'),
 	imagemin = require('gulp-imagemin'),
 	pngquant = require('imagemin-pngquant'),
-	csso = require('gulp-csso'),
-	combineMq = require('gulp-combine-mq');
+	csso = require('gulp-csso');
 
 //plugins for testing
 var html5Lint = require('gulp-html5-lint');
@@ -139,9 +138,6 @@ gulp.task('jsBuild', function () {
 gulp.task('cssBuild', function () {
 	return gulp.src(outputDir + 'styles/**/*')
 		.pipe(purify([outputDir + 'js/**/*', outputDir + '**/*.html']))
-		.pipe(combineMq({
-			beautify: false
-		}))
 		.pipe(csso())
 		.pipe(gulp.dest(buildDir + 'styles/'))
 });

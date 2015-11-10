@@ -13,9 +13,9 @@
 
 3. If you want to use my build-project-system and testing install packages for building and link it:
 
-        npm install gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-combine-mq -g
+        npm install gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso -g
 
-        npm link gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-combine-mq
+        npm link gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso
 
 4. Start coding!
 
