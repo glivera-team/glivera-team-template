@@ -1,54 +1,54 @@
-# Welcome to supervisor template repository.
+# Добро пожаловать в репозиторий для тренировки с svg
 
-## Get started
-1. Install [node.js](https://nodejs.org/),[python(2 version)](https://www.python.org/downloads/release/python-2710/), [Microsoft Visual Studio C++ 2013](https://www.microsoft.com/en-gb/download/details.aspx?id=44914) and gulp globally
+## Старт
+1. Устанавливаем [node.js](https://nodejs.org/),[python(2 version)](https://www.python.org/downloads/release/python-2710/),[Microsoft Visual Studio C++ 2013](https://www.microsoft.com/en-gb/download/details.aspx?id=44914) и gulp глобально
 
         npm install gulp -g
 
-2. Install packages for development globally and link it.If you have problem with installing browser-sync on Windows look [here](http://www.browsersync.io/docs/#windows-users)
+2. Устанавливаем плагины для разработки и линкуем их. Если есть проблемы с установкой browser-sync на Windows посмотрите [сюда](http://www.browsersync.io/docs/#windows-users)
 
         npm install gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat -g
 
         npm link gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat
 
-3. If you want to use my build-project-system and testing install packages for building and link it:
+3. Устанавливаем плагины для сборки и линкуем их.
 
         npm install gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso -g
 
         npm link gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso
 
-4. Start coding!
+4. Начинаем кодить!
 
         gulp
 
-5. Edit files in assets folder and watch result in dist folder.If you want to build folder to customer(with minified images and styles)
+5. В папке assets редактируем файлы, в папке dist - получаем готовые.Чтобы запустить конечную минифицированную сборку проекта запускаем:
 
         gulp build
 
-6. If you want to do validation of your html-files run
+6. Команда для валидации html
 
         gulp validation
 
-## How to work with js
+## Как работать с js
 
-All your main scripts should be placed in assets/js folder.All you additional scripts(jquery,plugins, etc) should be placed in assets/js/all folder.When you start gulp your additional scripts will concat into all.js
+Все ваши основные скрипты создавайте в папке assets/js. Все вспомогательные скрипты (jquery,plugins, и т.д) помещайте в папку assets/js/all. В итоге gulp соединяет все вспомогательные скрипты в all.js
 
 ## PHPStorm settings
 
-If you use PHPStorm or WEBStorm editor - copy encodings.xml, codeStyleSettings.xml and watcherTasks.xml to your idea folder.
+Если вы используете PHPStorm или WEBStorm - копируем encodings.xml, codeStyleSettings.xml и watcherTasks.xml в папку idea.
 
-## How to do iconfont
+## Как сделать иконочный шрифт
 
-1. Install gulp-packages for it and link it.
+1. Установите зависимости и залинкуйте
 
         npm install gulp-iconfont@4.0.0 gulp-iconfont-css -g
         npm link gulp-iconfont gulp-iconfont-css
 
-2. Copy your svg images to [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons) folder
-3. In gulpfile near the iconfont task change 'fontName' variable if you want your own iconfont name.
-4. Uncomment gulp task for iconfont and run it.
+2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
+3. В gulpfile.js измените переменную 'fontName' на имя вашего шрифта (по умолчанию 'iconfont').
+4. Раскомменитируете таск iconfont и запустите его
 
         gulp iconfont
 
-4. Grab your font in [fonts/icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/fonts/icons) folder and font extends(%placeholders) in [icons.scss](https://github.com/gatilin222/supervisor_template/blob/master/assets/sass/_icons.scss)
-5. Edit it on [iconmoon](https://icomoon.io)
+4. Получайте шрифт в папке [fonts/icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/fonts/icons) и font extends(%placeholders) в [icons.scss](https://github.com/gatilin222/supervisor_template/blob/master/assets/sass/_icons.scss)
+5. Редактируйте шрифт в [iconmoon](https://icomoon.io)
