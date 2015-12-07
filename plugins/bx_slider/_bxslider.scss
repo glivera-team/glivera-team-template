@@ -10,7 +10,12 @@
  * http://bxcreative.com
  */
 
-
+//---------------------------------------------vars
+$pager_color:#ccc;
+$pager_active_color:black;
+$pager_size:10px;
+$pager_offset:5px;
+//---------------------------------------------vars###
 /** RESET AND LAYOUT
 ===================================*/
 
@@ -21,17 +26,11 @@
 	*zoom: 1;
 }
 
-
 /** THEME
 ===================================*/
 
 .bx-wrapper .bx-viewport {
-	/*fix other elements on the page moving (on Chrome)*/
-	-webkit-transform: translatez(0);
-	-moz-transform: translatez(0);
-    	-ms-transform: translatez(0);
-    	-o-transform: translatez(0);
-    	transform: translatez(0);
+	transform: translatez(0);
 }
 
 .bx-wrapper .bx-pager,
@@ -70,24 +69,21 @@
 	display: inline-block;
 	*zoom: 1;
 	*display: inline;
+	padding:0 $pager_offset;
 }
 
 .bx-wrapper .bx-pager.bx-default-pager a {
-	background: #666;
+	background: $pager_color;
 	text-indent: -9999px;
 	display: block;
-	width: 10px;
-	height: 10px;
-	margin: 0 5px;
-	outline: 0;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
+	width: $pager_size;
+	height: $pager_size;
+	border-radius: 50%;
 }
 
 .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .bx-wrapper .bx-pager.bx-default-pager a.active {
-	background: #000;
+	background: $pager_active_color;
 }
 
 /* DIRECTION CONTROLS (NEXT / PREV) */
@@ -179,7 +175,8 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	background: #666\9;
+	background: #666 \9
+;
 	background: rgba(80, 80, 80, 0.75);
 	width: 100%;
 }
