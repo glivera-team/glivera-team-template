@@ -144,25 +144,80 @@ gulp.task('cssBuild', function () {
 
 
 //--------------------------------------------If you need iconfont
-var iconfont = require('gulp-iconfont'),
-	iconfontCss = require('gulp-iconfont-css'),
-	fontName = 'iconfont';
-gulp.task('iconfont', function () {
-	gulp.src([assetsDir + 'i/icons/*.svg'])
-		.pipe(iconfontCss({
-			path: 'assets/sass/_icons_template.scss',
-			fontName: fontName,
-			targetPath: '../../sass/_icons.scss',
-			fontPath: '../fonts/icons/',
-			svg: true
-		}))
-		.pipe(iconfont({
-			fontName: fontName,
-			svg: true,
-			formats: ['svg']
-		}))
-		.pipe(gulp.dest('assets/fonts/icons'));
-});
+//var iconfont = require('gulp-iconfont'),
+//	iconfontCss = require('gulp-iconfont-css'),
+//	fontName = 'iconfont';
+//gulp.task('iconfont', function () {
+//	gulp.src([assetsDir + 'i/icons/*.svg'])
+//		.pipe(iconfontCss({
+//			path: 'assets/sass/_icons_template.scss',
+//			fontName: fontName,
+//			targetPath: '../../sass/_icons.scss',
+//			fontPath: '../fonts/icons/',
+//			svg: true
+//		}))
+//		.pipe(iconfont({
+//			fontName: fontName,
+//			svg: true,
+//			formats: ['svg']
+//		}))
+//		.pipe(gulp.dest('assets/fonts/icons'));
+//});
+
+//--------------------------------------------If you need svg sprite
+//var svgSprite = require('gulp-svg-sprites'),
+//	svgmin = require('gulp-svgmin'),
+//	cheerio = require('gulp-cheerio'),
+//	replace = require('gulp-replace');
+//
+//gulp.task('svgSpriteBuild', function () {
+//	return gulp.src(assetsDir + 'i/icons/*.svg')
+//		// minify svg
+//		.pipe(svgmin({
+//			js2svg: {
+//				pretty: true
+//			}
+//		}))
+//		// remove all fill and style declarations in out shapes
+//		.pipe(cheerio({
+//			run: function ($) {
+//				$('[fill]').removeAttr('fill');
+//				$('[style]').removeAttr('style');
+//			},
+//			parserOptions: { xmlMode: true }
+//		}))
+//		// cheerio plugin create unnecessary string '&gt;', so replace it.
+//		.pipe(replace('&gt;', '>'))
+//		// build svg sprite
+//		.pipe(svgSprite({
+//				mode: "symbols",
+//				preview: false,
+//				selector: "icon-%f",
+//				svg: {
+//					symbols: 'symbol_sprite.html'
+//				}
+//			}
+//		))
+//		.pipe(gulp.dest(assetsDir + 'i/'));
+//});
+//// create sass file for our sprite
+//gulp.task('svgSpriteSass', function () {
+//	return gulp.src(assetsDir + 'i/icons/*.svg')
+//		.pipe(svgSprite({
+//				preview: false,
+//				selector: "icon-%f",
+//				svg: {
+//					sprite: 'svg_sprite.html'
+//				},
+//				cssFile: '../sass/_svg_sprite.scss',
+//				templates: {
+//					css: require("fs").readFileSync(assetsDir + 'sass/_sprite-template.scss', "utf-8")
+//				}
+//			}
+//		))
+//		.pipe(gulp.dest(assetsDir + 'i/'));
+//});
+//gulp.task('svgSprite', ['svgSpriteBuild', 'svgSpriteSass']);
 
 //testing your build files
 gulp.task('validation', function () {

@@ -52,3 +52,15 @@
 
 4. Получайте шрифт в папке [fonts/icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/fonts/icons) и font extends(%placeholders) в [icons.scss](https://github.com/gatilin222/supervisor_template/blob/master/assets/sass/_icons.scss)
 5. Редактируйте шрифт в [iconmoon](https://icomoon.io)
+
+## Как сделать svg-спрайт
+1. Установите зависимости и залинкуйте
+
+        npm install gulp-svg-sprites gulp-svgmin gulp-cheerio gulp-replace -g
+        npm link gulp-svg-sprites gulp-svgmin gulp-cheerio gulp-replace
+
+2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
+3. Раскомментируйте таски svgSpriteBuild, svgSpriteSass, svgSprite
+4. Запустите таск svgSprite
+5. В папке assets/i теперь лежит symbol_sprite.html который подключается через скрипт sprite.js(лежит в assets/js/all) и кешируется в localStorage.Также в папке sass лежит файл стилизации _svg_sprite.scss.Благодаря ему мы можем изменять размер иконки за счет font-size.
+6. Для подключения иконки из спрайта используйте jade mixin icon
