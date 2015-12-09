@@ -1,0 +1,14 @@
+include ../templates/_global_vars
+include ../templates/_global_mixins
+include ../templates/_project_mixins
+include ../templates/_project_vars
+
+//-Here you can see some examples of jade tricks of gliver's
+//- Form field mixin
++form_field_new({
+	id:'number',
+	title:'some text is here',
+	array:default_field,
+	placeholder:'Placeholder text'
+})
+//- Form field mixin###

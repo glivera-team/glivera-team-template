@@ -43,7 +43,33 @@ mixin lb_rb_check_radio(type,title,name, block_class_mod, class_mod, checked_mod
 		else
 			input.lbl_inp_rb_ch(name='#{name}', type='#{type}', class='#{input_class_mod}')
 		span.lbl_rb_ch_text(class='#{class_mod}') #{title}
-		
+
+mixin form_field_new(config)
+	if config.id == false
+		- config.id = config.title.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
+	else
+		- config.id = config.id.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
+	- config.placeholder = config.placeholder || config.title
+	- config.array.field_class = config.array.field_class || ''
+	- config.array.field_type = config.array.field_type || 'text'
+	dl.form_cell(class='#{config.array.block_class_mod}')
+		dt.form_c_hline(class='#{config.array.class_mod}')
+			label(for='#{config.id}') #{config.title}
+		dd.form_c_f_w(class='#{config.array.class_mod}')
+			if config.icon_class
+				span.input_icon(class="#{config.icon_class}")
+			if config.link_class
+				a(href="#" class="#{config.link_class}") #{config.link_text}
+			if config.array.field_type === 'file'
+				input.f_c_field(type='file' id='#{config.id}', class='#{config.array.field_class}' placeholder='#{config.placeholder}')
+				span.f_c_field_file_field
+					span.f_c_field_file_text #{config.title}
+					span.f_c_field_file_butt Choose File
+			else if config.array.field_type === 'textarea'
+				textarea.f_c_field(id='#{config.id}' type='#{config.array.field_type}' class='#{config.array.field_class}' placeholder='#{config.placeholder}')
+			else
+				input.f_c_field(type='#{config.array.field_type}' id='#{config.id}', class='#{config.array.field_class}' placeholder='#{config.placeholder}')
+
 mixin form_field(title, field_id, array, placeholder_text,icon_class)
 	if field_id == false
 		- field_id = title.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')

@@ -148,7 +148,7 @@ body {
   font-size: 1.3rem;
   color: #7e8287;
   -webkit-text-size-adjust: none;
-  background: #fff; }
+  background: lightblue; }
 
 .wrapper {
   position: relative;
@@ -169,7 +169,7 @@ a {
 
 .base {
   position: relative;
-  padding: 10rem 0 10rem; }
+  padding: 10rem 20px 10rem; }
 
 .elements_list {
   padding: 3rem; }
@@ -206,6 +206,9 @@ a {
 
 .form_cell.hidden_field {
   display: none; }
+
+.form_cell.form_cell_v1_mod {
+  margin: 10px 0 0; }
 
 .form_c_hline.hline_hide_mod {
   display: none; }
