@@ -56,21 +56,30 @@
 	width:$width;
 	height:$width;
 	transform:rotate(45deg);
+
 	@if $direction == right {
 		border-top:$arrow_width solid $color;
 		border-right:$arrow_width solid $color;
+		border-bottom:0;
+		border-left: 0;
 	}
 	@if $direction == bottom {
 		border-right:$arrow_width solid $color;
 		border-bottom:$arrow_width solid $color;
+		border-top: 0;
+		border-left: 0;
 	}
 	@if $direction == left {
 		border-bottom:$arrow_width solid $color;
 		border-left:$arrow_width solid $color;
+		border-top: 0;
+		border-right: 0;
 	}
 	@if $direction == top {
 		border-left:$arrow_width solid $color;
 		border-top:$arrow_width solid $color;
+		border-bottom: 0;
+		border-right: 0;
 	}
 }
 
