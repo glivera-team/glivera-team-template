@@ -34,3 +34,19 @@ include ../templates/_project_vars
 	block_class_mod: 'check_v1_mod'
 })
 //- New checkbox mixin with object###
+
+//- Old select mixin
++form_field_select('В какой отдел вы хотите отправить письмо?',{name:['','Отдел 1','Отдел 2','Отдел 3']},'Выберите отдел','#cont_department','form_cell_v1_mod','form_v1_mod','js-chosen_target')
+//- Old select mixin###
+
+// New select mixin
++form_field_select_new({
+	title:'Select title',
+	placeholder:'Placeholder text for select',
+	block_class_mod:'form_cell_v1_mod',
+	class_mod:'form_v1_mod',
+	select_class:'js-chosen_target',
+	id:'some_id',
+	options:['','Option 1','Option 2','Option 3']
+})
+// New select mixin###

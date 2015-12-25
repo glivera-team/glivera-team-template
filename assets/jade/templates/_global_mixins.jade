@@ -57,9 +57,12 @@ mixin form_field_new(config)
 		- config.id = config.title.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
 	else
 		- config.id = config.id.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
-	- config.placeholder = config.placeholder || config.title
+	if config.placeholder === undefined
+		- config.placeholder = config.title
+	- config.value = config.value || ''
 	- config.array.field_class = config.array.field_class || ''
 	- config.array.field_type = config.array.field_type || 'text'
+	- config.add_class = config.add_class || ''
 	dl.form_cell(class='#{config.array.block_class_mod}')
 		dt.form_c_hline(class='#{config.array.class_mod}')
 			label(for='#{config.id}') #{config.title}
@@ -76,7 +79,8 @@ mixin form_field_new(config)
 			else if config.array.field_type === 'textarea'
 				textarea.f_c_field(id='#{config.id}' type='#{config.array.field_type}' class='#{config.array.field_class}' placeholder='#{config.placeholder}')
 			else
-				input.f_c_field(type='#{config.array.field_type}' id='#{config.id}', class='#{config.array.field_class}' placeholder='#{config.placeholder}')
+				input.f_c_field(value=config.value type='#{config.array.field_type}' id='#{config.id}', class='#{config.array.field_class} #{config.add_class}' placeholder='#{config.placeholder}')
+			block
 
 mixin form_field(title, field_id, array, placeholder_text,icon_class)
 	if field_id == false
@@ -104,6 +108,7 @@ mixin form_field(title, field_id, array, placeholder_text,icon_class)
 				textarea.f_c_field(id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
 			else
 				input.f_c_field(type='#{array.field_type}' id='#{field_id}', class='#{array.field_class} #{array.clear_butt != undefined ? "clear_butt_mod" : ""}', placeholder='#{placeholder_text != undefined ? placeholder_text : title}')
+
 mixin form_field_select(title, select_text, placeholder, field_id, block_class_mod, class_mod, select_class)
 	dl.form_cell(class='#{block_class_mod}')
 		dt.form_c_hline(class='#{class_mod}')
@@ -117,6 +122,17 @@ mixin form_field_select(title, select_text, placeholder, field_id, block_class_m
 				select.f_c_field(id='#{field_id}' class='#{select_class}')
 					each val in select_text.name
 						option(value='#{val}')= val
+
+mixin form_field_select_new(config)
+	- config.placeholder = config.placeholder || ''
+	dl.form_cell(class=config.block_class_mod)
+		dt.form_c_hline(class=config.class_mod)
+			label(for=config.id) #{config.title}
+		dd.form_c_f_w(class=config.class_mod)
+			select.f_c_field(id=config.id class=config.select_class data-placeholder=config.placeholder)
+				each option in config.options
+					option(value=option)= option
+
 mixin loop_while(counter)
 	- i=0;
 	while i < counter
