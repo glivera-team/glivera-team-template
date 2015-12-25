@@ -3,13 +3,34 @@ include ../templates/_global_mixins
 include ../templates/_project_mixins
 include ../templates/_project_vars
 
-//-Here you can see some examples of jade tricks of gliver's
+//-Here you can see some examples of jade tricks of glivera-team
 
 //- Form field mixin
 +form_field_new({
-	id:'number',
-	title:'some text is here',
-	array:default_field,
-	placeholder:'Placeholder text'
+	id: 'number',
+	title: 'some text is here',
+	array: default_field,
+	placeholder: 'Placeholder text'
 })
 //- Form field mixin###
+
+//- Old checkbox mixin
++lb_rb_check_radio('checkbox','Text of checkbox','name','check_v1_mod','check_v1_mod',true,'check_v1_mod')
+//- Old checkbox mixin###
+
+//- New checkbox mixin with object
++lb_rb_check_radio_new({
+	type: 'checkbox',
+	title: 'Text of checkbox',
+	name: 'name',
+	block_class_mod: 'check_v1_mod',
+	checked:true
+})
+
++lb_rb_check_radio_new({
+	type: 'radio',
+	title: 'Text of checkbox',
+	name: 'name',
+	block_class_mod: 'check_v1_mod'
+})
+//- New checkbox mixin with object###

@@ -42,6 +42,16 @@ mixin lb_rb_check_radio(type,title,name, block_class_mod, class_mod, checked_mod
 			input.lbl_inp_rb_ch(name='#{name}', type='#{type}', class='#{input_class_mod}')
 		span.lbl_rb_ch_text(class='#{class_mod}') #{title}
 
+mixin lb_rb_check_radio_new(config)
+	- config.class_mod = config.class_mod || config.block_class_mod
+	- config.input_class_mod = config.input_class_mod || config.block_class_mod
+	label.lbl_rb_ch_block(class=config.block_class_mod)
+		if config.checked
+			input.lbl_inp_rb_ch(name=config.name type=config.type class=config.input_class_mod checked='checked')
+		else
+			input.lbl_inp_rb_ch(name=config.name type=config.type class=config.input_class_mod)
+		span.lbl_rb_ch_text(class=config.class_mod) #{config.title}
+
 mixin form_field_new(config)
 	if config.id == false
 		- config.id = config.title.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')

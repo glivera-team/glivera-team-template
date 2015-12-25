@@ -7,3 +7,12 @@ block vars
 	- var array = {body_class:'', layuot_mod:'', sub_keywords:'',title_inner:'Title of the page'}
 block content_block
 	.some_selector some another text is here
+		+lb_rb_check_radio('checkbox','Text of checkbox','name','check_v1_mod','check_v1_mod',true,'check_v1_mod')
+		+lb_rb_check_radio_new({
+			type: 'radio',
+			title: 'Text of checkbox',
+			name: 'name',
+			block_class_mod: 'check_v1_mod',
+			checked: true
+		})
+
