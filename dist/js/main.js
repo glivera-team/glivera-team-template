@@ -11,11 +11,10 @@ $(document).ready(function ($) {
 	$body = $('body');
 	$user_menu_butt = $('#user_menu_butt');
 	window_width = $(window).width();
-	window_height = $(window).height();
-
-
+	
 	//pageWidget(['index']);
 	//getAllClasses('html','.elements_list');
+	window_height = $(window).height();
 });
 
 $(window).on('resize', function () {
