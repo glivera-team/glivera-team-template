@@ -146,12 +146,12 @@ mixin form_element(config)
 		- config.id = config.title.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
 	else
 		- config.id = config.id.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
-	if config.type === 'text' || config.type === 'textarea' || config.type === 'select' || config.type === 'file'
+	if config.type === 'text' || config.type === 'password' || config.type === 'email' || config.type === 'textarea' || config.type === 'select' || config.type === 'file'
 		dl.form_cell(class=config.class_array.block_class_mod)
 			dt.form_c_hline(class=config.class_array.class_mod)
 				label(for=config.id) #{config.title}
 			dd.form_c_f_w(class=config.class_array.class_mod)
-				if config.type === 'text'
+				if config.type === 'text' || config.type === 'password' || config.type === 'email'
 					if config.value
 						input.f_c_field(value=config.value type=config.type id=config.id class='#{config.class_array.elem_class} #{config.add_class}' placeholder=config.placeholder)
 						block after_input
