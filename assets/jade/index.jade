@@ -7,18 +7,19 @@ block vars
 	- var array = {body_class:'', layuot_mod:'', sub_keywords:'',title_inner:'Title of the page'}
 block content_block
 	+form_element({
-		type:'text',
+		type:'textarea',
 		class_array:default_field,
 		title:'some title',
-		id:'id'
+		id:'#some'
 	})
+
 	+form_element({
 		type: 'select',
 		class_array: default_field,
 		title: 'some title',
 		id: 'id',
 		add_class: 'someclass',
-		options: ['', 'Option 1', 'Option 2', 'Option 3']
+		options: ['Option 1', 'Option 2', 'Option 3']
 	})
 	+form_element({
 		type: 'radio',
