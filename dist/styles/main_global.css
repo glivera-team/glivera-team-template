@@ -66,9 +66,6 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block; }
 
-.addthis_toolbox {
-  display: none !important; }
-
 body {
   line-height: 1.2; }
 
@@ -94,7 +91,7 @@ input[type="text"], textarea {
 
 input,
 textarea {
-  border-radius: 0 !important;
+  border-radius: 0;
   box-sizing: border-box; }
   input::-webkit-input-placeholder,
   textarea::-webkit-input-placeholder {

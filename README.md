@@ -1,4 +1,4 @@
-# Добро пожаловать в supervisor template
+# Добро пожаловать в glivera-team-template
 
 ## Старт
 1. Устанавливаем [node.js](https://nodejs.org/),[python(2 version)](https://www.python.org/downloads/release/python-2710/),[Microsoft Visual Studio C++ 2013](https://www.microsoft.com/en-gb/download/details.aspx?id=44914) и gulp глобально
