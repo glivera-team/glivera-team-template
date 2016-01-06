@@ -1,0 +1,160 @@
+@function z-index($key) {
+	@return map-get($z-index, $key);
+}
+
+@mixin z-index($key) {
+	z-index: z-index($key);
+}
+
+@mixin font_face($file_name,$font_name:$file_name,$path:$font_path,$weight:normal,$style:normal) {
+	@font-face {
+		font-family:quote($font_name);
+		src: url($path + $file-name + '.eot');
+		src: url($path + $file-name + '.eot?#iefix') format('embedded-opentype'),
+		url($path + $file-name + '.woff') format('woff'),
+		url($path + $file-name + '.ttf') format('truetype'),
+		url($path + $file-name + '.svg##{$font_name}') format('svg');
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+@mixin bp($width,$direction:max) {
+	@if $direction == min {
+		@media screen and (min-width: $width) { @content; }
+	}
+	@else {
+		@media screen and (max-width: $width) { @content; }
+	}
+}
+
+@mixin triangle($side,$color,$size) {
+	@if $side == left {
+		border:$size solid transparent;
+		border-right:$size solid $color;
+	}
+	@if $side == right {
+		border:$size solid transparent;
+		border-left:$size solid $color;
+	}
+	@if $side == top {
+		border:$size solid transparent;
+		border-bottom:$size solid $color;
+	}
+	@if $side == bottom {
+		border:$size solid transparent;
+		border-top:$size solid $color;
+	}
+}
+
+@mixin arrow($direction,$color:#000,$width:1rem,$arrow_width:.1rem) {
+	width:$width;
+	height:$width;
+	transform:rotate(45deg);
+
+	@if $direction == right {
+		border-top:$arrow_width solid $color;
+		border-right:$arrow_width solid $color;
+		border-bottom:0;
+		border-left: 0;
+	}
+	@if $direction == bottom {
+		border-right:$arrow_width solid $color;
+		border-bottom:$arrow_width solid $color;
+		border-top: 0;
+		border-left: 0;
+	}
+	@if $direction == left {
+		border-bottom:$arrow_width solid $color;
+		border-left:$arrow_width solid $color;
+		border-top: 0;
+		border-right: 0;
+	}
+	@if $direction == top {
+		border-left:$arrow_width solid $color;
+		border-top:$arrow_width solid $color;
+		border-bottom: 0;
+		border-right: 0;
+	}
+}
+
+
+@mixin dashed-border($dashlength, $spacelength, $borderwidth, $color) {
+	$per: percentage($dashlength / ($dashlength + $spacelength));
+	background-image: linear-gradient(to right, $color 0%, $color $per, rgba(0, 0, 0, 0) $per),
+	linear-gradient(to bottom, $color 0%, $color $per, rgba(0, 0, 0, 0) $per),
+	linear-gradient(to right, $color 0%, $color $per, rgba(0, 0, 0, 0) $per),
+	linear-gradient(to bottom, $color 0%, $color $per, rgba(0, 0, 0, 0) $per);
+	background-position: (-$spacelength) 0, 0 (-$spacelength), (-$spacelength) 100%, 100% (-$spacelength);
+	background-size: ($dashlength + $spacelength) $borderwidth, $borderwidth ($dashlength + $spacelength), ($dashlength + $spacelength) $borderwidth, $borderwidth ($dashlength + $spacelength);
+	background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+}
+
+
+@mixin style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
+	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
+		@content;
+	}
+}
+
+@mixin sub_style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
+	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
+		@content;
+	}
+}
+
+@mixin ie_9_check {
+	@if $ie9 == true {
+		@content;
+	}
+}
+
+@mixin print_style() {
+	@media print {
+		@content;
+	}
+}
+
+@mixin appearance($value: button) {
+	-moz-appearance: $value;
+	-webkit-appearance: $value;
+	appearance: $value;
+}
+
+@mixin flex_block($flex-direction : row, $flex-wrap: wrap, $content : space-between, $align-items : flex-start,$align-content : flex-start) {
+
+	display: flex;
+	flex-direction: $flex-direction;
+	flex-wrap: $flex-wrap;
+	justify-content: $content;
+	align-content: $align-content;
+	align-items: $align-items;
+}
+
+@mixin align-self($val: center){
+	-webkit-align-self:$val;
+	align-self:$val;
+}
+
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+
+@mixin user-select-none {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@mixin inline_block_wrapper {
+	font-size: 0;
+	line-height: 0;
+	letter-spacing: -1px;
+}
