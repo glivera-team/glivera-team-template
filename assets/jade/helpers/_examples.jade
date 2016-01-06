@@ -50,3 +50,37 @@ include ../templates/_project_vars
 	options:['','Option 1','Option 2','Option 3']
 })
 // New select mixin###
+// New form mixin
++form_element({
+	type:'textarea',
+	class_array:default_field,
+	title:'some title',
+	id:'#some'
+})
++form_element({
+	type: 'select',
+	class_array: default_field,
+	title: 'some title',
+	id: 'id',
+	add_class: 'someclass',
+	options: ['Option 1', 'Option 2', 'Option 3']
+})
++form_element({
+	type: 'radio',
+	class_array: default_field,
+	title: 'some title',
+	id: 'id',
+	add_class: 'someclass',
+	name:'radiobtn',
+	checked:true
+})
++form_element({
+	type: 'checkbox',
+	class_array: default_field,
+	title: 'some title',
+	id: 'id',
+	add_class: 'someclass',
+	name: 'radiobtn',
+	checked: true
+})
+// New form mixin###
