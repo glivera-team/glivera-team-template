@@ -93,13 +93,12 @@
 	}
 
 	%global_flex_block_column_nowrap_center_center {
-			@include flex_block(column, nowrap, center, center);
-		}
+		@include flex_block(column, nowrap, center, center);
+	}
 
 	%global_flex_block_column_nowrap_center_flex-start {
 		@include flex_block(column, nowrap, center, flex-start);
 	}
-
 
 	%global_flex_block_column_nowrap_flex-end {
 		@include flex_block(column, nowrap, flex-end);
@@ -156,16 +155,14 @@
 		backface-visibility: hidden;
 	}
 
-
-
 	%vert_centr {
 		top: 50%;
-		transform:translate(0, -50%);
+		transform: translate(0, -50%);
 	}
 
 	%hor_centr {
 		left: 50%;
-		transform:translate(-50%, 0);
+		transform: translate(-50%, 0);
 	}
 
 	%hor_vert_centr {
@@ -176,26 +173,25 @@
 
 	%stretch {
 		position: absolute;
-		top:0;
+		top: 0;
 		bottom: 0;
 		right: 0;
 		left: 0;
 	}
 
 	%hover_show {
-		opacity:0;
-		transition:opacity .3s ease;
+		opacity: 0;
+		transition: opacity .3s ease;
 	}
 
 	%hover_show_parent {
 		&:hover,
 		&:focus {
 			%hover_show {
-				opacity:1;
+				opacity: 1;
 			}
 		}
 	}
-
 
 	%scroll_rediz_1 {
 		&::-webkit-scrollbar {
@@ -225,50 +221,49 @@
 		overflow: hidden;
 	}
 
-
-	%z-index_fix_vertical{
+	%z-index_fix_vertical {
 		$index: 20;
-			$index2: 21;
-			@while $index > 0{
+		$index2: 21;
+		@while $index > 0 {
 
-				&:nth-child(#{$index}) {
-					z-index: 10 + ($index2 - $index);
-				}
-
-				$index: $index - 1;
+			&:nth-child(#{$index}) {
+				z-index: 10 + ($index2 - $index);
 			}
+
+			$index: $index - 1;
+		}
 	}
 
 	%transition_all {
-		transition:all .3s ease;
-		will-change:transform;
+		transition: all .3s ease;
+		will-change: transform;
 	}
 
 	%transition_opacity {
-		transition:opacity .3s ease;
-		will-change:opacity;
+		transition: opacity .3s ease;
+		will-change: opacity;
 	}
 
 	%transition_background {
-		transition:background .3s ease;
-		will-change:background;
+		transition: background .3s ease;
+		will-change: background;
 	}
 
 	%transition_color {
-		transition:color .3s ease;
-		will-change:color;
+		transition: color .3s ease;
+		will-change: color;
 	}
 
 	%transition_color_background {
-		transition:color .3s ease,background .3s ease;
-		will-change:color,background;
+		transition: color .3s ease, background .3s ease;
+		will-change: color, background;
 	}
 	%transition_transform {
-		transition:transform .3s ease;
-		will-change:transform;
+		transition: transform .3s ease;
+		will-change: transform;
 	}
 	%tranisition_fill {
-		transition:fill .3s ease;
-		will-change:fill;
+		transition: fill .3s ease;
+		will-change: fill;
 	}
 }
