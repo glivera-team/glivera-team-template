@@ -97,14 +97,14 @@ textarea{
 	border-radius: 0;
 	box-sizing: border-box;
 	&::-webkit-input-placeholder {
-		color: $placeholder_color;
+		color: $color_placeholder_base;
 	}
 
 	&::-moz-placeholder {
-		color: $placeholder_color;
+		color: $color_placeholder_base;
 	}
 	&:-ms-input-placeholder {
-		color: $placeholder_color;
+		color: $color_placeholder_base;
 	}
 
 	&:focus {

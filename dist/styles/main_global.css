@@ -142,7 +142,7 @@ html {
 body {
   position: relative;
   min-height: 100%;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   color: #7e8287;
   -webkit-text-size-adjust: none;
   background: lightblue; }
@@ -159,7 +159,8 @@ body {
   pointer-events: none !important; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: blue; }
   a:hover, a:focus {
     text-decoration: underline; }
 
@@ -168,7 +169,7 @@ a {
 
 .base {
   position: relative;
-  padding: 10rem 20px 10rem; }
+  padding: 10rem 1rem 10rem; }
 
 .elements_list {
   padding: 3rem; }

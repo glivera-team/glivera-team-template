@@ -1,4 +1,7 @@
-@import "includes/_global_var";
+// variables,mixins,extends
+@import "helpers/helpers_all";
+
+// base
 @import "reset";
 @import "fonts";
 @import "icons";
@@ -8,5 +11,6 @@
 @import "footer";
 @import "forms";
 @import "print";
+
 
 

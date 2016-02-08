@@ -4,7 +4,6 @@ $prefix-for-microsoft: true !default;
 $prefix-for-opera:     false !default;
 $prefix-for-spec:      true !default; // required for keyframe mixin
 
-
 $develop:true;
 $production:false;
 $all:true;
@@ -14,6 +13,5 @@ $ie7:false;
 $doc:false;
 $local_var:global;
 $holydat_var:none;
-
 
 @import "includes";

@@ -131,10 +131,6 @@
 	align-items: $align-items;
 }
 
-@mixin align-self($val: center){
-	-webkit-align-self:$val;
-	align-self:$val;
-}
 
 @mixin clearfix {
 	&:after {
@@ -144,13 +140,6 @@
 		clear: both;
 		visibility: hidden;
 	}
-}
-
-@mixin user-select-none {
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
 }
 
 @mixin inline_block_wrapper {

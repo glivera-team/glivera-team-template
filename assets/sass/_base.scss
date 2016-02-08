@@ -8,8 +8,8 @@ html {
 body {
 	position: relative;
 	min-height: 100%;
-	font-size:$base_font_size;
-	color: $def_text_color;
+	font-size: $font_size_base;
+	color: $color_text_base;
 	-webkit-text-size-adjust: none;
 	background: $body_bg;
 }
@@ -27,6 +27,7 @@ body {
 
 a {
 	text-decoration: none;
+	color:$color_link_base;
 	&:hover,
 	&:focus {
 		text-decoration: underline;
@@ -39,7 +40,7 @@ a {
 
 .base {
 	position:relative;
-	padding: $header_height 20px $footer_height;
+	padding: $height_header $gl_indent $height_footer;
 }
 .elements_list {
 	padding:3rem;
