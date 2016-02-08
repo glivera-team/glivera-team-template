@@ -62,5 +62,5 @@
 2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
 3. Раскомментируйте таски svgSpriteBuild, svgSpriteSass, svgSprite
 4. Запустите таск svgSprite
-5. В папке assets/i теперь лежит symbol_sprite.html который подключается через скрипт sprite.js(лежит в assets/js/all) и кешируется в localStorage.Также в папке sass лежит файл стилизации _svg_sprite.scss.Благодаря ему мы можем изменять размер иконки за счет font-size.
+5. В папке assets/i теперь лежит symbol_sprite.html который подключается через скрипт sprite.js(лежит в assets/js/all) и кешируется в localStorage.Также в папке sass лежит файл стилизации _svg_sprite.scss.Благодаря ему изменяем размер иконки за счет font-size.
 6. Для подключения иконки из спрайта используйте jade mixin icon
