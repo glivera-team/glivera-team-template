@@ -20,9 +20,10 @@ body {
 	height: auto !important;
 	overflow:hidden;
 }
-.disable-hover,
-.disable-hover * {
-	pointer-events: none !important;
+
+.base {
+	position:relative;
+	padding: $height_header $gl_indent $height_footer;
 }
 
 a {
@@ -34,14 +35,6 @@ a {
 	}
 }
 
-.hide {
-	display: none !important;
-}
-
-.base {
-	position:relative;
-	padding: $height_header $gl_indent $height_footer;
-}
 .elements_list {
 	padding:3rem;
 }

@@ -145,7 +145,7 @@ body {
   font-size: 1.6rem;
   color: #7e8287;
   -webkit-text-size-adjust: none;
-  background: lightblue; }
+  background: white; }
 
 .wrapper {
   position: relative;
@@ -154,22 +154,15 @@ body {
   height: auto !important;
   overflow: hidden; }
 
-.disable-hover,
-.disable-hover * {
-  pointer-events: none !important; }
+.base {
+  position: relative;
+  padding: 10rem 1rem 10rem; }
 
 a {
   text-decoration: none;
   color: blue; }
   a:hover, a:focus {
     text-decoration: underline; }
-
-.hide {
-  display: none !important; }
-
-.base {
-  position: relative;
-  padding: 10rem 1rem 10rem; }
 
 .elements_list {
   padding: 3rem; }
@@ -192,11 +185,12 @@ a {
 .f_c_field.default_mod:not(.select_rediz_coosen) {
   display: block;
   width: 100%;
-  padding: 1rem;
-  border: none;
+  height: 4rem;
+  padding: 0 2rem;
   font-size: 1.4rem;
   font-family: "Arial";
-  color: #000; }
+  color: #000;
+  border: 1px solid gray; }
   .f_c_field.default_mod:not(.select_rediz_coosen)::-webkit-input-placeholder {
     color: #000; }
   .f_c_field.default_mod:not(.select_rediz_coosen)::-moz-placeholder {
@@ -204,17 +198,14 @@ a {
   .f_c_field.default_mod:-ms-input-placeholder:not(.select_rediz_coosen) {
     color: #000; }
 
+.f_c_field.default_mod:not(.select_rediz_coosen):focus {
+  border: 1px solid #000; }
+
 .form_cell.hidden_field {
   display: none; }
-
-.form_cell.form_cell_v1_mod {
-  margin: 10px 0 0; }
 
 .form_c_hline.hline_hide_mod {
   display: none; }
 
 .form_c_f_w {
   position: relative; }
-
-.f_c_field:not(.select_rediz_coosen).default_mod.textarea_mod_1 {
-  height: 10rem; }
