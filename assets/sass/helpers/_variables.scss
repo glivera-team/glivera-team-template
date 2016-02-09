@@ -10,8 +10,7 @@ $black: #000;
 
 $color_text_base: #7e8287;
 $color_link_base:blue;
-$color_placeholder_base: #000;
-$body_bg: lightblue;
+$body_bg: white;
 //---------------------------------------------colors###
 
 //---------------------------------------------z-index
@@ -36,3 +35,13 @@ $point_3: 768px;
 $point_4: 480px;
 $point_5: 320px;
 //----------------------------------------------------------------media points
+
+//---------------------------------------------forms
+$input_height_base:4rem;
+$input_offset_base:0 2rem;
+$input_font_size_base:$font_size_base;
+$input_border_color:gray;
+$input_border_color_active:$black;
+$input_placeholder_color: $black;
+$input_text_color:$black;
+//---------------------------------------------forms###
