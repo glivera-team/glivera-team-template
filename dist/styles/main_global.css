@@ -136,7 +136,7 @@ table {
 
 html {
   height: 100%;
-  font: normal 10px/1.33 "Arial";
+  font: normal 10px/1.33 "amaranthregular";
   font-weight: 300; }
 
 body {
@@ -167,6 +167,11 @@ a {
 .elements_list {
   padding: 3rem; }
 
+.another {
+  font-family: "AmericanTextC";
+  font-size: 40px;
+  color: black; }
+
 .header {
   position: fixed;
   width: 100%;
@@ -188,7 +193,7 @@ a {
   height: 4rem;
   padding: 0 2rem;
   font-size: 1.6rem;
-  font-family: "Arial";
+  font-family: "amaranthregular";
   color: #000;
   border: 1px solid gray; }
   .f_c_field.default_mod:not(.select_rediz_coosen)::-webkit-input-placeholder {
