@@ -29,13 +29,11 @@
 
         gulp validation
 
+Более подробно о том, как работать с gulp вы можете прочитать в статье на нашем блоге - [Начинаем работать с gulp.js](http://glivera-team.github.io/sass/2016/01/07/gulp.html)
+
 ## Как работать с js
 
 Все ваши основные скрипты создавайте в папке assets/js. Все вспомогательные скрипты (jquery,plugins, и т.д) помещайте в папку assets/js/all. В итоге gulp соединяет все вспомогательные скрипты в all.js
-
-## PHPStorm settings
-
-Если вы используете PHPStorm или WEBStorm - копируем encodings.xml, codeStyleSettings.xml и watcherTasks.xml в папку idea.
 
 ## Как сделать иконочный шрифт
 
@@ -53,6 +51,8 @@
 4. Получайте шрифт в папке [fonts/icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/fonts/icons) и font extends(%placeholders) в [icons.scss](https://github.com/gatilin222/supervisor_template/blob/master/assets/sass/_icons.scss)
 5. Редактируйте шрифт в [iconmoon](https://icomoon.io)
 
+Более подробно процедура описана на нашем блоге в статье [Иконочные шрифты](http://glivera-team.github.io/svg/2016/01/06/iconfonts.html)
+
 ## Как сделать svg-спрайт
 1. Установите зависимости и залинкуйте
 
@@ -64,3 +64,5 @@
 4. Запустите таск svgSprite
 5. В папке assets/i теперь лежит symbol_sprite.html который подключается через скрипт sprite.js(лежит в assets/js/all) и кешируется в localStorage.Также в папке sass лежит файл стилизации _svg_sprite.scss.Благодаря ему изменяем размер иконки за счет font-size.
 6. Для подключения иконки из спрайта используйте jade mixin icon
+
+Более подробно процедура описана на нашем блоге в статье [Как мы используем SVG-спрайты](http://glivera-team.github.io/svg/2015/12/08/svg-sprites.html)
