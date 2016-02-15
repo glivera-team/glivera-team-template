@@ -8,7 +8,8 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
 	dirSync = require('gulp-directory-sync'),
 	browserSync = require('browser-sync').create(),
-	concat = require('gulp-concat');
+	concat = require('gulp-concat'),
+	cssfont64 = require('gulp-cssfont64');
 
 // plugins for build
 var purify = require('gulp-purifycss'),
@@ -50,6 +51,13 @@ gulp.task('jsConcat', function () {
 		.pipe(browserSync.stream());
 });
 
+gulp.task('fontsConvert', function () {
+	return gulp.src([assetsDir + 'fonts/*.woff', assetsDir + 'fonts/*.woff2'])
+		.pipe(cssfont64())
+		.pipe(gulp.dest(outputDir + 'styles/'))
+		.pipe(browserSync.stream());
+});
+
 //----------------------------------------------------Compiling###
 
 //-------------------------------------------------Synchronization
@@ -83,7 +91,7 @@ gulp.task('watch', function () {
 	gulp.watch(assetsDir + 'js/**/*.js', ['jsSync']);
 	gulp.watch(assetsDir + 'js/all/**/*.js', ['jsConcat']);
 	gulp.watch(assetsDir + 'i/**/*', ['imageSync']);
-	gulp.watch(assetsDir + 'fonts/**/*', ['fontsSync']);
+	gulp.watch(assetsDir + 'fonts/**/*', ['fontsSync', 'fontsConvert']);
 });
 
 //livereload and open project in browser
@@ -225,7 +233,7 @@ gulp.task('validation', function () {
 		.pipe(html5Lint());
 });
 
-gulp.task('default', ['jade', 'sass', 'imageSync', 'fontsSync', 'jsConcat', 'jsSync', 'watch', 'browser-sync']);
+gulp.task('default', ['jade', 'sass', 'imageSync', 'fontsSync', 'fontsConvert', 'jsConcat', 'jsSync', 'watch', 'browser-sync']);
 
 gulp.task('build', ['cleanBuildDir'], function () {
 	gulp.start('imgBuild', 'fontsBuild', 'htmlBuild', 'jsBuild', 'cssBuild');
