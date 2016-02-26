@@ -88,6 +88,8 @@ q:before, q:after {
 
 input[type="text"], textarea {
   -webkit-appearance: none; }
+  input[type="text"]::-ms-clear, textarea::-ms-clear {
+    display: none; }
 
 input,
 textarea {
@@ -141,7 +143,7 @@ html {
 
 body {
   position: relative;
-  min-height: 100%;
+  height: 100%;
   font-size: 1.6rem;
   color: #7e8287;
   -webkit-text-size-adjust: none;
