@@ -91,6 +91,10 @@ q {
 }
 input[type="text"], textarea {
 	-webkit-appearance: none;
+
+	&::-ms-clear {
+		display: none;
+	}
 }
 input,
 textarea{
