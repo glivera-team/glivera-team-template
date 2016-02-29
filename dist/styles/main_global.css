@@ -175,6 +175,7 @@ a {
   height: 100%;
   top: 0;
   right: 100%;
+  will-change: transform;
   z-index: 100; }
 
 .footer {
@@ -182,7 +183,8 @@ a {
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0; }
+  right: 0;
+  will-change: transform; }
 
 .f_c_field.default_mod:not(.select_rediz_coosen) {
   display: block;

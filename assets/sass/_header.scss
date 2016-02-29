@@ -5,6 +5,7 @@
 	height: 100%;
 	top: 0;
 	right: 100%;
+	will-change:transform;
 
 	@include z-index(header);
 }
