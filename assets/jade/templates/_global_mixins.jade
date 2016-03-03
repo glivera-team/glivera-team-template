@@ -74,7 +74,7 @@ mixin form_element(config)
 				input.lbl_inp_rb_ch(name=config.name type=config.type class='#{config.class_array.elem_class} #{config.add_class}' checked='checked')
 			else
 				input.lbl_inp_rb_ch(name=config.name type=config.type class='#{config.class_array.elem_class} #{config.add_class}')
-			span.lbl_rb_ch_text(class=config.class_mod) #{config.title}
+			span.lbl_rb_ch_text(class=config.class_array.class_mod) #{config.title}
 
 mixin loop_while(counter)
 	- i=0;

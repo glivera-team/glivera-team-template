@@ -7,7 +7,7 @@ $icon_font_name:"iconfont";
 	url('../fonts/icons/iconfont.ttf') format('truetype'),
 	url('../fonts/icons/iconfont.svg#iconfont') format('svg');
 }
-%icon-search,
+%icon-check,
 %last_selector {
 		&:before {
 			font-family:$icon_font_name;
@@ -49,6 +49,6 @@ $icon_font_name:"iconfont";
 	}
 }
 
-%icon-search:before {
+%icon-check:before {
 	content:'\E001';
 }

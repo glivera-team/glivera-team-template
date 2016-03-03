@@ -138,7 +138,7 @@ table {
 
 html {
   height: 100%;
-  font: normal 10px/1.33 "amaranthregular";
+  font: normal 10px/1.33 sans-serif;
   font-weight: 300; }
 
 body {
@@ -192,9 +192,10 @@ a {
   height: 4rem;
   padding: 0 2rem;
   font-size: 1.6rem;
-  font-family: "amaranthregular";
+  font-family: sans-serif;
   color: #000;
-  border: 1px solid gray; }
+  border: 1px solid gray;
+  border-radius: 0.2rem; }
   .f_c_field.default_mod:not(.select_rediz_coosen)::-webkit-input-placeholder {
     color: #000; }
   .f_c_field.default_mod:not(.select_rediz_coosen)::-moz-placeholder {

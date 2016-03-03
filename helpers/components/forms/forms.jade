@@ -1,0 +1,62 @@
+//class arrays
+- var default_field = {block_class_mod:'form_cell_v1_mod',class_mod:'form_v1_mod', elem_class:'default_mod'}
+- var default_field_hidden = {block_class_mod:'form_cell_v1_mod',class_mod:'form_v1_mod hline_hide_mod', elem_class:'default_mod'}
+- var default_checkbox = {block_class_mod:'check_1_mod',class_mod:'check_1_mod', elem_class:'check_1_mod'}
+- var default_radio = {block_class_mod:'radio_1_mod',class_mod:'radio_1_mod', elem_class:'radio_1_mod'}
+//class arrays###
+
+//form mixins
+//text
++form_element({
+	type: 'text',
+	class_array: default_field,
+	title: 'some title',
+	id: 'some',
+	placeholder: 'some text'
+})
+
+//textarea
++form_element({
+	type: 'textarea',
+	class_array: default_field,
+	title: 'some title',
+	id: 'some'
+})
+
+//select
++form_element({
+	type: 'select',
+	class_array: default_field,
+	title: 'some title',
+	id: 'id',
+	add_class: 'someclass',
+	options: ['Option 1', 'Option 2', 'Option 3']
+})
+
+//radio button
++form_element({
+	type: 'radio',
+	class_array: default_radio,
+	title: 'Title of radio',
+	name: 'radio',
+	checked: false
+})
+
+//checkbox
++form_element({
+	type: 'checkbox',
+	class_array: default_checkbox,
+	title: 'Title of checkbox',
+	name: 'check',
+	checked: true
+})
+
+//file
++form_element({
+	type: 'file',
+	class_array: default_field_hidden,
+	title: 'текст названия',
+	id: 'some'
+})
+
+//form mixins###

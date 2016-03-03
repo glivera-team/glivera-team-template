@@ -13,7 +13,7 @@ $(document).ready(function ($) {
 	window_width = $(window).width();
 	
 	//pageWidget(['index']);
-	//getAllClasses('html','.elements_list');
+	getAllClasses('html','.elements_list');
 	window_height = $(window).height();
 });
 

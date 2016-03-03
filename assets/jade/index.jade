@@ -6,3 +6,34 @@ include templates/_project_vars
 block vars
 	- var array = {body_class:'', layuot_mod:'', sub_keywords:'',title_inner:'Title of the page'}
 block content_block
+	ul.input_list
+		li.input_item
+
+		li.input_item
+			+form_element({
+				type: 'checkbox',
+				class_array: default_checkbox,
+				title: 'Title of checkbox',
+				name: 'check',
+				checked: false
+			})
+		li.input_item
+			+form_element({
+				type: 'checkbox',
+				class_array: default_checkbox,
+				title: 'Title of checkbox',
+				name: 'check',
+				checked: false
+			})
+		li.input_item
+			+form_element({
+				type: 'radio',
+				class_array: default_radio,
+				title: 'Title of radio',
+				name: 'radio',
+				checked: true
+			})
+		li.input_item
+
+	.elements_list
+

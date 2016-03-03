@@ -1,13 +1,14 @@
-//-------------------------------------------------------forms
+//-------------------------------------------------------inputs and selects
 %form_field_default {
 	display: block;
 	width: 100%;
-	height: $input_height_base;
-	padding:$input_offset_base;
-	font-size: $input_font_size_base;
+	height: $input_height;
+	padding: $input_offset;
+	font-size: $input_font_size;
 	font-family: $font_1;
 	color: $input_text_color;
 	border: 1px solid $input_border_color;
+	border-radius:$input_radius;
 
 	&::-webkit-input-placeholder {
 		color: $input_placeholder_color;
@@ -28,22 +29,12 @@
 	border: 1px solid $input_border_color_active;
 }
 
-.form_block {
-}
-.form_sub_cell {
-}
-.form_hline {
-}
-.form_sub_cell_wrap {
-}
-
 .form_cell {
 	&.hidden_field {
 		display: none;
 	}
 
 	&.form_cell_v1_mod {
-
 	}
 }
 
@@ -53,21 +44,17 @@
 		display: none;
 	}
 	&.form_v1_mod {
-
 	}
-
 }
 
 .form_c_f_w {
 	position: relative;
 
 	&.form_v1_mod {
-
 	}
 }
 
 .f_c_field:not(.select_rediz_coosen) {
-
 	&.default_mod {
 		@extend %form_field_default !optional;
 
@@ -80,20 +67,8 @@
 		}
 
 		&.textarea_mod_1 {
-
 		}
 	}
 }
 
-//-------------------------------------------------------f_c_field_file
-.f_c_field_file_field {
-}
-
-.f_c_field_file_text {
-}
-
-.f_c_field_file_butt {
-}
-
-//-------------------------------------------------------f_c_field_file
-//-------------------------------------------------------forms
+//-------------------------------------------------------inputs and selects###

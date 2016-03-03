@@ -1,0 +1,88 @@
+//---------------------------------------------checkboxes and radio-buttons
+.lbl_rb_ch_block {
+	&.check_1_mod,&.radio_1_mod {
+		display: inline-block;
+		cursor:pointer;
+	}
+}
+
+.lbl_inp_rb_ch {
+	&.check_1_mod,&.radio_1_mod {
+		display: none;
+	}
+}
+
+.lbl_rb_ch_text {
+	&.check_1_mod {
+		position: relative;
+		display: inline-block;
+		padding:0 0 0 3rem;
+
+		&:before,&:after {
+			position: absolute;
+			top: -1px;
+			left: 0;
+			width: 20px;
+			height: 20px;
+			cursor:pointer;
+		}
+
+		&:before {
+			content: '';
+			border-radius:2px;
+			border:1px solid black;
+		}
+
+		&:after {
+			@extend %icon-check:before;
+			@extend %transition_opacity;
+
+			text-align: center;
+			line-height: 20px;
+			opacity: 0;
+			color:green;
+
+			.lbl_inp_rb_ch:checked + & {
+				opacity: 1;
+			}
+		}
+	}
+
+	&.radio_1_mod {
+		position: relative;
+		display: inline-block;
+		padding:0 0 0 3rem;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: -1px;
+			left: 0;
+			width: 20px;
+			height: 20px;
+			border-radius:100%;
+			border:1px solid black;
+			cursor:pointer;
+		}
+
+		&:after {
+			@extend %icon-check:before;
+			@extend %transition_opacity;
+
+			content:'';
+			position: absolute;
+			top: 4px;
+			left: 5px;
+			width: 1rem;
+			height: 1rem;
+			border-radius: 100%;
+			background: green;
+			opacity: 0;
+
+			.lbl_inp_rb_ch:checked + & {
+				opacity: 1;
+			}
+		}
+	}
+}
+//---------------------------------------------checkboxes and radio-buttons###
