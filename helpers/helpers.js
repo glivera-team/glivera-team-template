@@ -15,6 +15,16 @@ function splitSpan(target) {
 	});
 }
 
+// function adding active class to header, when user scroll page
+// notice you should define $header_row
+function addHeaderClass() {
+	if ($(window).scrollTop() > 0) {
+		$header_row.addClass('scroll_mod');
+	} else {
+		$header_row.removeClass('scroll_mod');
+	}
+}
+
 //*******************************************useful functions###
 
 //*******************************************sliders stuff
@@ -61,5 +71,26 @@ if (slider.length) {
 	}
 }
 
+// add active class to current slider
+// when window resize reload slider and add class again
+if ($slider.length) {
+	$slider.bxSlider({
+		pager: false,
+		controls: false,
+		infiniteLoop: false,
+		mode: 'fade',
+		speed: 1,
+		startSlide:0,
+		onSlideAfter: function ($slideElement, oldIndex, newIndex) {
+			$slideElement.addClass('active_mod').siblings().removeClass('active_mod');
+		}
+	});
+}
+$(window).on('resize',function() {
+	if ($slider.length) {
+		$slider.reloadSlider();
+		$($slider.find('.your_slider_item')[$slider.getCurrentSlide()]).addClass('active_mod');
+	}
+});
 //*******************************************sliders stuff###
 
