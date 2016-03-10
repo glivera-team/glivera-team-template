@@ -25,13 +25,35 @@ function addHeaderClass() {
 	}
 }
 
+// moving functions
+function moveToBlock(block, control) {
+	var $block = $(block),
+		$control = $(control);
+	$control.on('click', function () {
+		var blockPosition = $block.offset();
+		$('body,html').animate({
+			scrollTop: blockPosition.top
+		}, 500);
+		return false;
+	})
+}
+
+function docScrollTo(pos, speed, callback) {
+
+	$('html,body').animate({'scrollTop': pos}, speed);
+
+	if (typeof(callback) == 'function') {
+		callback();
+	}
+}
+
 //*******************************************useful functions###
 
 //*******************************************sliders stuff
 // bx slider with fixed amount of elements
 // You should paste this to window.load function, and then reloadSlider in window.resize function
 if (slider.length) {
-	if (window_width >= media_point_1) {
+	if (windowWidth >= media_point_1) {
 		slider.bxSlider({
 			pager: false,
 			minSlides: 3,
@@ -44,7 +66,7 @@ if (slider.length) {
 			prevText: 'prev'
 		});
 	}
-	else if (window_width <= media_point_1 && window_width >= media_point_2) {
+	else if (windowWidth <= media_point_1 && windowWidth >= mediaPoint2) {
 		slider.bxSlider({
 			pager: false,
 			minSlides: 2,

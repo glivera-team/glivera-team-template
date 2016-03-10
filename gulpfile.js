@@ -152,25 +152,25 @@ gulp.task('cssBuild', function () {
 
 
 // --------------------------------------------If you need iconfont
-var iconfont = require('gulp-iconfont'),
-	iconfontCss = require('gulp-iconfont-css'),
-	fontName = 'iconfont';
-gulp.task('iconfont', function () {
-	gulp.src([assetsDir + 'i/icons/*.svg'])
-		.pipe(iconfontCss({
-			path: 'assets/sass/templates/_icons_template.scss',
-			fontName: fontName,
-			targetPath: '../../sass/_icons.scss',
-			fontPath: '../fonts/icons/',
-			svg: true
-		}))
-		.pipe(iconfont({
-			fontName: fontName,
-			svg: true,
-			formats: ['svg','eot','woff','ttf']
-		}))
-		.pipe(gulp.dest('assets/fonts/icons'));
-});
+// var iconfont = require('gulp-iconfont'),
+// 	iconfontCss = require('gulp-iconfont-css'),
+// 	fontName = 'iconfont';
+// gulp.task('iconfont', function () {
+// 	gulp.src([assetsDir + 'i/icons/*.svg'])
+// 		.pipe(iconfontCss({
+// 			path: 'assets/sass/templates/_icons_template.scss',
+// 			fontName: fontName,
+// 			targetPath: '../../sass/_icons.scss',
+// 			fontPath: '../fonts/icons/',
+// 			svg: true
+// 		}))
+// 		.pipe(iconfont({
+// 			fontName: fontName,
+// 			svg: true,
+// 			formats: ['svg','eot','woff','ttf']
+// 		}))
+// 		.pipe(gulp.dest('assets/fonts/icons'));
+// });
 
 //--------------------------------------------If you need svg sprite
 // var svgSprite = require('gulp-svg-sprites'),

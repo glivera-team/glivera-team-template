@@ -1,66 +1,45 @@
-var $body_var,
-	window_height,
-	window_width,
-	$user_menu_butt,
-	media_point_1 = 1024,
-	media_point_2 = 768,
-	media_point_3 = 480,
-	media_point_4 = 320;
+var $body,
+	windowHeight,
+	windowWidth,
+	$userMenuButt,
+	mediaPoint1 = 1024,
+	mediaPoint2 = 768,
+	mediaPoint3 = 480,
+	mediaPoint4 = 320;
 
 $(document).ready(function ($) {
-	$body_var = $('body');
-	$user_menu_butt = $('#user_menu_butt');
-	window_width = $(window).width();
-	
-	//pageWidget(['index']);
+	$body = $('body');
+	$userMenuButt = $('#user_menu_butt');
+	windowWidth = $(window).width();
+	windowHeight = $(window).height();
+
+	//developer funcitons
+	pageWidget(['index']);
 	getAllClasses('html','.elements_list');
-	window_height = $(window).height();
 });
 
 $(window).on('load', function () {
-	load_f();
+	loadFunc();
 });
 
 $(window).on('resize', function () {
-	resize_f();
+	resizeFunc();
 });
 
 $(window).on('scroll', function () {
-	scroll_f();
+	scrollFunc();
 });
 
-function load_f() {
+function loadFunc() {
 
 }
-function resize_f() {
-
-}
-
-function scroll_f() {
+function resizeFunc() {
 
 }
 
-function move_to_block(block, control) {
-	var $block = $(block),
-		$control = $(control);
-	$control.on('click', function () {
-		var $block_pos = $block.offset();
-		$('body,html').animate({
-			scrollTop: $block_pos.top
-		}, 500);
-		return false;
-	})
+function scrollFunc() {
+
 }
-
-function docScrollTo(pos, speed, callback) {
-
-	$('html,body').animate({'scrollTop': pos}, speed);
-
-	if (typeof(callback) == 'function') {
-		callback();
-	}
-}
-
 
 //Functions for development
 function getAllClasses(context, output) {
