@@ -1,0 +1,187 @@
+//---------------------------------------------layout
+.header {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 100%;
+	will-change: transform; //fixing repaint bug
+
+	@include z-index(header);
+}
+
+.header_main_row {
+	@extend %global_flex_block_row_nowrap_space_between_center;
+
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: $height_header;
+	padding: 0 $gl_indent;
+	border-bottom: 1px solid gray;
+}
+
+//---------------------------------------------layout###
+//---------------------------------------------menu
+.header_menu {
+	@extend %transition_transform;
+
+	@include bp($point_3) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height:100vh;
+		overflow:auto;
+		background: lightgoldenrodyellow;
+		transform:translate(0,-100%);
+
+		@include flex_block(column,nowrap,flex-start,center);
+
+		body.menu_open & {
+			transform:translate(0,0);
+		}
+	}
+}
+
+.header_menu_list {
+	@extend %global_flex_block_row_nowrap_flex-end_center;
+
+	@include bp($point_3) {
+		width: 100%;
+		flex:0 0 auto;
+		flex-direction:column;
+		padding:$height_header $gl_indent;
+		margin:auto;
+	}
+}
+
+.header_menu_item {
+	padding:0 0 0 $gl_indent;
+
+	&:first-child {
+		padding: 0;
+	}
+
+	@include bp($point_3) {
+		padding:2rem 0 0;
+		flex:0 0 auto;
+	}
+}
+
+//---------------------------------------------menu###
+
+//---------------------------------------------logo
+.logo_text {
+	&.header_mod {
+		color: darkgray;
+
+		&:hover {
+			color: darken(darkgray, 10%);
+		}
+
+		&:hover, &:focus {
+			text-decoration: none;
+		}
+	}
+}
+//---------------------------------------------logo###
+
+//---------------------------------------------trigger
+@mixin user_menu_butt_line {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: .4rem;
+	margin-top:-.2rem;
+	background: black;
+}
+
+.menu_trigger {
+	z-index: 210;
+	position: absolute;
+	top: 50%;
+	right: $gl_indent;
+	display: none; // hidden on wide screens
+	height: 2.6rem;
+	width: 3.8rem;
+	margin-top: -1.6rem;
+	text-transform: uppercase;
+
+	color: transparent;
+	cursor: pointer;
+
+	@include bp($point_3) {
+		display: block;// appear on tablets
+	}
+
+	&:before {
+		content: '';
+		transform: translate(0, -1rem);
+		transition: all .3s ease;
+
+		@include user_menu_butt_line;
+	}
+	&:after {
+		content: '';
+		transform: translate(0, 1rem);
+		transition: all .3s ease;
+
+		@include user_menu_butt_line;
+	}
+	&.active_mod {
+		&:before {
+			transform: (rotate(45deg) translate(0, 0));
+		}
+
+		&:after {
+			transform: (rotate(-45deg) translate(0, 0));
+		}
+	}
+}
+
+.menu_trigger_decor {
+	transition: all .3s ease;
+
+	.active_mod & {
+		opacity: 0;
+		transform: translate(100%, 0);
+	}
+
+	@include user_menu_butt_line;
+}
+//---------------------------------------------trigger###
+
+//---------------------------------------------user sidebar
+.main_sidebar {
+	@extend %transition_transform;
+
+	position: absolute;
+	top: 0;
+	left: 100%;
+	height: 100%;
+	width: 30rem;
+	background: lightseagreen;
+	color:white;
+	transform:translate(-100%,0); // hide sidebar
+	//transform:translate(0,0); show sidebar
+}
+//---------------------------------------------user sidebar###
+
+//---------------------------------------------main_sidebar
+.user_sidebar {
+	@extend %transition_transform;
+
+	position: absolute;
+	top: 0;
+	left: 200%;
+	height: 100%;
+	width: 30rem;
+	background: lightseagreen;
+	color:white;
+	transform:translate(0,0); // hide sidebar
+	//transform:translate(-100%,0); show sidebar
+}
+//---------------------------------------------main_sidebar###

@@ -39,24 +39,11 @@ function moveToBlock(block, control) {
 }
 
 function docScrollTo(pos, speed, callback) {
-
 	$('html,body').animate({'scrollTop': pos}, speed);
-
 	if (typeof(callback) == 'function') {
 		callback();
 	}
 }
-
-//menu open
-$menuTrigger.on('click', function () {
-	if ($body.hasClass('menu_open')) {
-		$body.removeClass('menu_open');
-		$(this).removeClass('active_mod');
-	} else {
-		$body.addClass('menu_open');
-		$(this).addClass('active_mod');
-	}
-});
 
 //*******************************************useful functions###
 
