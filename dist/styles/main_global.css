@@ -196,7 +196,7 @@ a {
   font-family: sans-serif;
   color: #000;
   border: 1px solid gray;
-  border-radius: 0.2rem; }
+  border-radius: 0.5rem; }
   .f_c_field.default_mod:not(.select_rediz_coosen)::-webkit-input-placeholder {
     color: #000; }
   .f_c_field.default_mod:not(.select_rediz_coosen)::-moz-placeholder {
