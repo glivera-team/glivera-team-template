@@ -37,8 +37,7 @@
 
 1. Установите зависимости и залинкуйте
 
-        npm install gulp-iconfont@4.0.0 gulp-iconfont-css -g
-        npm link gulp-iconfont gulp-iconfont-css
+        npm install gulp-iconfont@4.0.0 gulp-iconfont-css -D
 
 2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
 3. В gulpfile.js измените переменную 'fontName' на имя вашего шрифта (по умолчанию 'iconfont').
@@ -54,8 +53,7 @@
 ## Как сделать svg-спрайт
 1. Установите зависимости и залинкуйте
 
-        npm install gulp-svg-sprites gulp-svgmin gulp-cheerio gulp-replace -g
-        npm link gulp-svg-sprites gulp-svgmin gulp-cheerio gulp-replace
+        npm install gulp-svg-sprites gulp-svgmin gulp-cheerio gulp-replace -D
 
 2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
 3. Раскомментируйте таски svgSpriteBuild, svgSpriteSass, svgSprite
