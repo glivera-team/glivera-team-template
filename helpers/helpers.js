@@ -45,6 +45,11 @@ function docScrollTo(pos, speed, callback) {
 	}
 }
 
+//get random integer
+function getRandomInt(min, max) {
+	  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 //*******************************************useful functions###
 
 //*******************************************sliders stuff

@@ -94,7 +94,8 @@ input[type="text"], textarea {
 input,
 textarea {
   border-radius: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -webkit-appearance: none; }
   input::-webkit-input-placeholder,
   textarea::-webkit-input-placeholder {
     color: #000; }
