@@ -111,3 +111,8 @@ mixin social(items,mod)
 			li.social_item(class="#{mod}")
 				a.social_link(href="#" class="#{item}_mod #{mod}") #{item}
 
+mixin icon(name,mod)
+	- mod = mod || ''
+	svg(class="icon icon-" + name + ' ' + mod)
+		use(xlink:href="#icon-" + name)
+

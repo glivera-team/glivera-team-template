@@ -14,4 +14,5 @@ createfolderwithname() {
 alias subl='/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe' $*
 alias storm='/c/Program\ Files\ \(x86\)/JetBrains/PhpStorm\ 2016.1/bin/PhpStorm.exe' $*
 alias pro='cd /d/workflow/job/tasks_from_Andrew/'
+alias npm_uninstall_all='npm uninstall `ls -1 node_modules | tr '/\n' ' '`'
 alias new=createfolderwithname
