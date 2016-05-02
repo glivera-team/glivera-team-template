@@ -1,6 +1,6 @@
 var $menuTrigger;
 
-$menuTrigger = $('#menu_trigger');
+$menuTrigger = $('.menuTrigger');
 
 $menuTrigger.on('click', function () {
 	if ($body.hasClass('menu_open')) {

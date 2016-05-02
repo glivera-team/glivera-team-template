@@ -9,7 +9,8 @@ var gulp = require('gulp'),
 	dirSync = require('gulp-directory-sync'),
 	browserSync = require('browser-sync').create(),
 	concat = require('gulp-concat'),
-	cssfont64 = require('gulp-cssfont64');
+	cssfont64 = require('gulp-cssfont64'),
+	sourcemaps = require('gulp-sourcemaps');
 
 // plugins for build
 var purify = require('gulp-purifycss'),
@@ -37,9 +38,11 @@ gulp.task('jade', function () {
 gulp.task('sass', function () {
 	gulp.src([assetsDir + 'sass/**/*.scss', '!' + assetsDir + 'sass/**/_*.scss'])
 		.pipe(plumber())
+		.pipe(sourcemaps.init())
 		.pipe(sass())
 		.pipe(inlineimage())
 		.pipe(prefix('last 3 versions'))
+		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(outputDir + 'styles/'))
 		.pipe(browserSync.stream());
 });

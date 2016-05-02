@@ -19,6 +19,7 @@
     "gulp-plumber": "^1.1.0",
     "gulp-purifycss": "^0.2.0",
     "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
     "imagemin-pngquant": "^4.2.2",
     "rimraf": "^2.5.2"

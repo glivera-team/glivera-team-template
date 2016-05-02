@@ -18,7 +18,6 @@ mixin head(array)
 		link(rel="apple-touch-icon", sizes="120x120", href="apple-touch-icon-120x120.png")
 		link(rel="apple-touch-icon", sizes="144x144", href="apple-touch-icon-144x144.png")
 		link(rel="apple-touch-icon", sizes="152x152", href="apple-touch-icon-152x152.png")
-	script(src="js/font-loader.js")
 	link(rel="stylesheet" media="all" href="styles/main_global.css")
 
 mixin scripts
@@ -82,18 +81,21 @@ mixin loop_while(counter)
 		-i++;
 		block
 
-mixin breadcrumbs(page_title,array,mod)
-	nav(class="breadcrumbs_wrap #{mod}" itemprop="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList")
-		meta(itemprop="name" content="Breadcrumb")
-		meta(itemprop="description" content="Breadcrumb for #{page_title}")
-		ul.breadcrumbs_list(class="#{mod}" itemprop="itemListElement")
-			each crumb, index in array
-				li.breadcrumbs_l_item(class="#{mod}" itemscope itemtype="http://data-vocabulary.org/Breadcrumb")
-					- if (index == array.length - 1)
-						span.breadcrumbs_text(class="#{mod}" itemprop="title")=crumb.text
-					- else
-						a.breadcrumbs_link(class="#{mod}" href="#" title=crumb.text itemprop="url")
-							span.breadcrumbs_text(class="#{mod}" itemprop="title")=crumb.text
+mixin loop_while_sub(counter)
+	- j = 0;
+		while j < counter
+			-j++;
+			block
+
+mixin breadcrumbs(array,add_class)
+	- add_class = add_class || ''
+	ul.breadcrumbs_list(class=add_class)
+		each crumb, index in array
+			li.breadcrumbs_item
+				if (index == array.length - 1)
+					a.breadcrumbs_link.current_mod=crumb
+				else
+					a.breadcrumbs_link(href="#")=crumb
 
 mixin main_menu(menuArray)
 	ul.main_menu_list(class="#{menuArray.mod}")
