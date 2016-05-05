@@ -1,7 +1,6 @@
 var $body,
 	windowHeight,
 	windowWidth,
-	$userMenuButt,
 	mediaPoint1 = 1024,
 	mediaPoint2 = 768,
 	mediaPoint3 = 480,

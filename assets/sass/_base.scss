@@ -15,7 +15,6 @@ body {
 }
 .wrapper {
 	position: relative;
-	min-width: $page_width;
 	min-height:100%;
 	height: auto !important;
 	overflow:hidden;
@@ -23,7 +22,7 @@ body {
 
 .base {
 	position:relative;
-	padding: $height_header $gl_indent $height_footer;
+	padding: $height_header 0 $height_footer;
 }
 
 a {

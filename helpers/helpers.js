@@ -19,9 +19,9 @@ function splitSpan(target) {
 // notice you should define $header_row
 function addHeaderClass() {
 	if ($(window).scrollTop() > 0) {
-		$header_row.addClass('scroll_mod');
+		$headerRow.addClass('scroll_mod');
 	} else {
-		$header_row.removeClass('scroll_mod');
+		$headerRow.removeClass('scroll_mod');
 	}
 }
 
@@ -56,7 +56,7 @@ function getRandomInt(min, max) {
 // bx slider with fixed amount of elements
 // You should paste this to window.load function, and then reloadSlider in window.resize function
 if (slider.length) {
-	if (windowWidth >= media_point_1) {
+	if (windowWidth >= mediaPoint1) {
 		slider.bxSlider({
 			pager: false,
 			minSlides: 3,
@@ -69,7 +69,7 @@ if (slider.length) {
 			prevText: 'prev'
 		});
 	}
-	else if (windowWidth <= media_point_1 && windowWidth >= mediaPoint2) {
+	else if (windowWidth <= mediaPoint1 && windowWidth >= mediaPoint2) {
 		slider.bxSlider({
 			pager: false,
 			minSlides: 2,
