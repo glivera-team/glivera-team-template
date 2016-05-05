@@ -1,7 +1,7 @@
 var $map,
 	mapMarker;
 
-$(document).on('ready',function() {
+$(document).ready(function ($) {
 	$map = $('#map');
 });
 
