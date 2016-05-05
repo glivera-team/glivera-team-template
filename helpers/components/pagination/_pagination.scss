@@ -1,0 +1,81 @@
+.pag_block {
+	margin:2rem;
+}
+
+.pag_list {
+	@extend %global_flex_block_row_nowrap_flex-start;
+}
+
+.pag_item {
+	padding:0 0 0 .5rem;
+
+	&:first-child {
+		padding: 0;
+	}
+
+	&.next_mod {
+		position: relative;
+	}
+}
+
+.pag_link {
+	display: block;
+	height: 2.8rem;
+	line-height: 2.8rem;
+	padding:0 1rem;
+	color:$black;
+	border:1px solid black;
+	border-radius: 2px;
+
+	&.active_mod,&:hover {
+		color:$white;
+		background: gray;
+	}
+
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+
+	&.dots_mod {
+		border:1px solid transparent;
+
+		&:hover {
+			color: $black;
+			background: $white;
+		}
+	}
+
+	&.prev_mod,&.next_mod {
+		position: relative;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			margin:(-.5rem) 0 0 0;
+			display: block;
+		}
+	}
+
+	&.prev_mod {
+		&:before {
+			left: .7rem;
+
+			@include arrow(left,$black,1rem,.2rem);
+		}
+		&:hover:before {
+			@include arrow(left,$white,1rem,.2rem);
+		}
+	}
+
+	&.next_mod {
+		&:before {
+			right: .7rem;
+
+			@include arrow(right,$black,1rem,.2rem);
+		}
+		&:hover:before {
+			@include arrow(right,$white,1rem,.2rem);
+		}
+	}
+}

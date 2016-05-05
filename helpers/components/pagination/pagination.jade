@@ -1,0 +1,29 @@
+mixin pagination(config)
+	- config.mod = config.mod || ''
+	- config.active = config.active || 1
+	.pag_block(class='#{config.mod}')
+		ul.pag_list(class="#{config.mod}")
+			if config.arrows
+				li.pag_item.prev_mod(class="#{config.mod}")
+					a.pag_link.prev_mod(href="#" class="#{config.mod}")
+			- var i = 1;
+			while i <= config.pages
+				if i == config.pages - 1
+					li.pag_item(class="#{config.mod}")
+						a.pag_link.dots_mod(class="#{config.mod}") &hellip;
+					li.pag_item(class="#{config.mod}")
+						a.pag_link(href="#" title="#{i}" class="#{config.mod}") #{i}
+				else if i == config.active
+					li.pag_item(class="#{config.mod}")
+						a.pag_link.active_mod(title="#{i}" class="#{config.mod}") #{i}
+				else
+					li.pag_item(class="#{config.mod}")
+						a.pag_link(href="#" title="#{i}" class="#{config.mod}") #{i}
+				-i++
+			if config.arrows
+				li.pag_item.next_mod
+					a.pag_link.next_mod(href="#" class="#{config.mod}")
++pagination({
+	pages:5,
+	arrows:true
+})
