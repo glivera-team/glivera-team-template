@@ -1,0 +1,43 @@
+//---------------------------------------------to top btn
+.to_top_btn {
+	@extend %transition_all;
+
+	position: fixed;
+	z-index: 90;
+	bottom: 6.8rem;
+	right: 50%;
+	display: block;
+	height: 6rem;
+	width: 6rem;
+	margin-right: -68.6rem;
+	background: black;
+	opacity: .4;
+	cursor: pointer;
+
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+
+	&:hover {
+		opacity: .3;
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -.8rem;
+		margin-left: -1rem;
+		border-radius: 3px;
+
+		@include arrow(top, $white, 2rem, .6rem);
+	}
+
+	&.hidden {
+		opacity: 0;
+		pointer-events: none;
+	}
+}
+
+//---------------------------------------------to top btn###
