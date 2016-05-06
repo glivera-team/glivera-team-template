@@ -1,0 +1,32 @@
+.menu {
+	@extend %global_flex_block_row_nowrap_flex-start_center;
+
+	margin:20px;
+}
+
+.menu_item {
+	margin:0 0 0 2rem;
+
+	&:first-child {
+		margin: 0;
+	}
+}
+
+.menu_link {
+	display: block;
+	height: 4rem;
+	padding:0 2rem;
+	color:$black;
+	line-height: 4rem;
+	background: #ccc;
+	transition:.3s;
+
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+
+	&:hover {
+		color: $white;
+		background: darken(#ccc, 20%);
+	}
+}

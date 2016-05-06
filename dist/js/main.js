@@ -32,11 +32,16 @@ function loadFunc() {
 
 }
 function resizeFunc() {
-
+	updateSizes();
 }
 
 function scrollFunc() {
+	updateSizes();
+}
 
+function updateSizes() {
+	windowWidth = $(window).width();
+	windowHeight = $(window).height();
 }
 
 //Functions for development
