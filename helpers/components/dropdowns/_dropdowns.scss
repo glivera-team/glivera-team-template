@@ -2,6 +2,27 @@
 	position: relative;
 }
 
+.dropdown_trigger {
+	position: relative;
+	padding-right:3rem;
+
+	&:before {
+		content: '';
+		position: absolute;
+		right: 1rem;
+		top: 50%;
+		margin-top:-.4rem;
+
+		@include triangle_narrow(bottom,#000,.8rem);
+
+		.dropdown_container.opened_mod & {
+			margin-top:-.8rem;
+
+			@include triangle_narrow(top,#000,.8rem);
+		}
+	}
+}
+
 .dropdown_content {
 	position: absolute;
 	z-index: 10;
