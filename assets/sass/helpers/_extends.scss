@@ -345,14 +345,8 @@
 	}
 
 	%translate3d {
-		-webkit-transform: translateZ(0);
-		-moz-transform: translateZ(0);
 		transform: translateZ(0);
-		-webkit-transform-style: preserve-3d;
-		-moz-transform-style: preserve-3d;
 		transform-style: preserve-3d;
-		-webkit-backface-visibility: hidden;
-		-moz-backface-visibility: hidden;
 		backface-visibility: hidden;
 	}
 
@@ -459,12 +453,30 @@
 		transition: color .3s ease, background .3s ease;
 		will-change: color, background;
 	}
+
 	%transition_transform {
 		transition: transform .3s ease;
 		will-change: transform;
 	}
+
 	%tranisition_fill {
 		transition: fill .3s ease;
 		will-change: fill;
+	}
+
+	%rounded_i_w {
+		display: block;
+		position: relative;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	%rounded_i {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform:translate(-50%,-50%);
+		min-width: 100%;
+		min-height: 100%;
 	}
 }
