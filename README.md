@@ -1,64 +1,58 @@
-# Добро пожаловать в glivera-team-template
+# Welcome to glivera-team-template
 
-## Старт
-1. Устанавливаем [node.js](https://nodejs.org/),[python(2 version)](https://www.python.org/downloads/release/python-2710/),[Microsoft Visual Studio C++ 2013](https://www.microsoft.com/en-gb/download/details.aspx?id=44914) и gulp глобально
+## Get started
+1. Install [node.js](https://nodejs.org/),[python(2 version)](https://www.python.org/downloads/release/python-2710/),[Microsoft Visual Studio C++ 2013](https://www.microsoft.com/en-gb/download/details.aspx?id=44914) and gulp globally
 
         npm install gulp -g
 
-2. Устанавливаем npm-пакеты. Если есть проблемы с установкой browser-sync на Windows посмотрите [сюда](http://www.browsersync.io/docs/#windows-users)
+2. Install npm packages. If you have problems in browser-sync install on Windows look [here](http://www.browsersync.io/docs/#windows-users)
 
         npm i
 
-	Если вы используете линк глобальных пакетов:
+	If you use link of global packages:
 
 		npm install gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps -g
 
 		npm link gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps
 
-3. Начинаем кодить!
+3. Let's code!
 
         gulp
 
-4. В папке assets редактируем файлы, в папке dist - получаем готовые.Чтобы запустить конечную минифицированную сборку проекта запускаем:
+4. Edit files in assets folder, see result in dist folder. If you want to build optimized version of project run :
 
         gulp build
 
-5. Команда для валидации html
+5. Command for html validation
 
         gulp validation
 
-Более подробно о том, как работать с gulp вы можете прочитать в статье на нашем блоге - [Начинаем работать с gulp.js](http://glivera-team.github.io/sass/2016/01/07/gulp.html)
+## How to work with js
 
-## Как работать с js
+Create all your main scripts in assets/js. Create all your additional scripts (jquery,plugins, и т.д) in assets/js/all. Gulp will concat all your additional scripts into all.js
 
-Все ваши основные скрипты создавайте в папке assets/js. Все вспомогательные скрипты (jquery,plugins, и т.д) помещайте в папку assets/js/all. В итоге gulp соединяет все вспомогательные скрипты в all.js
+## How to make iconfont
 
-## Как сделать иконочный шрифт
-
-1. Установите зависимости и залинкуйте
+1. Install packages
 
         npm install gulp-iconfont@4.0.0 gulp-iconfont-css -D
 
-2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
-3. В gulpfile.js измените переменную 'fontName' на имя вашего шрифта (по умолчанию 'iconfont').
-4. Раскомменитируете таск iconfont и запустите его
+2. Put your icons to [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons) folder
+3. Change variable 'fontName' in gulpfile.js  ('iconfont' by default).
+4. Uncomment iconfont task and run
 
         gulp iconfont
 
-4. Получайте шрифт в папке [fonts/icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/fonts/icons) и font extends(%placeholders) в [icons.scss](https://github.com/gatilin222/supervisor_template/blob/master/assets/sass/_icons.scss)
-5. Редактируйте шрифт в [iconmoon](https://icomoon.io)
+4. Pic your font in [fonts/icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/fonts/icons) and font extends(%placeholders) in [icons.scss](https://github.com/gatilin222/supervisor_template/blob/master/assets/sass/_icons.scss)
+5. Edit your font [iconmoon](https://icomoon.io)
 
-Более подробно процедура описана на нашем блоге в статье [Иконочные шрифты](http://glivera-team.github.io/svg/2016/01/06/iconfonts.html)
-
-## Как сделать svg-спрайт
-1. Установите зависимости и залинкуйте
+## How to make svg-sprite
+1. Install packages
 
         npm install gulp-svg-sprites gulp-svgmin gulp-cheerio gulp-replace -D
 
-2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
-3. Раскомментируйте таски svgSpriteBuild, svgSpriteSass, svgSprite
-4. Запустите таск svgSprite
-5. В папке assets/i теперь лежит symbol_sprite.html который подключается через скрипт sprite.js(лежит в assets/js/all) и кешируется в localStorage.Также в папке sass лежит файл стилизации _svg_sprite.scss.Благодаря ему изменяем размер иконки за счет font-size.
-6. Для подключения иконки из спрайта используйте jade mixin icon
-
-Более подробно процедура описана на нашем блоге в статье [Как мы используем SVG-спрайты](http://glivera-team.github.io/svg/2015/12/08/svg-sprites.html)
+2. Put your icons into [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
+3. Uncomment tasks svgSpriteBuild, svgSpriteSass, svgSprite
+4. Run task svgSprite
+5. Now you have symbol_sprite.html in assets/i folder< which included to the page via sprite.js(assets/js/all) and cached by localStorage. Also you have scss file for styling sprite in _svg_sprite.scss.
+6. For including icons use jade mixin icon

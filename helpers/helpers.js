@@ -45,11 +45,22 @@ function docScrollTo(pos, speed, callback) {
 	}
 }
 
-//get random integer
+// get random integer
 function getRandomInt(min, max) {
 	  return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// change src of main image by click on sub img
+function changeSrc(config) {
+	$(config.thumb).on('click', function () {
+		var $thumb = $(this),
+			$container = $thumb.closest(config.container),
+			$img = $container.find(config.img),
+			src = $thumb.attr('data-thumblink');
+		$img.attr('src', src);
+		return false;
+	});
+}
 //*******************************************useful functions###
 
 //*******************************************sliders stuff
