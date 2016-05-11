@@ -11,6 +11,8 @@ body {
 	font-size: $font_size_base;
 	color: $color_text_base;
 	-webkit-text-size-adjust: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	background: $body_bg;
 }
 .wrapper {
