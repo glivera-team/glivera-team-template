@@ -1,0 +1,64 @@
+.form_cell {
+	&.spinner_mod {
+		padding:0 5rem;
+	}
+}
+
+.f_c_field:not(.select_rediz_coosen) {
+	&.spinner_mod {
+		@extend %form_field_default !optional;
+
+		&:focus {
+			@extend %form_field_default_active !optional;
+		}
+
+		&:hover {
+			@extend %form_field_default_hover !optional;
+		}
+	}
+}
+
+//---------------------------------------------spinner
+.ui-spinner-button {
+	position: absolute;
+	top: 50%;
+	margin-top: -.8rem;
+	font-size: 0;
+	display: block;
+	width: 1.6rem;
+	height: 1.6rem;
+	cursor: pointer;
+
+	&:before, &:after {
+		content: '';
+		position: absolute;
+		background: black;
+	}
+
+	&:before {
+		width: 100%;
+		height: .2rem;
+		left: 0;
+		top: .7rem;
+	}
+
+	&:after {
+		width: .2rem;
+		height: 100%;
+		top: 0;
+		left: .7rem;
+	}
+
+	&.ui-spinner-up {
+		left: calc(100% + 1.4rem);
+	}
+
+	&.ui-spinner-down {
+		right: calc(100% + 1.4rem);
+		&:after {
+			display: none;
+		}
+	}
+}
+
+//---------------------------------------------spinner###

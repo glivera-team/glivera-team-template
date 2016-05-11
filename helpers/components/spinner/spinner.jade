@@ -1,0 +1,12 @@
+//- Note, you must include jQuery UI!
+
+- var spinner_field = {block_class_mod:'form_cell_v1_mod spinner_mod',class_mod:'form_v1_mod hline_hide_mod', elem_class:'spinner_mod spinnerTarget'}
+
++form_element({
+	type: 'text',
+	id: 'amount',
+	title: 'Amount',
+	class_array: spinner_field,
+	placeholder: '',
+	value: '1'
+})
