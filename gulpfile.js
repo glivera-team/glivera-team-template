@@ -10,7 +10,9 @@ var gulp = require('gulp'),
 	browserSync = require('browser-sync').create(),
 	concat = require('gulp-concat'),
 	cssfont64 = require('gulp-cssfont64'),
-	sourcemaps = require('gulp-sourcemaps');
+	sourcemaps = require('gulp-sourcemaps'),
+	postcss = require('gulp-postcss');
+	assets  = require('postcss-assets');
 
 // plugins for build
 var purify = require('gulp-purifycss'),
@@ -42,6 +44,10 @@ gulp.task('sass', function () {
 		.pipe(sass())
 		.pipe(inlineimage())
 		.pipe(prefix('last 3 versions'))
+		.pipe(postcss([assets({
+			basePath:outputDir,
+			loadPaths: ['i/']
+		})]))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(outputDir + 'styles/'))
 		.pipe(browserSync.stream());

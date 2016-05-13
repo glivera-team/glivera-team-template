@@ -11,9 +11,9 @@
 
 	Если вы используете линк глобальных пакетов:
 
-		npm install gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps -g
+                npm install gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets -g
 
-		npm link gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps
+                npm link gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets
 
 3. Начинаем кодить!
 
@@ -62,3 +62,14 @@
 6. Для подключения иконки из спрайта используйте jade mixin icon
 
 Более подробно процедура описана на нашем блоге в статье [Как мы используем SVG-спрайты](http://glivera-team.github.io/svg/2015/12/08/svg-sprites.html)
+
+## Работа с картинками через PostCSS:
+
+```
+.test_block {
+        width: width('rub.png');
+        height:  height('rub.png');
+        background: resolve('rub.png') no-repeat;
+        background-size: size('rub.png');
+}
+```

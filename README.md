@@ -11,9 +11,9 @@
 
 	If you use link of global packages:
 
-		npm install gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps -g
+		npm install gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets -g
 
-		npm link gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps
+		npm link gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets
 
 3. Let's code!
 
@@ -56,3 +56,14 @@ Create all your main scripts in assets/js. Create all your additional scripts (j
 4. Run task svgSprite
 5. Now you have symbol_sprite.html in assets/i folder< which included to the page via sprite.js(assets/js/all) and cached by localStorage. Also you have scss file for styling sprite in _svg_sprite.scss.
 6. For including icons use jade mixin icon
+
+## Working with images with PostCSS:
+
+```
+.test_block {
+        width: width('rub.png');
+        height:  height('rub.png');
+        background: resolve('rub.png') no-repeat;
+        background-size: size('rub.png');
+}
+```
