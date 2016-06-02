@@ -1,13 +1,13 @@
 .icon {
 	display: inline-block;
-	height: 1em;
 	width: 1em;
-	fill: inherit;
-	stroke: inherit;
+	height: 1em;
+	fill: currentColor;
 }
-{#svg}
-.{name} {
-	font-size:{height}px;
-	width:({width}/{height})+em;
+
+{{#shapes}}
+.icon-{{base}} {
+	font-size:({{height.inner}}/10)*1rem;
+	width:({{width.inner}}/{{height.inner}})*1em;
 }
-{/svg}
+{{/shapes}}

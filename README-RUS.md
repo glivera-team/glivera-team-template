@@ -53,7 +53,7 @@
 ## Как сделать svg-спрайт
 1. Установите зависимости и залинкуйте
 
-        npm install gulp-svg-sprites gulp-svgmin gulp-cheerio gulp-replace -D
+        npm install gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace -D
 
 2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
 3. Раскомментируйте таски svgSpriteBuild, svgSpriteSass, svgSprite

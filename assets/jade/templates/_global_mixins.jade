@@ -116,7 +116,7 @@ mixin social(items,mod)
 mixin icon(name,mod)
 	- mod = mod || ''
 	svg(class="icon icon-" + name + ' ' + mod)
-		use(xlink:href="#icon-" + name)
+		use(xlink:href="i/sprite/sprite.svg#" + name)
 
 mixin pagination(config)
 	- config.mod = config.mod || ''

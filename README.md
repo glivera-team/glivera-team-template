@@ -49,7 +49,7 @@ Create all your main scripts in assets/js. Create all your additional scripts (j
 ## How to make svg-sprite
 1. Install packages
 
-        npm install gulp-svg-sprites gulp-svgmin gulp-cheerio gulp-replace -D
+        npm install gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace -D
 
 2. Put your icons into [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
 3. Uncomment tasks svgSpriteBuild, svgSpriteSass, svgSprite
