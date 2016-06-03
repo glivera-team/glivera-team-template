@@ -51,11 +51,18 @@ Create all your main scripts in assets/js. Create all your additional scripts (j
 
         npm install gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace -D
 
-2. Put your icons into [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
-3. Uncomment tasks svgSpriteBuild, svgSpriteSass, svgSprite
-4. Run task svgSprite
-5. Now you have symbol_sprite.html in assets/i folder< which included to the page via sprite.js(assets/js/all) and cached by localStorage. Also you have scss file for styling sprite in _svg_sprite.scss.
-6. For including icons use jade mixin icon
+2. Put your icons into [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons) folder
+3. Uncomment task svgSpriteBuild
+4. Run task svgSpriteBuild
+5. Now you have sprite.svg in assets/i/sprite folder. By default you have svg4everybody script in your js. Also you have scss file _sprite.scss for styling sprite.
+6. Run svg4everybody in your main.js file
+
+```
+$(document).ready(function () {
+	svg4everybody({});
+});
+```
+6. For including icons use jade mixin "icon"
 
 ## Working with images with PostCSS:
 
