@@ -56,10 +56,15 @@
         npm install gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace -D
 
 2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
-3. Раскомментируйте таски svgSpriteBuild, svgSpriteSass, svgSprite
-4. Запустите таск svgSprite
-5. В папке assets/i теперь лежит symbol_sprite.html который подключается через скрипт sprite.js(лежит в assets/js/all) и кешируется в localStorage.Также в папке sass лежит файл стилизации _svg_sprite.scss.Благодаря ему изменяем размер иконки за счет font-size.
-6. Для подключения иконки из спрайта используйте jade mixin icon
+3. Раскомментируйте таск svgSpriteBuild и запустите его
+4. Теперь у вас есть sprite.svg в папке assets/i/sprite. По умолчанию скрипт svg4everybody включен в ваши скрипты. Также теперь scss файл _sprite.scss лежит в папке sass.
+5. Вызовите svg4everybody в главном main.js файле. Для подключения в разметку используйте jade миксин "icon"
+
+```
+$(document).ready(function () {
+	svg4everybody({});
+});
+```
 
 Более подробно процедура описана на нашем блоге в статье [Как мы используем SVG-спрайты](http://glivera-team.github.io/svg/2015/12/08/svg-sprites.html)
 
