@@ -55,14 +55,13 @@ Create all your main scripts in assets/js. Create all your additional scripts (j
 3. Uncomment task svgSpriteBuild
 4. Run task svgSpriteBuild
 5. Now you have sprite.svg in assets/i/sprite folder. By default you have svg4everybody script in your js. Also you have scss file _sprite.scss for styling sprite.
-6. Run svg4everybody in your main.js file
+6. Run svg4everybody in your main.js file. For including icons use jade mixin "icon"
 
 ```
 $(document).ready(function () {
 	svg4everybody({});
 });
 ```
-6. For including icons use jade mixin "icon"
 
 ## Working with images with PostCSS:
 
