@@ -9,10 +9,10 @@
 
 //color extends
 %blue_btn_1 {
-	font-weight: bold;
-	color:$white;
+	font-weight: 700;
+	color: $white;
 	background: $color_link_base;
-	transition:.3s ease;
+	transition: .3s ease;
 
 	@include st_btn();
 
@@ -23,9 +23,9 @@
 
 //size extends
 %btn_size_1 {
-	height:4rem;
-	padding:0 1.2rem;
+	height: 4rem;
+	padding: 0 1.2rem;
 	line-height: 4rem;
 	font-size: 1.6rem;
-	border-radius:$gl_radius;
+	border-radius: $gl_radius;
 }

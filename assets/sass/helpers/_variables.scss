@@ -1,5 +1,5 @@
 //---------------------------------------------fonts
-$font_path: '../fonts/';
+$font_path: "../fonts/";
 $font_1: sans-serif;
 $font_size_base: 1.6rem;
 //---------------------------------------------fonts###
@@ -9,8 +9,8 @@ $white: #fff;
 $black: #000;
 
 $color_text_base: #7e8287;
-$color_link_base:blue;
-$body_bg: white;
+$color_link_base:#00f;
+$body_bg: $white;
 //---------------------------------------------colors###
 
 //---------------------------------------------z-index
@@ -45,7 +45,7 @@ $point_5: 320px;
 $input_height:4rem;
 $input_offset:0 2rem;
 $input_font_size:$font_size_base;
-$input_border_color:gray;
+$input_border_color:#ccc;
 $input_border_color_active:$black;
 $input_placeholder_color: $black;
 $input_text_color:$black;

@@ -8,12 +8,9 @@
 
 @mixin font_face($file_name,$font_name:$file_name,$path:$font_path,$weight:normal,$style:normal) {
 	@font-face {
-		font-family:quote($font_name);
-		src: url($path + $file-name + '.eot');
-		src: url($path + $file-name + '.eot?#iefix') format('embedded-opentype'),
-		url($path + $file-name + '.woff') format('woff'),
-		url($path + $file-name + '.ttf') format('truetype'),
-		url($path + $file-name + '.svg##{$font_name}') format('svg');
+		font-family: quote($font_name);
+		src: url($path + $file-name + ".eot");
+		src: url($path + $file-name + ".eot?#iefix") format("embedded-opentype"), url($path + $file-name + ".woff") format("woff"), url($path + $file-name + ".ttf") format("truetype"), url($path + $file-name + ".svg##{$font_name}") format("svg");
 		font-weight: $weight;
 		font-style: $style;
 	}
@@ -21,83 +18,86 @@
 
 @mixin bp($width,$direction:max) {
 	@if $direction == min {
-		@media screen and (min-width: $width) { @content; }
+		@media screen and (min-width: $width) {
+			@content;
+		}
 	}
 	@else {
-		@media screen and (max-width: $width) { @content; }
+		@media screen and (max-width: $width) {
+			@content;
+		}
 	}
 }
 
 @mixin triangle($side,$color,$size) {
 	@if $side == left {
-		border:$size solid transparent;
-		border-right:$size solid $color;
+		border: $size solid transparent;
+		border-right: $size solid $color;
 	}
 	@if $side == right {
-		border:$size solid transparent;
-		border-left:$size solid $color;
+		border: $size solid transparent;
+		border-left: $size solid $color;
 	}
 	@if $side == top {
-		border:$size solid transparent;
-		border-bottom:$size solid $color;
+		border: $size solid transparent;
+		border-bottom: $size solid $color;
 	}
 	@if $side == bottom {
-		border:$size solid transparent;
-		border-top:$size solid $color;
+		border: $size solid transparent;
+		border-top: $size solid $color;
 	}
 }
 
 @mixin triangle_narrow($side,$color,$size) {
 	$narrow_size: $size/2;
 	@if $side == left {
-		border:$narrow_size solid transparent;
-		border-right:$size solid $color;
+		border: $narrow_size solid transparent;
+		border-right: $size solid $color;
 	}
 	@if $side == right {
-		border:$narrow_size solid transparent;
-		border-left:$size solid $color;
+		border: $narrow_size solid transparent;
+		border-left: $size solid $color;
 	}
 	@if $side == top {
-		border:$narrow_size solid transparent;
-		border-bottom:$size solid $color;
+		border: $narrow_size solid transparent;
+		border-bottom: $size solid $color;
 	}
 	@if $side == bottom {
-		border:$narrow_size solid transparent;
-		border-top:$size solid $color;
+		border: $narrow_size solid transparent;
+		border-top: $size solid $color;
 	}
 }
 
 @mixin arrow($direction,$color:#000,$width:1rem,$arrow_width:.1rem) {
-	width:$width;
-	height:$width;
-	transform:rotate(45deg);
+	width: $width;
+	height: $width;
+	transform: rotate(45deg);
 
 	@if $direction == right {
-		border-top:$arrow_width solid $color;
-		border-right:$arrow_width solid $color;
-		border-bottom:0;
+		border-top: $arrow_width solid $color;
+		border-right: $arrow_width solid $color;
+		border-bottom: 0;
 		border-left: 0;
 	}
 	@if $direction == bottom {
-		border-right:$arrow_width solid $color;
-		border-bottom:$arrow_width solid $color;
+		border-right: $arrow_width solid $color;
+		border-bottom: $arrow_width solid $color;
 		border-top: 0;
 		border-left: 0;
 	}
 	@if $direction == left {
-		border-bottom:$arrow_width solid $color;
-		border-left:$arrow_width solid $color;
+		border-bottom: $arrow_width solid $color;
+		border-left: $arrow_width solid $color;
 		border-top: 0;
 		border-right: 0;
 	}
 	@if $direction == top {
-		border-left:$arrow_width solid $color;
-		border-top:$arrow_width solid $color;
+		border-left: $arrow_width solid $color;
+		border-top: $arrow_width solid $color;
 		border-bottom: 0;
 		border-right: 0;
 	}
 }
-
 
 @mixin dashed-border($dashlength, $spacelength, $borderwidth, $color) {
 	$per: percentage($dashlength / ($dashlength + $spacelength));
@@ -109,7 +109,6 @@
 	background-size: ($dashlength + $spacelength) $borderwidth, $borderwidth ($dashlength + $spacelength), ($dashlength + $spacelength) $borderwidth, $borderwidth ($dashlength + $spacelength);
 	background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
 }
-
 
 @mixin style_separator($var: false, $var2: false, $var3: false, $var4: false, $var5: false, $var6: false, $var7: false, $var8: false, $var9: false) {
 	@if $var == $local_var or $var2 == $local_var or $var3 == $local_var or $var4 == $local_var or $var5 == $local_var or $var6 == $local_var or $var7 == $local_var or $var8 == $local_var or $var9 == $local_var {
@@ -151,7 +150,6 @@
 	align-items: $align-items;
 }
 
-
 @mixin clearfix {
 	&:after {
 		content: "";
@@ -173,7 +171,7 @@
 	z-index: 0;
 
 	&:before {
-		content: '';
+		content: "";
 		z-index: -1;
 		position: absolute;
 		top: 0;

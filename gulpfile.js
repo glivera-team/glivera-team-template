@@ -11,7 +11,7 @@ var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	cssfont64 = require('gulp-cssfont64'),
 	sourcemaps = require('gulp-sourcemaps'),
-	postcss = require('gulp-postcss');
+	postcss = require('gulp-postcss'),
 	assets  = require('postcss-assets');
 
 // plugins for build
@@ -23,6 +23,9 @@ var purify = require('gulp-purifycss'),
 
 //plugins for testing
 var html5Lint = require('gulp-html5-lint');
+var reporter = require('postcss-reporter');
+var stylelint = require('stylelint');
+var postcss_scss = require("postcss-scss");
 
 var assetsDir = 'assets/';
 var outputDir = 'dist/';
@@ -228,6 +231,20 @@ gulp.task('validation', function () {
 	return gulp.src(buildDir + '**/*.html')
 		.pipe(html5Lint());
 });
+
+gulp.task('cssLint', function () {
+	return gulp.src([assetsDir + 'sass/**/*.scss', '!' + assetsDir + 'sass/templates/*.scss'])
+		.pipe(postcss(
+			[
+				stylelint(),
+				reporter({ clearMessages: true })
+			],
+			{
+				syntax: postcss_scss
+			}
+		));
+});
+
 
 gulp.task('default', ['jade', 'sass', 'imageSync', 'fontsSync', 'fontsConvert', 'jsConcat', 'jsSync', 'watch', 'browser-sync']);
 

@@ -1,256 +1,66 @@
-/* Modernizr 2.0.6 (Custom Build) | MIT & BSD
- * Build: http://www.modernizr.com/download/#-backgroundsize-borderimage-borderradius-boxshadow-multiplebgs-opacity-rgba-textshadow-cssanimations-cssgradients-cssreflections-csstransitions-input-inputtypes-iepp-cssclasses-teststyles-testprop-testallprops-prefixes-domprefixes-load
- */
-;
-window.Modernizr = function (a, b, c) {
-    function E() {
-        e.input = function (a) {
-            for (var b = 0, c = a.length; b < c; b++)s[a[b]] = a[b]in l;
-            return s
-        }("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")), e.inputtypes = function (a) {
-            for (var d = 0, e, f, h, i = a.length; d < i; d++)l.setAttribute("type", f = a[d]), e = l.type !== "text", e && (l.value = m, l.style.cssText = "position:absolute;visibility:hidden;", /^range$/.test(f) && l.style.WebkitAppearance !== c ? (g.appendChild(l), h = b.defaultView, e = h.getComputedStyle && h.getComputedStyle(l, null).WebkitAppearance !== "textfield" && l.offsetHeight !== 0, g.removeChild(l)) : /^(search|tel)$/.test(f) || (/^(url|email)$/.test(f) ? e = l.checkValidity && l.checkValidity() === !1 : /^color$/.test(f) ? (g.appendChild(l), g.offsetWidth, e = l.value != m, g.removeChild(l)) : e = l.value != m)), r[a[d]] = !!e;
-            return r
-        }("search tel url email datetime date month week time datetime-local number range color".split(" "))
-    }
-
-    function D(a, b) {
-        var c = a.charAt(0).toUpperCase() + a.substr(1), d = (a + " " + p.join(c + " ") + c).split(" ");
-        return C(d, b)
-    }
-
-    function C(a, b) {
-        for (var d in a)if (k[a[d]] !== c)return b == "pfx" ? a[d] : !0;
-        return!1
-    }
-
-    function B(a, b) {
-        return!!~("" + a).indexOf(b)
-    }
-
-    function A(a, b) {
-        return typeof a === b
-    }
-
-    function z(a, b) {
-        return y(o.join(a + ";") + (b || ""))
-    }
-
-    function y(a) {
-        k.cssText = a
-    }
-
-    var d = "2.0.6", e = {}, f = !0, g = b.documentElement, h = b.head || b.getElementsByTagName("head")[0], i = "modernizr", j = b.createElement(i), k = j.style, l = b.createElement("input"), m = ":)", n = Object.prototype.toString, o = " -webkit- -moz- -o- -ms- -khtml- ".split(" "), p = "Webkit Moz O ms Khtml".split(" "), q = {}, r = {}, s = {}, t = [], u = function (a, c, d, e) {
-        var f, h, j, k = b.createElement("div");
-        if (parseInt(d, 10))while (d--)j = b.createElement("div"), j.id = e ? e[d] : i + (d + 1), k.appendChild(j);
-        f = ["&shy;", "<style>", a, "</style>"].join(""), k.id = i, k.innerHTML += f, g.appendChild(k), h = c(k, a), k.parentNode.removeChild(k);
-        return!!h
-    }, v, w = {}.hasOwnProperty, x;
-    !A(w, c) && !A(w.call, c) ? x = function (a, b) {
-        return w.call(a, b)
-    } : x = function (a, b) {
-        return b in a && A(a.constructor.prototype[b], c)
-    }, q.rgba = function () {
-        y("background-color:rgba(150,255,150,.5)");
-        return B(k.backgroundColor, "rgba")
-    }, q.multiplebgs = function () {
-        y("background:url(https://),url(https://),red url(https://)");
-        return/(url\s*\(.*?){3}/.test(k.background)
-    }, q.backgroundsize = function () {
-        return D("backgroundSize")
-    }, q.borderimage = function () {
-        return D("borderImage")
-    }, q.borderradius = function () {
-        return D("borderRadius")
-    }, q.boxshadow = function () {
-        return D("boxShadow")
-    }, q.textshadow = function () {
-        return b.createElement("div").style.textShadow === ""
-    }, q.opacity = function () {
-        z("opacity:.55");
-        return/^0.55$/.test(k.opacity)
-    }, q.cssanimations = function () {
-        return D("animationName")
-    }, q.cssgradients = function () {
-        var a = "background-image:", b = "gradient(linear,left top,right bottom,from(#9f9),to(white));", c = "linear-gradient(left top,#9f9, white);";
-        y((a + o.join(b + a) + o.join(c + a)).slice(0, -a.length));
-        return B(k.backgroundImage, "gradient")
-    }, q.cssreflections = function () {
-        return D("boxReflect")
-    }, q.csstransitions = function () {
-        return D("transitionProperty")
-    };
-    for (var F in q)x(q, F) && (v = F.toLowerCase(), e[v] = q[F](), t.push((e[v] ? "" : "no-") + v));
-    e.input || E(), y(""), j = l = null, a.attachEvent && function () {
-        var a = b.createElement("div");
-        a.innerHTML = "<elem></elem>";
-        return a.childNodes.length !== 1
-    }() && function (a, b) {
-        function s(a) {
-            var b = -1;
-            while (++b < g)a.createElement(f[b])
-        }
-
-        a.iepp = a.iepp || {};
-        var d = a.iepp, e = d.html5elements || "abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video", f = e.split("|"), g = f.length, h = new RegExp("(^|\\s)(" + e + ")", "gi"), i = new RegExp("<(/*)(" + e + ")", "gi"), j = /^\s*[\{\}]\s*$/, k = new RegExp("(^|[^\\n]*?\\s)(" + e + ")([^\\n]*)({[\\n\\w\\W]*?})", "gi"), l = b.createDocumentFragment(), m = b.documentElement, n = m.firstChild, o = b.createElement("body"), p = b.createElement("style"), q = /print|all/, r;
-        d.getCSS = function (a, b) {
-            if (a + "" === c)return"";
-            var e = -1, f = a.length, g, h = [];
-            while (++e < f) {
-                g = a[e];
-                if (g.disabled)continue;
-                b = g.media || b, q.test(b) && h.push(d.getCSS(g.imports, b), g.cssText), b = "all"
-            }
-            return h.join("")
-        }, d.parseCSS = function (a) {
-            var b = [], c;
-            while ((c = k.exec(a)) != null)b.push(((j.exec(c[1]) ? "\n" : c[1]) + c[2] + c[3]).replace(h, "$1.iepp_$2") + c[4]);
-            return b.join("\n")
-        }, d.writeHTML = function () {
-            var a = -1;
-            r = r || b.body;
-            while (++a < g) {
-                var c = b.getElementsByTagName(f[a]), d = c.length, e = -1;
-                while (++e < d)c[e].className.indexOf("iepp_") < 0 && (c[e].className += " iepp_" + f[a])
-            }
-            l.appendChild(r), m.appendChild(o), o.className = r.className, o.id = r.id, o.innerHTML = r.innerHTML.replace(i, "<$1font")
-        }, d._beforePrint = function () {
-            p.styleSheet.cssText = d.parseCSS(d.getCSS(b.styleSheets, "all")), d.writeHTML()
-        }, d.restoreHTML = function () {
-            o.innerHTML = "", m.removeChild(o), m.appendChild(r)
-        }, d._afterPrint = function () {
-            d.restoreHTML(), p.styleSheet.cssText = ""
-        }, s(b), s(l);
-        d.disablePP || (n.insertBefore(p, n.firstChild), p.media = "print", p.className = "iepp-printshim", a.attachEvent("onbeforeprint", d._beforePrint), a.attachEvent("onafterprint", d._afterPrint))
-    }(a, b), e._version = d, e._prefixes = o, e._domPrefixes = p, e.testProp = function (a) {
-        return C([a])
-    }, e.testAllProps = D, e.testStyles = u, g.className = g.className.replace(/\bno-js\b/, "") + (f ? " js " + t.join(" ") : "");
-    return e
-}(this, this.document), function (a, b, c) {
-    function k(a) {
-        return!a || a == "loaded" || a == "complete"
-    }
-
-    function j() {
-        var a = 1, b = -1;
-        while (p.length - ++b)if (p[b].s && !(a = p[b].r))break;
-        a && g()
-    }
-
-    function i(a) {
-        var c = b.createElement("script"), d;
-        c.src = a.s, c.onreadystatechange = c.onload = function () {
-            !d && k(c.readyState) && (d = 1, j(), c.onload = c.onreadystatechange = null)
-        }, m(function () {
-            d || (d = 1, j())
-        }, H.errorTimeout), a.e ? c.onload() : n.parentNode.insertBefore(c, n)
-    }
-
-    function h(a) {
-        var c = b.createElement("link"), d;
-        c.href = a.s, c.rel = "stylesheet", c.type = "text/css";
-        if (!a.e && (w || r)) {
-            var e = function (a) {
-                m(function () {
-                    if (!d)try {
-                        a.sheet.cssRules.length ? (d = 1, j()) : e(a)
-                    } catch (b) {
-                        b.code == 1e3 || b.message == "security" || b.message == "denied" ? (d = 1, m(function () {
-                            j()
-                        }, 0)) : e(a)
-                    }
-                }, 0)
-            };
-            e(c)
-        } else c.onload = function () {
-            d || (d = 1, m(function () {
-                j()
-            }, 0))
-        }, a.e && c.onload();
-        m(function () {
-            d || (d = 1, j())
-        }, H.errorTimeout), !a.e && n.parentNode.insertBefore(c, n)
-    }
-
-    function g() {
-        var a = p.shift();
-        q = 1, a ? a.t ? m(function () {
-            a.t == "c" ? h(a) : i(a)
-        }, 0) : (a(), j()) : q = 0
-    }
-
-    function f(a, c, d, e, f, h) {
-        function i() {
-            !o && k(l.readyState) && (r.r = o = 1, !q && j(), l.onload = l.onreadystatechange = null, m(function () {
-                u.removeChild(l)
-            }, 0))
-        }
-
-        var l = b.createElement(a), o = 0, r = {t: d, s: c, e: h};
-        l.src = l.data = c, !s && (l.style.display = "none"), l.width = l.height = "0", a != "object" && (l.type = d), l.onload = l.onreadystatechange = i, a == "img" ? l.onerror = i : a == "script" && (l.onerror = function () {
-            r.e = r.r = 1, g()
-        }), p.splice(e, 0, r), u.insertBefore(l, s ? null : n), m(function () {
-            o || (u.removeChild(l), r.r = r.e = o = 1, j())
-        }, H.errorTimeout)
-    }
-
-    function e(a, b, c) {
-        var d = b == "c" ? z : y;
-        q = 0, b = b || "j", C(a) ? f(d, a, b, this.i++, l, c) : (p.splice(this.i++, 0, a), p.length == 1 && g());
-        return this
-    }
-
-    function d() {
-        var a = H;
-        a.loader = {load: e, i: 0};
-        return a
-    }
-
-    var l = b.documentElement, m = a.setTimeout, n = b.getElementsByTagName("script")[0], o = {}.toString, p = [], q = 0, r = "MozAppearance"in l.style, s = r && !!b.createRange().compareNode, t = r && !s, u = s ? l : n.parentNode, v = a.opera && o.call(a.opera) == "[object Opera]", w = "webkitAppearance"in l.style, x = w && "async"in b.createElement("script"), y = r ? "object" : v || x ? "img" : "script", z = w ? "img" : y, A = Array.isArray || function (a) {
-        return o.call(a) == "[object Array]"
-    }, B = function (a) {
-        return Object(a) === a
-    }, C = function (a) {
-        return typeof a == "string"
-    }, D = function (a) {
-        return o.call(a) == "[object Function]"
-    }, E = [], F = {}, G, H;
-    H = function (a) {
-        function f(a) {
-            var b = a.split("!"), c = E.length, d = b.pop(), e = b.length, f = {url: d, origUrl: d, prefixes: b}, g, h;
-            for (h = 0; h < e; h++)g = F[b[h]], g && (f = g(f));
-            for (h = 0; h < c; h++)f = E[h](f);
-            return f
-        }
-
-        function e(a, b, e, g, h) {
-            var i = f(a), j = i.autoCallback;
-            if (!i.bypass) {
-                b && (b = D(b) ? b : b[a] || b[g] || b[a.split("/").pop().split("?")[0]]);
-                if (i.instead)return i.instead(a, b, e, g, h);
-                e.load(i.url, i.forceCSS || !i.forceJS && /css$/.test(i.url) ? "c" : c, i.noexec), (D(b) || D(j)) && e.load(function () {
-                    d(), b && b(i.origUrl, h, g), j && j(i.origUrl, h, g)
-                })
-            }
-        }
-
-        function b(a, b) {
-            function c(a) {
-                if (C(a))e(a, h, b, 0, d); else if (B(a))for (i in a)a.hasOwnProperty(i) && e(a[i], h, b, i, d)
-            }
-
-            var d = !!a.test, f = d ? a.yep : a.nope, g = a.load || a.both, h = a.callback, i;
-            c(f), c(g), a.complete && b.load(a.complete)
-        }
-
-        var g, h, i = this.yepnope.loader;
-        if (C(a))e(a, 0, i, 0); else if (A(a))for (g = 0; g < a.length; g++)h = a[g], C(h) ? e(h, 0, i, 0) : A(h) ? H(h) : B(h) && b(h, i); else B(a) && b(a, i)
-    }, H.addPrefix = function (a, b) {
-        F[a] = b
-    }, H.addFilter = function (a) {
-        E.push(a)
-    }, H.errorTimeout = 1e4, b.readyState == null && b.addEventListener && (b.readyState = "loading", b.addEventListener("DOMContentLoaded", G = function () {
-        b.removeEventListener("DOMContentLoaded", G, 0), b.readyState = "complete"
-    }, 0)), a.yepnope = d()
-}(this, this.document), Modernizr.load = function () {
-    yepnope.apply(window, [].slice.call(arguments, 0))
-};
+/*! modernizr 3.2.0 (Custom Build) | MIT *
+ * http://modernizr.com/download/?-backgroundcliptext-setclasses !*/
+!function(e,n,t){function r(e){var n=_.className,t=Modernizr._config.classPrefix||"";if(x&&(n=n.baseVal),Modernizr._config.enableJSClass){var r=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(r,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),x?_.className.baseVal=n:_.className=n)}function o(e,n){return typeof e===n}function s(){var e,n,t,r,s,i,a;for(var l in C)if(C.hasOwnProperty(l)){if(e=[],n=C[l],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(r=o(n.fn,"function")?n.fn():n.fn,s=0;s<e.length;s++)i=e[s],a=i.split("."),1===a.length?Modernizr[a[0]]=r:(!Modernizr[a[0]]||Modernizr[a[0]]instanceof Boolean||(Modernizr[a[0]]=new Boolean(Modernizr[a[0]])),Modernizr[a[0]][a[1]]=r),g.push((r?"":"no-")+a.join("-"))}}function i(e,n){return function(){return e.apply(n,arguments)}}function a(e,n,t){var r;for(var s in e)if(e[s]in n)return t===!1?e[s]:(r=n[e[s]],o(r,"function")?i(r,t||n):r);return!1}function l(e,n){return!!~(""+e).indexOf(n)}function f(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):x?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function u(e){return e.replace(/([a-z])-([a-z])/g,function(e,n,t){return n+t.toUpperCase()}).replace(/^-/,"")}function d(e){return e.replace(/([A-Z])/g,function(e,n){return"-"+n.toLowerCase()}).replace(/^ms-/,"-ms-")}function c(){var e=n.body;return e||(e=f(x?"svg":"body"),e.fake=!0),e}function p(e,t,r,o){var s,i,a,l,u="modernizr",d=f("div"),p=c();if(parseInt(r,10))for(;r--;)a=f("div"),a.id=o?o[r]:u+(r+1),d.appendChild(a);return s=f("style"),s.type="text/css",s.id="s"+u,(p.fake?p:d).appendChild(s),p.appendChild(d),s.styleSheet?s.styleSheet.cssText=e:s.appendChild(n.createTextNode(e)),d.id=u,p.fake&&(p.style.background="",p.style.overflow="hidden",l=_.style.overflow,_.style.overflow="hidden",_.appendChild(p)),i=t(d,e),p.fake?(p.parentNode.removeChild(p),_.style.overflow=l,_.offsetHeight):d.parentNode.removeChild(d),!!i}function m(n,r){var o=n.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(d(n[o]),r))return!0;return!1}if("CSSSupportsRule"in e){for(var s=[];o--;)s.push("("+d(n[o])+":"+r+")");return s=s.join(" or "),p("@supports ("+s+") { #modernizr { position: absolute; } }",function(e){return"absolute"==getComputedStyle(e,null).position})}return t}function h(e,n,r,s){function i(){d&&(delete z.style,delete z.modElem)}if(s=o(s,"undefined")?!1:s,!o(r,"undefined")){var a=m(e,r);if(!o(a,"undefined"))return a}for(var d,c,p,h,v,y=["modernizr","tspan"];!z.style;)d=!0,z.modElem=f(y.shift()),z.style=z.modElem.style;for(p=e.length,c=0;p>c;c++)if(h=e[c],v=z.style[h],l(h,"-")&&(h=u(h)),z.style[h]!==t){if(s||o(r,"undefined"))return i(),"pfx"==n?h:!0;try{z.style[h]=r}catch(g){}if(z.style[h]!=v)return i(),"pfx"==n?h:!0}return i(),!1}function v(e,n,t,r,s){var i=e.charAt(0).toUpperCase()+e.slice(1),l=(e+" "+b.join(i+" ")+i).split(" ");return o(n,"string")||o(n,"undefined")?h(l,n,r,s):(l=(e+" "+E.join(i+" ")+i).split(" "),a(l,n,t))}function y(e,n,r){return v(e,t,t,n,r)}var g=[],C=[],w={_version:"3.2.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){C.push({name:e,fn:n,options:t})},addAsyncTest:function(e){C.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=w,Modernizr=new Modernizr;var _=n.documentElement,x="svg"===_.nodeName.toLowerCase(),S="Moz O ms Webkit",b=w._config.usePrefixes?S.split(" "):[];w._cssomPrefixes=b;var E=w._config.usePrefixes?S.toLowerCase().split(" "):[];w._domPrefixes=E;var P={elem:f("modernizr")};Modernizr._q.push(function(){delete P.elem});var z={style:P.elem.style};Modernizr._q.unshift(function(){delete z.style}),w.testAllProps=v,w.testAllProps=y,Modernizr.addTest("backgroundcliptext",function(){return y("backgroundClip","text")}),s(),r(g),delete w.addTest,delete w.addAsyncTest;for(var N=0;N<Modernizr._q.length;N++)Modernizr._q[N]();e.Modernizr=Modernizr}(window,document);;!function(a,b){"function"==typeof define&&define.amd?
+// AMD. Register as an anonymous module unless amdModuleId is set
+define([],function(){return a.svg4everybody=b()}):"object"==typeof exports?module.exports=b():a.svg4everybody=b()}(this,function(){/*! svg4everybody v2.0.3 | github.com/jonathantneal/svg4everybody */
+function a(a,b){
+// if the target exists
+if(b){
+// create a document fragment to hold the contents of the target
+var c=document.createDocumentFragment(),d=!a.getAttribute("viewBox")&&b.getAttribute("viewBox");
+// conditionally set the viewBox on the svg
+d&&a.setAttribute("viewBox",d);
+// copy the contents of the clone into the fragment
+for(
+// clone the target
+var e=b.cloneNode(!0);e.childNodes.length;)c.appendChild(e.firstChild);
+// append the fragment into the svg
+a.appendChild(c)}}function b(b){
+// listen to changes in the request
+b.onreadystatechange=function(){
+// if the request is ready
+if(4===b.readyState){
+// get the cached html document
+var c=b._cachedDocument;
+// ensure the cached html document based on the xhr response
+c||(c=b._cachedDocument=document.implementation.createHTMLDocument(""),c.body.innerHTML=b.responseText,b._cachedTarget={}),
+// clear the xhr embeds list and embed each item
+b._embeds.splice(0).map(function(d){
+// get the cached target
+var e=b._cachedTarget[d.id];
+// ensure the cached target
+e||(e=b._cachedTarget[d.id]=c.getElementById(d.id)),
+// embed the target into the svg
+a(d.svg,e)})}},
+// test the ready state change immediately
+b.onreadystatechange()}function c(c){function d(){
+// while the index exists in the live <use> collection
+for(
+// get the cached <use> index
+var c=0;c<l.length;){
+// get the current <use>
+var g=l[c],h=g.parentNode;if(h&&/svg/i.test(h.nodeName)){var i=g.getAttribute("xlink:href");if(e&&(!f.validate||f.validate(i,h,g))){
+// remove the <use> element
+h.removeChild(g);
+// parse the src and get the url and id
+var m=i.split("#"),n=m.shift(),o=m.join("#");
+// if the link is external
+if(n.length){
+// get the cached xhr request
+var p=j[n];
+// ensure the xhr request exists
+p||(p=j[n]=new XMLHttpRequest,p.open("GET",n),p.send(),p._embeds=[]),
+// add the svg and id as an item to the xhr embeds list
+p._embeds.push({svg:h,id:o}),
+// prepare the xhr ready state change event
+b(p)}else
+// embed the local id into the svg
+a(h,document.getElementById(o))}}else
+// increase the index when the previous value was not "valid"
+++c}
+// continue the interval
+k(d,67)}var e,f=Object(c),g=/\bTrident\/[567]\b|\bMSIE (?:9|10)\.0\b/,h=/\bAppleWebKit\/(\d+)\b/,i=/\bEdge\/12\.(\d+)\b/;e="polyfill"in f?f.polyfill:g.test(navigator.userAgent)||(navigator.userAgent.match(i)||[])[1]<10547||(navigator.userAgent.match(h)||[])[1]<537;
+// create xhr requests object
+var j={},k=window.requestAnimationFrame||setTimeout,l=document.getElementsByTagName("use");
+// conditionally start the interval if the polyfill is active
+e&&d()}return c});

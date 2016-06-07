@@ -1,8 +1,7 @@
 //------------------------------------------------------------base styles
 html {
 	height: 100%;
-	font: normal 10px/1.33 $font_1;
-	font-weight: 300;
+	font: 400 10px/1.33 $font_1;
 }
 
 body {
@@ -15,21 +14,22 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	background: $body_bg;
 }
+
 .wrapper {
 	position: relative;
-	min-height:100%;
+	min-height: 100%;
 	height: auto !important;
-	overflow:hidden;
+	overflow: hidden;
 }
 
 .base {
-	position:relative;
+	position: relative;
 	padding: $height_header 0 $height_footer;
 }
 
 a {
 	text-decoration: none;
-	color:$color_link_base;
+	color: $color_link_base;
 	&:hover,
 	&:focus {
 		text-decoration: underline;
@@ -37,6 +37,7 @@ a {
 }
 
 .elements_list {
-	padding:3rem;
+	padding: 3rem;
 }
+
 //------------------------------------------------------------base styles###

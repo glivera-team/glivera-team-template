@@ -49,17 +49,17 @@
 	}
 
 	%global_flex_block_row_wrap_center_stretch {
-		@include flex_block(row, wrap, center,stretch);
+		@include flex_block(row, wrap, center, stretch);
 	}
 
 	%global_flex_block_row_wrap_center_baseline {
-		@include flex_block(row, wrap, center,baseline);
+		@include flex_block(row, wrap, center, baseline);
 	}
 
 	%global_flex_block_row_wrap_space_between {
 		@include flex_block(row, wrap, space-between);
 	}
-	
+
 	%global_flex_block_row_wrap_space_between_stretch {
 		@include flex_block(row, wrap, space-between, stretch);
 	}
@@ -79,7 +79,7 @@
 	%global_flex_block_row_wrap_space_between_flex-end {
 		@include flex_block(row, wrap, space-between, flex-end);
 	}
-	
+
 	%global_flex_block_row_nowrap_flex-start {
 		@include flex_block(row, nowrap, flex-start);
 	}
@@ -125,11 +125,11 @@
 	}
 
 	%global_flex_block_row_nowrap_center_stretch {
-		@include flex_block(row, nowrap, center,stretch);
+		@include flex_block(row, nowrap, center, stretch);
 	}
 
 	%global_flex_block_row_nowrap_center_baseline {
-		@include flex_block(row, nowrap, center,baseline);
+		@include flex_block(row, nowrap, center, baseline);
 	}
 
 	%global_flex_block_row_nowrap_space_between {
@@ -201,11 +201,11 @@
 	}
 
 	%global_flex_block_column_wrap_center_stretch {
-		@include flex_block(column, wrap, center,stretch);
+		@include flex_block(column, wrap, center, stretch);
 	}
 
 	%global_flex_block_column_wrap_center_baseline {
-		@include flex_block(column, wrap, center,baseline);
+		@include flex_block(column, wrap, center, baseline);
 	}
 
 	%global_flex_block_column_wrap_space_between {
@@ -277,11 +277,11 @@
 	}
 
 	%global_flex_block_column_nowrap_center_stretch {
-		@include flex_block(column, nowrap, center,stretch);
+		@include flex_block(column, nowrap, center, stretch);
 	}
 
 	%global_flex_block_column_nowrap_center_baseline {
-		@include flex_block(column, nowrap, center,baseline);
+		@include flex_block(column, nowrap, center, baseline);
 	}
 
 	%global_flex_block_column_nowrap_space_between {
@@ -307,7 +307,6 @@
 	%global_flex_block_column_nowrap_space_between_flex-end {
 		@include flex_block(column, nowrap, space-between, flex-end);
 	}
-
 
 	%clearfix {
 		&:after {
@@ -475,7 +474,7 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transform:translate(-50%,-50%);
+		transform: translate(-50%, -50%);
 		min-width: 100%;
 		min-height: 100%;
 	}

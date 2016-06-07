@@ -8,7 +8,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video, button{
+time, mark, audio, video, button {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -19,12 +19,13 @@ time, mark, audio, video, button{
 	box-sizing: border-box;
 
 	&:before,
-	&:after{
+	&:after {
 		box-sizing: border-box;
 	}
 }
 
-sub, sup {
+sub,
+sup {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -34,19 +35,19 @@ sub, sup {
 	box-sizing: border-box;
 
 	&:before,
-	&:after{
+	&:after {
 		box-sizing: border-box;
 	}
 }
 
-a{
+a {
 	&:before,
 	&:after {
 		box-sizing: border-box;
 	}
 }
 
-table, caption, tbody, tfoot, thead, tr, th, td{
+table, caption, tbody, tfoot, thead, tr, th, td {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -70,14 +71,12 @@ blockquote, q {
 
 blockquote {
 	&:before, &:after {
-		content: '';
 		content: none;
 	}
 }
 
 q {
 	&:before, &:after {
-		content: '';
 		content: none;
 	}
 }
@@ -85,6 +84,7 @@ q {
 :focus {
 	outline: 0;
 }
+
 input[type="text"], textarea {
 	-webkit-appearance: none;
 
@@ -92,8 +92,9 @@ input[type="text"], textarea {
 		display: none;
 	}
 }
+
 input,
-textarea{
+textarea {
 	border-radius: 0;
 	box-sizing: border-box;
 
@@ -141,7 +142,6 @@ table {
 
 * {
 	box-sizing: border-box;
-	word-wrap:break-word;
+	word-wrap: break-word;
 }
-
 //-------------------------------------------------reset*/

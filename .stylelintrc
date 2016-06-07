@@ -1,0 +1,43 @@
+{
+  "rules": {
+    "color-hex-case": "lower",
+    "color-hex-length": "short",
+    "color-named":"never",
+    "color-no-invalid-hex":true,
+
+    "font-family-name-quotes":"always-unless-keyword",
+    "font-weight-notation":"numeric",
+
+    "function-calc-no-unspaced-operator":true,
+
+    "number-leading-zero":"never",
+    "number-no-trailing-zeros":true,
+    "number-zero-length-no-unit":true,
+
+    "declaration-bang-space-after":"never",
+    "declaration-bang-space-before":"always",
+    "declaration-colon-space-before":"never",
+    "declaration-colon-space-after":"always",
+
+    "declaration-block-no-duplicate-properties":true,
+    "declaration-block-no-ignored-properties":true,
+    "declaration-block-no-shorthand-property-overrides":true,
+    "declaration-block-semicolon-newline-after":"always",
+    "declaration-block-trailing-semicolon":"always",
+
+    "block-closing-brace-newline-after":"always",
+    "block-closing-brace-newline-before":"always",
+    "block-no-empty":true,
+    "block-no-single-line":true,
+    "block-opening-brace-newline-after":"always",
+    "block-opening-brace-space-before":"always",
+
+    "selector-max-compound-selectors":2,
+    "selector-no-id":true,
+
+    "indentation":"tab",
+    "max-empty-lines":1,
+    "no-duplicate-selectors":true,
+    "no-extra-semicolons":true
+  }
+}
