@@ -1,0 +1,170 @@
+// uprise block
+//---------------------------------------------sliding effect
+.uprise_block {
+	position: relative;
+	display: block;
+	height: 20rem;
+	border-radius: .6rem;
+	overflow: hidden;
+	color:$color_text_base;
+	will-change:transform;
+
+	&:before {
+		@extend %stretch;
+
+		content: '';
+		z-index: 1;
+		position: absolute;
+		pointer-events: none;
+		background: rgba($black, 0.2);
+	}
+
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+}
+.uprise_i_w {
+	@extend %stretch;
+
+	position: absolute;
+	z-index: 0;
+}
+.uprise_i {
+	@extend %rounded_i;
+}
+.uprise_label {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	z-index: 2;
+	height: 2.4rem;
+	padding:0 1rem;
+	line-height: 2.4rem;
+	color:$white;
+	background: #48a2df;
+	border-radius: .4rem;
+}
+.uprise_in {
+	@extend %stretch;
+
+	position: absolute;
+	overflow: hidden;
+	z-index: 3;
+	padding:1rem;
+	color:$white;
+	border-radius: .6rem;
+	transform:translate(0,65%);
+	transition: .3s ease;
+	will-change:transform;
+
+	&:before {
+		@extend %stretch;
+
+		content: '';
+		z-index: -1;
+		opacity: 0;
+		background: $black;
+		transition:opacity .3s ease;
+		transform:translateZ(0);
+	}
+
+	.uprise_block:hover & {
+		transform:translate(0,0);
+
+		&:before {
+			opacity: .5;
+		}
+	}
+}
+.uprise_title {
+	display: block;
+}
+.uprise_date {
+	display: block;
+	padding:.5rem 0 0;
+}
+//---------------------------------------------sliding effect###
+
+//---------------------------------------------opacity effect
+.uprise_block {
+	position: relative;
+	display: block;
+	height: 20rem;
+	border-radius: .6rem;
+	overflow: hidden;
+	color:$color_text_base;
+	will-change:transform;
+
+	&:before {
+		@extend %stretch;
+
+		content: '';
+		z-index: 1;
+		position: absolute;
+		pointer-events: none;
+		background: rgba($black, 0.2);
+	}
+
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+}
+.uprise_i_w {
+	@extend %stretch;
+
+	position: absolute;
+	z-index: 0;
+}
+.uprise_i {
+	@extend %rounded_i;
+}
+.uprise_label {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	z-index: 2;
+	height: 2.4rem;
+	padding:0 1rem;
+	line-height: 2.4rem;
+	color:$white;
+	background: #48a2df;
+	border-radius: .4rem;
+}
+.uprise_in {
+	@extend %stretch;
+	@extend %global_flex_block_column_nowrap_flex-end;
+
+	position: absolute;
+	overflow: hidden;
+	z-index: 3;
+	padding:1rem;
+	color:$white;
+	border-radius: .6rem;
+	transition: .3s ease;
+
+	&:before {
+		@extend %stretch;
+
+		content: '';
+		z-index: -1;
+		opacity: 0;
+		background: $black;
+		transition:opacity .3s ease;
+		transform:translateZ(0);
+	}
+
+	.uprise_block:hover & {
+
+		&:before {
+			opacity: .5;
+		}
+	}
+}
+.uprise_title {
+	display: block;
+}
+.uprise_date {
+	display: block;
+	padding:.5rem 0 0;
+}
+//---------------------------------------------opacity effect###
