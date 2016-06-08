@@ -1,18 +1,18 @@
 //---------------------------------------------checkboxes and radio-buttons
-.lbl_rb_ch_block {
+.radio_check {
 	&.check_1_mod,&.radio_1_mod {
 		display: inline-block;
 		cursor:pointer;
 	}
 }
 
-.lbl_inp_rb_ch {
+.radio_check_input {
 	&.check_1_mod,&.radio_1_mod {
 		display: none;
 	}
 }
 
-.lbl_rb_ch_text {
+.radio_check_text {
 	&.check_1_mod {
 		position: relative;
 		display: inline-block;
@@ -42,7 +42,7 @@
 			opacity: 0;
 			color:green;
 
-			.lbl_inp_rb_ch:checked + & {
+			.radio_check_input:checked + & {
 				opacity: 1;
 			}
 		}
@@ -79,7 +79,7 @@
 			background: green;
 			opacity: 0;
 
-			.lbl_inp_rb_ch:checked + & {
+			.radio_check_input:checked + & {
 				opacity: 1;
 			}
 		}

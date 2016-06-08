@@ -38,7 +38,7 @@
 	}
 }
 
-.form_c_hline {
+.form_cell_title {
 
 	&.hline_hide_mod {
 		display: none;
@@ -47,14 +47,14 @@
 	}
 }
 
-.form_c_f_w {
+.form_field_wrap {
 	position: relative;
 
 	&.form_v1_mod {
 	}
 }
 
-.f_c_field:not(.select_rediz_coosen) {
+.form_field:not(.select_rediz_coosen) {
 	&.default_mod {
 		@extend %form_field_default !optional;
 
