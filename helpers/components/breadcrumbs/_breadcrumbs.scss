@@ -1,0 +1,33 @@
+.breadcrumbs_list {
+	@extend %global_flex_block_row_nowrap_flex-start;
+
+	margin:50px;
+}
+
+.breadcrumbs_item {
+	padding:0 0 0 1rem;
+
+	&:before {
+		content: '>';
+		display: inline-block;
+		margin:0 1rem 0 0;
+	}
+
+	&:first-child {
+		padding: 0;
+
+		&:before {
+			display: none;
+		}
+	}
+}
+
+.breadcrumbs_link {
+	&.current_mod {
+		color:$color_text_base;
+
+		&:hover, &:focus {
+			text-decoration: none;
+		}
+	}
+}
