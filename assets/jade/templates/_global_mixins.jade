@@ -144,5 +144,22 @@ mixin pagination(config)
 				li.pag_item.next_mod
 					a.pag_link.next_mod(href="#" class="#{config.mod}")
 
+mixin list(array,mod)
+	ul(class="#{mod}_list")
+		each item in array
+			li(class="#{mod}_item")= item
+
+mixin span_list(array,mod)
+	ul(class="#{mod}_list")
+		each item in array
+			li(class="#{mod}_item")
+				span(class="#{mod}_text")= item
+
+mixin link_list(array,mod)
+	ul(class="#{mod}_list")
+		each item in array
+			li(class="#{mod}_item")
+				a(class="#{mod}_link" href="#")= item
+
 
 
