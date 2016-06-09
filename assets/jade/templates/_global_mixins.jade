@@ -144,6 +144,27 @@ mixin pagination(config)
 				li.pag_item.next_mod
 					a.pag_link.next_mod(href="#" class="#{config.mod}")
 
+mixin pagination_2(config)
+	- config.mod = config.mod || ''
+	- config.active = config.active || 1
+	.pag_block(class='#{config.mod}')
+		ul.pag_list(class="#{config.mod}")
+			if config.arrows
+				li.pag_item.prev_mod(class="#{config.mod}")
+					a.pag_link.prev_mod(href="#" class="#{config.mod}")
+			each page, index in config.pages
+				if index == config.pages.length - 1
+					li.pag_item(class="#{config.mod}")
+						a.pag_link.dots_mod(href="#" class="#{config.mod}") &hellip;
+					li.pag_item(class="#{config.mod}")
+						a.pag_link(href="#" title="#{i}" class="#{config.mod}") #{page}
+				else
+					li.pag_item(class="#{config.mod}")
+						a.pag_link(href="#" title="#{i}" class="#{config.mod}") #{page}
+			if config.arrows
+				li.pag_item.next_mod
+					a.pag_link.next_mod(href="#" class="#{config.mod}")
+
 mixin list(array,mod)
 	ul(class="#{mod}_list")
 		each item in array
