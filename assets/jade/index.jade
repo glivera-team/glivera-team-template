@@ -6,3 +6,11 @@ include templates/_project_vars
 block vars
 	- var array = {body_class:'', layuot_mod:'', sub_keywords:'',title_inner:'Title of the page'}
 block content_block
+	.test_container
+		+form_element({
+			type: 'text',
+			class_array: default_field,
+			title: 'some title',
+			id: 'some',
+			placeholder: 'some text'
+		})
