@@ -184,7 +184,7 @@ gulp.task('cssBuild', function () {
 // 		.pipe(gulp.dest('assets/fonts/icons'));
 // });
 
-////--------------------------------------------If you need svg sprite
+//--------------------------------------------If you need svg sprite
 var svgSprite = require('gulp-svg-sprite'),
 	svgmin = require('gulp-svgmin'),
 	cheerio = require('gulp-cheerio'),
@@ -198,7 +198,7 @@ gulp.task('svgSpriteBuild', function () {
 				pretty: true
 			}
 		}))
-		// remove all fill, style and stroke declarations in out shapes
+		// remove all fill and style declarations in out shapes
 		.pipe(cheerio({
 			run: function ($) {
 				$('[fill]').removeAttr('fill');
@@ -219,7 +219,8 @@ gulp.task('svgSpriteBuild', function () {
 							dest:'../../../sass/_sprite.scss',
 							template: assetsDir + "sass/templates/_sprite_template.scss"
 						}
-					}
+					},
+					example: true
 				}
 			}
 		}))
