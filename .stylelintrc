@@ -17,7 +17,6 @@
     "declaration-bang-space-after":"never",
     "declaration-bang-space-before":"always",
     "declaration-colon-space-before":"never",
-    "declaration-colon-space-after":"always",
 
     "declaration-block-no-duplicate-properties":true,
     "declaration-block-no-ignored-properties":true,
@@ -35,7 +34,6 @@
     "selector-max-compound-selectors":2,
     "selector-no-id":true,
 
-    "indentation":"tab",
     "max-empty-lines":1,
     "no-duplicate-selectors":true,
     "no-extra-semicolons":true
