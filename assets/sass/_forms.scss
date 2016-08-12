@@ -7,7 +7,7 @@
 	font-size: $input_font_size;
 	font-family: $font_1;
 	color: $input_text_color;
-	box-shadow: 0 0 0 1px $input_border_color;
+	box-shadow: inset 0 0 0 1px $input_border_color;
 	border:none;
 	border-radius: $input_radius;
 
@@ -55,7 +55,7 @@
 	}
 }
 
-.form_field:not(.select_rediz_coosen) {
+.form_field:not(.select_rediz_chosen) {
 	&.default_mod {
 		@extend %form_field_default !optional;
 
