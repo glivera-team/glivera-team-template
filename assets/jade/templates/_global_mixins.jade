@@ -48,12 +48,8 @@ mixin form_element(config)
 				label(for=config.id) #{config.title}
 			dd.form_field_wrap(class=config.class_array.class_mod)
 				if config.type === 'text' || config.type === 'password' || config.type === 'email' || config.type === 'tel'
-					if config.value
-						input.form_field(value=config.value type=config.type id=config.id class='#{config.class_array.elem_class} #{config.add_class}' placeholder=config.placeholder)
-						block
-					else
-						input.form_field(type=config.type id=config.id class='#{config.class_array.elem_class} #{config.add_class}' placeholder=config.placeholder)
-						block
+					input.form_field(value=config.value required=config.required type=config.type id=config.id class='#{config.class_array.elem_class} #{config.add_class}' placeholder=config.placeholder)
+					block
 				if config.type === 'textarea'
 					textarea.form_field(id=config.id class='#{config.class_array.elem_class} #{config.add_class}' placeholder=config.placeholder) #{config.value}
 					block
