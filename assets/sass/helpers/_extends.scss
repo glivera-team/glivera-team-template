@@ -13,7 +13,7 @@
 	}
 
 	%global_flex_block_row_wrap_flex-start_center {
-		@include flex_block(row, wrap, flex-start, center);
+		@include flex_block(row, wrap, flex-start, center, center);
 	}
 
 	%global_flex_block_row_wrap_flex-start_flex-end {
@@ -29,7 +29,7 @@
 	}
 
 	%global_flex_block_row_wrap_flex-end_center {
-		@include flex_block(row, wrap, flex-end, center);
+		@include flex_block(row, wrap, flex-end, center, center);
 	}
 
 	%global_flex_block_row_wrap_flex-end_stretch {
@@ -45,7 +45,7 @@
 	}
 
 	%global_flex_block_row_wrap_center_center {
-		@include flex_block(row, wrap, center, center);
+		@include flex_block(row, wrap, center, center, center);
 	}
 
 	%global_flex_block_row_wrap_center_stretch {
@@ -65,7 +65,7 @@
 	}
 
 	%global_flex_block_row_wrap_space_between_center {
-		@include flex_block(row, wrap, space-between, center);
+		@include flex_block(row, wrap, space-between, center, center);
 	}
 
 	%global_flex_block_row_wrap_space_between_baseline {
@@ -89,7 +89,7 @@
 	}
 
 	%global_flex_block_row_nowrap_flex-start_center {
-		@include flex_block(row, nowrap, flex-start, center);
+		@include flex_block(row, nowrap, flex-start, center, center);
 	}
 
 	%global_flex_block_row_nowrap_flex-start_flex-end {
@@ -105,7 +105,7 @@
 	}
 
 	%global_flex_block_row_nowrap_flex-end_center {
-		@include flex_block(row, nowrap, flex-end, center);
+		@include flex_block(row, nowrap, flex-end, center, center);
 	}
 
 	%global_flex_block_row_nowrap_flex-end_stretch {
@@ -121,7 +121,7 @@
 	}
 
 	%global_flex_block_row_nowrap_center_center {
-		@include flex_block(row, nowrap, center, center);
+		@include flex_block(row, nowrap, center, center, center);
 	}
 
 	%global_flex_block_row_nowrap_center_stretch {
@@ -141,7 +141,7 @@
 	}
 
 	%global_flex_block_row_nowrap_space_between_center {
-		@include flex_block(row, nowrap, space-between, center);
+		@include flex_block(row, nowrap, space-between, center, center);
 	}
 
 	%global_flex_block_row_nowrap_space_between_baseline {
@@ -165,7 +165,7 @@
 	}
 
 	%global_flex_block_column_wrap_flex-start_center {
-		@include flex_block(column, wrap, flex-start, center);
+		@include flex_block(column, wrap, flex-start, center, center);
 	}
 
 	%global_flex_block_column_wrap_flex-start_flex-end {
@@ -181,7 +181,7 @@
 	}
 
 	%global_flex_block_column_wrap_flex-end_center {
-		@include flex_block(column, wrap, flex-end, center);
+		@include flex_block(column, wrap, flex-end, center, center);
 	}
 
 	%global_flex_block_column_wrap_flex-end_stretch {
@@ -197,7 +197,7 @@
 	}
 
 	%global_flex_block_column_wrap_center_center {
-		@include flex_block(column, wrap, center, center);
+		@include flex_block(column, wrap, center, center, center);
 	}
 
 	%global_flex_block_column_wrap_center_stretch {
