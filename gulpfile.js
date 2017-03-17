@@ -1,7 +1,7 @@
 // plugins for development
 var gulp = require('gulp'),
 	rimraf = require('rimraf'),
-	jade = require('gulp-jade'),
+	pug = require('gulp-pug'),
 	sass = require('gulp-sass'),
 	inlineimage = require('gulp-inline-image'),
 	prefix = require('gulp-autoprefixer'),
@@ -32,10 +32,10 @@ var outputDir = 'dist/';
 var buildDir = 'build/';
 
 //----------------------------------------------------Compiling
-gulp.task('jade', function () {
-	gulp.src([assetsDir + 'jade/*.jade', '!' + assetsDir + 'jade/_*.jade'])
+gulp.task('pug', function () {
+	gulp.src([assetsDir + 'pug/*.pug', '!' + assetsDir + 'pug/_*.pug'])
 		.pipe(plumber())
-		.pipe(jade({pretty: true}))
+		.pipe(pug({pretty: true}))
 		.pipe(gulp.dest(outputDir))
 		.pipe(browserSync.stream());
 });
@@ -98,7 +98,7 @@ gulp.task('jsSync', function () {
 
 //watching files and run tasks
 gulp.task('watch', function () {
-	gulp.watch(assetsDir + 'jade/**/*.jade', ['jade']);
+	gulp.watch(assetsDir + 'pug/**/*.pug', ['pug']);
 	gulp.watch(assetsDir + 'sass/**/*.scss', ['sass']);
 	gulp.watch(assetsDir + 'js/**/*.js', ['jsSync']);
 	gulp.watch(assetsDir + 'js/all/**/*.js', ['jsConcat']);
@@ -185,47 +185,47 @@ gulp.task('cssBuild', function () {
 // });
 
 //--------------------------------------------If you need svg sprite
-var svgSprite = require('gulp-svg-sprite'),
-	svgmin = require('gulp-svgmin'),
-	cheerio = require('gulp-cheerio'),
-	replace = require('gulp-replace');
-
-gulp.task('svgSpriteBuild', function () {
-	return gulp.src(assetsDir + 'i/icons/*.svg')
-	// minify svg
-		.pipe(svgmin({
-			js2svg: {
-				pretty: true
-			}
-		}))
-		// remove all fill and style declarations in out shapes
-		.pipe(cheerio({
-			run: function ($) {
-				$('[fill]').removeAttr('fill');
-				$('[stroke]').removeAttr('stroke');
-				$('[style]').removeAttr('style');
-			},
-			parserOptions: {xmlMode: true}
-		}))
-		// cheerio plugin create unnecessary string '&gt;', so replace it.
-		.pipe(replace('&gt;', '>'))
-		// build svg sprite
-		.pipe(svgSprite({
-			mode: {
-				symbol: {
-					sprite: "../sprite.svg",
-					render: {
-						scss: {
-							dest:'../../../sass/_sprite.scss',
-							template: assetsDir + "sass/templates/_sprite_template.scss"
-						}
-					},
-					example: true
-				}
-			}
-		}))
-		.pipe(gulp.dest(assetsDir + 'i/sprite/'));
-});
+// var svgSprite = require('gulp-svg-sprite'),
+// 	svgmin = require('gulp-svgmin'),
+// 	cheerio = require('gulp-cheerio'),
+// 	replace = require('gulp-replace');
+//
+// gulp.task('svgSpriteBuild', function () {
+// 	return gulp.src(assetsDir + 'i/icons/*.svg')
+// 	// minify svg
+// 		.pipe(svgmin({
+// 			js2svg: {
+// 				pretty: true
+// 			}
+// 		}))
+// 		// remove all fill and style declarations in out shapes
+// 		.pipe(cheerio({
+// 			run: function ($) {
+// 				$('[fill]').removeAttr('fill');
+// 				$('[stroke]').removeAttr('stroke');
+// 				$('[style]').removeAttr('style');
+// 			},
+// 			parserOptions: {xmlMode: true}
+// 		}))
+// 		// cheerio plugin create unnecessary string '&gt;', so replace it.
+// 		.pipe(replace('&gt;', '>'))
+// 		// build svg sprite
+// 		.pipe(svgSprite({
+// 			mode: {
+// 				symbol: {
+// 					sprite: "../sprite.svg",
+// 					render: {
+// 						scss: {
+// 							dest:'../../../sass/_sprite.scss',
+// 							template: assetsDir + "sass/templates/_sprite_template.scss"
+// 						}
+// 					},
+// 					example: true
+// 				}
+// 			}
+// 		}))
+// 		.pipe(gulp.dest(assetsDir + 'i/sprite/'));
+//});
 
 //testing your build files
 gulp.task('validation', function () {
@@ -247,7 +247,7 @@ gulp.task('cssLint', function () {
 });
 
 
-gulp.task('default', ['jade', 'sass', 'imageSync', 'fontsSync', 'fontsConvert', 'jsConcat', 'jsSync', 'watch', 'browser-sync']);
+gulp.task('default', ['pug', 'sass', 'imageSync', 'fontsSync', 'fontsConvert', 'jsConcat', 'jsSync', 'watch', 'browser-sync']);
 
 gulp.task('build', ['cleanBuildDir'], function () {
 	gulp.start('imgBuild', 'fontsBuild', 'htmlBuild', 'jsBuild', 'cssBuild');
