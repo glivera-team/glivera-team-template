@@ -1,5 +1,5 @@
 {
-  "name": "supervisor_template",
+  "name": "glivera_team_template",
   "version": "1.0.0",
   "description": "1. If you don't have installed [node.js](https://nodejs.org/) - install it(latest version).Also you should install [python(2 version)](https://www.python.org/downloads/release/python-2710/) and gulp globally",
   "main": "gulpfile.js",
@@ -31,15 +31,5 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gatilin222/supervisor_template.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gatilin222/supervisor_template/issues"
-  },
-  "homepage": "https://github.com/gatilin222/supervisor_template#readme"
+  }
 }
