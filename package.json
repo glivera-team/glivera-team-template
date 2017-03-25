@@ -1,5 +1,5 @@
 {
-  "name": "glivera_team_template",
+  "name": "glivera-team-template",
   "version": "1.0.0",
   "description": "1. If you don't have installed [node.js](https://nodejs.org/) - install it(latest version).Also you should install [python(2 version)](https://www.python.org/downloads/release/python-2710/) and gulp globally",
   "main": "gulpfile.js",
@@ -32,6 +32,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-	"author": "",
-	"license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glivera-team/glivera-team-template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glivera-team/glivera-team-template/issues"
+  },
+  "homepage": "https://github.com/glivera-team/glivera-team-template/blob/master/README.md"
 }
