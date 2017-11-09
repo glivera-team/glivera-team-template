@@ -112,9 +112,9 @@ mixin breadcrumbs(array,add_class)
 		each crumb, index in array
 			li.breadcrumbs_item
 				if (index == array.length - 1)
-					a.breadcrumbs_link.current_mod=crumb
+					a.breadcrumbs_link.current_mod=crumb.text
 				else
-					a.breadcrumbs_link(href="#")=crumb
+					a.breadcrumbs_link(href="" + crumb.url + "")= crumb.text
 
 mixin main_menu(menuArray)
 	ul.main_menu_list(class="#{menuArray.mod}")
