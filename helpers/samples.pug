@@ -1,0 +1,15 @@
+//- Examples of use pug mixins
+//----------------------------
+
+//- mixin menu()
++menu({
+	gl_class: 'main_menu',
+	gl_mod: 'main_mod',
+	items: [
+		{title: 'Menu link #1', url: 'http://www.google.com', active: true},
+		{title: 'Menu link #2', active: false},
+		{title: 'Menu link #3', active: false}
+	]
+})
+//- or use project_vars.pug
++menu(headerMenuArray)

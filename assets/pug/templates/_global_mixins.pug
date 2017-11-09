@@ -116,15 +116,17 @@ mixin breadcrumbs(array,add_class)
 				else
 					a.breadcrumbs_link(href= crumb.url)= crumb.text
 
-mixin main_menu(menuArray)
-	ul.main_menu_list(class="#{menuArray.mod}")
+//- works
+mixin menu(menuArray)
+	ul(class=`${menuArray.gl_class}_list ${menuArray.gl_mod}`)
 		each item in menuArray.items
+			- url = item.url || '#'
 			if item.active
-				li.main_menu_item.active_mod(class="#{menuArray.mod}")
-					a.main_menu_link(href="#" class="#{menuArray.mod}") #{item.title}
+				li(class= `${menuArray.gl_class}_item ${menuArray.gl_mod} active_mod`)
+					a(href= url class= `${menuArray.gl_class}_link ${menuArray.gl_mod}`)= item.title
 			else
-				li.main_menu_item(class="#{menuArray.mod}")
-					a.main_menu_link(href="#" class="#{menuArray.mod}") #{item.title}
+				li(class= `${menuArray.gl_class}_item ${menuArray.gl_mod}`)
+					a(href= url class= `${menuArray.gl_class}_link ${menuArray.gl_mod}`)= item.title
 
 //- works
 mixin social(items, mod)
