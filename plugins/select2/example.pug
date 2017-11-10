@@ -1,0 +1,21 @@
+// Pug structure
++form_element({
+	type: 'select',
+	title: 'Your Country',
+	id: 'country_select',
+	options: ['USA', 'Canada'],
+	class_array: {
+		block_class_mod: 'form_cell_v1_mod',
+		class_mod: 'form_v1_mod your_mod',
+		elem_class: 'default_mod your_mod'
+	}
+})
+	#country_dropdown.your_mod
+
+
+// Initialization
+script.
+	$('#country_select').select2({
+		minimumResultsForSearch: Infinity,
+		dropdownParent: $('#country_dropdown')
+	});
