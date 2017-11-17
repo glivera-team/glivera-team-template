@@ -478,4 +478,15 @@
 		min-width: 100%;
 		min-height: 100%;
 	}
+	
+	%responsive_animation_wrap{
+		position: absolute;
+		width: 10%;
+		height: 10vh;
+		top: 50%;
+		left: 50%;
+		margin: -5vh 0 0 (-5%);
+		transform: translateZ(0);
+		will-change: transform;
+	}
 }
