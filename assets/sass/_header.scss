@@ -1,10 +1,10 @@
 //------------------------------------------------------------layout
 .header {
 	position: fixed;
+	height: $height_header;
 	width: 100%;
-	height: 100%;
 	top: 0;
-	right: 100%;
+	left: 0;
 	will-change: transform;
 
 	@include z-index(header);
