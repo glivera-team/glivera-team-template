@@ -1,25 +1,27 @@
 // plugins for development
 var gulp = require('gulp'),
-	rimraf = require('rimraf'),
-	pug = require('gulp-pug'),
-	sass = require('gulp-sass'),
-	inlineimage = require('gulp-inline-image'),
-	prefix = require('gulp-autoprefixer'),
-	plumber = require('gulp-plumber'),
-	dirSync = require('gulp-directory-sync'),
-	browserSync = require('browser-sync').create(),
-	concat = require('gulp-concat'),
-	cssfont64 = require('gulp-cssfont64'),
-	sourcemaps = require('gulp-sourcemaps'),
-	postcss = require('gulp-postcss'),
-	assets  = require('postcss-assets');
+		rimraf = require('rimraf'),
+		pug = require('gulp-pug'),
+		sass = require('gulp-sass'),
+		gulpSequence = require('gulp-sequence'),
+		inlineimage = require('gulp-inline-image'),
+		prefix = require('gulp-autoprefixer'),
+		plumber = require('gulp-plumber'),
+		dirSync = require('gulp-directory-sync'),
+		browserSync = require('browser-sync').create(),
+		reload = browserSync.reload,
+		concat = require('gulp-concat'),
+		cssfont64 = require('gulp-cssfont64'),
+		sourcemaps = require('gulp-sourcemaps'),
+		postcss = require('gulp-postcss'),
+		assets  = require('postcss-assets');
 
 // plugins for build
 var purify = require('gulp-purifycss'),
-	uglify = require('gulp-uglify'),
-	imagemin = require('gulp-imagemin'),
-	pngquant = require('imagemin-pngquant'),
-	csso = require('gulp-csso');
+		uglify = require('gulp-uglify'),
+		imagemin = require('gulp-imagemin'),
+		pngquant = require('imagemin-pngquant'),
+		csso = require('gulp-csso');
 
 //plugins for testing
 var html5Lint = require('gulp-html5-lint');
@@ -37,7 +39,7 @@ gulp.task('pug', function () {
 		.pipe(plumber())
 		.pipe(pug({pretty: true}))
 		.pipe(gulp.dest(outputDir))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream({once: true}));
 });
 
 gulp.task('sass', function () {
@@ -53,21 +55,21 @@ gulp.task('sass', function () {
 		})]))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(outputDir + 'styles/'))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream({match: "**/*.css"}));
 });
 
 gulp.task('jsConcat', function () {
 	return gulp.src(assetsDir + 'js/all/**/*.js')
 		.pipe(concat('all.js', {newLine: ';'}))
 		.pipe(gulp.dest(outputDir + 'js/'))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream({once: true}));
 });
 
 gulp.task('fontsConvert', function () {
 	return gulp.src([assetsDir + 'fonts/*.woff', assetsDir + 'fonts/*.woff2'])
 		.pipe(cssfont64())
 		.pipe(gulp.dest(outputDir + 'styles/'))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream({once: true}));
 });
 
 //----------------------------------------------------Compiling###
@@ -77,21 +79,21 @@ gulp.task('imageSync', function () {
 	return gulp.src('')
 		.pipe(plumber())
 		.pipe(dirSync(assetsDir + 'i/', outputDir + 'i/', {printSummary: true}))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream({once: true}));
 });
 
 gulp.task('fontsSync', function () {
 	return gulp.src('')
 		.pipe(plumber())
 		.pipe(dirSync(assetsDir + 'fonts/', outputDir + 'fonts/', {printSummary: true}))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream({once: true}));
 });
 
 gulp.task('jsSync', function () {
 	return gulp.src(assetsDir + 'js/*.js')
 		.pipe(plumber())
 		.pipe(gulp.dest(outputDir + 'js/'))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream({once: true}));
 });
 //-------------------------------------------------Synchronization###
 
@@ -107,13 +109,23 @@ gulp.task('watch', function () {
 });
 
 //livereload and open project in browser
-gulp.task('browser-sync', function () {
-	browserSync.init({
-		port: 1337,
-		server: {
-			baseDir: outputDir
+var plugins = {
+	browserSync: {
+		options: {
+			port: 1337,
+			server: {
+				baseDir: outputDir
+			}
 		}
-	});
+	}
+}
+
+gulp.task('browser-sync', function() {
+	return browserSync.init(plugins.browserSync.options);
+});
+
+gulp.task('bs-reload', function (cb) {
+	browserSync.reload();
 });
 
 
@@ -127,12 +139,12 @@ gulp.task('cleanBuildDir', function (cb) {
 //minify images
 gulp.task('imgBuild', function () {
 	return gulp.src(outputDir + 'i/**/*')
-		.pipe(imagemin({
-			progressive: true,
-			svgoPlugins: [{removeViewBox: false}],
-			use: [pngquant()]
-		}))
-		.pipe(gulp.dest(buildDir + 'i/'))
+			.pipe(imagemin({
+				progressive: true,
+				svgoPlugins: [{removeViewBox: false}],
+				use: [pngquant()]
+			}))
+			.pipe(gulp.dest(buildDir + 'i/'))
 });
 
 //copy fonts
@@ -184,48 +196,48 @@ gulp.task('cssBuild', function () {
 // 		.pipe(gulp.dest('assets/fonts/icons'));
 // });
 
-//--------------------------------------------If you need svg sprite
-// var svgSprite = require('gulp-svg-sprite'),
-// 	svgmin = require('gulp-svgmin'),
-// 	cheerio = require('gulp-cheerio'),
-// 	replace = require('gulp-replace');
-//
-// gulp.task('svgSpriteBuild', function () {
-// 	return gulp.src(assetsDir + 'i/icons/*.svg')
-// 	// minify svg
-// 		.pipe(svgmin({
-// 			js2svg: {
-// 				pretty: true
-// 			}
-// 		}))
-// 		// remove all fill and style declarations in out shapes
-// 		.pipe(cheerio({
-// 			run: function ($) {
-// 				$('[fill]').removeAttr('fill');
-// 				$('[stroke]').removeAttr('stroke');
-// 				$('[style]').removeAttr('style');
-// 			},
-// 			parserOptions: {xmlMode: true}
-// 		}))
-// 		// cheerio plugin create unnecessary string '&gt;', so replace it.
-// 		.pipe(replace('&gt;', '>'))
-// 		// build svg sprite
-// 		.pipe(svgSprite({
-// 			mode: {
-// 				symbol: {
-// 					sprite: "../sprite.svg",
-// 					render: {
-// 						scss: {
-// 							dest:'../../../sass/_sprite.scss',
-// 							template: assetsDir + "sass/templates/_sprite_template.scss"
-// 						}
-// 					},
-// 					example: true
-// 				}
-// 			}
-// 		}))
-// 		.pipe(gulp.dest(assetsDir + 'i/sprite/'));
-//});
+// --------------------------------------------If you need svg sprite
+var svgSprite = require('gulp-svg-sprite'),
+		svgmin = require('gulp-svgmin'),
+		cheerio = require('gulp-cheerio'),
+		replace = require('gulp-replace');
+
+gulp.task('svgSpriteBuild', function () {
+	return gulp.src(assetsDir + 'i/icons/*.svg')
+	// minify svg
+	.pipe(svgmin({
+		js2svg: {
+			pretty: true
+		}
+	}))
+	// remove all fill and style declarations in out shapes
+	.pipe(cheerio({
+		run: function ($) {
+			$('[fill]').removeAttr('fill');
+			$('[stroke]').removeAttr('stroke');
+			$('[style]').removeAttr('style');
+		},
+		parserOptions: {xmlMode: true}
+	}))
+	// cheerio plugin create unnecessary string '&gt;', so replace it.
+	.pipe(replace('&gt;', '>'))
+	// build svg sprite
+	.pipe(svgSprite({
+		mode: {
+			symbol: {
+				sprite: "../sprite.svg",
+				render: {
+					scss: {
+						dest:'../../../sass/_sprite.scss',
+						template: assetsDir + "sass/templates/_sprite_template.scss"
+					}
+				},
+				example: true
+			}
+		}
+	}))
+	.pipe(gulp.dest(assetsDir + 'i/sprite/'));
+});
 
 //testing your build files
 gulp.task('validation', function () {
@@ -252,4 +264,3 @@ gulp.task('default', ['pug', 'sass', 'imageSync', 'fontsSync', 'fontsConvert', '
 gulp.task('build', ['cleanBuildDir'], function () {
 	gulp.start('imgBuild', 'fontsBuild', 'htmlBuild', 'jsBuild', 'cssBuild');
 });
-
