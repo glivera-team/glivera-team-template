@@ -55,6 +55,14 @@ if ('objectFit' in document.documentElement.style === false) {
 	});
 }
 
+function getRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getRandom(min, max) {
+	return Math.random() * (max - min) + min;
+}
+
 //Functions for development
 function getAllClasses(context, output) {
 	var finalArray = [],
