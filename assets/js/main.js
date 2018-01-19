@@ -9,8 +9,7 @@ var $body,
 
 $(document).ready(function ($) {
 	$body = $('body');
-	windowWidth = $(window).width();
-	windowHeight = $(window).height();
+	updateSizes();
 
 	//developer funcitons
 	pageWidget(['index']);
@@ -41,8 +40,8 @@ function scrollFunc() {
 }
 
 function updateSizes() {
-	windowWidth = $(window).width();
-	windowHeight = $(window).height();
+	windowWidth = window.innerWidth;
+	windowHeight = window.innerHeight;
 }
 
 if ('objectFit' in document.documentElement.style === false) {
