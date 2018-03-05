@@ -9,7 +9,6 @@ var $body,
 
 $(document).ready(function ($) {
 	$body = $('body');
-	updateSizes();
 
 	//developer funcitons
 	pageWidget(['index']);
@@ -17,6 +16,7 @@ $(document).ready(function ($) {
 });
 
 $(window).on('load', function () {
+	updateSizes();
 	loadFunc();
 });
 
@@ -31,12 +31,12 @@ $(window).on('scroll', function () {
 function loadFunc() {
 
 }
+
 function resizeFunc() {
 	updateSizes();
 }
 
 function scrollFunc() {
-	updateSizes();
 }
 
 function updateSizes() {
