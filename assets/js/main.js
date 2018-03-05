@@ -37,6 +37,7 @@ function resizeFunc() {
 }
 
 function scrollFunc() {
+
 }
 
 function updateSizes() {
