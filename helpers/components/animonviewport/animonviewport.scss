@@ -1,0 +1,15 @@
+.animatable {
+	transition: opacity 1.5s, transform 1.5s;
+	transition-timing-function: ease-out;
+}
+
+.animatable, .animElement {
+	opacity: 0;
+	transform: translateY(10rem);
+
+	&.animated, &.numbers_list {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+}

@@ -10,7 +10,7 @@ mixin head(array)
 	meta(name="apple-mobile-web-app-capable", content="yes")
 	meta(name="format-detection", content="telephone=no")
 	link(type="image/x-icon", rel="shortcut icon", href="favicon.ico")
-	
+
 	if production
 		link(rel="shortcut icon", href="favicon.ico", type="image/x-icon")
 		link(rel="apple-touch-icon", href="apple-touch-icon.png")
@@ -118,15 +118,16 @@ mixin breadcrumbs(array,add_class)
 
 //- works
 mixin menu(menuArray)
-	ul(class=`${menuArray.gl_class}_list ${menuArray.gl_mod}`)
+	- gl_mod = menuArray.gl_mod || ''
+	ul(class=`${menuArray.gl_class}_list ${gl_mod}`)
 		each item in menuArray.items
 			- url = item.url || '#'
 			if item.active
-				li(class= `${menuArray.gl_class}_item ${menuArray.gl_mod} active_mod`)
-					a(href= url class= `${menuArray.gl_class}_link ${menuArray.gl_mod}`)= item.title
+				li(class= `${menuArray.gl_class}_item active_mod`)
+					a(href= url class= `${menuArray.gl_class}_link`)= item.title
 			else
-				li(class= `${menuArray.gl_class}_item ${menuArray.gl_mod}`)
-					a(href= url class= `${menuArray.gl_class}_link ${menuArray.gl_mod}`)= item.title
+				li(class= `${menuArray.gl_class}_item`)
+					a(href= url class= `${menuArray.gl_class}_link`)= item.title
 
 //- works
 mixin social(items, mod)
