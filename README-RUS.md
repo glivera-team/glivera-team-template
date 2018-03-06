@@ -19,7 +19,7 @@
 
         gulp
 
-4. В папке assets редактируем файлы, в папке dist - получаем готовые.Чтобы запустить конечную минифицированную сборку проекта запускаем:
+4. В папке `/assets` редактируем файлы, в папке `/dist` - получаем готовые. Чтобы запустить конечную минифицированную сборку проекта запускаем:
 
         gulp build
 
@@ -35,7 +35,7 @@
 
 ## Как работать с js
 
-Все ваши основные скрипты создавайте в папке assets/js. Все вспомогательные скрипты (jquery,plugins, и т.д) помещайте в папку assets/js/all. В итоге gulp соединяет все вспомогательные скрипты в all.js
+Все ваши основные скрипты создавайте в папке `/assets/js`. Все вспомогательные скрипты (jquery,plugins, и т.д) помещайте в папку `/assets/js/all`. В итоге gulp соединяет все вспомогательные скрипты в `all.js`
 
 ## Как сделать иконочный шрифт
 
@@ -43,14 +43,14 @@
 
         npm install gulp-iconfont@4.0.0 gulp-iconfont-css -D
 
-2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
+2. Положите ваши иконки в папку `/assets/i/icons`
 3. В gulpfile.js измените переменную 'fontName' на имя вашего шрифта (по умолчанию 'iconfont').
 4. Раскомменитируете таск iconfont и запустите его
 
         gulp iconfont
 
-4. Получайте шрифт в папке [fonts/icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/fonts/icons) и font extends(%placeholders) в [icons.scss](https://github.com/gatilin222/supervisor_template/blob/master/assets/sass/_icons.scss)
-5. Редактируйте шрифт в [iconmoon](https://icomoon.io)
+5. Получайте шрифт в папке `/assets/fonts/icons` и font extends(%placeholders) в `/assets/sass/_icons.scss`
+6. Редактируйте шрифт на [iconmoon](https://icomoon.io)
 
 Более подробно процедура описана на нашем блоге в статье [Иконочные шрифты](http://glivera-team.github.io/svg/2016/01/06/iconfonts.html)
 
@@ -59,10 +59,10 @@
 
         npm install gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace -D
 
-2. Положите ваши иконки в папку [icons](https://github.com/gatilin222/supervisor_template/tree/master/assets/i/icons)
-3. Раскомментируйте таск svgSpriteBuild и запустите его
-4. Теперь у вас есть sprite.svg в папке assets/i/sprite. По умолчанию скрипт svg4everybody включен в ваши скрипты. Также теперь scss файл _sprite.scss лежит в папке sass.
-5. Вызовите svg4everybody в главном main.js файле. Для подключения в разметку используйте jade миксин "icon"
+2. Положите ваши иконки в папку `/assets/i/icons`
+3. Раскомментируйте таск `svgSpriteBuild` и запустите его
+4. Теперь у вас есть `sprite.svg` в папке `/assets/i/sprite`. По умолчанию скрипт `svg4everybody` включен в ваши скрипты. Также теперь scss файл `_sprite.scss` лежит в папке `sass`.
+5. Вызовите `svg4everybody` в главном `main.js` файле. Для подключения в разметку используйте pug миксин "icon"
 
 ```
 $(document).ready(function () {
