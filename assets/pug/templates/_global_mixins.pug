@@ -130,11 +130,14 @@ mixin menu(menuArray)
 					a(href= url class= `${menuArray.gl_class}_link`)= item.title
 
 //- works
-mixin social(items, mod)
-	ul.social_list(class= mod)
-		each item in items
-			li.social_item(class= mod)
-				a.social_link(href='#' class=`${item}_mod ${mod}`)= item
+mixin social(socialArray)
+	- mod_block = socialArray.mod_block || ''
+	ul.social_list(class= `${mod_block}`)
+		each item in socialArray.items
+			- mod_link = item.mod_link || ''
+			li.social_item
+				a.social_link(href="#" class= `${mod_link}`)
+					+icon(item.name_icon, item.mod_icon)
 
 //- works
 mixin icon(name, mod)
