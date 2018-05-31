@@ -169,7 +169,6 @@ gulp.task('jsBuild', function () {
 //copy, minify css
 gulp.task('cssBuild', function () {
 	return gulp.src(outputDir + 'styles/**/*')
-		.pipe(purify([outputDir + 'js/**/*', outputDir + '**/*.html']))
 		.pipe(csso())
 		.pipe(gulp.dest(buildDir + 'styles/'))
 });
