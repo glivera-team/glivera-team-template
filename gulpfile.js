@@ -147,6 +147,13 @@ gulp.task('imgBuild', function () {
 			.pipe(gulp.dest(buildDir + 'i/'))
 });
 
+//copy sprite.svg
+gulp.task('copySprite', function () {
+	return gulp.src(outputDir + 'i/sprite/sprite.svg')
+	.pipe(plumber())
+	.pipe(gulp.dest(buildDir + 'i/sprite/'))
+});
+
 //copy fonts
 gulp.task('fontsBuild', function () {
 	return gulp.src(outputDir + 'fonts/**/*')
@@ -261,5 +268,5 @@ gulp.task('cssLint', function () {
 gulp.task('default', ['pug', 'sass', 'imageSync', 'fontsSync', 'fontsConvert', 'jsConcat', 'jsSync', 'watch', 'browser-sync']);
 
 gulp.task('build', ['cleanBuildDir'], function () {
-	gulp.start('imgBuild', 'fontsBuild', 'htmlBuild', 'jsBuild', 'cssBuild');
+	gulp.start('imgBuild', 'fontsBuild', 'htmlBuild', 'jsBuild', 'cssBuild', 'copySprite');
 });
