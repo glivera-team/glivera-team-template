@@ -27,9 +27,10 @@ mixin scripts
 	if jQuery
 		|<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		|<script>window.jQuery || document.write('<script src="js/jquery-2.2.4.min.js"><\/script>')</script>
+
 	+script_cdn([
-	{link:'//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js'},
-	{link:'//cdn.glivera.com/dev_functions.js'}
+		{link:'//cdn.glivera-team.com/TweenMax.min.js'},
+		{link:'//cdn.glivera.com/dev_functions.js'}
 	])
 	script(src="js/all.js")
 	script(src='js/main.js')
