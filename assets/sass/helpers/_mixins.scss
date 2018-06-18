@@ -6,11 +6,15 @@
 	z-index: z-index($key);
 }
 
+@mixin d3() {
+	will-change: transform;
+	transform: translateZ(0);
+}
+
 @mixin font_face($file_name,$font_name:$file_name,$path:$font_path,$weight:normal,$style:normal) {
 	@font-face {
 		font-family: quote($font_name);
-		src: url($path + $file-name + ".eot");
-		src: url($path + $file-name + ".eot?#iefix") format("embedded-opentype"), url($path + $file-name + ".woff") format("woff"), url($path + $file-name + ".ttf") format("truetype"), url($path + $file-name + ".svg##{$font_name}") format("svg");
+		src: url($path + $file-name + ".woff2") format("woff2"), url($path + $file-name + ".woff") format("woff");
 		font-weight: $weight;
 		font-style: $style;
 	}
