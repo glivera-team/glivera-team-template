@@ -27,9 +27,12 @@ mixin scripts
 	if jQuery
 		|<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		|<script>window.jQuery || document.write('<script src="js/jquery-2.2.4.min.js"><\/script>')</script>
+	
+	if TweenMax
+		|<script src="//cdn.glivera-team.com/greensock/TweenMax.min.js"></script>
+		|<script>window.TweenMax || document.write('<script src="TweenMax.min.js"><\/script>')</script>
 
 	+script_cdn([
-		{link:'//cdn.glivera-team.com/TweenMax.min.js'},
 		{link:'//cdn.glivera-team.com/dev_functions.js'}
 	])
 
@@ -77,7 +80,7 @@ mixin form_element(config)
 
 				if config.type === 'select'
 					- additional_classes = {'class': config.class_array.elem_class}
-					select.form_field(data-placeholder= config.placeholder)&attributes(additional_attributes)&attributes(additional_classes)
+					select.form_field(data-placeholder= config.placeholder)&attributes(main_attributes)&attributes(additional_attributes)&attributes(additional_classes)
 						each option in config.options
 							option(value=option)= option
 					block
