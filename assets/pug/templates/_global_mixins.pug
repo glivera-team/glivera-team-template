@@ -1,7 +1,3 @@
-mixin script_cdn(array)
-	each item in array
-		script(src=item.link)
-
 mixin head(array)
 	meta(charset='UTF-8')
 	title!=array.title_inner
@@ -49,6 +45,11 @@ mixin scripts
 
 	script(src="js/all.js")
 	script(src='js/main.js')
+
+//- scripts from cdn
+mixin script_cdn(array)
+	each item in array
+		script(src=item.link)
 
 //- form element
 mixin form_element(config)

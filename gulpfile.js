@@ -138,7 +138,7 @@ gulp.task('cleanBuildDir', function (cb) {
 
 //minify images
 gulp.task('imgBuild', function () {
-	return gulp.src(outputDir + 'i/**/*')
+	return gulp.src([outputDir + 'i/**/*', '!' + outputDir + 'i/sprite/**/*'])
 			.pipe(imagemin({
 				progressive: true,
 				svgoPlugins: [{removeViewBox: false}],
