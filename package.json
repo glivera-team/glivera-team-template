@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
-    "browser-sync": "^2.23.7",
+    "browser-sync": "^2.24.5",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-concat": "^2.6.1",
@@ -26,9 +26,9 @@
     "imagemin-pngquant": "^5.1.0",
     "postcss-assets": "^5.0.0",
     "postcss-reporter": "^5.0.0",
-    "postcss-scss": "^1.0.5",
+    "postcss-scss": "^1.0.6",
     "rimraf": "^2.6.2",
-    "stylelint": "^9.2.0"
+    "stylelint": "^9.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
