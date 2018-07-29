@@ -23,15 +23,18 @@
 		text-decoration: none;
 	}
 }
+
 .uprise_i_w {
 	@extend %stretch;
 
 	position: absolute;
 	z-index: 0;
 }
+
 .uprise_i {
 	@extend %rounded_i;
 }
+
 .uprise_label {
 	position: absolute;
 	top: 1rem;
@@ -44,6 +47,7 @@
 	background: #48a2df;
 	border-radius: .4rem;
 }
+
 .uprise_in {
 	@extend %stretch;
 
@@ -76,9 +80,11 @@
 		}
 	}
 }
+
 .uprise_title {
 	display: block;
 }
+
 .uprise_date {
 	display: block;
 	padding:.5rem 0 0;
@@ -115,9 +121,11 @@
 	position: absolute;
 	z-index: 0;
 }
+
 .uprise_i {
 	@extend %rounded_i;
 }
+
 .uprise_label {
 	position: absolute;
 	top: 1rem;
@@ -130,6 +138,7 @@
 	background: #48a2df;
 	border-radius: .4rem;
 }
+
 .uprise_in {
 	@extend %stretch;
 	@extend %global_flex_block_column_nowrap_flex-end;
@@ -160,9 +169,11 @@
 		}
 	}
 }
+
 .uprise_title {
 	display: block;
 }
+
 .uprise_date {
 	display: block;
 	padding:.5rem 0 0;

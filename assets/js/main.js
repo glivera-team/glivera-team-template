@@ -29,7 +29,6 @@ $(window).on('scroll', function () {
 });
 
 function loadFunc() {
-
 }
 
 function resizeFunc() {
@@ -37,7 +36,6 @@ function resizeFunc() {
 }
 
 function scrollFunc() {
-
 }
 
 function updateSizes() {
