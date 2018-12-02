@@ -24,14 +24,14 @@ var purify = require('gulp-purifycss'),
 		csso = require('gulp-csso');
 
 //plugins for testing
-var html5Lint = require('gulp-html5-lint');
-var reporter = require('postcss-reporter');
-var stylelint = require('stylelint');
-var postcss_scss = require("postcss-scss");
+var html5Lint = require('gulp-html5-lint'),
+		reporter = require('postcss-reporter'),
+		stylelint = require('stylelint'),
+		postcss_scss = require("postcss-scss");
 
-var assetsDir = 'assets/';
-var outputDir = 'dist/';
-var buildDir = 'build/';
+var assetsDir = 'assets/',
+		outputDir = 'dist/',
+		buildDir = 'build/';
 
 //----------------------------------------------------Compiling
 gulp.task('pug', function () {
