@@ -1,0 +1,10 @@
+//if default animatable (fade anim) => add these classes for the element
+.anim_el.animatable
+
+//to control animation (earlier / later) add this attribute. Values from 0 t above. For example 0.1, 0.2, etc. The higher the value, the earlier the animation (default = .8)
+.anim_el.animatable(data-start-point="1")
+
+// for parallax use such classes and attributes.
+  data-start-onview attribute - controls when the animation will work out sooner or later(default = 2)
+  data-start-onview attribute - controls the speed or pitch of the element(default = .1)
+.animatable.parallaxElement(data-shift-factor=".4", data-progress-anim="true", data-anim-variety="parallax", data-start-onview=".9")

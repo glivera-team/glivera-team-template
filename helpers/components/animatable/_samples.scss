@@ -1,0 +1,13 @@
+.anim_elem {
+	opacity: 0;
+	transform: translateY(12rem);
+	transition: opacity .6s ease-out, transform .8s cubic-bezier(0.165, 0.84, 0.44, 1);
+	will-change: transform;
+}
+
+.anim_elem {
+	&.animated {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
