@@ -1,5 +1,5 @@
 // Initialization
-$('.container');.slick({
+$('.container').slick({
 	prevArrow: $('.js_slider_prev'),
 	nextArrow: $('.js_slider_next'),
 	infinite: true,
