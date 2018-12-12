@@ -82,3 +82,16 @@ $(document).ready(function () {
         background-size: size('rub.png');
 }
 ```
+## Как тестировать
+
+1. Установите зависимости и залинкуйте
+
+        npm i chrome-launcher fs http node-static path pixelmatch pngjs puppeteer -g
+
+        npm link chrome-launcher fs http node-static path pixelmatch pngjs puppeteer
+
+2. В `gulpfile.js` внесите в массив `pageList` имена тестируемых страниц
+
+3. Запустите `gulp test-init` для создания эталонных скриншотов из ваших страниц или перенесите свои изображения вручную в папку `test/before/`
+        
+4. Запустите `gulp test-compare` для сравнения текущего состояния страниц с эталонным

@@ -79,3 +79,17 @@ $(document).ready(function () {
         background-size: size('rub.png');
 }
 ```
+
+## How to test
+
+1. Install packages
+
+        npm i chrome-launcher fs http node-static path pixelmatch pngjs puppeteer -g
+
+        npm link chrome-launcher fs http node-static path pixelmatch pngjs puppeteer
+
+2. Open `gulpfile.js`. Add all names of tested pages to array `pageList` 
+
+3. Run task `gulp test-init` to create reference screenshots from your pages or put your images manually into `test/before/` folder
+
+4. Run task `gulp test-compare` to compare current state of the pages with the reference
