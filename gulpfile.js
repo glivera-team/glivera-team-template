@@ -293,19 +293,23 @@ gulp.task('build', ['cleanBuildDir'], function () {
 
 //--------------------------------- testing
 
+var beforeDir = 'test/before/',
+		afterDir = 'test/after/',
+		diffDir = 'test/difference/';
+
 gulp.task('test-init', function() {
 	if (!fs.existsSync('test')){
 		fs.mkdirSync('test');
 	}
 
-	if (!fs.existsSync('test/before')){
-		fs.mkdirSync('test/before');
+	if (!fs.existsSync(beforeDir)){
+		fs.mkdirSync(beforeDir);
 	}
 
-	if (fs.existsSync('test/before')){
-		fs.readdir('test/before', (err, files) => {
+	if (fs.existsSync(beforeDir)){
+		fs.readdir(beforeDir, (err, files) => {
 			for (const file of files) {
-				fs.unlink(path.join('test/before', file), err => {});
+				fs.unlink(path.join(beforeDir, file), err => {});
 			}
 		});
 	}
@@ -318,11 +322,7 @@ gulp.task('test-init', function() {
 	
 		await page.goto('http://localhost:1337/' + element + '.html');
 
-		if (!fs.existsSync('test/before')){
-			fs.mkdirSync('test/before');
-		}
-	
-		await page.screenshot({path: 'test/before/' + element + '.png', fullPage: true});
+		await page.screenshot({path: beforeDir + element + '.png', fullPage: true});
 		console.log(element + ' page +');
 	
 		await browser.close();	
@@ -333,14 +333,14 @@ gulp.task('test-compare', function() {
 	// make and compare screens
 
 	var timeMod = new Date().getTime();
-	var clearDir = ['test/difference', 'test/after', 'test/']
+	var clearDir = [diffDir, afterDir, 'test/']
 
-	if (!fs.existsSync('test/after')){
-		fs.mkdirSync('test/after');
+	if (!fs.existsSync(afterDir)){
+		fs.mkdirSync(afterDir);
 	}
 	
-	if (!fs.existsSync('test/difference')){
-		fs.mkdirSync('test/difference');
+	if (!fs.existsSync(diffDir)){
+		fs.mkdirSync(diffDir);
 	}
 	
 	clearDir.map(function(element, index) {
@@ -359,12 +359,12 @@ gulp.task('test-compare', function() {
 		pixelmatch(img1.data, img2.data, diff.data, img1.width, img1.height, {threshold: 0.5});
 
 
-		diff.pack().pipe(fs.createWriteStream('test/difference/' + pageName + timeMod + '.png'));
+		diff.pack().pipe(fs.createWriteStream(diffDir + pageName + timeMod + '.png'));
 		console.log(pageName + ' ---- page compared');
 	}
 
 	function parse2(element, index, pageName) {
-		img2[index] = fs.createReadStream('test/before/' + element + '.png').pipe(new PNG()).on('parsed', function() { doneReading(img1[index], img2[index], element)});
+		img2[index] = fs.createReadStream(beforeDir + element + '.png').pipe(new PNG()).on('parsed', function() { doneReading(img1[index], img2[index], element)});
 	}
 
 	pageList.map(async function(element, index) {
@@ -375,12 +375,12 @@ gulp.task('test-compare', function() {
 
 		await page.goto('http://localhost:1337/' + element + '.html');
 
-		await page.screenshot({path: 'test/after/' + element + '.png', fullPage: true});
+		await page.screenshot({path: afterDir + element + '.png', fullPage: true});
 
 		await browser.close();
 
 		pageName = element;
-		img1[index] = await fs.createReadStream('test/after/' + element + '.png').pipe(new PNG()).on('parsed', function() { parse2(element, index)});
+		img1[index] = await fs.createReadStream(afterDir + element + '.png').pipe(new PNG()).on('parsed', function() { parse2(element, index)});
 	})
 
 
