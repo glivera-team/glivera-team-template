@@ -42,10 +42,10 @@ const path = require('path');
 
 var img1 = [], img2 = [], filesRead = 0, pageName;
 
-var initialPageWidth = 1366;
+var initialPageWidth = 1920;
 
 var pageList = [
-  'index',
+	'index',
 ];
 
 var assetsDir = 'assets/',
@@ -298,12 +298,23 @@ gulp.task('test-init', function() {
 		fs.mkdirSync('test');
 	}
 
+	if (!fs.existsSync('test/before')){
+		fs.mkdirSync('test/before');
+	}
+
+	if (fs.existsSync('test/before')){
+		fs.readdir('test/before', (err, files) => {
+			for (const file of files) {
+				fs.unlink(path.join('test/before', file), err => {});
+			}
+		});
+	}
+
 	pageList.map(async function(element, index) {
-		console.log('step ---- ' + index);
 		const browser = await puppeteer.launch();
 		const page = await browser.newPage();
 	
-		await page.setViewport({ width: initialPageWidth, height: 3000 });
+		await page.setViewport({ width: initialPageWidth, height: 0 });
 	
 		await page.goto('http://localhost:1337/' + element + '.html');
 
@@ -312,7 +323,7 @@ gulp.task('test-init', function() {
 		}
 	
 		await page.screenshot({path: 'test/before/' + element + '.png', fullPage: true});
-		console.log('make screen of ' + element);
+		console.log(element + ' page +');
 	
 		await browser.close();	
 	})
@@ -320,18 +331,36 @@ gulp.task('test-init', function() {
 
 gulp.task('test-compare', function() {
 	// make and compare screens
+
+	var timeMod = new Date().getTime();
+	var clearDir = ['test/difference', 'test/after', 'test/']
+
+	if (!fs.existsSync('test/after')){
+		fs.mkdirSync('test/after');
+	}
+	
+	if (!fs.existsSync('test/difference')){
+		fs.mkdirSync('test/difference');
+	}
+	
+	clearDir.map(function(element, index) {
+		if (fs.existsSync(element)){
+			fs.readdir(element, (err, files) => {
+				for (const file of files) {
+					fs.unlink(path.join(element, file), err => {});
+				}
+			});
+		}
+	});
+
 	function doneReading(img1, img2, pageName) {
-		console.log('!!!!!!!start function   ' + pageName);
 		var diff = new PNG({width: img1.width, height: img1.height});
 
 		pixelmatch(img1.data, img2.data, diff.data, img1.width, img1.height, {threshold: 0.5});
 
-		if (!fs.existsSync('test/difference')){
-			fs.mkdirSync('test/difference');
-		}
 
-		diff.pack().pipe(fs.createWriteStream('test/difference/' + pageName + '.png'));
-		console.log('!!!!!!!!end function   ' + pageName);
+		diff.pack().pipe(fs.createWriteStream('test/difference/' + pageName + timeMod + '.png'));
+		console.log(pageName + ' ---- page compared');
 	}
 
 	function parse2(element, index, pageName) {
@@ -339,20 +368,14 @@ gulp.task('test-compare', function() {
 	}
 
 	pageList.map(async function(element, index) {
-		console.log('step ---- ' + index);
 		const browser = await puppeteer.launch();
 		const page = await browser.newPage();
 
-		await page.setViewport({ width: initialPageWidth, height: 3000 });
+		await page.setViewport({ width: initialPageWidth, height: 0 });
 
 		await page.goto('http://localhost:1337/' + element + '.html');
 
-		if (!fs.existsSync('test/after')){
-			fs.mkdirSync('test/after');
-		}
-
 		await page.screenshot({path: 'test/after/' + element + '.png', fullPage: true});
-		console.log('make screen of ' + element);
 
 		await browser.close();
 
@@ -364,13 +387,10 @@ gulp.task('test-compare', function() {
 
 	// create file in insert list of images
 	var imgList = pageList.map(function(file, i) {
-		return '<li style="width: 49%; display: inline-block; list-style: none; background-color: orange;"><h2 style="font: 3vw sans-serif; margin: 0; padding: 1em; text-align: center;">' + pageList[i] + '</h2><img style="width: 100%; display: block;" src="difference/' + file + '.png"/></li>'
+		return '<li style="width: 49%; display: inline-block; list-style: none; background-color: #888;"><h2 style="font: 3vw sans-serif; margin: 0; padding: 1em; text-align: center;">' + pageList[i] + '</h2><img style="width: 100%; display: block;" src="difference/' + file + timeMod + '.png"/></li>'
 	})
 
-	fs.writeFile('test/index_test.html', imgList, function (err) {
-		if (err) throw err;
-		console.log('Updated!');
-	});
+	fs.writeFile('test/index_test' + timeMod + '.html', imgList, function (err) {});
 
 	// create localserver and run chrome
 	var fileServer = new staticN.Server();
@@ -382,7 +402,7 @@ gulp.task('test-compare', function() {
 	}).listen(8080);
 
 	chromeLauncher.launch({
-		startingUrl: 'http://localhost:8080/test/index_test.html',
+		startingUrl: 'http://localhost:8080/test/index_test' + timeMod + '.html',
 		userDataDir: false 
 	}).then(chrome => {
 		console.log(`Chrome debugging port running on ${chrome.port}`);
