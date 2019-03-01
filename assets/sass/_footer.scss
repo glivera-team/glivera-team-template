@@ -1,8 +1,10 @@
 .footer {
-	height: $height_footer;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	width: 100%;
+	min-height: $height_footer;
+
+	flex: 0 0 auto;
+
+	font-size: 1rem;
+
 	will-change: transform;
 }

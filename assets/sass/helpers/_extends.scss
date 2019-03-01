@@ -17,7 +17,7 @@
 	}
 
 	%global_flex_block_row_wrap_flex-start_flex-end {
-		@include flex_block(row, wrap, flex-start, flex-end);
+		@include flex_block(row, wrap, flex-start, flex-end, flex-end);
 	}
 
 	%global_flex_block_row_wrap_flex-start_baseline {

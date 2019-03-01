@@ -1,10 +1,14 @@
 //------------------------------------------------------------layout
 .header {
 	position: fixed;
-	height: $height_header;
-	width: 100%;
 	top: 0;
 	left: 0;
+
+	height: $height_header;
+	width: 100%;
+
+	font-size: 1rem;
+
 	will-change: transform;
 
 	@include z-index(header);
