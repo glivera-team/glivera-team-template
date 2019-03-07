@@ -6,10 +6,14 @@
 
 	height: $height_header;
 	width: 100%;
-	
+
+	font-size: 1rem;
+
 	will-change: transform;
 
 	@include z-index(header);
+
+	background: goldenrod;
 }
 
 //------------------------------------------------------------layout###

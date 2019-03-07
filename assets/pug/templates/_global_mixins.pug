@@ -60,6 +60,7 @@ mixin form_element(config)
 
 	- label_attributes = {'for': config.id}
 	- main_attributes = {'type': config.type, 'id': config.id, 'class': config.add_class, 'placeholder': config.placeholder, 'name': config.name, 'value': config.value}
+	- textarea_attributes = {'id': config.id, 'class': config.add_class, 'placeholder': config.placeholder, 'name': config.name, 'value': config.value}
 	- logic_attributes = {'checked': config.checked, 'required': config.required, 'disabled': config.disabled, 'readonly': config.readonly, 'hidden': config.hidden}
 	- additional_attributes = config.additional
 	- additional_classes = {}
@@ -81,7 +82,7 @@ mixin form_element(config)
 					block
 
 				if config.type === 'textarea'
-					textarea.form_field&attributes(main_attributes)&attributes(logic_attributes)&attributes(additional_attributes)
+					textarea.form_field&attributes(textarea_attributes)&attributes(logic_attributes)&attributes(additional_attributes)
 					block
 
 				if config.type === 'file'

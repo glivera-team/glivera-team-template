@@ -1,10 +1,14 @@
 .footer {
-	position: absolute;
-	right: 0;
-	left: 0;
-	bottom: 0;
+	width: 100%;
+	min-height: $height_footer;
 
-	height: $height_footer;
-	
+	flex: 0 0 auto;
+
+	grid-area: footer;
+
+	font-size: 1rem;
+
 	will-change: transform;
+
+	background: goldenrod;
 }

@@ -6,25 +6,52 @@ html {
 
 body {
 	position: relative;
+
+	display: flex;
 	height: 100%;
+
 	font-size: $font_size_base;
 	color: $color_text_base;
+
 	-webkit-text-size-adjust: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
 	background: $body_bg;
+
+	@supports (display: grid) {
+		display: block;
+	}
 }
 
 .wrapper {
 	position: relative;
+
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 	min-height: 100%;
 	height: auto !important;
+
 	overflow: hidden;
+
+	@supports (display: grid) {
+		display: grid;
+		grid-template-rows: 1fr auto;
+		grid-template-areas: 
+		"base"
+		"footer";
+	}
 }
 
 .base {
+	width: 100%;
 	position: relative;
-	padding: $height_header 0 $height_footer;
+	padding: $height_header 0 0;
+
+	flex: 1 0 auto;
+
+	grid-area: base;
 }
 
 a {
