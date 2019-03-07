@@ -27,6 +27,7 @@ body {
 .wrapper {
 	position: relative;
 
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
@@ -37,14 +38,20 @@ body {
 	@supports (display: grid) {
 		display: grid;
 		grid-template-rows: 1fr auto;
+		grid-template-areas: 
+		"base"
+		"footer";
 	}
 }
 
 .base {
+	width: 100%;
 	position: relative;
 	padding: $height_header 0 0;
 
 	flex: 1 0 auto;
+
+	grid-area: base;
 }
 
 a {

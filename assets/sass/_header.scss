@@ -12,6 +12,8 @@
 	will-change: transform;
 
 	@include z-index(header);
+
+	background: goldenrod;
 }
 
 //------------------------------------------------------------layout###

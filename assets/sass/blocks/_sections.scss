@@ -1,1 +1,29 @@
 //---------------------------------------------sections
+.section {
+	position: relative;
+
+	width: 100%;
+
+	font-size: 1rem;
+
+	&.demo_mod {
+		@extend %global_flex_block_row_nowrap_center_center;
+
+		background-color: $black;
+
+		text-align: center;
+		color: $white;
+		height: 100%;
+	}
+}
+
+
+.section_in {
+	width: 100%;
+	max-width: $page_width;
+	margin: 0 auto;
+}
+
+.section_title {
+	font-size: 4em;
+}
