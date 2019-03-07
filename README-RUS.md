@@ -11,9 +11,9 @@
 
 	Если вы используете линк глобальных пакетов:
 
-		npm install gulp rimraf gulp-pug gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets postcss-reporter stylelint postcss-scss -g
+	    npm install gulp rimraf gulp-pug gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets postcss-reporter stylelint postcss-scss gulp-sequence gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace -g
 
-		npm link gulp rimraf gulp-pug gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets postcss-reporter stylelint postcss-scss
+	    npm link gulp rimraf gulp-pug gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets postcss-reporter stylelint postcss-scss gulp-sequence gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace -g
 
 3. Начинаем кодить!
 
@@ -82,3 +82,16 @@ $(document).ready(function () {
         background-size: size('rub.png');
 }
 ```
+## Как тестировать
+
+1. Установите зависимости и залинкуйте
+
+        npm i chrome-launcher fs http node-static path pixelmatch pngjs puppeteer -g
+
+        npm link chrome-launcher fs http node-static path pixelmatch pngjs puppeteer
+
+2. В `gulpfile.js` внесите в массив `pageList` имена тестируемых страниц
+
+3. Запустите `gulp test-init` для создания эталонных скриншотов из ваших страниц или перенесите свои изображения вручную в папку `test/before/`
+        
+4. Запустите `gulp test-compare` для сравнения текущего состояния страниц с эталонным

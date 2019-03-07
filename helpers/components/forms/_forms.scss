@@ -1,13 +1,15 @@
 //---------------------------------------------checkboxes and radio-buttons
 .radio_check {
-	&.check_1_mod,&.radio_1_mod {
+	&.check_1_mod,
+	&.radio_1_mod {
 		display: inline-block;
 		cursor:pointer;
 	}
 }
 
 .radio_check_input {
-	&.check_1_mod,&.radio_1_mod {
+	&.check_1_mod,
+	&.radio_1_mod {
 		display: none;
 	}
 }

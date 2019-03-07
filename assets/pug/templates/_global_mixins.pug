@@ -1,7 +1,3 @@
-mixin script_cdn(array)
-	each item in array
-		script(src=item.link)
-
 mixin head(array)
 	meta(charset='UTF-8')
 	title!=array.title_inner
@@ -9,33 +5,51 @@ mixin head(array)
 	meta(name="SKYPE_TOOLBAR", content="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
 	meta(name="apple-mobile-web-app-capable", content="yes")
 	meta(name="format-detection", content="telephone=no")
-	link(type="image/x-icon", rel="shortcut icon", href="favicon.ico")
 
 	if production
-		link(rel="shortcut icon", href="favicon.ico", type="image/x-icon")
-		link(rel="apple-touch-icon", href="apple-touch-icon.png")
-		link(rel="apple-touch-icon", sizes="57x57", href="apple-touch-icon-57x57.png")
-		link(rel="apple-touch-icon", sizes="72x72", href="apple-touch-icon-72x72.png")
-		link(rel="apple-touch-icon", sizes="76x76", href="apple-touch-icon-76x76.png")
-		link(rel="apple-touch-icon", sizes="114x114", href="apple-touch-icon-114x114.png")
-		link(rel="apple-touch-icon", sizes="120x120", href="apple-touch-icon-120x120.png")
-		link(rel="apple-touch-icon", sizes="144x144", href="apple-touch-icon-144x144.png")
-		link(rel="apple-touch-icon", sizes="152x152", href="apple-touch-icon-152x152.png")
+		link(rel='shortcut icon' href='/favicon.ico')
+		link(rel='icon' sizes='16x16 32x32 64x64' href='/favicon.ico')
+		link(rel='icon' type='image/png' sizes='196x196' href='/favicon-192.png')
+		link(rel='icon' type='image/png' sizes='160x160' href='/favicon-160.png')
+		link(rel='icon' type='image/png' sizes='96x96' href='/favicon-96.png')
+		link(rel='icon' type='image/png' sizes='64x64' href='/favicon-64.png')
+		link(rel='icon' type='image/png' sizes='32x32' href='/favicon-32.png')
+		link(rel='icon' type='image/png' sizes='16x16' href='/favicon-16.png')
+		link(rel='apple-touch-icon' href='/favicon-57.png')
+		link(rel='apple-touch-icon' sizes='114x114' href='/favicon-114.png')
+		link(rel='apple-touch-icon' sizes='72x72' href='/favicon-72.png')
+		link(rel='apple-touch-icon' sizes='144x144' href='/favicon-144.png')
+		link(rel='apple-touch-icon' sizes='60x60' href='/favicon-60.png')
+		link(rel='apple-touch-icon' sizes='120x120' href='/favicon-120.png')
+		link(rel='apple-touch-icon' sizes='76x76' href='/favicon-76.png')
+		link(rel='apple-touch-icon' sizes='152x152' href='/favicon-152.png')
+		link(rel='apple-touch-icon' sizes='180x180' href='/favicon-180.png')
+		meta(name='msapplication-TileColor' content='#FFFFFF')
+		meta(name='msapplication-TileImage' content='/favicon-144.png')
+		meta(name='msapplication-config' content='/browserconfig.xml')
+
 	link(rel="stylesheet" media="all" href="styles/main_global.css")
 
 mixin scripts
 	if jQuery
 		|<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		|<script>window.jQuery || document.write('<script src="js/jquery-2.2.4.min.js"><\/script>')</script>
-	if jQueryUI
-		|<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-		|<script>window.jQuery.ui || document.write('<script src="js/jquery-ui.min.js"><\/script>')</script>
+	
+	if TweenMax
+		|<script src="//cdn.glivera-team.com/greensock/TweenMax.min.js"></script>
+		|<script>window.TweenMax || document.write('<script src="js/TweenMax.min.js"><\/script>')</script>
+
 	+script_cdn([
-	{link:'//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js'},
-	{link:'//cdn.glivera.com/dev_functions.js'}
+		{link:'//cdn.glivera-team.com/dev_functions.js'}
 	])
+
 	script(src="js/all.js")
 	script(src='js/main.js')
+
+//- scripts from cdn
+mixin script_cdn(array)
+	each item in array
+		script(src=item.link)
 
 //- form element
 mixin form_element(config)
@@ -79,7 +93,7 @@ mixin form_element(config)
 
 				if config.type === 'select'
 					- additional_classes = {'class': config.class_array.elem_class}
-					select.form_field(data-placeholder= config.placeholder)&attributes(additional_attributes)&attributes(additional_classes)
+					select.form_field(data-placeholder= config.placeholder)&attributes(main_attributes)&attributes(additional_attributes)&attributes(additional_classes)
 						each option in config.options
 							option(value=option)= option
 					block
@@ -131,11 +145,14 @@ mixin menu(menuArray)
 					a(href= url class= `${menuArray.gl_class}_link`)= item.title
 
 //- works
-mixin social(items, mod)
-	ul.social_list(class= mod)
-		each item in items
-			li.social_item(class= mod)
-				a.social_link(href='#' class=`${item}_mod ${mod}`)= item
+mixin social(socialArray)
+	- mod_block = socialArray.mod_block || ''
+	ul.social_list(class= `${mod_block}`)
+		each item in socialArray.items
+			- mod_link = item.mod_link || ''
+			li.social_item
+				a.social_link(href="#" class= `${mod_link}`)
+					+icon(item.name_icon, item.mod_icon)
 
 //- works
 mixin icon(name, mod)
@@ -146,28 +163,28 @@ mixin icon(name, mod)
 mixin pagination(config)
 	- config.mod = config.mod || ''
 	- config.active = config.active || 1
-	.pag_block(class='#{config.mod}')
-		ul.pag_list(class="#{config.mod}")
+	.pag_block(class= config.mod)
+		ul.pag_list(class= config.mod)
 			if config.arrows
-				li.pag_item.prev_mod(class="#{config.mod}")
-					a.pag_link.prev_mod(href="#" class="#{config.mod}")
-			- var i = 1;
+				li.pag_item.prev_mod(class= config.mod)
+					a.pag_link.prev_mod(href='#' class= config.mod)
+			- i = 1;
 			while i <= config.pages
 				if i == config.pages - 1
-					li.pag_item(class="#{config.mod}")
-						a.pag_link.dots_mod(class="#{config.mod}") &hellip;
-					li.pag_item(class="#{config.mod}")
-						a.pag_link(href="#" title="#{i}" class="#{config.mod}") #{i}
+					li.pag_item(class= config.mod)
+						a.pag_link.dots_mod(class= config.mod) &hellip;
+					li.pag_item(class= config.mod)
+						a.pag_link(href='#' title= i class= config.mod)= i
 				else if i == config.active
-					li.pag_item(class="#{config.mod}")
-						a.pag_link.active_mod(title="#{i}" class="#{config.mod}") #{i}
+					li.pag_item(class= config.mod)
+						a.pag_link.active_mod(title= i class= config.mod)= i
 				else
-					li.pag_item(class="#{config.mod}")
-						a.pag_link(href="#" title="#{i}" class="#{config.mod}") #{i}
+					li.pag_item(class= config.mod)
+						a.pag_link(href='#' title= i class= config.mod)= i
 				-i++
 			if config.arrows
 				li.pag_item.next_mod
-					a.pag_link.next_mod(href="#" class="#{config.mod}")
+					a.pag_link.next_mod(href='#' class= config.mod)
 
 //- works
 mixin pagination_2(config)

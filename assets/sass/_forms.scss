@@ -18,6 +18,7 @@
 	&::-moz-placeholder {
 		color: $input_placeholder_color;
 	}
+
 	&:-ms-input-placeholder {
 		color: $input_placeholder_color;
 	}
@@ -44,6 +45,7 @@
 	&.hline_hide_mod {
 		display: none;
 	}
+
 	&.form_v1_mod {
 	}
 }
@@ -55,7 +57,7 @@
 	}
 }
 
-.form_field:not(.select_rediz_chosen) {
+.form_field {
 	&.default_mod {
 		@extend %form_field_default !optional;
 
@@ -66,10 +68,16 @@
 		&:hover {
 			@extend %form_field_default_hover !optional;
 		}
+	}
 
-		&.textarea_mod_1 {
-		}
+	&.textarea_mod_1 {
 	}
 }
 
-//-------------------------------------------------------inputs and selects###
+//---------------------------------------------inputs and selects###
+
+//---------------------------------------------checkboxes and radio-buttons
+
+// copy/paste from helpers/components/forms/_form.scss
+
+//---------------------------------------------checkboxes and radio-buttons###
