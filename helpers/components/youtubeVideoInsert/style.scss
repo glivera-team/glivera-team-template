@@ -1,0 +1,74 @@
+.video {
+	position: relative;
+
+	width: 100%;
+	height: 0;
+	padding-bottom: 56.25%;
+	background-color: #000000;
+	
+	&.video_enabled {
+		cursor: pointer;
+	}
+
+}
+
+.video_link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.video_media {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	border: none;
+}
+
+.video_button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+
+	display: none;
+	padding: 0;
+	width: 6.8em;
+	height: 4.8em;
+	margin-left: -3.4em;
+	margin-top: -2.4em;
+
+	background-color: transparent;
+	cursor: pointer;
+	
+	&:focus {
+		outline: none;
+	}
+
+	.video.video_enabled & {
+		display: block;
+	}
+
+}
+
+.video_button_shape {
+	fill: #212121;
+	fill-opacity: 0.8;
+	
+	.video:hover &,
+	.video_button:focus & {
+		fill: #ff0000;
+		fill-opacity: 1;
+	}
+
+}
+
+.video_button_icon {
+	fill: $white;
+}
