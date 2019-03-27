@@ -78,11 +78,18 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream({match: "**/*.css"}));
 });
 
-gulp.task('jsConcat', function () {
-  return gulp.src(assetsDir + 'js/all/**/*.js')
-    .pipe(concat('all.js', {newLine: ';'}))
+gulp.task('jsConcatLibs', function () {
+  return gulp.src(assetsDir + 'js/libs/**/*.js')
+    .pipe(concat('libs.js', {newLine: ';'}))
     .pipe(gulp.dest(outputDir + 'js/'))
     .pipe(browserSync.stream({once: true}));
+});
+
+gulp.task('jsConcatComponents', function () {
+	return gulp.src(assetsDir + 'js/components/**/*.js')
+	.pipe(concat('components.js', {newLine: ';'}))
+	.pipe(gulp.dest(outputDir + 'js/'))
+	.pipe(browserSync.stream({once: true}));
 });
 
 gulp.task('fontsConvert', function () {
@@ -123,7 +130,8 @@ gulp.task('watch', function () {
   gulp.watch(assetsDir + 'pug/**/*.pug', ['pug']);
   gulp.watch(assetsDir + 'sass/**/*.scss', ['sass']);
   gulp.watch(assetsDir + 'js/**/*.js', ['jsSync']);
-  gulp.watch(assetsDir + 'js/all/**/*.js', ['jsConcat']);
+  gulp.watch(assetsDir + 'js/libs/**/*.js', ['jsConcatLibs']);
+	gulp.watch(assetsDir + 'js/components/**/*.js', ['jsConcatComponents']);
   gulp.watch(assetsDir + 'i/**/*', ['imageSync']);
   gulp.watch(assetsDir + 'fonts/**/*', ['fontsSync', 'fontsConvert']);
 });
@@ -285,7 +293,7 @@ gulp.task('cssLint', function () {
 });
 
 
-gulp.task('default', ['pug', 'sass', 'imageSync', 'fontsSync', 'fontsConvert', 'jsConcat', 'jsSync', 'watch', 'browser-sync']);
+gulp.task('default', ['pug', 'sass', 'imageSync', 'fontsSync', 'fontsConvert', 'jsConcatLibs', 'jsConcatComponents', 'jsSync', 'watch', 'browser-sync']);
 
 gulp.task('build', ['cleanBuildDir'], function () {
 	gulp.start('imgBuild', 'fontsBuild', 'htmlBuild', 'jsBuild', 'cssBuild', 'copySprite');
@@ -328,14 +336,14 @@ gulp.task('build', ['cleanBuildDir'], function () {
 // 	pageList.map(async function(element, index) {
 // 		const browser = await puppeteer.launch();
 // 		const page = await browser.newPage();
-	
+
 // 		await page.setViewport({ width: initialPageWidth, height: 0 });
-	
+
 // 		await page.goto('http://localhost:1337/' + element + '.html');
 
 // 		await page.screenshot({path: beforeDir + element + '.png', fullPage: true});
 // 		console.log(element + ' page +');
-	
+
 // 		await browser.close();	
 // 	})
 // })
@@ -349,11 +357,11 @@ gulp.task('build', ['cleanBuildDir'], function () {
 // 	if (!fs.existsSync(afterDir)){
 // 		fs.mkdirSync(afterDir);
 // 	}
-	
+
 // 	if (!fs.existsSync(diffDir)){
 // 		fs.mkdirSync(diffDir);
 // 	}
-	
+
 // 	clearDir.map(function(element, index) {
 // 		if (fs.existsSync(element)){
 // 			fs.readdir(element, (err, files) => {
