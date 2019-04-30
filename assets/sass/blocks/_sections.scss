@@ -9,12 +9,12 @@
 	&.demo_mod {
 		@extend %global_flex_block_row_nowrap_center_center;
 
-		background-color: $black;
-
-		text-align: center;
-		color: $white;
 		height: 100%;
+
+		color: $black;
+		text-align: center;
 	}
+
 }
 
 
