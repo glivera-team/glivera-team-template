@@ -14,7 +14,7 @@
 
 		text-align: center;
 		color: $white;
-		height: calc(100vh - #{$height_footer});
+		height: calc(100vh - #{$height_footer + $height_header});
 	}
 }
 
