@@ -33,15 +33,7 @@ body {
 	min-height: 100%;
 	height: auto !important;
 
-	overflow: hidden;
-
-	@supports (display: grid) {
-		display: grid;
-		grid-template-rows: 1fr auto;
-		grid-template-areas: 
-		"base"
-		"footer";
-	}
+	overflow-x: hidden;
 }
 
 .base {
@@ -50,8 +42,6 @@ body {
 	padding: $height_header 0 0;
 
 	flex: 1 0 auto;
-
-	grid-area: base;
 }
 
 a {
