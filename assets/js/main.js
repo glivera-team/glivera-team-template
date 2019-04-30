@@ -72,3 +72,9 @@ function getRandomInt(min, max) {
 function getRandom(min, max) {
 	return Math.random() * (max - min) + min;
 }
+
+const styles = ['color: #fff', 'background: #cf8e1f'].join(';');
+
+const message = 'Developed by Glivera-team https://glivera-team.com/';
+
+console.info('%c%s', styles, message);
