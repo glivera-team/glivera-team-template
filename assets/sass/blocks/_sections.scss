@@ -6,15 +6,16 @@
 
 	font-size: 1rem;
 
+	//remove this demo style
 	&.demo_mod {
 		@extend %global_flex_block_row_nowrap_center_center;
 
-		height: 100%;
+		background-color: $black;
 
-		color: $black;
 		text-align: center;
+		color: $white;
+		height: calc(100vh - #{$height_footer + $height_header});
 	}
-
 }
 
 
