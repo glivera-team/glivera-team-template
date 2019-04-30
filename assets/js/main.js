@@ -29,13 +29,25 @@ $(window).on('scroll', function () {
 });
 
 function loadFunc() {
+	calcViewportHeight();
 }
 
 function resizeFunc() {
 	updateSizes();
+
+	calcViewportHeight();
 }
 
 function scrollFunc() {
+}
+
+function calcViewportHeight() {
+	if (isMobile.apple.phone || isMobile.android.phone || isMobile.seven_inch) {
+		var vh = window.innerHeight * 0.01;
+		// var vh2 = document.documentElement.clientHeight * 0.01;
+	
+		document.documentElement.style.setProperty('--vh', vh + 'px');
+	}
 }
 
 function updateSizes() {
@@ -60,3 +72,9 @@ function getRandomInt(min, max) {
 function getRandom(min, max) {
 	return Math.random() * (max - min) + min;
 }
+
+const styles = ['color: #fff', 'background: #cf8e1f'].join(';');
+
+const message = 'Developed by Glivera-team https://glivera-team.com/';
+
+console.info('%c%s', styles, message);
