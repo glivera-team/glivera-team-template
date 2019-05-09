@@ -22,6 +22,7 @@ body {
 	@supports (display: grid) {
 		display: block;
 	}
+
 }
 
 .wrapper {
@@ -47,10 +48,12 @@ body {
 a {
 	text-decoration: none;
 	color: $color_link_base;
+
 	&:hover,
 	&:focus {
 		text-decoration: underline;
 	}
+
 }
 
 .elements_list {
