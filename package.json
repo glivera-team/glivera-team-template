@@ -47,5 +47,6 @@
   "bugs": {
     "url": "https://github.com/glivera-team/glivera-team-template/issues"
   },
-  "homepage": "https://github.com/glivera-team/glivera-team-template/blob/master/README.md"
+  "homepage": "https://github.com/glivera-team/glivera-team-template/blob/master/README.md",
+  "keywords": []
 }
