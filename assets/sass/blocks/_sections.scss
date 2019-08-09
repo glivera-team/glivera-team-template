@@ -9,20 +9,21 @@
 	//remove this demo style
 	&.demo_mod {
 		@extend %global_flex_block_row_nowrap_center_center;
+		
+		height: calc(100vh - #{$height_footer + $height_header});
+		
+		color: $white;
+		text-align: center;
 
 		background-color: $black;
-
-		text-align: center;
-		color: $white;
-		height: calc(100vh - #{$height_footer + $height_header});
 	}
 
 }
 
 
 .section_in {
-	width: 100%;
 	max-width: $page_width;
+	width: 100%;
 	margin: 0 auto;
 }
 
