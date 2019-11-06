@@ -25,8 +25,7 @@ var purify = require('gulp-purifycss'),
     csso = require('gulp-csso');
 
 //plugins for testing
-var html5Lint = require('gulp-html5-lint'),
-		reporter = require('postcss-reporter'),
+var reporter = require('postcss-reporter'),
 		stylelint = require('stylelint'),
 		postcss_scss = require("postcss-scss");
 
@@ -270,12 +269,6 @@ gulp.task('svgSpriteBuild', function () {
     }
   }))
   .pipe(gulp.dest(assetsDir + 'i/sprite/'));
-});
-
-//testing your build files
-gulp.task('validation', function () {
-  return gulp.src(buildDir + '**/*.html')
-    .pipe(html5Lint());
 });
 
 gulp.task('cssLint', function () {
