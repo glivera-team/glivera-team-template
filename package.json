@@ -4,7 +4,7 @@
   "description": "1. If you don't have installed [node.js](https://nodejs.org/) - install it(latest version).Also you should install [python(2 version)](https://www.python.org/downloads/release/python-2710/) and gulp globally",
   "main": "gulpfile.js",
   "dependencies": {
-    "browser-sync": "^2.26.5",
+    "browser-sync": "^2.26.7",
     "gulp": "^4.0.1",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-cheerio": "^0.6.3",
