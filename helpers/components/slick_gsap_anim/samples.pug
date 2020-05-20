@@ -1,0 +1,17 @@
+//demo
+.slider_w
+	.slider.sliderEl
+		+loop_while(3)
+			.slider_item
+				.decor_item(class=`bg_${i}_mod`)
+				.slider_item_in
+					.slider_content
+						h2.slider_title!= `Lorem ipsum dolor sit amet, consectetur ${i}`
+						.slider_descr
+							p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias animi aspernatur at, blanditiis delectus deleniti deserunt eveniet exercitationem fugiat hic in ipsam ipsum laudantium magnam nemo nostrum nulla, odio omnis porro quam quasi quod quos ratione voluptas voluptate voluptatem.
+
+	.slider_controllers_w
+		.slider_controller.prev_mod.prevSlide Prev
+		.slider_controller.next_mod.nextSlide Next
+
+	.slider_counter
