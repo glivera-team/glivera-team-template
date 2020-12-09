@@ -33,6 +33,32 @@
 	}
 //--------------------------------------------------------------forms
 
+//--------------------------------------------------------------forms v2
+-
+	mtdFieldsWrapper = {
+		default: 'form_field',
+		another: 'mtd_field'
+	}
+
+-
+	mtdFields = {
+		label: mtdFieldsWrapper.default + '_label',
+		types: {
+			default: mtdFieldsWrapper.default + '_input',
+			file: mtdFieldsWrapper.default + '_file',
+			radio: mtdFieldsWrapper.default + '_radiocheck',
+			checkbox: mtdFieldsWrapper.default + '_radiocheck',
+			select: mtdFieldsWrapper.default + '_select',
+			textarea: mtdFieldsWrapper.default + '_textarea'
+		},
+		mods: {
+			hiddenLabel: 'hidden_mod',
+			checkboxTextSpan: mtdFieldsWrapper.default + '_text_check',
+			radioTextSpan: mtdFieldsWrapper.default + '_text_radio'
+		}
+	}
+//--------------------------------------------------------------forms v2
+
 -
 	var headerMenuArray = {
 		items: [

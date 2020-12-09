@@ -3,5 +3,21 @@ extends _layout
 block vars
 	- array = {body_class:'', layout_mod:'', sub_keywords:'', title_inner:'Title of the page'}
 block content_block
-	section.section.demo_mod
-		h1.section_title Hola #[a.test(href='#') Maketodor] :)
+	section.section
+		.section_in
+			+input({
+					mods: 'add_any_mods',
+					class: [
+						`${mtdFields.label} ${mtdFields.mods.hiddenLabel}`,
+						`${mtdFields.types.default} input_test_class`
+					],
+					label: 'Required field',
+					attrs: {
+						id: 'input_1',
+						type: 'text',
+						name: 'text_field_1',
+						placeholder: 'Field placeholder',
+						required: true,
+						autofocus: true
+					}
+				})
