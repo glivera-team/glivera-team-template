@@ -1,1 +1,101 @@
 - n = 0
+//--------------------------------------------------------------global vars
+- production = false;
+- jQuery = true;
+- TweenMax = true;
+
+//--------------------------------------------------------------forms
+-
+	var default_field = {
+		block_class_mod: 'form_cell_v1_mod',
+		class_mod: 'form_v1_mod',
+		elem_class: 'default_mod'
+	}
+
+-
+	var default_field_hidden = {
+		block_class_mod: 'form_cell_v1_mod',
+		class_mod: 'form_v1_mod hline_hide_mod',
+		elem_class: 'default_mod'
+	}
+
+-
+	var default_checkbox = {
+		block_class_mod: 'check_1_mod',
+		class_mod: 'check_1_mod',
+		elem_class: 'check_1_mod'
+	}
+
+-
+	var default_radio = {
+		block_class_mod: 'radio_1_mod',
+		class_mod: 'radio_1_mod',
+		elem_class: 'radio_1_mod'
+	}
+//--------------------------------------------------------------forms
+
+//--------------------------------------------------------------forms v2
+-
+	mtdFieldsWrapper = {
+		default: 'form_field',
+		another: 'mtd_field'
+	}
+
+-
+	mtdFields = {
+		label: mtdFieldsWrapper.default + '_label',
+		types: {
+			default: mtdFieldsWrapper.default + '_input',
+			file: mtdFieldsWrapper.default + '_file',
+			radio: mtdFieldsWrapper.default + '_radiocheck',
+			checkbox: mtdFieldsWrapper.default + '_radiocheck',
+			select: mtdFieldsWrapper.default + '_select',
+			textarea: mtdFieldsWrapper.default + '_textarea'
+		},
+		mods: {
+			hiddenLabel: 'hidden_mod',
+			checkboxTextSpan: mtdFieldsWrapper.default + '_text_check',
+			radioTextSpan: mtdFieldsWrapper.default + '_text_radio'
+		}
+	}
+//--------------------------------------------------------------forms v2
+
+-
+	var headerMenuArray = {
+		items: [
+			{
+				title: 'News/blog',
+				active: false
+			},
+			{
+				title: 'Team and story',
+				active: false
+			},
+			{
+				title: 'In the media',
+				active: true
+			},
+			{
+				title: 'Careers',
+				active: false
+			},
+			{
+				title: 'Online shop',
+				active: false
+			},
+			{
+				title: 'Past projects',
+				active: false
+			},
+			{
+				title: 'Parners',
+				active: false
+			},
+			{
+				title: 'Contact',
+				active: false
+			}
+		],
+		gl_class: 'main_menu',
+		gl_mod: 'header_mod'
+	}
