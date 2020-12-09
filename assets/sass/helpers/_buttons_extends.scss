@@ -2,8 +2,11 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
+	
 	text-align: center;
 	white-space: nowrap;
+
+	cursor: pointer;
 
 	&:hover, &:focus {
 		text-decoration: none;
