@@ -107,6 +107,73 @@ mixin form_element(config)
 			span.radio_check_text&attributes(additional_classes)= config.title
 //- form element###
 
+//- form element v2
+mixin mtdInputWrapper(config)
+	- wrapperClass = config.wrapper || mtdFieldsWrapper.default
+	- inputClass = config.class || mtdFields.types.default
+	div(class= `${wrapperClass}`)
+		block
+
+mixin mtdInput(config)
+	case config.attrs.type
+		when 'checkbox'
+			input(class= `${inputClass[1]}`)&attributes(config.attrs)
+			span(class= `${wrapperClass}__text ${mtdFields.mods.checkboxTextSpan}`)= config.label
+		when 'radio'
+			input(class= `${inputClass[1]}`)&attributes(config.attrs)
+			span(class= `${wrapperClass}__text ${mtdFields.mods.radioTextSpan}`)= config.label
+		when 'file'
+			input(class= `${inputClass[1]}`)&attributes(config.attrs)
+			span(class= `${inputClass[1]}_cta`)= config.label
+		default
+			input(class= `${inputClass[1]}`)&attributes(config.attrs)
+
+mixin mtdLabel(config, showLabelText)
+	- mods = config.mods || ''
+	case showLabelText
+		when false
+			label(class= `${inputClass[0]} ${mods}` for= config.attrs.id)
+				block
+		default
+			label(class= `${inputClass[0]} ${mods}` for= config.attrs.id)= config.label
+				block
+
+mixin mtdTextarea(config)
+	textarea(class= `${inputClass[1]}`)&attributes(config.attrs)
+
+mixin select(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config)
+		select(class= `${inputClass[1]}`)&attributes(config.attrs)
+			each option in config.options
+				option(value= option)= option
+
+mixin input(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config)
+		+mtdInput(config)
+
+mixin textarea(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config)
+		+mtdTextarea(config)
+
+mixin checkbox(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config, false)
+			+mtdInput(config)
+
+mixin radiobutton(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config, false)
+			+mtdInput(config)
+
+mixin file(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config, false)
+			+mtdInput(config)
+//- form element v2###
+
 //- works
 mixin loop_while(counter)
 	- i=0;
