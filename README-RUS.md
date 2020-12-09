@@ -11,9 +11,9 @@
 
 	Если вы используете линк глобальных пакетов:
 
-		npm install gulp rimraf gulp-pug gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets postcss-reporter stylelint postcss-scss gulp-sequence gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace gulp-notify -g
+		npm install gulp rimraf gulp-pug gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-purifycss gulp-terser gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets postcss-reporter stylelint postcss-scss gulp-sequence gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace gulp-notify -g
 
-		npm link gulp rimraf gulp-pug gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets postcss-reporter stylelint postcss-scss gulp-sequence gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace gulp-notify
+		npm link gulp rimraf gulp-pug gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-purifycss gulp-terser gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets postcss-reporter stylelint postcss-scss gulp-sequence gulp-svg-sprite gulp-svgmin gulp-cheerio gulp-replace gulp-notify
 
 3. Начинаем кодить!
 

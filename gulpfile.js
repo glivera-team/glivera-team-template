@@ -19,7 +19,7 @@ var gulp = require('gulp'),
 
 // plugins for build
 var purify = require('gulp-purifycss'),
-    uglify = require('gulp-uglify'),
+    terser = require('gulp-terser'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     csso = require('gulp-csso');
@@ -195,7 +195,7 @@ gulp.task('htmlBuild', function () {
 //copy and minify js
 gulp.task('jsBuild', function () {
   return gulp.src(outputDir + 'js/**/*')
-    .pipe(uglify())
+    .pipe(terser())
     .pipe(gulp.dest(buildDir + 'js/'))
 });
 

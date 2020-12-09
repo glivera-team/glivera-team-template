@@ -10,7 +10,7 @@ createNewProject() {
     mv /e/workflow/job/tasks_from_Andrew/site_$1\($2\)/glivera-team-template /e/workflow/job/tasks_from_Andrew/site_$1\($2\)/site
     cd site
     rm -rf .git settings.jar
-    npm link gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-uglify gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets
+    npm link gulp rimraf gulp-jade gulp-sass gulp-inline-image gulp-autoprefixer gulp-plumber gulp-directory-sync browser-sync gulp-concat gulp-cssfont64 gulp-html5-lint gulp-purifycss gulp-terser gulp-imagemin imagemin-pngquant gulp-csso gulp-sourcemaps gulp-postcss postcss-assets
     storm /e/workflow/job/tasks_from_Andrew/site_$1\($2\)/site
     gulp
 }
