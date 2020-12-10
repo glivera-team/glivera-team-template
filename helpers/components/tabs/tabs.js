@@ -1,12 +1,12 @@
 // tabs
 function tabs(link, block) {
-	var linkSelector = $(link),
+	let linkSelector = $(link),
 		blockSelector = $(block);
 
 	$(linkSelector).on('click', function (e) {
 		e.preventDefault();
 
-		var $this = $(this),
+		let $this = $(this),
 			currentData = $(this).data('tab');
 
 		$(blockSelector).removeClass('active_tab');
@@ -16,7 +16,6 @@ function tabs(link, block) {
 		$this.addClass('active_tab');
 
 	});
-
 }
 
-tabs('.tab_link', '.tab_content');
+tabs('.tab_nav_item', '.tab_content');
