@@ -62,7 +62,7 @@
 .form_field {
 
 	&.default_mod,
-	&._input {
+	&_input {
 		@extend %form_field_default !optional;
 
 		&:focus {
