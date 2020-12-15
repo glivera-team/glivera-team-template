@@ -109,9 +109,10 @@ mixin form_element(config)
 
 //- form element v2
 mixin mtdInputWrapper(config)
+	- mods = config.mods || ''
 	- wrapperClass = config.wrapper || mtdFieldsWrapper.default
 	- inputClass = config.class || mtdFields.types.default
-	div(class= `${wrapperClass}`)
+	div(class= `${wrapperClass} ${mods}`)
 		block
 
 mixin mtdInput(config)
@@ -129,13 +130,12 @@ mixin mtdInput(config)
 			input(class= `${inputClass[1]}`)&attributes(config.attrs)
 
 mixin mtdLabel(config, showLabelText)
-	- mods = config.mods || ''
 	case showLabelText
 		when false
-			label(class= `${inputClass[0]} ${mods}` for= config.attrs.id)
+			label(class= `${inputClass[0]}` for= config.attrs.id)
 				block
 		default
-			label(class= `${inputClass[0]} ${mods}` for= config.attrs.id)= config.label
+			label(class= `${inputClass[0]}` for= config.attrs.id)= config.label
 				block
 
 mixin mtdTextarea(config)
