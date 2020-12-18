@@ -13,6 +13,8 @@
 	#country_dropdown.your_mod
 
 
+
+
 // Old way
 script.
 	$('#country_select').select2({
@@ -27,6 +29,68 @@ function createSelect() {
 	if ($select.length) {
 		$select.each(function(index, element) {
 			var $dropdownParent = $(this).closest('dd');
+
+			$(element).select2({
+				minimumResultsForSearch: Infinity,
+				dropdownParent: $dropdownParent
+			});
+
+		})
+	}
+
+}
+
+createSelect();
+
+// New way
+function createSelect() {
+	var $select = $('[id^=select_]');
+
+	if ($select.length) {
+		$select.each(function(index, element) {
+			var $dropdownParent = $(this).closest('dd');
+
+			$(element).select2({
+				minimumResultsForSearch: Infinity,
+				dropdownParent: $dropdownParent
+			});
+
+		})
+	}
+
+}
+
+createSelect();
+
+
+
+
+
+
+//forms_v2
+
++select({
+	mods: 'select_mod',
+	class: [
+		`${mtdFields.mods.hiddenLabel}`,
+		`${mtdFields.types.default}`
+	],
+	label: '',
+	options: [null, 'option 1', 'option 2', 'option 3'],
+	attrs: {
+		id: 'select_1',
+		name: 'Some name'
+	},
+	placeholder: 'Some placeholder'
+})
+
+
+function createSelect() {
+	var $select = $('[id^=select_]');
+
+	if ($select.length) {
+		$select.each(function(index, element) {
+			var $dropdownParent = $(this).closest('.form_field');
 
 			$(element).select2({
 				minimumResultsForSearch: Infinity,
