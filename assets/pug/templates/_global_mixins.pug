@@ -144,7 +144,7 @@ mixin mtdTextarea(config)
 mixin select(config)
 	+mtdInputWrapper(config)
 		+mtdLabel(config)
-		select(class= `${inputClass[1]}`)&attributes(config.attrs)
+		select(data-placeholder=config.placeholder class= `${inputClass[1]}`)&attributes(config.attrs)
 			each option in config.options
 				option(value= option)= option
 
