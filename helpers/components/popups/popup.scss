@@ -1,0 +1,49 @@
+.popup {
+	@extend %global_flex_block_row_wrap_flex-start;
+	@extend %transition_opacity;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: z-index(popup);
+
+	align-content: stretch;
+	width: 100%;
+	height: var(--full-screen);
+	max-height: var(--full-screen);
+
+	overflow-x: hidden;
+	overflow-y: auto;
+	opacity: 0;
+	pointer-events: none;
+
+	background-color: rgba($black, .6);
+
+	&.active_mod {
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
+
+.popup_in {
+	position: relative;
+
+	padding: $gl_indent;
+	width: $page_width;
+	max-width: 100%;
+	margin: auto;
+	background-color: $white;
+}
+
+.popup_close {
+	position: absolute;
+	right: $gl_indent;
+	top: $gl_indent;
+
+	width: 3rem;
+	height: 3rem;
+
+	color: $white;
+
+	cursor: pointer;
+}
