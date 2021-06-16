@@ -5,7 +5,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: z-index(popup);
+	z-index: -1;
 
 	align-content: stretch;
 	width: 100%;
@@ -20,6 +20,8 @@
 	background-color: rgba($black, .6);
 
 	&.active_mod {
+		z-index: z-index(popup);
+
 		opacity: 1;
 		pointer-events: auto;
 	}
