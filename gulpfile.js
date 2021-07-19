@@ -2,7 +2,7 @@
 var gulp = require('gulp'),
     rimraf = require('rimraf'),
     pug = require('gulp-pug'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('sass')),
     gulpSequence = require('gulp-sequence'),
     inlineimage = require('gulp-inline-image'),
     prefix = require('gulp-autoprefixer'),
