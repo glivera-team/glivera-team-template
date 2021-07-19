@@ -1,11 +1,11 @@
 var $body,
-	windowHeight,
-	windowWidth,
-	degree = 0.0174532925,
-	mediaPoint1 = 1024,
-	mediaPoint2 = 768,
-	mediaPoint3 = 480,
-	mediaPoint4 = 320;
+		windowHeight,
+		windowWidth,
+		degree = 0.0174532925,
+		mediaPoint1 = 1024,
+		mediaPoint2 = 768,
+		mediaPoint3 = 480,
+		mediaPoint4 = 320;
 
 $(document).ready(function ($) {
 	$body = $('body');
@@ -73,8 +73,7 @@ function getRandom(min, max) {
 	return Math.random() * (max - min) + min;
 }
 
-const styles = ['color: #fff', 'background: #cf8e1f'].join(';');
-
-const message = 'Developed by Glivera-team https://glivera-team.com/';
+var styles = ['color: #fff', 'background: #cf8e1f'].join(';');
+var message = 'Developed by Glivera-team https://glivera-team.com/';
 
 console.info('%c%s', styles, message);

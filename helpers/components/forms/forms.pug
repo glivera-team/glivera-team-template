@@ -60,3 +60,179 @@
 })
 
 //form mixins###
+
+
+//form mixins v2
+
+form.form(action='#', method='POST')
+	.form-col
+		+input({
+			mods: 'add_any_mods',
+			class: [
+				`${mtdFields.label} ${mtdFields.mods.hiddenLabel}`,
+				`${mtdFields.types.default} input_test_class`
+			],
+			label: 'Required field',
+			attrs: {
+				id: 'input_1',
+				type: 'text',
+				name: 'text_field_1',
+				placeholder: 'Field placeholder',
+				required: true,
+				autofocus: true
+			}
+		})
+
+		+input({
+			class: [
+				mtdFields.label,
+				mtdFields.types.default
+			],
+			label: 'Disabled field',
+			attrs: {
+				id: 'input_2',
+				type: 'text',
+				name: 'text_field_2',
+				placeholder: 'Enter something...',
+				disabled: true
+			}
+		})
+
+		+input({
+			class: [
+				mtdFields.label,
+				mtdFields.types.default
+			],
+			label: 'Password field',
+			attrs: {
+				id: 'input_3',
+				type: 'password',
+				name: 'password_field_1',
+				placeholder: 'Enter password'
+			}
+		})
+
+		+select({
+			class: [
+				mtdFields.label,
+				mtdFields.types.select
+			],
+			label: 'Select field',
+			options: ['option 1', 'option 2', 'option 3'],
+			attrs: {
+				id: 'select_1',
+				name: 'select_field_1'
+			}
+		})
+
+	.form-col
+		+textarea({
+			class: [
+				mtdFields.label,
+				mtdFields.types.textarea
+			],
+			label: 'Textarea label',
+			attrs: {
+				id: 'textarea_1',
+				name: 'textarea_1',
+				cols: 60,
+				rows: 5,
+				placeholder: 'Enter your message'
+			}
+		})
+
+		+file({
+			class: [
+				mtdFields.label,
+				mtdFields.types.file
+			],
+			label: 'Choose a file...',
+			attrs: {
+				id: 'file_1',
+				type: 'file',
+				name: 'file_field_1'
+			}
+		})
+
+	.form-col
+		+checkbox({
+			class: [
+				`${mtdFields.label} checkbox_field`,
+				mtdFields.types.checkbox
+			],
+			label: 'Checkbox label',
+			attrs: {
+				id: 'check_1',
+				type: 'checkbox',
+				name: 'check_1',
+				checked: true
+			}
+		})
+
+		+radiobutton({
+			class: [
+				`${mtdFields.label} radio_field`,
+				mtdFields.types.radio
+			],
+			label: 'Yes',
+			attrs: {
+				id: 'radio_yes',
+				type: 'radio',
+				name: 'answer'
+			}
+		})
+		+radiobutton({
+			class: [
+				`${mtdFields.label} radio_field`,
+				mtdFields.types.radio
+			],
+			label: 'No',
+			attrs: {
+				id: 'radio_no',
+				type: 'radio',
+				name: 'answer'
+			}
+		})
+	
+	.form-col
+		+input({
+			class: [
+				mtdFields.label,
+				mtdFields.types.default
+			],
+			label: 'Color field',
+			attrs: {
+				id: 'color_1',
+				type: 'color',
+				name: 'color_field_1',
+			}
+		})
+
+	.form-col
+		+input({
+			class: [
+				mtdFields.label,
+				mtdFields.types.default
+			],
+			label: 'Date field',
+			attrs: {
+				id: 'date_1',
+				type: 'date',
+				name: 'date_field_1',
+			}
+		})
+
+	.form-col
+		+input({
+			class: [
+				mtdFields.label,
+				mtdFields.types.default
+			],
+			label: 'Time field',
+			attrs: {
+				id: 'time_1',
+				type: 'time',
+				name: 'time_field_1',
+			}
+		})
+//form mixins v2###

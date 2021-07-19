@@ -8,7 +8,7 @@
 	font-family: $font_1;
 	color: $input_text_color;
 	box-shadow: inset 0 0 0 1px $input_border_color;
-	border:none;
+	border: none;
 	border-radius: $input_radius;
 
 	&::-webkit-input-placeholder {
@@ -22,43 +22,47 @@
 	&:-ms-input-placeholder {
 		color: $input_placeholder_color;
 	}
+
 }
 
-%form_field_default_hover {
-}
+%form_field_default_hover {}
 
 %form_field_default_active {
 	box-shadow: 0 0 0 1px $input_border_color_active;
 }
 
-.form_cell {
+.form_cell,
+.form_field {
 	&.hidden_field {
 		display: none;
 	}
 
-	&.form_cell_v1_mod {
-	}
+	&.form_cell_v1_mod {}
 }
 
-.form_cell_title {
+.form_cell_title,
+.form_field_label {
 
-	&.hline_hide_mod {
+	&.hline_hide_mod,
+	&.hidden_mod {
 		display: none;
 	}
 
-	&.form_v1_mod {
-	}
+	&.form_v1_mod {}
+
 }
 
 .form_field_wrap {
 	position: relative;
 
-	&.form_v1_mod {
-	}
+	&.form_v1_mod {}
+
 }
 
 .form_field {
-	&.default_mod {
+
+	&.default_mod,
+	&_input {
 		@extend %form_field_default !optional;
 
 		&:focus {
@@ -70,8 +74,8 @@
 		}
 	}
 
-	&.textarea_mod_1 {
-	}
+	&.textarea_mod_1 {}
+
 }
 
 //---------------------------------------------inputs and selects###

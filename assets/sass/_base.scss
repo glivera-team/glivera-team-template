@@ -1,4 +1,8 @@
 //------------------------------------------------------------base styles
+:root {
+	--full-screen: calc(var(--vh, 1vh) * 100);
+}
+
 html {
 	height: 100%;
 	font: 400 calc(100vw / 1920 * 10)/1.33 $font_1;
@@ -22,6 +26,7 @@ body {
 	@supports (display: grid) {
 		display: block;
 	}
+
 }
 
 .wrapper {
@@ -47,10 +52,12 @@ body {
 a {
 	text-decoration: none;
 	color: $color_link_base;
+
 	&:hover,
 	&:focus {
 		text-decoration: underline;
 	}
+
 }
 
 .elements_list {

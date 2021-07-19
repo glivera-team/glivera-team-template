@@ -15,7 +15,7 @@ $body_bg: $white;
 
 //---------------------------------------------z-index
 $z-index: (
-	popap : 9999,
+	popup : 101,
 	header : 100,
 	footer : 100
 );
@@ -45,12 +45,12 @@ $point_8: 320px;
 //---------------------------------------------media points
 
 //---------------------------------------------forms
-$input_height:4rem;
-$input_offset:0 2rem;
-$input_font_size:$font_size_base;
-$input_border_color:#ccc;
-$input_border_color_active:$black;
+$input_height: 4rem;
+$input_offset: 0 2rem;
+$input_font_size: $font_size_base;
+$input_border_color: #ccc;
+$input_border_color_active: $black;
 $input_placeholder_color: $black;
-$input_text_color:$black;
-$input_radius:$gl_radius;
+$input_text_color: $black;
+$input_radius: $gl_radius;
 //---------------------------------------------forms###

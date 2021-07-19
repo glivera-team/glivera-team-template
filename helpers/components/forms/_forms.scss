@@ -87,3 +87,92 @@
 	}
 }
 //---------------------------------------------checkboxes and radio-buttons###
+
+// for mixins +checkbox() & +radiobutton()
+
+.form_field_label {
+	&.radio_field,
+	&.checkbox_field {
+		display: inline-block;
+		cursor: pointer;
+	}
+}
+
+.form_field_radiocheck {
+	display: none;
+}
+
+.form_field_text_check {
+	position: relative;
+	display: inline-block;
+	padding: 0 0 0 3rem;
+	font-size: 1.6rem;
+	color: $black;
+
+	&:before,&:after {
+		position: absolute;
+		top: -1px;
+		left: 0;
+		width: 2rem;
+		height: 2rem;
+		cursor:pointer;
+	}
+
+	&:before {
+		content: '';
+		border-radius: 2px;
+		border: 1px solid $black;
+	}
+
+	&:after {
+		@extend %icon-check:before;
+		@extend %transition_opacity;
+
+		text-align: center;
+		line-height: 20px;
+		opacity: 0;
+		color: $black;
+
+		.form_field_radiocheck:checked + & {
+			opacity: 1;
+		}
+	}
+}
+
+.form_field_text_radio {
+	position: relative;
+	display: inline-block;
+	padding: 0 0 0 3rem;
+	font-size: 1.6rem;
+	color: $black;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: -1px;
+		left: 0;
+		width: 2rem;
+		height: 2rem;
+		border-radius:100%;
+		border:1px solid $black;
+		cursor:pointer;
+	}
+
+	&:after {
+		@extend %transition_opacity;
+
+		content:'';
+		position: absolute;
+		top: .4rem;
+		left: .5rem;
+		width: 1rem;
+		height: 1rem;
+		border-radius: 100%;
+		background: $black;
+		opacity: 0;
+
+		.form_field_radiocheck:checked + & {
+			opacity: 1;
+		}
+	}
+}

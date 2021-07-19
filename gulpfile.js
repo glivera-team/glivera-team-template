@@ -19,14 +19,13 @@ var gulp = require('gulp'),
 
 // plugins for build
 var purify = require('gulp-purifycss'),
-    uglify = require('gulp-uglify'),
+    terser = require('gulp-terser'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     csso = require('gulp-csso');
 
 //plugins for testing
-var html5Lint = require('gulp-html5-lint'),
-		reporter = require('postcss-reporter'),
+var reporter = require('postcss-reporter'),
 		stylelint = require('stylelint'),
 		postcss_scss = require("postcss-scss");
 
@@ -196,7 +195,7 @@ gulp.task('htmlBuild', function () {
 //copy and minify js
 gulp.task('jsBuild', function () {
   return gulp.src(outputDir + 'js/**/*')
-    .pipe(uglify())
+    .pipe(terser())
     .pipe(gulp.dest(buildDir + 'js/'))
 });
 
@@ -270,12 +269,6 @@ gulp.task('svgSpriteBuild', function () {
     }
   }))
   .pipe(gulp.dest(assetsDir + 'i/sprite/'));
-});
-
-//testing your build files
-gulp.task('validation', function () {
-  return gulp.src(buildDir + '**/*.html')
-    .pipe(html5Lint());
 });
 
 gulp.task('cssLint', function () {

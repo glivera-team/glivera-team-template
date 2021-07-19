@@ -1,0 +1,50 @@
+//mixin
+mixin tabs(array)
+	.tabs_nav
+		ul.tab_nav_list
+			each item, index in array
+				li.tab_nav_item(href="#" data-tab= index class= item.item_mod)
+					a.tab_nav_link
+						//- .tab_nav_title!= item.title
+						//- .tab_nav_img(class= item.img_mod)
+
+
+//pug
++tabs(
+	[
+		{
+			item_mod: 'active_tab',
+			img_mod:'v1_mod',
+			title: 'Title 1'
+		},
+		{
+			img_mod:'v2_mod',
+			title: 'Title 2'
+		}
+	]
+)
+
+-
+	list = [
+		[
+			{
+				img: 'i/1.1.jpg'
+			},
+			{
+				img: 'i/1.2.jpg'
+			}
+		],
+		[
+			{
+				img: 'i/2.1.jpg'
+			},
+			{
+				img: 'i/2.2.jpg'
+			}
+		]
+	]
+
+.tab_content_wrap
+	each item, index in list
+		.tab_content(class= `${index == 0 ? 'active_tab' : ''}`, data-tab= index)
+

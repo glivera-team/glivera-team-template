@@ -1,0 +1,26 @@
+//mixin
+mixin accordion(array)
+	ul.accordion
+		if array.list
+			each item in array.list
+				li.accordion_item
+					h3.accordion_title!= item.title
+					.accordion_content
+						.accordion_text!= item.text
+
+//pug
+-
+	item = {
+		list: [
+			{
+				title: 'Title 1',
+				text: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>'
+			},
+			{
+				title: 'Title 2',
+				text: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>'
+			}
+		]
+	}
+
++accordion(item)
