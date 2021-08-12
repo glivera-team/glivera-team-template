@@ -32,12 +32,13 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100vh;
-		overflow: auto;
+		height: var(--full-screen);
+		overflow-x: hidden;
+		overflow-y: auto;
 		background: lightgoldenrodyellow;
 		transform: translate(0, -100%);
 
-		@include flex_block(column, nowrap, flex-start, center);
+		@include flex_block(row, wrap, center, center);
 
 		body.menu_open & {
 			transform: translate(0, 0);
@@ -46,26 +47,30 @@
 }
 
 .header_menu_list {
-	@extend %global_flex_block_row_nowrap_flex-end_center;
+	@extend %global_flex_block_row_nowrap_flex-start_center;
 
 	@include bp($point_3) {
+		height: 100%;
 		width: 100%;
 		flex: 0 0 auto;
 		flex-direction: column;
+		justify-content: center;
 		padding: $height_header $gl_indent;
 		margin: auto;
 	}
 }
 
 .header_menu_item {
-	padding: 0 0 0 $gl_indent;
-
-	&:first-child {
-		padding: 0;
+	&:last-child {
+		margin: 0;
 	}
 
+	@include bp($point_2, min) {
+		margin-right: $gl_indent;
+	}
+	
 	@include bp($point_3) {
-		padding: 2rem 0 0;
+		margin-bottom: $gl_indent;
 		flex: 0 0 auto;
 	}
 }
