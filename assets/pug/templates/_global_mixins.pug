@@ -295,3 +295,20 @@ mixin link_list(array, mod)
 		each item in array
 			li(class=`${mod}_item`)
 				a(class=`${mod}_link` href='#')= item
+
+//- picture
+mixin picture(data)
+	- type = data.png ? 'png' : 'jpg'
+	- is2x = data.is2x ? true : false
+	- media = data.media
+	- imgFit = data.contain ? 'contain_img' : 'cover_img'
+	- customClass = data.customClass || imgFit
+	picture(class = data.mod , data-tab= data.tab)
+		each imgType in ['webp', type]
+			if media
+				source(media=`(min-width: ${media}px)` srcset=`${data.img}.${imgType}${is2x ? `, ${data.img}@2x.${imgType} 2x` : ''}` type=`image/${imgType}`)
+				source(media=`(max-width: ${media - 1}px)` srcset=`${data.img_mob}.${imgType}${is2x ? `, ${data.img_mob}@2x.${imgType} 2x` : ''}` type=`image/${imgType}`)
+			else
+				source(srcset=`${data.img}.${imgType}${is2x ? `, ${data.img}@2x.${imgType} 2x` : ''}` type=`image/${imgType}`)
+		img(class= customClass src=`${data.img}.${type}` alt="")
+
