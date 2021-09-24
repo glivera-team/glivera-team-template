@@ -21,7 +21,7 @@ var gulp = require('gulp'),
 // plugins for build
 var purify = require('gulp-purifycss'),
 	terser = require('gulp-terser'),
-	imagemin = require('gulp-imagemin'),
+	image = require('gulp-image'),
 	pngquant = require('imagemin-pngquant'),
 	csso = require('gulp-csso');
 
@@ -202,10 +202,16 @@ gulp.task('imgBuild', function () {
 	return gulp
 		.src([outputDir + 'i/**/*', '!' + outputDir + 'i/sprite/**/*'])
 		.pipe(
-			imagemin({
-				progressive: true,
-				svgoPlugins: [{ removeViewBox: false }],
-				use: [pngquant()],
+			image({
+				pngquant: true,
+				optipng: false,
+				zopflipng: true,
+				jpegRecompress: false,
+				mozjpeg: true,
+				gifsicle: true,
+				svgo: false,
+				concurrent: 10,
+				quiet: false, // defaults to false
 			})
 		)
 		.pipe(gulp.dest(buildDir + 'i/'));

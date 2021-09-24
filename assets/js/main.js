@@ -1,18 +1,21 @@
 var $body,
-		windowHeight,
-		windowWidth,
-		degree = 0.0174532925,
-		mediaPoint1 = 1024,
-		mediaPoint2 = 768,
-		mediaPoint3 = 480,
-		mediaPoint4 = 320;
+	windowHeight,
+	windowWidth,
+	degree = 0.0174532925,
+	mediaPoint1 = 1024,
+	mediaPoint2 = 768,
+	mediaPoint3 = 480,
+	mediaPoint4 = 320,
+	productionStatus = false;
 
 $(document).ready(function ($) {
 	$body = $('body');
 
-	//developer funcitons
-	pageWidget(['index']);
-	getAllClasses('html','.elements_list');
+	if (!productionStatus) {
+		//developer funcitons
+		pageWidget(['index']);
+		getAllClasses('html', '.elements_list');
+	}
 });
 
 $(window).on('load', function () {
@@ -38,14 +41,13 @@ function resizeFunc() {
 	calcViewportHeight();
 }
 
-function scrollFunc() {
-}
+function scrollFunc() {}
 
 function calcViewportHeight() {
 	if (isMobile.apple.phone || isMobile.android.phone || isMobile.seven_inch) {
 		var vh = window.innerHeight * 0.01;
 		// var vh2 = document.documentElement.clientHeight * 0.01;
-	
+
 		document.documentElement.style.setProperty('--vh', vh + 'px');
 	}
 }
@@ -57,11 +59,25 @@ function updateSizes() {
 
 if ('objectFit' in document.documentElement.style === false) {
 	document.addEventListener('DOMContentLoaded', function () {
-		Array.prototype.forEach.call(document.querySelectorAll('img[data-object-fit]'), function (image) {
-			(image.runtimeStyle || image.style).background = 'url("' + image.src + '") no-repeat 50%/' + (image.currentStyle ? image.currentStyle['object-fit'] : image.getAttribute('data-object-fit'));
+		Array.prototype.forEach.call(
+			document.querySelectorAll('img[data-object-fit]'),
+			function (image) {
+				(image.runtimeStyle || image.style).background =
+					'url("' +
+					image.src +
+					'") no-repeat 50%/' +
+					(image.currentStyle
+						? image.currentStyle['object-fit']
+						: image.getAttribute('data-object-fit'));
 
-			image.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'' + image.width + '\' height=\'' + image.height + '\'%3E%3C/svg%3E';
-		});
+				image.src =
+					"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='" +
+					image.width +
+					"' height='" +
+					image.height +
+					"'%3E%3C/svg%3E";
+			}
+		);
 	});
 }
 
