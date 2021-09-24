@@ -13,7 +13,7 @@
     "gulp-csso": "^3.0.1",
     "gulp-directory-sync": "^1.2.3",
     "gulp-html5-lint": "^1.1.0",
-    "gulp-imagemin": "^5.0.3",
+    "gulp-imagemin": "7.1.0",
     "gulp-inline-image": "^1.0.0",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.1",
@@ -21,7 +21,7 @@
     "gulp-pug": "^4.0.1",
     "gulp-purifycss": "^0.2.0",
     "gulp-replace": "^1.0.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "4.1.1",
     "gulp-sequence": "^1.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-svg-sprite": "^1.5.0",
@@ -32,7 +32,8 @@
     "postcss-reporter": "^6.0.1",
     "postcss-scss": "^2.0.0",
     "rimraf": "^2.6.3",
-    "stylelint": "^10.0.1"
+    "stylelint": "^10.0.1",
+		"gulp-webp": "^4.0.1"
   },
   "devDependencies": {},
   "scripts": {

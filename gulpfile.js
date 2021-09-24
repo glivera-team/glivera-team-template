@@ -16,6 +16,7 @@ var gulp = require('gulp'),
 	postcss = require('gulp-postcss'),
 	assets = require('postcss-assets'),
 	notify = require('gulp-notify');
+	webp = require('gulp-webp');
 
 // plugins for build
 var purify = require('gulp-purifycss'),
@@ -42,6 +43,17 @@ var pageList = ['index'];
 var assetsDir = 'assets/',
 	outputDir = 'dist/',
 	buildDir = 'build/';
+
+//--------------------------------------webp
+gulp.task('imgWebp', function () {
+	return gulp.src(assetsDir + 'i/**/*')
+		.pipe(webp({
+			quality: 80
+		}))
+		.pipe(gulp.dest(outputDir + 'i/'))
+		.pipe(browserSync.stream({once: true}));
+});
+//--------------------------------------webp###
 
 //----------------------------------------------------Compiling
 gulp.task('pug', function () {
@@ -152,6 +164,7 @@ gulp.task('watch', function () {
 		gulp.series('jsConcatComponents')
 	);
 	gulp.watch(assetsDir + 'i/**/*', gulp.series('imageSync'));
+	gulp.watch(assetsDir + 'i/**/*', gulp.series('imgWebp'));
 	gulp.watch(
 		assetsDir + 'fonts/**/*',
 		gulp.series('fontsSync', 'fontsConvert')
@@ -332,6 +345,7 @@ gulp.task(
 		gulp.parallel(
 			'pug',
 			'sass',
+			'imgWebp',
 			'imageSync',
 			'fontsSync',
 			'fontsConvert',
