@@ -2,3 +2,16 @@ mixin header
 	header.header
 mixin footer
 	footer.footer
+		.footer_content
+			.hero_title
+				.hero_descr
+				a.base_link(href = '#') read more
+
+mixin content_block(data)
+	.content_block_w
+		if data.title
+			.content_block_title(class = data.title_mod || '')!= data.title
+		if data.descr
+			.content_block_descr(class = data.descr_mod || '')!= data.descr
+		if data.link
+			a.base_link(href = '#')!= data.link

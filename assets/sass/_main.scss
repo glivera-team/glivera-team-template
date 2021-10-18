@@ -1,0 +1,26 @@
+//=============img====================
+.cover_img {
+	display: block;
+	height: 100%;
+	width: 100%;
+
+	object-fit: cover;
+}
+
+.contain_img {
+	display: block;
+	height: 100%;
+	width: 100%;
+
+	object-fit: contain;
+}
+//=============img###=================
+
+.base_link {
+
+	&:focus,
+	&:active,
+	&:hover {
+		text-decoration: none;
+	}
+}
