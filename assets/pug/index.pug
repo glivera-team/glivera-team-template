@@ -5,34 +5,3 @@ block vars
 block content_block
 	section.section.demo_mod
 		h1.section_title Hola #[a.test(href='#') Maketodor] :)
-
-	section.section
-		+form_input({
-			type: 'text',
-			label: 'its input',
-			placeholder: 'its placeholder',
-			value: '',
-			id: 'input_1',
-		})
-
-		+form_textarea({
-			label: 'its textarea',
-			placeholder: 'its placeholder',
-			id: 'textarea_1',
-		})
-
-		+form_select({
-			label: 'its select',
-			options: ['item', 'value', 'hello'],
-			id: 'select_1',
-		})
-
-		+form_checkbox({
-			label: 'checkbox label',
-			checked: false,
-		})
-
-		+form_radio({
-			label: 'radio label',
-			checked: false,
-		})
