@@ -17,8 +17,8 @@
 	top: 0;
 	left: 100%;
 	width: 100%;
-	height: $height_header;
-	padding: 0 $gl_indent;
+	height: var(--height-header);
+	padding: 0 var(--gl-indent);
 	border-bottom: 1px solid gray;
 }
 
@@ -55,7 +55,7 @@
 		flex: 0 0 auto;
 		flex-direction: column;
 		justify-content: center;
-		padding: $height_header $gl_indent;
+		padding: var(--height-header) var(--gl-indent);
 		margin: auto;
 	}
 }
@@ -66,11 +66,11 @@
 	}
 
 	@include bp($point_2, min) {
-		margin-right: $gl_indent;
+		margin-right: var(--gl-indent);
 	}
-	
+
 	@include bp($point_3) {
-		margin-bottom: $gl_indent;
+		margin-bottom: var(--gl-indent);
 		flex: 0 0 auto;
 	}
 }
@@ -109,7 +109,7 @@
 	z-index: 210;
 	position: absolute;
 	top: 50%;
-	right: $gl_indent;
+	right: var(--gl-indent);
 	display: none; // hidden on wide screens
 	height: 2.6rem;
 	width: 3.8rem;
