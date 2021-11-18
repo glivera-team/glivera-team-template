@@ -30,7 +30,7 @@
 .popup_in {
 	position: relative;
 
-	padding: $gl_indent;
+	padding: var(--gl-indent);
 	width: $page_width;
 	max-width: 100%;
 	margin: auto;
@@ -39,8 +39,8 @@
 
 .popup_close {
 	position: absolute;
-	right: $gl_indent;
-	top: $gl_indent;
+	right: var(--gl-indent);
+	top: var(--gl-indent);
 
 	width: 3rem;
 	height: 3rem;

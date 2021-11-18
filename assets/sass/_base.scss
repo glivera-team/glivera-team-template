@@ -1,6 +1,10 @@
 //------------------------------------------------------------base styles
 :root {
 	--full-screen: calc(var(--vh, 1vh) * 100);
+
+	--height-header: 10rem;
+	--height-footer: 10rem;
+	--gl-indent: 3rem;
 }
 
 html {
@@ -26,7 +30,6 @@ body {
 	@supports (display: grid) {
 		display: block;
 	}
-
 }
 
 .wrapper {
@@ -44,7 +47,7 @@ body {
 .base {
 	width: 100%;
 	position: relative;
-	padding: $height_header 0 0;
+	padding: var(--height-header) 0 0;
 
 	flex: 1 0 auto;
 }
