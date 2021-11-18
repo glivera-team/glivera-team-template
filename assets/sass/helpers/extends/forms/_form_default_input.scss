@@ -29,4 +29,9 @@
 	&:-ms-input-placeholder {
 		color: $input_placeholder_color;
 	}
+
+	&:hover,
+	&:focus {
+		box-shadow: inset 0 0 0 1px $input_border_color_active;
+	}
 }
