@@ -1,3 +1,36 @@
+//- forms example
+
++form_input({
+	type: 'text',
+	label: 'its input',
+	placeholder: 'its placeholder',
+	value: '',
+	id: 'input_1',
+})
+
++form_textarea({
+	label: 'its textarea',
+	placeholder: 'its placeholder',
+	id: 'textarea_1',
+})
+
++form_select({
+	label: 'its select',
+	options: ['item', 'value', 'hello'],
+	id: 'select_1',
+})
+
++form_checkbox({
+	label: 'checkbox label',
+	checked: false,
+})
+
++form_radio({
+	label: 'radio label',
+	checked: false,
+})
+
+
 //class arrays
 - var default_field = {block_class_mod:'form_cell_v1_mod',class_mod:'form_v1_mod', elem_class:'default_mod'}
 - var default_field_hidden = {block_class_mod:'form_cell_v1_mod',class_mod:'form_v1_mod hline_hide_mod', elem_class:'default_mod'}
