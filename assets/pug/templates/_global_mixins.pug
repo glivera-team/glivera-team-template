@@ -127,7 +127,7 @@ mixin form_input(data)
 	.form_input(class = data.mod)
 		if data.label
 			label(for=data.id class= labelClass)= data.label
-		.form_element__field
+		.form_input__field
 			input(type=data.type class = elClass placeholder=data.placeholder value=data.value name=data.name required=data.required)
 
 mixin form_textarea(data)
@@ -136,7 +136,7 @@ mixin form_textarea(data)
 	.form_textarea(class = data.mod)
 		if data.label
 			label(for=data.id class= labelClass)= data.label
-		.form_element__field
+		.form_textarea__field
 			textarea(class = elClass placeholder=data.placeholder value=data.value name=data.name required=data.required)
 
 mixin form_select(data)
@@ -145,7 +145,7 @@ mixin form_select(data)
 	.form_select(class = data.mod)
 		if data.label
 			label(for=data.id class= labelClass)= data.label
-		.form_element__field
+		.form_select__field
 			select(class = elClass placeholder=data.placeholder name=data.name required=data.required)
 				each item in data.options
 					option(value=item)= item
@@ -154,7 +154,7 @@ mixin form_checkbox(data)
 	- labelClass = data.label_class || 'form_checkbox__label'
 	- elClass = data.class || 'form_checkbox__element'
 	.form_checkbox(class = data.mod)
-		label.form_element__checkbox_wrap
+		label.form_checkbox__block
 			input(class=elClass type="checkbox" name=data.name checked=data.checked || false)
 			span(class = labelClass)!= data.label
 
@@ -162,7 +162,7 @@ mixin form_radio(data)
 	- labelClass = data.label_class || 'form_radio__label'
 	- elClass = data.class || 'form_radio__element'
 	.form_radio(class = data.mod)
-		label.form_element__radio_wrap
+		label.form_radio__block
 			input(class=elClass type="radio" name=data.name checked=data.checked || false)
 			span(class = labelClass)!= data.label
 //- form element v3###
