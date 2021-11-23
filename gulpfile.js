@@ -15,8 +15,10 @@ var gulp = require('gulp'),
 	sourcemaps = require('gulp-sourcemaps'),
 	postcss = require('gulp-postcss'),
 	assets = require('postcss-assets'),
-	notify = require('gulp-notify');
+	notify = require('gulp-notify'),
 	webp = require('gulp-webp');
+
+let productionStatus;
 
 // plugins for build
 var purify = require('gulp-purifycss'),
@@ -46,12 +48,15 @@ var assetsDir = 'assets/',
 
 //--------------------------------------webp
 gulp.task('imgWebp', function () {
-	return gulp.src(assetsDir + 'i/**/*')
-		.pipe(webp({
-			quality: 80
-		}))
+	return gulp
+		.src(assetsDir + 'i/**/*')
+		.pipe(
+			webp({
+				quality: 80,
+			})
+		)
 		.pipe(gulp.dest(outputDir + 'i/'))
-		.pipe(browserSync.stream({once: true}));
+		.pipe(browserSync.stream({ once: true }));
 });
 //--------------------------------------webp###
 
@@ -60,7 +65,14 @@ gulp.task('pug', function () {
 	return gulp
 		.src([assetsDir + 'pug/*.pug', '!' + assetsDir + 'pug/_*.pug'])
 		.pipe(plumber())
-		.pipe(pug({ pretty: true }))
+		.pipe(
+			pug({
+				pretty: true,
+				data: {
+					productionStatus: productionStatus,
+				},
+			})
+		)
 		.on(
 			'error',
 			notify.onError({
@@ -339,9 +351,19 @@ gulp.task('cssLint', function () {
 		);
 });
 
-gulp.task(
-	'default',
-	gulp.series(
+gulp.task('set-dev-node-env', function(done) {
+	productionStatus = 'development';
+	done();
+});
+
+gulp.task('set-prod-node-env', function(done) {
+	productionStatus = 'production';
+	done();
+});
+
+let taskArray = {
+	development: gulp.series(
+		'set-dev-node-env',
 		gulp.parallel(
 			'pug',
 			'sass',
@@ -355,13 +377,11 @@ gulp.task(
 			'watch',
 			'browser-sync'
 		)
-	)
-);
-
-gulp.task(
-	'build',
-	gulp.series(
+	),
+	production: gulp.series(
 		'cleanBuildDir',
+		'set-prod-node-env',
+		'pug',
 		gulp.parallel(
 			'imgBuild',
 			'fontsBuild',
@@ -370,8 +390,11 @@ gulp.task(
 			'cssBuild',
 			'copySprite'
 		)
-	)
-);
+	),
+};
+
+gulp.task('default', taskArray['development']);
+gulp.task('build', taskArray['production']);
 
 //--------------------------------- testing
 
