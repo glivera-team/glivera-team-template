@@ -1,4 +1,4 @@
-var $body,
+let $body,
 	windowHeight,
 	windowWidth,
 	degree = 0.0174532925,
@@ -6,13 +6,13 @@ var $body,
 	mediaPoint2 = 768,
 	mediaPoint3 = 480,
 	mediaPoint4 = 320,
-	productionStatus = false;
+	devStatus = window.productionStatus === 'development';
+
 
 $(document).ready(function ($) {
 	$body = $('body');
 
-	if (!productionStatus) {
-		//developer funcitons
+	if (devStatus) {
 		pageWidget(['index']);
 		getAllClasses('html', '.elements_list');
 	}

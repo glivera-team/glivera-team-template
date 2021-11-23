@@ -1,0 +1,138 @@
+@if $local_var != onload {
+
+	%circle_ico_style {
+		$w: 24px;
+		position: absolute;
+		width: $w !important;
+		height: $w;
+		top: 50%;
+		margin: (-$w/2) 0 0;
+		text-align: center;
+		line-height: $w;
+		border-radius: 50%;
+	}
+
+	%circle_ico_style_small {
+		$w: 20px;
+		position: absolute;
+		width: $w !important;
+		height: $w;
+		top: 50%;
+		margin: (-$w/2) 0 0;
+		text-align: center;
+		line-height: $w;
+		border-radius: 50%;
+	}
+
+	%translate3d {
+		transform: translateZ(0);
+		transform-style: preserve-3d;
+		backface-visibility: hidden;
+	}
+
+	%vert_centr {
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+
+	%hor_centr {
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
+
+	%hor_vert_centr {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	%stretch {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+
+	%hover_show {
+		opacity: 0;
+		transition: opacity .3s ease;
+	}
+
+	%hover_show_parent {
+		&:hover,
+		&:focus {
+			%hover_show {
+				opacity: 1;
+			}
+		}
+	}
+
+	%scroll_rediz_1 {
+		&::-webkit-scrollbar {
+			width: 6px;
+			height: 12px;
+			background: transparent;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			width: 6px;
+			height: 12px;
+			border-radius: 12px;
+		}
+
+		&::-webkit-scrollbar-corner {
+			background: transparent;
+		}
+	}
+
+	%text-overflow {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	%z-index_fix_vertical {
+		$index: 20;
+		$index2: 21;
+		@while $index > 0 {
+
+			&:nth-child(#{$index}) {
+				z-index: 10 + ($index2 - $index);
+			}
+
+			$index: $index - 1;
+		}
+	}
+
+	%rounded_i_w {
+		display: block;
+		position: relative;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	%rounded_i {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		min-width: 100%;
+		min-height: 100%;
+	}
+
+	%responsive_animation_wrap{
+		position: absolute;
+		width: 10%;
+		height: 10vh;
+		top: 50%;
+		left: 50%;
+		margin: -5vh 0 0 (-5%);
+		transform: translateZ(0);
+		will-change: transform;
+	}
+}

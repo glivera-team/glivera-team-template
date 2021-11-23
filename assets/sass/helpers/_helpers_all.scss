@@ -1,8 +1,10 @@
 @import "variables";
 @import "mixins";
-@import "extends";
-@import "project_extends";
-@import "buttons_extends";
+@import "extends/others_extends";
+@import "extends/project_extends";
+@import "extends/buttons_extends";
+@import "extends/flex_extends";
+@import "extends/transition_extends";
 
 @import "extends/forms/_form_default_input";
 @import "extends/forms/_form_default_checkbox";

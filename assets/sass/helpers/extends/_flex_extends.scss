@@ -1,0 +1,307 @@
+%global_flex_block_e {
+	@include flex_block();
+}
+
+%global_flex_block_row_wrap_flex-start {
+	@include flex_block(row, wrap, flex-start);
+}
+
+%global_flex_block_row_wrap_flex-start_stretch {
+	@include flex_block(row, wrap, flex-start, stretch);
+}
+
+%global_flex_block_row_wrap_flex-start_center {
+	@include flex_block(row, wrap, flex-start, center, center);
+}
+
+%global_flex_block_row_wrap_flex-start_flex-end {
+	@include flex_block(row, wrap, flex-start, flex-end, flex-end);
+}
+
+%global_flex_block_row_wrap_flex-start_baseline {
+	@include flex_block(row, wrap, flex-start, baseline);
+}
+
+%global_flex_block_row_wrap_flex-end {
+	@include flex_block(row, wrap, flex-end);
+}
+
+%global_flex_block_row_wrap_flex-end_center {
+	@include flex_block(row, wrap, flex-end, center, center);
+}
+
+%global_flex_block_row_wrap_flex-end_stretch {
+	@include flex_block(row, wrap, flex-end, stretch);
+}
+
+%global_flex_block_row_wrap_flex-end_baseline {
+	@include flex_block(row, wrap, flex-end, baseline);
+}
+
+%global_flex_block_row_wrap_center {
+	@include flex_block(row, wrap, center);
+}
+
+%global_flex_block_row_wrap_center_center {
+	@include flex_block(row, wrap, center, center, center);
+}
+
+%global_flex_block_row_wrap_center_stretch {
+	@include flex_block(row, wrap, center, stretch);
+}
+
+%global_flex_block_row_wrap_center_baseline {
+	@include flex_block(row, wrap, center, baseline);
+}
+
+%global_flex_block_row_wrap_space_between {
+	@include flex_block(row, wrap, space-between);
+}
+
+%global_flex_block_row_wrap_space_between_stretch {
+	@include flex_block(row, wrap, space-between, stretch);
+}
+
+%global_flex_block_row_wrap_space_between_center {
+	@include flex_block(row, wrap, space-between, center, center);
+}
+
+%global_flex_block_row_wrap_space_between_baseline {
+	@include flex_block(row, wrap, space-between, baseline);
+}
+
+%global_flex_block_row_wrap_space_between_flex-start {
+	@include flex_block(row, wrap, space-between, flex-start);
+}
+
+%global_flex_block_row_wrap_space_between_flex-end {
+	@include flex_block(row, wrap, space-between, flex-end);
+}
+
+%global_flex_block_row_nowrap_flex-start {
+	@include flex_block(row, nowrap, flex-start);
+}
+
+%global_flex_block_row_nowrap_flex-start_stretch {
+	@include flex_block(row, nowrap, flex-start, stretch);
+}
+
+%global_flex_block_row_nowrap_flex-start_center {
+	@include flex_block(row, nowrap, flex-start, center, center);
+}
+
+%global_flex_block_row_nowrap_flex-start_flex-end {
+	@include flex_block(row, nowrap, flex-start, flex-end);
+}
+
+%global_flex_block_row_nowrap_flex-start_baseline {
+	@include flex_block(row, nowrap, flex-start, baseline);
+}
+
+%global_flex_block_row_nowrap_flex-end {
+	@include flex_block(row, nowrap, flex-end);
+}
+
+%global_flex_block_row_nowrap_flex-end_center {
+	@include flex_block(row, nowrap, flex-end, center, center);
+}
+
+%global_flex_block_row_nowrap_flex-end_stretch {
+	@include flex_block(row, nowrap, flex-end, stretch);
+}
+
+%global_flex_block_row_nowrap_flex-end_baseline {
+	@include flex_block(row, nowrap, flex-end, baseline);
+}
+
+%global_flex_block_row_nowrap_center {
+	@include flex_block(row, nowrap, center);
+}
+
+%global_flex_block_row_nowrap_center_center {
+	@include flex_block(row, nowrap, center, center, center);
+}
+
+%global_flex_block_row_nowrap_center_stretch {
+	@include flex_block(row, nowrap, center, stretch);
+}
+
+%global_flex_block_row_nowrap_center_baseline {
+	@include flex_block(row, nowrap, center, baseline);
+}
+
+%global_flex_block_row_nowrap_space_between {
+	@include flex_block(row, nowrap, space-between);
+}
+
+%global_flex_block_row_nowrap_space_between_stretch {
+	@include flex_block(row, nowrap, space-between, stretch);
+}
+
+%global_flex_block_row_nowrap_space_between_center {
+	@include flex_block(row, nowrap, space-between, center, center);
+}
+
+%global_flex_block_row_nowrap_space_between_baseline {
+	@include flex_block(row, nowrap, space-between, baseline);
+}
+
+%global_flex_block_row_nowrap_space_between_flex-start {
+	@include flex_block(row, nowrap, space-between, flex-start);
+}
+
+%global_flex_block_row_nowrap_space_between_flex-end {
+	@include flex_block(row, nowrap, space-between, flex-end);
+}
+
+%global_flex_block_column_wrap_flex-start {
+	@include flex_block(column, wrap, flex-start);
+}
+
+%global_flex_block_column_wrap_flex-start_stretch {
+	@include flex_block(column, wrap, flex-start, stretch);
+}
+
+%global_flex_block_column_wrap_flex-start_center {
+	@include flex_block(column, wrap, flex-start, center, center);
+}
+
+%global_flex_block_column_wrap_flex-start_flex-end {
+	@include flex_block(column, wrap, flex-start, flex-end);
+}
+
+%global_flex_block_column_wrap_flex-start_baseline {
+	@include flex_block(column, wrap, flex-start, baseline);
+}
+
+%global_flex_block_column_wrap_flex-end {
+	@include flex_block(column, wrap, flex-end);
+}
+
+%global_flex_block_column_wrap_flex-end_center {
+	@include flex_block(column, wrap, flex-end, center, center);
+}
+
+%global_flex_block_column_wrap_flex-end_stretch {
+	@include flex_block(column, wrap, flex-end, stretch);
+}
+
+%global_flex_block_column_wrap_flex-end_baseline {
+	@include flex_block(column, wrap, flex-end, baseline);
+}
+
+%global_flex_block_column_wrap_center {
+	@include flex_block(column, wrap, center);
+}
+
+%global_flex_block_column_wrap_center_center {
+	@include flex_block(column, wrap, center, center, center);
+}
+
+%global_flex_block_column_wrap_center_stretch {
+	@include flex_block(column, wrap, center, stretch);
+}
+
+%global_flex_block_column_wrap_center_baseline {
+	@include flex_block(column, wrap, center, baseline);
+}
+
+%global_flex_block_column_wrap_space_between {
+	@include flex_block(column, wrap, space-between);
+}
+
+%global_flex_block_column_wrap_space_between_stretch {
+	@include flex_block(column, wrap, space-between, stretch);
+}
+
+%global_flex_block_column_wrap_space_between_center {
+	@include flex_block(column, wrap, space-between, center);
+}
+
+%global_flex_block_column_wrap_space_between_baseline {
+	@include flex_block(column, wrap, space-between, baseline);
+}
+
+%global_flex_block_column_wrap_space_between_flex-start {
+	@include flex_block(column, wrap, space-between, flex-start);
+}
+
+%global_flex_block_column_wrap_space_between_flex-end {
+	@include flex_block(column, wrap, space-between, flex-end);
+}
+
+%global_flex_block_column_nowrap_flex-start {
+	@include flex_block(column, nowrap, flex-start);
+}
+
+%global_flex_block_column_nowrap_flex-start_stretch {
+	@include flex_block(column, nowrap, flex-start, stretch);
+}
+
+%global_flex_block_column_nowrap_flex-start_center {
+	@include flex_block(column, nowrap, flex-start, center);
+}
+
+%global_flex_block_column_nowrap_flex-start_flex-end {
+	@include flex_block(column, nowrap, flex-start, flex-end);
+}
+
+%global_flex_block_column_nowrap_flex-start_baseline {
+	@include flex_block(column, nowrap, flex-start, baseline);
+}
+
+%global_flex_block_column_nowrap_flex-end {
+	@include flex_block(column, nowrap, flex-end);
+}
+
+%global_flex_block_column_nowrap_flex-end_center {
+	@include flex_block(column, nowrap, flex-end, center);
+}
+
+%global_flex_block_column_nowrap_flex-end_stretch {
+	@include flex_block(column, nowrap, flex-end, stretch);
+}
+
+%global_flex_block_column_nowrap_flex-end_baseline {
+	@include flex_block(column, nowrap, flex-end, baseline);
+}
+
+%global_flex_block_column_nowrap_center {
+	@include flex_block(column, nowrap, center);
+}
+
+%global_flex_block_column_nowrap_center_center {
+	@include flex_block(column, nowrap, center, center);
+}
+
+%global_flex_block_column_nowrap_center_stretch {
+	@include flex_block(column, nowrap, center, stretch);
+}
+
+%global_flex_block_column_nowrap_center_baseline {
+	@include flex_block(column, nowrap, center, baseline);
+}
+
+%global_flex_block_column_nowrap_space_between {
+	@include flex_block(column, nowrap, space-between);
+}
+
+%global_flex_block_column_nowrap_space_between_stretch {
+	@include flex_block(column, nowrap, space-between, stretch);
+}
+
+%global_flex_block_column_nowrap_space_between_center {
+	@include flex_block(column, nowrap, space-between, center);
+}
+
+%global_flex_block_column_nowrap_space_between_baseline {
+	@include flex_block(column, nowrap, space-between, baseline);
+}
+
+%global_flex_block_column_nowrap_space_between_flex-start {
+	@include flex_block(column, nowrap, space-between, flex-start);
+}
+
+%global_flex_block_column_nowrap_space_between_flex-end {
+	@include flex_block(column, nowrap, space-between, flex-end);
+}

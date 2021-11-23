@@ -6,7 +6,7 @@ mixin head(array)
 	meta(name="apple-mobile-web-app-capable", content="yes")
 	meta(name="format-detection", content="telephone=no")
 
-	if production
+	if production_status === 'production'
 		link(rel='shortcut icon' href='/favicon.ico')
 		link(rel='icon' sizes='16x16 32x32 64x64' href='/favicon.ico')
 		link(rel='icon' type='image/png' sizes='196x196' href='/favicon-192.png')
@@ -39,9 +39,12 @@ mixin scripts
 		|<script src="//cdn.glivera-team.com/gsap/gsap.min.js"></script>
 		|<script>window.TweenMax || document.write('<script src="js/gsap.min.js"><\/script>')</script>
 
-	+script_cdn([
-		{link:'//cdn.glivera-team.com/dev_functions.js'}
-	])
+	if production_status === 'development'
+		script(type='text/javascript')
+			|window.productionStatus = 'development';
+		+script_cdn([
+			{link:'//cdn.glivera-team.com/dev_functions.js'}
+		])
 
 	script(src="js/libs.js")
 	//- script(src="js/components.js")

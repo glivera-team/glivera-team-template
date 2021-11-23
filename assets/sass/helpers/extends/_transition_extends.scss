@@ -1,0 +1,34 @@
+%transition_all {
+	transition: all .3s ease;
+	will-change: transform;
+}
+
+%transition_opacity {
+	transition: opacity .3s ease;
+	will-change: opacity;
+}
+
+%transition_background {
+	transition: background .3s ease;
+	will-change: background;
+}
+
+%transition_color {
+	transition: color .3s ease;
+	will-change: color;
+}
+
+%transition_color_background {
+	transition: color .3s ease, background .3s ease;
+	will-change: color, background;
+}
+
+%transition_transform {
+	transition: transform .3s ease;
+	will-change: transform;
+}
+
+%tranisition_fill {
+	transition: fill .3s ease;
+	will-change: fill;
+}
