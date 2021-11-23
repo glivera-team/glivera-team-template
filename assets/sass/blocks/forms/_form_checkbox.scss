@@ -1,0 +1,11 @@
+.form_checkbox__block {
+	display: block;
+}
+
+.form_checkbox__element {
+	display: none;
+}
+
+.form_checkbox__label {
+	@extend %form_el_checkbox;
+}

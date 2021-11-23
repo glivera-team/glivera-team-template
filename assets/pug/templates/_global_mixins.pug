@@ -55,127 +55,121 @@ mixin script_cdn(array)
 	each item in array
 		script(src=item.link)
 
-//- form element
-mixin form_element(config)
-	if !config.id
-		- config.id = config.title.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
-	else
-		- config.id = config.id.replace(/\s/g, '_').replace(/[.,:;(){}/?!@#$%&*]/g, '')
+//- //- form element v2
+//- mixin mtdInputWrapper(config)
+//- 	- mods = config.mods || ''
+//- 	- wrapperClass = config.wrapper || mtdFieldsWrapper.default
+//- 	- inputClass = config.class || mtdFields.types.default
+//- 	div(class= `${wrapperClass} ${mods}`)
+//- 		block
 
-	- label_attributes = {'for': config.id}
-	- main_attributes = {'type': config.type, 'id': config.id, 'class': config.add_class, 'placeholder': config.placeholder, 'name': config.name, 'value': config.value}
-	- main_v2_attributes = {'id': config.id, 'class': config.add_class, 'placeholder': config.placeholder, 'name': config.name, 'value': config.value}
-	- logic_attributes = {'checked': config.checked, 'required': config.required, 'disabled': config.disabled, 'readonly': config.readonly, 'hidden': config.hidden}
-	- additional_attributes = config.additional
-	- additional_classes = {}
+//- mixin mtdInput(config)
+//- 	case config.attrs.type
+//- 		when 'checkbox'
+//- 			input(class= `${inputClass[1]}`)&attributes(config.attrs)
+//- 			span(class= `${wrapperClass}__text ${mtdFields.mods.checkboxTextSpan}`)= config.label
+//- 		when 'radio'
+//- 			input(class= `${inputClass[1]}`)&attributes(config.attrs)
+//- 			span(class= `${wrapperClass}__text ${mtdFields.mods.radioTextSpan}`)= config.label
+//- 		when 'file'
+//- 			input(class= `${inputClass[1]}`)&attributes(config.attrs)
+//- 			span(class= `${inputClass[1]}_cta`)= config.label
+//- 		default
+//- 			input(class= `${inputClass[1]}`)&attributes(config.attrs)
 
-	if config.type === 'text' || config.type === 'password' || config.type === 'email' || config.type === 'tel' || config.type === 'textarea' || config.type === 'select' || config.type === 'file'
-		- logic_attributes.checked = false
-		- additional_classes = {'class': config.class_array.block_class_mod}
-		dl.form_cell&attributes(additional_classes)
+//- mixin mtdLabel(config, showLabelText)
+//- 	case showLabelText
+//- 		when false
+//- 			label(class= `${inputClass[0]}` for= config.attrs.id)
+//- 				block
+//- 		default
+//- 			label(class= `${inputClass[0]}` for= config.attrs.id)= config.label
+//- 				block
 
-			- additional_classes = {'class': config.class_array.class_mod}
-			dt.form_cell_title&attributes(additional_classes)
-				label&attributes(label_attributes)= config.title
+//- mixin mtdTextarea(config)
+//- 	textarea(class= `${inputClass[1]}`)&attributes(config.attrs)
 
-			dd.form_field_wrap&attributes(additional_classes)
+//- mixin select(config)
+//- 	+mtdInputWrapper(config)
+//- 		+mtdLabel(config)
+//- 		select(data-placeholder=config.placeholder class= `${inputClass[1]}`)&attributes(config.attrs)
+//- 			each option in config.options
+//- 				option(value= option)= option
 
-				if config.type === 'text' || config.type === 'password' || config.type === 'email' || config.type === 'tel'
-					- additional_classes = {'class': config.class_array.elem_class}
-					input.form_field&attributes(main_attributes)&attributes(logic_attributes)&attributes(additional_classes)&attributes(additional_attributes)
-					block
+//- mixin input(config)
+//- 	+mtdInputWrapper(config)
+//- 		+mtdLabel(config)
+//- 		+mtdInput(config)
 
-				if config.type === 'textarea'
-					textarea.form_field&attributes(main_v2_attributes)&attributes(logic_attributes)&attributes(additional_attributes)
-					block
+//- mixin textarea(config)
+//- 	+mtdInputWrapper(config)
+//- 		+mtdLabel(config)
+//- 		+mtdTextarea(config)
 
-				if config.type === 'file'
-					input.form_field&attributes(main_attributes)&attributes(logic_attributes)&attributes(additional_attributes)
-					.form_field_file_field
-						span.form_field_file_text= config.title
-						span.form_field_file_btn Choose File
+//- mixin checkbox(config)
+//- 	+mtdInputWrapper(config)
+//- 		+mtdLabel(config, false)
+//- 			+mtdInput(config)
 
-				if config.type === 'select'
-					- additional_classes = {'class': config.class_array.elem_class}
-					select.form_field(data-placeholder= config.placeholder)&attributes(main_v2_attributes)&attributes(additional_attributes)&attributes(additional_classes)
-						each option in config.options
-							option(value=option)= option
-					block
+//- mixin radiobutton(config)
+//- 	+mtdInputWrapper(config)
+//- 		+mtdLabel(config, false)
+//- 			+mtdInput(config)
 
-	if config.type === 'checkbox' || config.type === 'radio'
-		- additional_classes = {'class': config.class_array.block_class_mod}
-		label.radio_check&attributes(additional_classes)
-			input.radio_check_input&attributes(main_attributes)&attributes(logic_attributes)&attributes(additional_attributes)
-			- additional_classes = {'class': config.class_array.class_mod}
-			span.radio_check_text&attributes(additional_classes)= config.title
-//- form element###
+//- mixin file(config)
+//- 	+mtdInputWrapper(config)
+//- 		+mtdLabel(config, false)
+//- 			+mtdInput(config)
+//- //- form element v2###
 
-//- form element v2
-mixin mtdInputWrapper(config)
-	- mods = config.mods || ''
-	- wrapperClass = config.wrapper || mtdFieldsWrapper.default
-	- inputClass = config.class || mtdFields.types.default
-	div(class= `${wrapperClass} ${mods}`)
-		block
+//- form element v3
 
-mixin mtdInput(config)
-	case config.attrs.type
-		when 'checkbox'
-			input(class= `${inputClass[1]}`)&attributes(config.attrs)
-			span(class= `${wrapperClass}__text ${mtdFields.mods.checkboxTextSpan}`)= config.label
-		when 'radio'
-			input(class= `${inputClass[1]}`)&attributes(config.attrs)
-			span(class= `${wrapperClass}__text ${mtdFields.mods.radioTextSpan}`)= config.label
-		when 'file'
-			input(class= `${inputClass[1]}`)&attributes(config.attrs)
-			span(class= `${inputClass[1]}_cta`)= config.label
-		default
-			input(class= `${inputClass[1]}`)&attributes(config.attrs)
+mixin form_input(data)
+	- labelClass = data.label_class || 'form_input__label'
+	- elClass = data.class || 'form_input__element'
+	.form_input(class = data.mod)
+		if data.label
+			label(for=data.id class= labelClass)= data.label
+		.form_input__field
+			input(type=data.type class = elClass placeholder=data.placeholder value=data.value name=data.name required=data.required)
 
-mixin mtdLabel(config, showLabelText)
-	case showLabelText
-		when false
-			label(class= `${inputClass[0]}` for= config.attrs.id)
-				block
-		default
-			label(class= `${inputClass[0]}` for= config.attrs.id)= config.label
-				block
+mixin form_textarea(data)
+	- labelClass = data.label_class || 'form_textarea__label'
+	- elClass = data.class || 'form_textarea__element'
+	.form_textarea(class = data.mod)
+		if data.label
+			label(for=data.id class= labelClass)= data.label
+		.form_textarea__field
+			textarea(class = elClass placeholder=data.placeholder value=data.value name=data.name required=data.required)
 
-mixin mtdTextarea(config)
-	textarea(class= `${inputClass[1]}`)&attributes(config.attrs)
+mixin form_select(data)
+	- labelClass = data.label_class || 'form_select__label'
+	- elClass = data.class || 'form_select__element'
+	.form_select(class = data.mod)
+		if data.label
+			label(for=data.id class= labelClass)= data.label
+		.form_select__field
+			select(class = elClass placeholder=data.placeholder name=data.name required=data.required)
+				each item in data.options
+					option(value=item)= item
 
-mixin select(config)
-	+mtdInputWrapper(config)
-		+mtdLabel(config)
-		select(data-placeholder=config.placeholder class= `${inputClass[1]}`)&attributes(config.attrs)
-			each option in config.options
-				option(value= option)= option
+mixin form_checkbox(data)
+	- labelClass = data.label_class || 'form_checkbox__label'
+	- elClass = data.class || 'form_checkbox__element'
+	.form_checkbox(class = data.mod)
+		label.form_checkbox__block
+			input(class=elClass type="checkbox" name=data.name checked=data.checked || false)
+			span(class = labelClass)!= data.label
 
-mixin input(config)
-	+mtdInputWrapper(config)
-		+mtdLabel(config)
-		+mtdInput(config)
+mixin form_radio(data)
+	- labelClass = data.label_class || 'form_radio__label'
+	- elClass = data.class || 'form_radio__element'
+	.form_radio(class = data.mod)
+		label.form_radio__block
+			input(class=elClass type="radio" name=data.name checked=data.checked || false)
+			span(class = labelClass)!= data.label
+//- form element v3###
 
-mixin textarea(config)
-	+mtdInputWrapper(config)
-		+mtdLabel(config)
-		+mtdTextarea(config)
-
-mixin checkbox(config)
-	+mtdInputWrapper(config)
-		+mtdLabel(config, false)
-			+mtdInput(config)
-
-mixin radiobutton(config)
-	+mtdInputWrapper(config)
-		+mtdLabel(config, false)
-			+mtdInput(config)
-
-mixin file(config)
-	+mtdInputWrapper(config)
-		+mtdLabel(config, false)
-			+mtdInput(config)
-//- form element v2###
 
 //- works
 mixin loop_while(counter)
@@ -256,48 +250,6 @@ mixin pagination(config)
 			if config.arrows
 				li.pag_item.next_mod
 					a.pag_link.next_mod(href='#' class= config.mod)
-
-//- works
-//- mixin pagination_2(config)
-//- 	- config.mod = config.mod || ''
-//- 	- config.active = config.active || 1
-//- 	.pag_block(class= config.mod)
-//- 		ul.pag_list(class= config.mod)
-//- 			if config.arrows
-//- 				li.pag_item.prev_mod(class= config.mod)
-//- 					a.pag_link.prev_mod(href='#' class= config.mod)
-//- 			each page, index in config.pages
-//- 				if index == config.pages.length - 1
-//- 					li.pag_item(class= config.mod)
-//- 						a.pag_link.dots_mod(href='#' class= config.mod) &hellip;
-//- 					li.pag_item(class= config.mod)
-//- 						a.pag_link(href='#' title= i class= config.mod)= page
-//- 				else
-//- 					li.pag_item(class= config.mod)
-//- 						a.pag_link(href='#' title= i class=config.mod)= page
-//- 			if config.arrows
-//- 				li.pag_item.next_mod
-//- 					a.pag_link.next_mod(href='#' class= config.mod)
-
-//- works
-mixin list(array, mod)
-	ul(class=`${mod}_list`)
-		each item in array
-			li(class=`${mod}_item`)= item
-
-//- works
-mixin span_list(array, mod)
-	ul(class=`${mod}_list`)
-		each item in array
-			li(class=`${mod}_item`)
-				span(class=`${mod}_text`)= item
-
-//- works
-mixin link_list(array, mod)
-	ul(class=`${mod}_list`)
-		each item in array
-			li(class=`${mod}_item`)
-				a(class=`${mod}_link` href='#')= item
 
 //- picture
 mixin picture(data)

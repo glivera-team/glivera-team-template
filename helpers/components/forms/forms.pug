@@ -1,65 +1,34 @@
-//class arrays
-- var default_field = {block_class_mod:'form_cell_v1_mod',class_mod:'form_v1_mod', elem_class:'default_mod'}
-- var default_field_hidden = {block_class_mod:'form_cell_v1_mod',class_mod:'form_v1_mod hline_hide_mod', elem_class:'default_mod'}
-- var default_checkbox = {block_class_mod:'check_1_mod',class_mod:'check_1_mod', elem_class:'check_1_mod'}
-- var default_radio = {block_class_mod:'radio_1_mod',class_mod:'radio_1_mod', elem_class:'radio_1_mod'}
-//class arrays###
+//- forms example
 
-//form mixins
-//text
-+form_element({
++form_input({
 	type: 'text',
-	class_array: default_field,
-	title: 'some title',
-	id: 'some',
-	placeholder: 'some text'
+	label: 'its input',
+	placeholder: 'its placeholder',
+	value: '',
+	id: 'input_1',
 })
 
-//textarea
-+form_element({
-	type: 'textarea',
-	class_array: default_field,
-	title: 'some title',
-	id: 'some'
++form_textarea({
+	label: 'its textarea',
+	placeholder: 'its placeholder',
+	id: 'textarea_1',
 })
 
-//select
-+form_element({
-	type: 'select',
-	class_array: default_field,
-	title: 'some title',
-	id: 'id',
-	add_class: 'someclass',
-	options: ['Option 1', 'Option 2', 'Option 3']
++form_select({
+	label: 'its select',
+	options: ['item', 'value', 'hello'],
+	id: 'select_1',
 })
 
-//radio button
-+form_element({
-	type: 'radio',
-	class_array: default_radio,
-	title: 'some title',
-	name: 'radio',
-	checked: false
++form_checkbox({
+	label: 'checkbox label',
+	checked: false,
 })
 
-//checkbox
-+form_element({
-	type: 'checkbox',
-	class_array: default_checkbox,
-	title: 'some title',
-	name: 'check',
-	checked: true
++form_radio({
+	label: 'radio label',
+	checked: false,
 })
-
-//file
-+form_element({
-	type: 'file',
-	class_array: default_field_hidden,
-	title: 'some title',
-	id: 'some'
-})
-
-//form mixins###
 
 
 //form mixins v2

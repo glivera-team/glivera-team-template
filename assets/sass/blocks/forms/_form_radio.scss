@@ -1,0 +1,11 @@
+.form_radio__block {
+	display: block;
+}
+
+.form_radio__element {
+	display: none;
+}
+
+.form_radio__label {
+	@extend %form_el_radio;
+}

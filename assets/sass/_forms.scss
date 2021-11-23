@@ -1,87 +1,93 @@
-//-------------------------------------------------------inputs and selects
-%form_field_default {
-	display: block;
-	width: 100%;
-	height: $input_height;
-	padding: $input_offset;
-	font-size: $input_font_size;
-	font-family: $font_1;
-	color: $input_text_color;
-	box-shadow: inset 0 0 0 1px $input_border_color;
-	border: none;
-	border-radius: $input_radius;
+@import "blocks/forms/_form_input";
+@import "blocks/forms/_form_textarea";
+@import "blocks/forms/_form_select";
+@import "blocks/forms/_form_checkbox";
+@import "blocks/forms/_form_radio";
 
-	&::-webkit-input-placeholder {
-		color: $input_placeholder_color;
-	}
+// //-------------------------------------------------------inputs and selects
+// %form_field_default {
+// 	display: block;
+// 	width: 100%;
+// 	height: $input_height;
+// 	padding: $input_offset;
+// 	font-size: $input_font_size;
+// 	font-family: $font_1;
+// 	color: $input_text_color;
+// 	box-shadow: inset 0 0 0 1px $input_border_color;
+// 	border: none;
+// 	border-radius: $input_radius;
 
-	&::-moz-placeholder {
-		color: $input_placeholder_color;
-	}
+// 	&::-webkit-input-placeholder {
+// 		color: $input_placeholder_color;
+// 	}
 
-	&:-ms-input-placeholder {
-		color: $input_placeholder_color;
-	}
+// 	&::-moz-placeholder {
+// 		color: $input_placeholder_color;
+// 	}
 
-}
+// 	&:-ms-input-placeholder {
+// 		color: $input_placeholder_color;
+// 	}
 
-%form_field_default_hover {}
+// }
 
-%form_field_default_active {
-	box-shadow: 0 0 0 1px $input_border_color_active;
-}
+// %form_field_default_hover {}
 
-.form_cell,
-.form_field {
-	&.hidden_field {
-		display: none;
-	}
+// %form_field_default_active {
+// 	box-shadow: 0 0 0 1px $input_border_color_active;
+// }
 
-	&.form_cell_v1_mod {}
-}
+// .form_cell,
+// .form_field {
+// 	&.hidden_field {
+// 		display: none;
+// 	}
 
-.form_cell_title,
-.form_field_label {
+// 	&.form_cell_v1_mod {}
+// }
 
-	&.hline_hide_mod,
-	&.hidden_mod {
-		display: none;
-	}
+// .form_cell_title,
+// .form_field_label {
 
-	&.form_v1_mod {}
+// 	&.hline_hide_mod,
+// 	&.hidden_mod {
+// 		display: none;
+// 	}
 
-}
+// 	&.form_v1_mod {}
 
-.form_field_wrap {
-	position: relative;
+// }
 
-	&.form_v1_mod {}
+// .form_field_wrap {
+// 	position: relative;
 
-}
+// 	&.form_v1_mod {}
 
-.form_field {
+// }
 
-	&.default_mod,
-	&_input {
-		@extend %form_field_default !optional;
+// .form_field {
 
-		&:focus {
-			@extend %form_field_default_active !optional;
-		}
+// 	&.default_mod,
+// 	&_input {
+// 		@extend %form_field_default !optional;
 
-		&:hover {
-			@extend %form_field_default_hover !optional;
-		}
-	}
+// 		&:focus {
+// 			@extend %form_field_default_active !optional;
+// 		}
 
-	&.textarea_mod_1 {}
+// 		&:hover {
+// 			@extend %form_field_default_hover !optional;
+// 		}
+// 	}
 
-}
+// 	&.textarea_mod_1 {}
 
-//---------------------------------------------inputs and selects###
+// }
 
-//---------------------------------------------checkboxes and radio-buttons
+// //---------------------------------------------inputs and selects###
 
-// copy/paste from helpers/components/forms/_form.scss
+// //---------------------------------------------checkboxes and radio-buttons
 
-//---------------------------------------------checkboxes and radio-buttons###
+// // copy/paste from helpers/components/forms/_form.scss
+
+// //---------------------------------------------checkboxes and radio-buttons###

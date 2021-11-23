@@ -1,0 +1,39 @@
+%form_el_radio {
+	position: relative;
+
+	padding-left: 3rem;
+
+	font-size: 1.6rem;
+	color: $black;
+	cursor: pointer;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: -1px;
+		left: 0;
+		width: 2rem;
+		height: 2rem;
+		border-radius:100%;
+		border:1px solid $black;
+		cursor:pointer;
+	}
+
+	&:after {
+		@extend %transition_opacity;
+
+		content:'';
+		position: absolute;
+		top: .4rem;
+		left: .5rem;
+		width: 1rem;
+		height: 1rem;
+		border-radius: 100%;
+		background: $black;
+		opacity: 0;
+
+		.form_radio__element:checked + & {
+			opacity: 1;
+		}
+	}
+}

@@ -9,15 +9,16 @@
 	//remove this demo style
 	&.demo_mod {
 		@extend %global_flex_block_row_nowrap_center_center;
-		
-		height: calc(100vh - #{$height_footer + $height_header});
-		
+
+		height: calc(100vh - (var(--height-footer) + var(--height-header)));
+
+		font-size: 4rem;
 		color: $white;
 		text-align: center;
 
 		background-color: $black;
-	}
 
+	}
 }
 
 
@@ -27,6 +28,3 @@
 	margin: 0 auto;
 }
 
-.section_title {
-	font-size: 4em;
-}

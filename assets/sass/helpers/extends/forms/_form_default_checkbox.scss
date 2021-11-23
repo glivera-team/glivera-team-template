@@ -1,0 +1,38 @@
+%form_el_checkbox {
+	position: relative;
+
+	padding-left: 3rem;
+
+	font-size: 1.6rem;
+	color: $black;
+	cursor: pointer;
+
+	&:before,&:after {
+		position: absolute;
+		top: -1px;
+		left: 0;
+		width: 2rem;
+		height: 2rem;
+		cursor:pointer;
+	}
+
+	&:before {
+		content: '';
+		border-radius: 2px;
+		border: 1px solid $black;
+	}
+
+	&:after {
+		@extend %icon-check:before;
+		@extend %transition_opacity;
+
+		text-align: center;
+		line-height: 2rem;
+		opacity: 0;
+		color: $black;
+
+		.form_checkbox__element:checked + & {
+			opacity: 1;
+		}
+	}
+}
